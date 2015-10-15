@@ -48,7 +48,7 @@ Numbers Functions:
     sum                         The sum.
     total                       "
 
-Statisics Functions:
+Statistics Functions:
 
     mean                        The arithmetic mean a.ka. average.
     average                     "
