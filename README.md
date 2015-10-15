@@ -22,6 +22,10 @@ Examples:
     $ echo "1 2 4" | num sum-of-squares standard-deviation
     4.66667 1.24722
 
+See the `docs` directory for more:
+
+  * [Kickstarter Project](docs/kickstarter-project.md)
+  * [Programmer Guide](docs/programmer-guide.md)
 
 ## Functions
 
