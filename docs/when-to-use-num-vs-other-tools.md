@@ -5,7 +5,7 @@ For example, if you want a quick one-time result on your command line, then Num 
 
 Use other tools when you have large data, or large tasks, or oft-repeating needs, or production stability needs.
 
-## When to use datamash, or qstats, etc.
+### When to use datamash, or qstats, etc.
 
 We suggest these small compiled binaries when:
 
@@ -17,7 +17,7 @@ We suggest these small compiled binaries when:
 * You want a quick way to pipe information to commands, without any dependencies.
 * Your ideal tools are small, compiled once, with no dependencies, and no add ons.
 
-## When to use R, or Julia, etc.
+### When to use R, or Julia, etc.
 
 We suggest R and its tools, such as CRAN and R Studio, when:
 
@@ -29,7 +29,7 @@ We suggest R and its tools, such as CRAN and R Studio, when:
 * You want a quick easy way to try visualizations and algorithms for yourself.
 * Your ideal tools are on the leading edge of new statistics.
 
-## When to use Python, or Scala, etc.
+### When to use Python, or Scala, etc.
 
 We suggest Python and its tools, such as pandas and scikit, when:
 

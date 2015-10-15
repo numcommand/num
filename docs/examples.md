@@ -1,7 +1,7 @@
 # Examples
 
 
-## How much data is in a directory?
+### How much data is in a directory?
 
 We list the current directory's files,
 then choose the size column, then calculate:
@@ -10,7 +10,7 @@ $ ls -l | awk '{print $5}' | num min max mean
 265 38684 2378.23
 
 
-## How busy is the computer?
+### How busy is the computer?
 
 We print the current system processes,
 then choose the CPU column, then calculate:
@@ -19,7 +19,7 @@ $ ps aux | awk '{print $3}' | num min max mean
 0.0 100.1 0.513028
 
 
-## How wet is the weather in New York City?
+### How wet is the weather in New York City?
 
 We download weather data for two days then parse humidities.
 
@@ -29,7 +29,7 @@ num min max mean
 32 84 58.4167
 
 
-## How much is an apartment in San Francisco?
+### How much is an apartment in San Francisco?
 
 We connect to the Craigslist website then parse prices.
 

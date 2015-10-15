@@ -3,7 +3,7 @@
 This is the Kickstarter project text for Num.
 
 
-## What is Num?
+### What is Num?
 
 Num is a computer software program that makes it easy to run mathematics functions and statistics, such as sum, average, range, variance, standard deviation, and more.
 
@@ -12,21 +12,23 @@ Num will be open source and free for everyone.
 The project is on GitHub at https://github.com/numcommand/num
 
 Here is a screenshot of simple Num commands:
-[screenshot]
+
+[Screenshot Image]
+
 Caption: Num command line examples
 
 
-## Who is Num for?
+### Who is Num for?
 
 Num is for people who use computer command line tools and who want a quick and easy utility program for data processing. The Num documentation includes examples.
 
 
-## Why are we creating Num?
+### Why are we creating Num?
 
 We're software developers and we want to create Num to give computer users an easy way to do calculations using quick command line tools. We believe Num fills a gap because it handles common needs and can be simpler than programming languages.
 
 
-## What can Num do?
+### What can Num do?
 
 For Num version 1, we're aiming to do everything in this section.
 
@@ -45,7 +47,7 @@ For Num version 1, we're aiming to do everything in this section.
   * Speed that is fine for small data and small projects. If we raise $10,000 and above, our stretch goal is to write a long term command-line-compatible implementation in C, which we expect to make Num run 2x-5x faster, and also open up long term possibilities for more advanced data structures. There is excellent work in C in the datamash tool and qstats tool, and these are open source, so if you personally need speed soon, try datamash and qstats.
 
 
-## How about examples?
+### How about examples?
 
 Here are examples for people who know about command line tools:
 
@@ -53,11 +55,12 @@ Here are examples for people who know about command line tools:
 
   * How busy is the computer?
 
-[image]
+[Screenshot Image]
+
 Caption: Num examples for computer users
 
 
-## Why use Num instead of any other tool?
+### Why use Num instead of any other tool?
 
 Because Num aims to be easy to install and use. There are many great statistics tools such as datamash, qstats, pandas, R, and Julia, and if you're already using these by all means keep using them. We encourage command-line-compatible implementations using any of these other tools.
 
@@ -70,14 +73,14 @@ Num documentation will include information about these other tools, so users can
 If you're a programmer who already uses these other tools, then you know firsthand the value of numeric utilities. We want to make these concepts and capabilities available to more people and accessible on a wide range of systems.
 
 
-## Num is simple
+### Num is simple
 
 For people who use command line tools, Num is simple to install and simple to use. It is also simple to connect to other typical Unix tools.
 
 For people who are programmers, Num is easy to extend with new functions and calculations. All the source code is free and open.
 
 
-## Num is free
+### Num is free
 
 Num is free, open source, and open to anyone to contribute new ideas, new code, and new documentation.
 
@@ -86,7 +89,7 @@ Num will be hosted on GitHub, and have all the typical ways of opening issues, c
 The open source licensing will use each system's normal license. We expect to use GPL for Linux systems, BSD for FreeBSD systems, and so on. Our goal with the licensing is to make it as easy as possible for the system administrators to use Num and package it for the systems.
 
 
-## Num is for quick data scripts
+### Num is for quick data scripts
 
 Num has a sweet spot for quick data scripts, such as pulling in data and calculating summary statistics.
 
@@ -96,11 +99,12 @@ Here are a couple examples of Num for quick data scripts - these are quick and d
 
   * How much is an apartment in San Francisco?
 
-[iamge]
+[Screenshot Immge]
+
 Caption: Num examples for quick data scripts
 
 
-## Stretch goals to help us accomplish more
+### Stretch goals to help us accomplish more
 
 We believe that numeric processing is increasingly valuable for many professional needs as well as for education needs. We want Unix to have a built-in numbers command, similar to how Unix has built-in text commands such as grep and sed.
 
@@ -123,7 +127,7 @@ Here are our stretch goals if the project is able to raise money.
 Long term we want to advocate for Num to become a Unix command that is automatically installed on all Unix systems, much like common command line tools such as grep and sed. We want this to include working with system vendors and also with programmers who can make the code faster and better for cross-platform uses.
 
 
-## General Questions & Answers
+### General Questions & Answers
 
 Q. Is this a one-time project or an ongoing project?
 
@@ -142,7 +146,7 @@ Q. Why do a Kickstarter?
 A. Kickstarter is to get the project launched, and also help more people learn about it. We will use the money to take our existing open source hobby project and turn it into a better, stronger, faster, longer lived project.
 
 
-## Technical Questions & Answers
+### Technical Questions & Answers
 
 Q. Can I help?
 
@@ -193,7 +197,7 @@ A. That's a stretch goal.
 - After Num launches, we expect to look at package managers including apt, yum, brew, etc.
 
 
-## Special Thanks
+### Special Thanks
 
 Tony Fischetti, author of the qstats tool, and its contributors; Assaf Gordon, maintainer of the datamash tool, and its contributors; Arnold Robbins, maintainer of the gawk tool on Unix and POSIX systems, and its maintainers and contributors on all systems; Ross Ihaka and Robert Gentleman, creators of the R language, and its contributors; Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and Alan Edelman, creators of the Julia language, and its contributors; Linus Torvalds, creator of Linux and git, and their contributors; and all the myriad open source authors, advocates, and users.
 

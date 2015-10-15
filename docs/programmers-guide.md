@@ -3,7 +3,7 @@
 This file is for programmers who are reading the Num source code or writing Num functions.
 
 
-## Introduction
+### Introduction
 
 A typical `awk` function uses input parameters and returns an output.
 
@@ -59,7 +59,7 @@ Some of the metadata keys that we're aiming to use:
   * `nums_["descending"]` boolean 0|1 if nums is sorted descending.
 
 
-## Function conventions
+### Function conventions
 
 The project uses these function conventions:
 
@@ -79,7 +79,7 @@ The project uses these function conventions:
   * We return the cache value, rather than the temp loop variable,
     because in our experience this helps prevent bugs.
 
-## Coding conventions
+### Coding conventions
 
 The project uses these coding conventions:
 
@@ -105,7 +105,7 @@ Rule out for now:
   * Launch using `#/usr/bin/env awk` because we need the `-f` arg.
   * Launch using `#/usr/bin/env -S ..` because we want POSIX.
 
-## To Do
+### To Do
 
 To do list for our upcoming work:
 
