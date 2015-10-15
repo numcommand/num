@@ -26,8 +26,9 @@ See the `docs` directory for more:
 
   * [Examples](docs/examples.md)
   * [Kickstarter project](docs/kickstarter-project.md)
-  * [Programmers guide](docs/programmers-guide.md)
   * [When to use Num vs. other tools](docs/when-to-use-num-vs-other-tools.md)
+  * [Programmers guide](docs/programmers-guide.md)
+  * [To do list, including ideas for future versions](docs/todo.md)
 
 ## Functions
 
@@ -119,31 +120,6 @@ If a value is unknown, or not a number, then it will print as "?". (#TODO)
     $ echo "1 2 4" | num mode
     ?
 
-
-## Ideas for future upgrades
-
-Numbers functions: `transpose`, `reverse`, etc.
-
-Count functions: `count-positive`, `count-negative`, `count-zero`,
-`count-non-zero`, `count-even`, `count-odd`, etc.
-
-Mathematics functions: `absmin`, `absmax`, etc.
-
-List functions: `rand`, `collapse`, `countunique`, etc.
-
-Quantile functions:s `q0`, `q1`, `q2`, `q3, `q4`, `iqr`.
-
-Statistics functions such as `antimode`, `pstdev`, `sstdev`, `pvar`, `svar`,
-`mad`, `madraw`, `sskew`, `pskew`, `skurt`, `pkurt`, `jarque`, `dpo`.
-
-IO functions: `input-header`, `output-header`, `format`, `printf`,
-`zero-termination`, etc.
-
-Table functions: `group`, `filler`, etc.
-
-Typical Unix functions: `help`, `version`, etc.
-
-Other functions such as those in other math stats tools.
 
 
 ## Other Mathematics Statistics Tools
