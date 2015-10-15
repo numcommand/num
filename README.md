@@ -27,7 +27,7 @@ See the `docs` directory for more:
   * [Examples](docs/examples.md)
   * [Kickstarter project](docs/kickstarter-project.md)
   * [Programmers guide](docs/programmers-guide.md)
-  * [When to use Num vs. other tools](docs/when-to-use-num-vs-other-tools.md]
+  * [When to use Num vs. other tools](docs/when-to-use-num-vs-other-tools.md)
 
 ## Functions
 
