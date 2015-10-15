@@ -139,7 +139,7 @@ A. Num is pronounced like num-ber.
 
 Q. What is the logo?
 
-A. The logo is a number sign, also known as a hash, or octothorpe. If you're a logo creator or graphics designer, we're open to a new logo.
+A. The logo is a circle and number sign. The circle is the symbol for a function in a computer software data flow diagram. The number sign is also known as a hash, or octothorpe. If you're a logo creator or graphics designer, we're open to a new logo.
 
 Q. Why do a Kickstarter?
 
