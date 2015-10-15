@@ -1,6 +1,6 @@
-# Num: number utilties for mathematics
+# Kickstarter project
 
-This is the Kickstarter project text.
+This is the Kickstarter project text for Num.
 
 
 ## What is Num?

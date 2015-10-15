@@ -24,8 +24,10 @@ Examples:
 
 See the `docs` directory for more:
 
-  * [Kickstarter Project](docs/kickstarter-project.md)
-  * [Programmer Guide](docs/programmer-guide.md)
+  * [Examples](docs/examples.md)
+  * [Kickstarter project](docs/kickstarter-project.md)
+  * [Programmers guide](docs/programmers-guide.md)
+  * [When to use Num vs. other tools](docs/when-to-use-num-vs-other-tools.md]
 
 ## Functions
 
