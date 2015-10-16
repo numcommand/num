@@ -37,6 +37,7 @@ Numbers Functions:
     all                         All the items.
     first                       The first item.
     last                        The last item.
+    middle                      The middle item, which is the median-low.
 
     n                           The number of items.
     count                       "
@@ -60,11 +61,16 @@ Statistics Functions:
     mean                        The arithmetic mean a.ka. average.
     average                     "
 
+    meanest                     The value closest to the mean.
+
     median                      The median.
     med                         "
 
-    middle                      The middle value i.e. closest to the mean.
-    mid                         "
+    median-low                  The low median.
+    med-low                     "
+
+    median-high                 High median of data.
+    med-high                    "
 
     mode                        The first mode or NAN.
     modes                       All modes or NAN.

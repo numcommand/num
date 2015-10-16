@@ -8,3 +8,5 @@ assert_eq() {
     echo "assert_eq $msg expect:$expect actual:$actual FAILURE"
   fi
 }
+
+x=$(echo "1 2 4" | ./num.sh all) && assert_eq "1 2 4" "$x" "all"
