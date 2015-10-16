@@ -36,7 +36,10 @@ awk '
 # All items.
 #
 function all(num, num_, options) {
-    return arr_join(num, OFS)
+    if (!("all" in num_)) {
+        num_["all"] = arr_join(num, OFS)
+    }
+    return num_["all"]
 }
 
 ############################################################################
