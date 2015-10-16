@@ -58,6 +58,53 @@ function arr_dump(arr) {
     for (k in arr) print k, arr[k]
 }
 
+# Is an array empty?
+#
+# Example:
+#
+#   split("", arr)
+#   arr_empty(arr) => TRUE
+#
+# This is POSIX compatible.
+#
+function arr_empty(arr,  i) {
+    for (i in arr) return 0
+    return 1
+}
+
+# Length of an array.
+#
+# Example:
+#
+#     arr_length(1 2 4) => 3
+#
+# TODO: Optimize - consider using `gawk` and its `length` function.
+#
+function arr_length(arr,  i, k) {
+    for (i in arr) k++
+    return k
+}
+
+# Return the first item in an array.
+#
+# Example:
+#
+#     arr_first(1 2 4) => 1
+#
+function arr_first(arr) {
+    return arr[1]
+}
+
+# Get the last item in an array, by using the `length` function.
+#
+# Example:
+#
+#     arr_last(1 2 4) => 4
+#
+function arr_last(arr) {
+    return arr[length(arr)]
+}
+
 # Join an array to a string, with a separator string.
 #
 # Example:

@@ -9,4 +9,8 @@ assert_eq() {
   fi
 }
 
-x=$(echo "1 2 4" | ./num.sh all) && assert_eq "1 2 4" "$x" "all"
+x=$(echo "1 2 4" | ./num.sh all)    && assert_eq "1 2 4" "$x" "all"
+
+x=$(echo "1 2 4" | ./num.sh first)  && assert_eq 1 "$x" "first"
+
+x=$(echo "1 2 4" | ./num.sh last)   && assert_eq 4 "$x" "last"
