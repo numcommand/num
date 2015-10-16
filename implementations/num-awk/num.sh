@@ -42,6 +42,32 @@ function all(num, num_, options) {
     return num_["all"]
 }
 
+# First item.
+#
+# Example:
+#
+#   1 2 4 => 1
+#
+function first(num, num_, options) {
+    if (!("first" in num_)) {
+        num_["first"] = arr_first(num)
+    }
+    return num_["first"]
+}
+
+# Last item.
+#
+# Example:
+#
+#   1 2 4 => 4
+#
+function last(num, num_, options) {
+    if (!("last" in num_)) {
+        num_["last"] = arr_last(num)
+    }
+    return num_["last"]
+}
+
 ############################################################################
 #
 # ARRAY UTILITIES
@@ -163,6 +189,8 @@ function init_word_argv() {
 #
 function init_word_list() {
     global_word_list["all"] = "all"
+    global_word_list["first"] = "first"
+    global_word_list["last"] = "last"
 }
 
 
@@ -188,6 +216,12 @@ function init_word_list() {
 # perhaps by reflection on the word and function name?
 #
 function word_to_function(num, num_, word) {
+    if (word == "all")
+        return all(num, num_)
+    if (word == "first")
+        return first(num, num_)
+    if (word == "last")
+        return last(num, num_)
     if (word == "all")
         return all(num, num_)
     else
