@@ -26,7 +26,7 @@ Example:
 
 ### The `shuffle` command
 
-Shuffle a list, a.k.a. randomizing the order of list items.
+Shuffle a list, a.k.a. randomize the order of list items.
 
 Example:
 
@@ -34,6 +34,13 @@ Example:
     3
     1
     2
+
+Sample items by using the `-n` flag:
+
+    $ seq 10 | shuf -n 3
+    7
+    2
+    5
 
 ### The `wc` command
 

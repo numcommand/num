@@ -22,13 +22,14 @@ Examples:
     $ echo "1 2 4" | num sum-of-squares standard-deviation
     4.66667 1.24722
 
-See the `docs` directory for more:
+Help page:
 
-  * [Examples](docs/examples.md)
-  * [Kickstarter project](docs/kickstarter-project.md)
-  * [When to use Num vs. other tools](docs/when-to-use-num-vs-other-tools.md)
-  * [Programmers guide](docs/programmers-guide.md)
-  * [To do list, including ideas for future versions](docs/todo.md)
+  * [Examples](doc/examples.md)
+  * [Kickstarter project](doc/kickstarter-project.md)
+  * [When to use Num vs. other tools](doc/when-to-use-num-vs-other-tools.md)
+  * [Command guide](doc/command-guide.md)
+  * [Programmers guide](doc/programmers-guide.md)
+  * [To do list, including ideas for future versions](doc/todo.md)
 
 ## Functions
 
