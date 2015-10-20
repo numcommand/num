@@ -1,0 +1,673 @@
+#!/bin/sh
+set -euf
+
+##
+# Num: number utilties for mathematics and statistics.
+#
+# Syntax:
+#
+#     num [ options ] [ file ... ]
+#
+# This is a work in progress.
+#
+# Documentation is available:
+#
+#   * GitHub repository: https://github.com/numcommand/num
+#
+#   * Kickstarter project: https://kickstarter.com
+#
+# ## Tracking
+#
+# Author: Joel Parker Henderson (joel@joelparkerhenderson.com)
+# License: GPL, BSD, MIT
+# Created: 2015-03-28
+# Updated: 2015-10-16
+# Version: 0.0.2
+##
+
+awk '
+
+############################################################################
+#
+# Public Functions
+#
+##
+
+# All items.
+#
+function all(num, num_, options) {
+    if (!("all" in num_)) {
+        num_["all"] = arr_join(num, OFS)
+    }
+    return num_["all"]
+}
+
+# First item.
+#
+# Example:
+#
+#   1 2 4 => 1
+#
+function first(num, num_, options) {
+    if (!("first" in num_)) {
+        num_["first"] = arr_first(num)
+    }
+    return num_["first"]
+}
+
+# Last item.
+#
+# Example:
+#
+#   1 2 4 => 4
+#
+function last(num, num_, options) {
+    if (!("last" in num_)) {
+        num_["last"] = arr_last(num)
+    }
+    return num_["last"]
+}
+
+# Number of items, a.k.a. count, length.
+#
+# Example:
+#
+#     1 2 4 => 3
+#
+function n(num, num_, options) {
+    if (!("n" in num_)) {
+        num_["n"] = arr_length(num)
+    }
+    return num_["n"]
+}
+
+# Minimum value.
+#
+# Example:
+#
+#     1 2 4 => 1
+#
+function min(num, num_, options,  _min, i) {
+    if (!("min" in num_)) {
+        num_["min"] = arr_min_via_scan(num)  # TODO ascending/descending
+    }
+    return num_["min"]
+}
+
+# Maximum value.
+#
+# Example:
+#
+#     1 2 4 => 4
+#
+function max(num, num_, options,  _max, i) {
+    if (!("max" in num_)) {
+        num_["max"] = arr_max_via_scan(num)  # TODO ascending/descending
+    }
+    return num_["max"]
+}
+
+# Range, a.k.a. spread.
+#
+# Example:
+#
+#     1 2 4 => 3
+#
+function range(num, num_, options) {
+    if (!("range" in num_)) {
+        num_["range"] = max(num, num_, options) - min(num, num_, options)
+    }
+    return num_["range"]
+}
+
+# Sum, a.k.a. total.
+#
+# Example:
+#
+#     1 2 4 => 7
+#
+function sum(num, num_, options,  _sum, i) {
+    if (!("sum" in num_)) {
+        _sum = 0
+        for (i in num) {
+            _sum += num[i]
+        }
+        num_["sum"] = _sum
+    }
+    return num_["sum"]
+}
+
+# Mean, a.k.a. arithmetic mean, average.
+#
+# Example:
+#
+#     1 2 4 => 2.33333
+#
+function mean(num, num_, options) {
+    if (!("mean" in num_)) {
+        if (num_["linear"]){
+          num_["mean"] = (max(num, num_, options) - min(num, num_, options)) / n(num, num_, options)
+        } else {
+          num_["mean"] = sum(num, num_, options) / n(num, num_, options)
+        }
+    }
+    return num_["mean"]
+}
+
+# Median.
+#
+# Example:
+#
+#     1 2 4 => 2
+#     1 2 4 99 => 3
+#
+function median(num, num_, options,  _n) {
+    if (!("median" in num_)) {
+        asort(num)  # TODO POSIX
+        _n = n(num, num_, options)
+        if (_n % 2) {
+            num_["median"] = num_["median_low"] = num_["median_high"] = num[(_n + 1) / 2]
+        } else {
+            num_["median_low"] = num[(_n / 2)]
+            num_["median_high"] =  num[(_n / 2) + 1]
+            num_["median"] = ((num_["median_low"] + num_["median_high"]) / 2.0)
+        }
+    }
+    return num_["median"]
+}
+
+# Median-low: get the lesser median.
+#
+# Example:
+#
+#     1 2 4 => 2
+#     1 2 4 99 => 2
+#
+function median_low(num, num_, options,  _n) {
+    if (!("median_low" in num_)) {
+        median(num, num_, options)
+    }
+    return num_["median_low"]
+}
+
+# Median-high: get the greater median.
+#
+# Example:
+#
+#     1 2 4 => 2
+#     1 2 4 99 => 4
+#
+function median_high(num, num_, options,  _n) {
+    if (!("median_high" in num_)) {
+        median(num, num_, options)
+    }
+    return num_["median_high"]
+}
+
+# Mode: get the mode, which may be a number, or list, or UNDEF.
+#
+# TODO: IMPLEMENT
+#
+# Examples:
+#
+#     1 2 2 4 => 2
+#     1 1 2 4 4 => 1 4
+#     1 2 3 => UNDEF
+#
+function mode(num, num_, options) {
+    if (!("mode" in num_)) {
+        num_["mode"] = TODO
+    }
+    return num_["mode"]
+}
+
+# Mode-low: get the first mode, if any, or UNDEF.
+#
+# TODO: IMPLEMENT
+#
+# Examples:
+#
+#     1 2 2 3 => 2
+#     1 1 2 4 4 => 1
+#     1 2 3 => UNDEF
+#
+function mode_low(num, num_, options) {
+    if (!("mode_low" in num_)) {
+        num_["mode_low"] = TODO
+    }
+    return num_["mode_low"]
+}
+
+# Mode-high: get the last mode, if any, or UNDEF.
+#
+# TODO: IMPLEMENT
+#
+# Examples:
+#
+#     1 2 2 3 => 2
+#     1 1 2 4 4 => 4
+#     1 2 3 => UNDEF
+#
+function mode_high(num, num_, options) {
+    if (!("mode_high" in num_)) {
+        num_["mode_high"] = TODO
+    }
+    return num_["mode_high"]
+}
+
+# Sum of Squares, a.k.a. SS.
+#
+# Example:
+#
+#     1 2 4 => 4.66667
+#
+function sum_of_squares(num, num_, options,  _sum, _mean, i) {
+    if (!("sum_of_squares" in num_)) {
+        _sum = 0
+        _mean = mean(num, num_, options)
+        for (i in num) {
+            _sum += (num[i] - _mean) ** 2
+        }
+        num_["sum_of_squares"] = _sum
+    }
+    return num_["sum_of_squares"]
+}
+
+# Variance
+#
+# Example:
+#
+#     1 2 4 => 1.55556
+#
+function variance(num, num_, options,  _n, _mean, _diff, i) {
+    if (!("variance" in num_)) {
+        _n = n(num, num_, options)
+        _mean = mean(num, num_, options)
+        for (i in num){
+            _diff += (num[i] - _mean) ** 2
+        }
+        num_["variance"] = _diff / _n
+    }
+    return num_["variance"]
+}
+
+# Standard Deviation, a.k.a. SD.
+#
+# Example:
+#
+#     1 2 4 => 1.24722
+#
+function standard_deviation(num, num_, options) {
+    if (!("standard_deviation" in num_)) {
+        num_["standard_deviation"] = sqrt(variance(num, num_, options))
+    }
+    return num_["standard_deviation"]
+}
+
+# Coefficient of Variance, a.k.a. CV.
+#
+# Example:
+#
+#     1 2 4 => 0.534522
+#
+function coefficient_of_variance(num, num_, options) {
+    if (!("coefficient_of_variance" in num_)) {
+        num_["coefficient_of_variance"] = standard_deviation(num, num_, options) / mean(num, num_, options)
+    }
+    return num_["coefficient_of_variance"]
+}
+
+############################################################################
+#
+# ARRAY UTILITIES
+#
+##
+
+# Dump an array, suitable for debugging.
+#
+# Example:
+#
+#     arr_dump(arr)
+#     1 a
+#     2 b
+#     3 d
+#
+function arr_dump(arr) {
+    for (k in arr) print k, arr[k]
+}
+
+# Is an array empty?
+#
+# Example:
+#
+#   split("", arr)
+#   arr_empty(arr) => TRUE
+#
+# This is POSIX compatible.
+#
+function arr_empty(arr,  i) {
+    for (i in arr) return 0
+    return 1
+}
+
+# Length of an array.
+#
+# Example:
+#
+#     arr_length(1 2 4) => 3
+#
+# TODO: Optimize - consider using `gawk` and its `length` function.
+#
+function arr_length(arr,  i, k) {
+    for (i in arr) k++
+    return k
+}
+
+# Return the first item in an array.
+#
+# Example:
+#
+#     arr_first(1 2 4) => 1
+#
+function arr_first(arr) {
+    return arr[1]
+}
+
+# Return the last item in an array.
+#
+# Example:
+#
+#     arr_last(1 2 4) => 4
+#
+function arr_last(arr) {
+    return arr[arr_length(arr)]
+}
+
+# Get the minimum value, by doing a scan of the entire array.
+#
+# Example:
+#
+#     arr_min_via_scan(1 2 4) => 4
+#
+function arr_min_via_scan(arr,  _min) {
+    _min = arr[1]
+    for (i in arr) if (arr[i] < _min) _min = arr[i]
+    return _min
+}
+
+# Get the maxmimum value, by doing a scan of the entire array.
+#
+# Example:
+#
+#     arr_max_via_scan(1 2 4) => 4
+#
+function arr_max_via_scan(arr,  _max) {
+    _max = arr[1]
+    for (i in arr) if (arr[i] > _max) _max = arr[i]
+    return _max
+}
+
+# Join an array to a string, with a separator string.
+#
+# Example:
+#
+#     arr_join(1 2 4, ",") => "1,2,4"
+#
+function arr_join(arr, sep,  s, i) {
+    s = ""
+    for (i in arr) s = s arr[i] sep
+    s = substr(s, 1, length(s) - length(sep))
+    return s
+}
+
+# Push one item on an array stack, by using the `length` function.
+#
+# Example:
+#
+#     arr = 1 2
+#     arr_push(arr, 4)
+#     => arr == 1 2 4
+#
+function arr_push(arr, item) {
+    arr[length(arr)+1] = item
+}
+
+############################################################################
+#
+# INITIALIZE
+#
+##
+
+# Initialize everything.
+#
+# This calls various `init_*` functions.
+#
+function init() {
+    init_constants()
+    init_word_argv()
+    init_word_list()
+}
+
+# Initialize constants that we use; these are essentially like defines.
+#
+function init_constants() {
+    FALSE = 0
+    TRUE = 1
+    TODO = "TODO"
+    UNDEF = "UNDEF"
+}
+
+# Initialize the word argv list.
+#
+# The word argv list holds the argv items that this script cares about.
+# We keep them in order, so we can output results in order.
+#
+function init_word_argv() {
+    split("", global_word_argv)
+}
+
+# Initialize the global word list lookup array.
+#
+# This is to recognize words that a user types on the command line.
+#
+# TODO: research if there is a better way to initialize a dictionary.
+#
+function init_word_list() {
+    global_word_list["all"] = "all"
+    global_word_list["first"] = "first"
+    global_word_list["last"] = "last"
+    global_word_list["n"] = global_word_list["count"] = global_word_list["length"] = global_word_list["size"] = "n"
+    global_word_list["first"] = "first"
+    global_word_list["last"] = "last"
+    global_word_list["min"] = global_word_list["minimum"] = "min"
+    global_word_list["max"] = global_word_list["maximum"] = "max"
+    global_word_list["range"] = global_word_list["spread"] = "range"
+    global_word_list["sum"] = global_word_list["total"] = "sum"
+    global_word_list["mean"] = global_word_list["average"] = global_word_list["avg"] = "mean"
+    global_word_list["median"] = global_word_list["med"] = "median"
+    global_word_list["median-low"] = global_word_list["medianlow"] = global_word_list["med-low"] = global_word_list["medlow"] = "median-low"
+    global_word_list["median-high"] = global_word_list["medianhigh"] = global_word_list["med-high"] = global_word_list["medhigh"] = "median-high"
+    global_word_list["mode"] = "mode"
+    global_word_list["mode-low"] = global_word_list["modelow"] = "mode-low"
+    global_word_list["mode-high"] = global_word_list["modehigh"] = "mode-high"
+    global_word_list["sum-of-squares"] = global_word_list["sumofsquares"] = global_word_list["sum-squares"] = global_word_list["sumsquares"] = global_word_list["sum2"] = global_word_list["ss"] = "sum-of-squares"
+    global_word_list["variance"] = global_word_list["var"] = "variance"
+    global_word_list["standard-deviation"] = global_word_list["standarddeviation"] =  global_word_list["stdev"] = global_word_list["sd"] = "standard-deviation"
+    global_word_list["coefficient-of-variance"] = global_word_list["coefficientofvariance"] = global_word_list["coefficient-variance"] = global_word_list["coefficientvariance"] = global_word_list["co-var"] = global_word_list["covar"] = global_word_list["cv"] = "coefficient-of-variance"
+}
+
+
+############################################################################
+#
+# WORDS
+#
+##
+
+# Given a word, call its function.
+#
+# Example:
+#
+#     num = 1 2 4
+#     num_ = []
+#     word_to_function(num, num_, "sum")
+#     => 7 (by calling the `sum` function)
+#
+# Note: this implementation uses if..else instead of
+# any switch or case, because we want POSIX usability.
+#
+# TODO: Is there a way to shorten this function,
+# perhaps by reflection on the word and function name?
+#
+function word_to_function(num, num_, options, word) {
+    if (word == "all")
+        return (all(num, num_, options))
+    else if (word == "first")
+        return (first(num, num_, options))
+    else if (word == "last")
+        return (last(num, num_, options))
+    else if (word == "n")
+        return (n(num, num_, options))
+    else if (word == "min")
+        return min(num, num_, options)
+    else if (word == "max")
+        return max(num, num_, options)
+    else if (word == "range")
+        return range(num, num_, options)
+    else if (word == "sum")
+         return sum(num, num_, options)
+    else if (word == "mean")
+        return mean(num, num_, options)
+    else if (word == "median")
+        return median(num, num_, options)
+    else if (word == "median-low")
+        return median_low(num, num_, options)
+    else if (word == "median-high")
+        return median_high(num, num_, options)
+    else if (word == "mode")
+        return mode(num, num_, options)
+    else if (word == "mode-low")
+        return mode_low(num, num_, options)
+    else if (word == "mode-high")
+        return mode_high(num, num_, options)
+    else if (word == "sum-of-squares")
+        return sum_of_squares(num, num_, options)
+    else if (word == "variance")
+        return variance(num, num_, options)
+    else if (word == "standard-deviation")
+        return standard_deviation(num, num_, options)
+    else if (word == "coefficient-of-variance")
+        return coefficient_of_variance(num, num_, options)
+    else
+        return ""
+}
+
+# Given a word, return the result as a string.
+#
+# Example:
+#
+#     num = 1 2 4
+#     num_ = []
+#     word_to_s(num, options, "sum")
+#     => "7"
+#
+function word_to_s(num, num_, options, word,  s) {
+    s = word_to_function(num, num_, options, word)
+    return s
+}
+
+# Given words, return the result as a string.
+#
+# Example:
+#
+#     num = 1 2 4
+#     num_ = []
+#     word_to_s(num, options, ("sum", "max"))
+#     => "1 4"
+#
+function words_to_s(num, num_, options, words, sep,  word, i, s, s2) {
+    s = ""
+    for (i in words) {
+        word = words[i]
+        s2 = word_to_s(num, num_, options, word)
+        s = s s2 sep
+    }
+    s = substr(s, 1, length(s) - length(sep))
+    return s
+}
+
+############################################################################
+#
+# INPUT/OUTPUT
+#
+##
+
+# Start receiving input.
+#
+# Ready the global number array for new input and new metadata.
+#
+function start_input() {
+    split("", global_num)   # The input values.
+    split("", global_num_)  # The metadata, such as cached results.
+}
+
+# Stop receiving input.
+#
+# Set any work in progress here.
+#
+function stop_input() {
+    global_num_["n"] = global_num_n
+}
+
+# Parse word inputs by iterating: whenever a word is recognized,
+# then move it from the word inputs array to the word matches array.
+#
+# Example to parse ARGV:
+#
+#     parse_words(ARGV, global_word_argv, global_word_list)
+#
+function parse_words(word_inputs, word_outputs, word_list,  i, word) {
+    for (i in word_inputs) {
+        if (word_inputs[i] in word_list) {
+            word = word_list[word_inputs[i]]
+            delete word_inputs[i]
+            arr_push(word_outputs, word)
+        }
+    }
+}
+
+# Parse the command line ARGV inputs to recognized word outputs.
+#
+function parse_argv() {
+    parse_words(ARGV, global_word_argv, global_word_list)
+}
+
+# Print output to the screen.
+#
+# This is the core output function, and the only one that
+# should print anything to the screen during normal operation.
+#
+function print_output() {
+    print words_to_s(global_num, global_num_, global_options, global_word_argv)
+}
+
+############################################################################
+#
+# MAIN
+#
+##
+
+BEGIN{
+    init()
+    parse_argv()
+    start_input()
+}
+
+{
+    split($0, arr)
+    for(i in arr) global_num[++global_num_n] = arr[i]
+}
+
+END{
+    stop_input()
+    print_output()
+}' "$@"

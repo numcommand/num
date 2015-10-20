@@ -31,6 +31,7 @@ Help page:
   * [Programmers guide](doc/programmers-guide.md)
   * [To do list, including ideas for future versions](doc/todo.md)
 
+
 ## Functions
 
 Numbers Functions:
@@ -38,7 +39,6 @@ Numbers Functions:
     all                         All the items.
     first                       The first item.
     last                        The last item.
-    middle                      The middle item, which is the median-low.
 
     n                           The number of items.
     count                       "
@@ -62,19 +62,20 @@ Statistics Functions:
     mean                        The arithmetic mean a.ka. average.
     average                     "
 
-    meanest                     The value closest to the mean.
-
     median                      The median.
     med                         "
 
-    median-low                  The low median.
+    median-low                  The low median, i.e. lesser of two middle values.
     med-low                     "
 
-    median-high                 High median of data.
+    median-high                 The high median, i.e. greater of two middle values.
     med-high                    "
 
-    mode                        The first mode or NAN.
-    modes                       All modes or NAN.
+    mode                        The mode, which may be multiple numbers or UNDEF. TODO.
+
+    mode-low                    The least value of the mode values or UNDEF. TODO.
+
+    mode-high                   The greatest value of the mode values or UNDEF. TODO.
 
     variance                    The variance.
     var                         "
@@ -90,7 +91,6 @@ Statistics Functions:
     coefficient-of-variance     The coefficient of variance (CV).
     covar                       "
     cv                          "
-
 
 
 ## Input/Output
@@ -126,19 +126,6 @@ If a value is unknown, or not a number, then it will print as "?". (#TODO)
 
     $ echo "1 2 4" | num mode
     ?
-
-
-
-## Other Mathematics Statistics Tools
-
-GNU datamash:
-http://www.gnu.org/software/datamash/manual/datamash.html
-
-R language:
-https://www.r-project.org
-
-Python Pandas:
-https://pandas.pydata.org
 
 
 ## Project Tracking
