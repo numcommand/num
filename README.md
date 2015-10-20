@@ -29,7 +29,26 @@ Help page:
   * [When to use Num vs. other tools](doc/when-to-use-num-vs-other-tools.md)
   * [Command guide](doc/command-guide.md)
   * [Programmers guide](doc/programmers-guide.md)
+  * [Known issues](doc/known-issues.md)
   * [To do list, including ideas for future versions](doc/todo.md)
+
+## Install
+
+Download the `num` script to your own system, and put it somewhere you can run it.
+
+Install using `curl`:
+
+    curl -sSL https://raw.githubusercontent.com/numcommand/num/master/implementations/num-awk/num -o /usr/local/bin/num
+
+Install using `wget`:
+
+    wget  https://raw.githubusercontent.com/numcommand/num/master/implementations/num-awk/num -O /usr/local/bin/num
+
+Caution: the project is new and is alpha quality, so give it a try, and don't use it for production until we have a 1.0 release in November.
+
+If you have any issues with installation, please contact us directly or create a GitHub issue.
+
+The roadmap includes a smoother safer installation process, using package managers such as `apt`, `yum`, `brew`, etc. If you would like to help with these, please contact us directly or create a GitHub issue.
 
 
 ## Functions
@@ -136,6 +155,6 @@ License: GPL, BSD, MIT
 
 Created: 2015-03-28
 
-Updated: 2015-10-02
+Updated: 2015-10-20
 
-Version: 0.1.0
+Version: 0.2.0
