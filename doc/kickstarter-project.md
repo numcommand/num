@@ -30,21 +30,23 @@ We're software developers and we want to create Num to give computer users an ea
 
 ### What can Num do?
 
-For Num version 1, we're aiming to do everything in this section.
+We're aiming to do everything in this section.
 
-  * Functions for count, min, max, range, first, last, mean, median, mode, variance, standard deviation, coefficient of variance, sort, unique, and absolute value. If we raise $2000 and above, our stretch goals are similar kinds of functions for quantiles, iqr, antimode, pstdev, sstdev, pvar, svar, mad, madraw, sskew, pskew, skurt, pkurt, jarque, dpo, sin, cos, tan, etc.
+* Functions for count, min, max, range, first, last, mean, median, mode, variance, standard deviation, coefficient of variance, sort, unique, and absolute value. If the project raises 2k the goals are similar functions such as quantiles, iqr, antimode, pstdev, sstdev, pvar, svar, mad, madraw, sskew, pskew, skurt, pkurt, jarque, dpo, etc.
 
-  * Options for input and output, including a custom input field separator, input record separator, output field separator, output record separator, as well as input optimizations for presorted data, and output formats for comma separated values (CSV) and tab separated values (TSV). If we raise $3000 and above, our stretch goals are more options for input and output, columns and rows, headers and labels, Unicode symbols, etc.
+* Input that uses numbers, i.e. input data must be clean. If the project raises 3k the goals are the most important input-scrubbing capabilities, such as extracting numbers from mixed-type data, parsing numbers that look like currencies or percentages, handling missing data or malformed data, alerting if non-numbers are disrupting results, etc.
 
-  * Project items including documentation, examples, a git repository, wiki, license page, contributing page, and a set of tests. If we raise $4000 and above, our stretch goals are a Num website, IRC help channel, and free PDF book for downloading.
+* Options for input and output, including a custom input field separator, input record separator, output field separator, output record separator, as well as input optimizations for presorted data, and output formats for comma separated values (CSV) and tab separated values (TSV). If the project raises 4k the goals are upgrading options for input and output, columns and rows, headers and labels, output formats for HTML/JSON/JSONB, Unicode symbols, and similar kinds of  IO needs.
 
-  * Implementation using GNU awk, a.k.a. gawk. If we raise $5000 and above, our stretch goals include better POSIX compatibility, vanilla OS X compatibility, Cygwin compatibility, testing on a range of Unix systems, speed increases by using caching, and starting placeholders for command-line-compatible implementations by the community using other languages, including Python, etc.
+* Publishing including documentation, examples, a git repository, wiki, license page, contributing page, and a set of tests. If the project raises 5k the goals are improving documenation and accessibility by adding a Num website, IRC help channel, more examples including Unix toolchain commands, and working directly with experts in R and Python to make Num an "on ramp" for more-powerful stats tools. If the project raises 6k the goals are writing and publishing the documentation as a PDF book focused on command-line statistics because our experience shows this is an important way to drive adoption in larger organizations especially academia and enterprises.
 
-  * Processing using all the input at the start of the program. If we raise $6000 and above, our stretch goals include additive statistics, such as taking an input of an existing count and mean, and appending new numbers to the statistics.We believe this is a killer feature for combining batch-oriented processing with stream-oriented processing.
+* Implementation using GNU awk, a.k.a. gawk. If we raise $7000 and above, our stretch goal is pure Mac OS X compatibility, and also pure POSIX compatibility, and Cygwin compatibility for Windows. If we raise $8000 and above, our stretch goal is implementation speed increases by using caching, memoization, heuristics, and input hinting. If we raise $9000 and above, our stretch goal is starting placeholders for command-line-compatible implementations by the community using other languages, including Python, etc.
 
-  * Installation by downloading one file, which is a shell script. If we raise $8000 and above, our stretch goals include work on packaging Num for various package managers, including apt, brew, yum, etc.
+* Installation by downloading one file, which is a shell script. If the project raises 10k the goals are work on packaging Num for various package managers, including apt, brew, yum, etc. We believe that packaging is the most important single item for making any program widely available on Unix.
 
-  * Speed that is fine for small data and small projects. If we raise $10,000 and above, our stretch goal is to write a long term command-line-compatible implementation in C, which we expect to make Num run 2x-5x faster, and also open up long term possibilities for more advanced data structures. There is excellent work in C in the datamash tool and qstats tool, and these are open source, so if you personally need speed soon, try datamash and qstats.
+* Processing that takes all input at the start of the program. If the project raises 12k the goals include additive statistics, such as taking an input of an existing count and mean, and appending new numbers to the statistics. We believe this is a killer feature for combining batch-oriented processing with stream-oriented processing. Our testing so far shows that additive statistics can give speed increases of 2x-5x for the real-world data we're using in real-world projects.
+
+* Speed that is fine for small data and small projects. If the project raises 15k and above, our stretch goal is to write a long term command-line-compatible implementation in C, which we expect to make Num run 2x-5x faster, and also open up long term possibilities for more advanced data structures. There is excellent work in C in the datamash tool and qstats tool, and these are open source, so if you personally need speed soon, try datamash and qstats.
 
 
 ### How about examples?
@@ -108,21 +110,33 @@ Caption: Num examples for quick data scripts
 
 We believe that numeric processing is increasingly valuable for many professional needs as well as for education needs. We want Unix to have a built-in numbers command, similar to how Unix has built-in text commands such as grep and sed.
 
-Here are our stretch goals if the project is able to raise money.
+Here are our goals for raising money:
 
-  * $2000 goals - create similar kinds of functions for quantiles, iqr, antimode, pstdev, sstdev, pvar, svar, mad, madraw, sskew, pskew, skurt, pkurt, jarque, dpo, sin, cos, tan, etc.
+* 1k - launch Num with a successful Kickstarter, and with all the capabilities described above.
 
-  * $3000 goals - upgrade options for input and output, columns and rows, headers and labels, Unicode symbols, etc.
+* 2k - create similar kinds of functions for quantiles, iqr, antimode, pstdev, sstdev, pvar, svar, mad, madraw, sskew, pskew, skurt, pkurt, jarque, dpo, etc.
 
-  * $4000 goals - create and publish a Num website, IRC help channel, and free PDF book for downloading.
+* 3k - create the most important input-scrubbing capabilities, such as extracting numbers from mixed-type data, parsing numbers that look like currencies or percentages, handling missing data or malformed data, alerting if non-numbers are disrupting results, etc.
 
-  * $5000 goals - improve cross-platform compatibility and performance on POSIX/OSX/Cygwin, enhance test cases, add speed increases by using caching, and the like.
+* 4k - upgrade options for input and output, columns and rows, headers and labels, output formats for HTML/JSON/JSONB, Unicode symbols, etc.
 
-  * $6000 goals - upgrade to enable additive statistics, such as taking an input of an existing count and mean, and appending new numbers to the statistics.
+* 5k - improving documenation and accessibility by adding a Num website, IRC help channel, more examples including Unix toolchain commands, and working directly with experts in R and Python to make Num an "on ramp" for more-powerful stats tools.
 
-  * $8000 goals - work on packaging Num for various package managers, including apt, brew, yum, etc., and man pages, verisoning, etc. This involves contacting and coordinating with package maintainers and software distribution companies such as Canonical (Ubuntu), RedHat (Fedora), etc.
+* 6k - writing and publishing the documentation as a PDF book focused on command-line statistics because our experience shows this is an important way to drive adoption in larger organizations especially academia and enterprises.
 
-  * $10000 goals - implementation in C, which we expect to make Num run 2x-5x faster, and also open up long term possibilities for more advanced data structures. We hope to be able to jumpstart this by working with existing open source statistics programmers and code bases, such as datamash and qsort.
+* 7k - implementation upgrades to add pure Mac OS X compatibility, and pure POSIX compatibility, and Cygwin compatibility for Windows.
+
+* 8k - implementation speed increases by using caching, memoization, heuristics, and input hinting.
+
+* 9k - implemenation project expansion by pgrade to add starting placeholders for command-line-compatible implementations by the community using other languages, including Python, etc.
+
+* 10k - packaging Num for various package managers, including apt, brew, yum, etc. We believe that packaging is the most important one item for making any program widely available on Unix.
+
+* 12k - create additive statistics, such as taking an input of an existing count and mean, and appending new numbers to the statistic\ s. We believe this is a killer feature for combining batch-oriented processing with stream-oriented processing. Our testing so far shows that additive statistics can give speed increases of 2x-5x for the real-world data we're\ using in real-world projects.
+
+* 15k - implementation in C, which we expect to make Num run 2x-5x faster, and also open up long term possibilities for more advanced data structures. We hope to be able to jumpstart this by working with existing open source statistics programmers and code bases, such as datamash and qsort.
+
+* 20k - widespread sharing of Num with leadership organizations, including working with teaching groups (e.g. edX, Khan Academy, Coursera, Udacity), coding groups (e.g. RedHat, Canonical, Apple, Google), and publishing groups (e.g. Amazon, O'Reilly, Pragmatic).
 
 Long term we want to advocate for Num to become a Unix command that is automatically installed on all Unix systems, much like common command line tools such as grep and sed. We want this to include working with system vendors and also with programmers who can make the code faster and better for cross-platform uses.
 
