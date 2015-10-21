@@ -1,8 +1,24 @@
 #!/bin/sh
 
+passed=0
+total=0
+assert_within_tol() {
+  expect="$1"; actual="$2"; msg="$3"
+  tol="0.00001";
+  let "total += 1"
+  if [ $(echo "$expect-$actual < $tol && $expect-$actual > -$tol" | bc -l) == "1" ]; then
+    let "passed += 1"
+    echo "assert_within_tol $msg expect:$expect actual:$actual SUCCESS"
+  else
+    echo "assert_within_tol $msg expect:$expect actual:$actual FAILURE"
+  fi
+}
+
 assert_eq() {
   expect="$1"; actual="$2"; msg="$3"
+  let "total += 1"
   if [ "$expect" == "$actual" ]; then
+    let "passed += 1"
     echo "assert_eq $msg expect:$expect actual:$actual SUCCESS"
   else
     echo "assert_eq $msg expect:$expect actual:$actual FAILURE"
@@ -35,14 +51,14 @@ x=$(echo "1 2 4"       | ./num spread)                        && assert_eq 3 "$x
 x=$(echo "1 2 4"       | ./num sum)                           && assert_eq 7 "$x" "sum"
 x=$(echo "1 2 4"       | ./num total)                         && assert_eq 7 "$x" "total"
 
-x=$(echo "1 2 4"       | ./num mean)                          && assert_eq 2.33333 "$x" "mean"
-x=$(echo "1 2 4"       | ./num average)                       && assert_eq 2.33333 "$x" "average"
-x=$(echo "1 2 4"       | ./num avg)                           && assert_eq 2.33333 "$x" "avg"
+x=$(echo "1 2 4"       | ./num mean)                          && assert_within_tol 2.33333 "$x" "mean"
+x=$(echo "1 2 4"       | ./num average)                       && assert_within_tol 2.33333 "$x" "average"
+x=$(echo "1 2 4"       | ./num avg)                           && assert_within_tol 2.33333 "$x" "avg"
 
 x=$(echo "1 2 4"       | ./num median)                        && assert_eq 2 "$x" "median with exact"
 x=$(echo "1 2 4"       | ./num med)                           && assert_eq 2 "$x" "med with exact"
-x=$(echo "1 2 3 4"     | ./num median)                        && assert_eq 2.5 "$x" "median with average"
-x=$(echo "1 2 3 4"     | ./num med)                           && assert_eq 2.5 "$x" "med with average"
+x=$(echo "1 2 3 4"     | ./num median)                        && assert_within_tol 2.5 "$x" "median with average"
+x=$(echo "1 2 3 4"     | ./num med)                           && assert_within_tol 2.5 "$x" "med with average"
 
 x=$(echo "1 2 4"       | ./num median-low)                    && assert_eq 2 "$x" "median-low with median"
 x=$(echo "1 2 4"       | ./num medianlow)                     && assert_eq 2 "$x" "medianlow with median"
@@ -64,43 +80,53 @@ x=$(echo "1 2 3 4"     | ./num medianhigh)                    && assert_eq 3 "$x
 x=$(echo "1 2 3 4"     | ./num med-high)                      && assert_eq 3 "$x" "med-high with high"
 x=$(echo "1 2 3 4"     | ./num medhigh)                       && assert_eq 3 "$x" "medhigh with high"
 
-x=$(echo "1 2 2 3"     | ./num mode)                          && assert_eq_todo "2" "$x" "modes with unimodal"
-x=$(echo "1 1 2 3 3"   | ./num mode)                          && assert_eq_todo "1 3" "$x" "modes with bimodal"
-x=$(echo "1 2 3"       | ./num mode)                          && assert_eq_todo "UNDEF" "$x" "modes with nonmodal"
+x=$(echo "1 2 2 3"     | ./num mode)                           && assert_eq "2" "$x" "modes with unimodal"
+x=$(echo "1 1 2 3 3"   | ./num mode)                           && assert_eq "1 3" "$x" "modes with bimodal"
+x=$(echo "1 2 3"       | ./num mode)                           && assert_eq "1 2 3" "$x" "modes with multimodal"
+x=$(echo "1 2 2 3"     | ./num modelow)                       && assert_eq "2" "$x" "mode-low with unimodal"
 
-x=$(echo "1 2 2 3"     | ./num mode-low)                      && assert_eq_todo 2 "$x" "mode-low with unimodal"
-x=$(echo "1 2 2 3"     | ./num modelow)                       && assert_eq_todo 2 "$x" "modelow with unimodal"
-x=$(echo "1 1 2 3 3"   | ./num mode-low)                      && assert_eq_todo 1 "$x" "mode-low with bimodal"
-x=$(echo "1 1 2 3 3"   | ./num modelow)                       && assert_eq_todo 1 "$x" "modelow with bimodal"
-x=$(echo "1 2 3"       | ./num mode-low)                      && assert_eq_todo "UNDEF" "$x" "mode-low with nonmodal"
-x=$(echo "1 2 3"       | ./num modelow)                       && assert_eq_todo "UNDEF" "$x" "modelow with nonmodal"
+x=$(echo "1 2 2 3"     | ./num mode-low)                       && assert_eq "2" "$x" "mode-low with unimodal"
+x=$(echo "1 2 2 3"     | ./num modelow)                        && assert_eq "2" "$x" "modelow with unimodal"
+x=$(echo "1 1 2 3 3"   | ./num mode-low)                       && assert_eq "1" "$x" "mode-low with bimodal"
+x=$(echo "1 1 2 3 3"   | ./num modelow)                        && assert_eq "1" "$x" "modelow with bimodal"
+x=$(echo "1 2 3"       | ./num mode-low)                       && assert_eq "1" "$x" "mode-low with multimodal"
+x=$(echo "1 2 3"       | ./num modelow)                        && assert_eq "1" "$x" "modelow with multimodal"
 
-x=$(echo "1 2 2 3"     | ./num mode-high)                     && assert_eq_todo 2 "$x" "mode-high with unimodal"
-x=$(echo "1 2 2 3"     | ./num modehigh)                      && assert_eq_todo 2 "$x" "modehigh with unimodal"
-x=$(echo "1 1 2 3 3"   | ./num mode-high)                     && assert_eq_todo 3 "$x" "mode-high with bimodal"
-x=$(echo "1 1 2 3 3"   | ./num modehigh)                      && assert_eq_todo 3 "$x" "modehigh with bimodal"
-x=$(echo "1 2 3"       | ./num mode-high)                     && assert_eq_todo "UNDEF" "$x" "mode-high with nonmodal"
-x=$(echo "1 2 3"       | ./num modehigh)                      && assert_eq_todo "UNDEF" "$x" "modehigh with nonmodal"
+x=$(echo "1 2 2 3"     | ./num mode-high)                      && assert_eq "2" "$x" "mode-high with unimodal"
+x=$(echo "1 2 2 3"     | ./num modehigh)                       && assert_eq "2" "$x" "modehigh with unimodal"
+x=$(echo "1 1 2 3 3"   | ./num mode-high)                      && assert_eq "3" "$x" "mode-high with bimodal"
+x=$(echo "1 1 2 3 3"   | ./num modehigh)                       && assert_eq "3" "$x" "modehigh with bimodal"
+x=$(echo "1 2 3"       | ./num mode-high)                      && assert_eq "3" "$x" "mode-high with multimodal"
+x=$(echo "1 2 3"       | ./num modehigh)                       && assert_eq "3" "$x" "modehigh with multimodal"
 
-x=$(echo "1 2 4"       | ./num sum-of-squares)                && assert_eq 4.66667 "$x" "sum-of-squares"
-x=$(echo "1 2 4"       | ./num sumofsquares)                  && assert_eq 4.66667 "$x" "sumofsquares"
-x=$(echo "1 2 4"       | ./num sum-squares)                   && assert_eq 4.66667 "$x" "sum-squares"
-x=$(echo "1 2 4"       | ./num sumsquares)                    && assert_eq 4.66667 "$x" "sum-squares"
-x=$(echo "1 2 4"       | ./num sum2)                          && assert_eq 4.66667 "$x" "sum2"
-x=$(echo "1 2 4"       | ./num ss)                            && assert_eq 4.66667 "$x" "ss"
+x=$(echo "1 2 4"       | ./num sum-of-squares)                && assert_within_tol 4.66667 "$x" "sum-of-squares"
+x=$(echo "1 2 4"       | ./num sumofsquares)                  && assert_within_tol 4.66667 "$x" "sumofsquares"
+x=$(echo "1 2 4"       | ./num sum-squares)                   && assert_within_tol 4.66667 "$x" "sum-squares"
+x=$(echo "1 2 4"       | ./num sumsquares)                    && assert_within_tol 4.66667 "$x" "sum-squares"
+x=$(echo "1 2 4"       | ./num sum2)                          && assert_within_tol 4.66667 "$x" "sum2"
+x=$(echo "1 2 4"       | ./num ss)                            && assert_within_tol 4.66667 "$x" "ss"
 
-x=$(echo "1 2 4"       | ./num variance)                      && assert_eq 1.55556 "$x" "variance"
-x=$(echo "1 2 4"       | ./num var)                           && assert_eq 1.55556 "$x" "var"
+x=$(echo "1 2 4"       | ./num variance)                      && assert_within_tol 1.55556 "$x" "variance"
+x=$(echo "1 2 4"       | ./num var)                           && assert_within_tol 1.55556 "$x" "var"
 
-x=$(echo "1 2 4"       | ./num standard-deviation)            && assert_eq 1.24722 "$x" "standard-deviation"
-x=$(echo "1 2 4"       | ./num standarddeviation)             && assert_eq 1.24722 "$x" "standarddeviation"
-x=$(echo "1 2 4"       | ./num stdev)                         && assert_eq 1.24722 "$x" "stdev"
-x=$(echo "1 2 4"       | ./num sd)                            && assert_eq 1.24722 "$x" "sd"
+x=$(echo "1 2 4"       | ./num standard-deviation)            && assert_within_tol 1.24722 "$x" "standard-deviation"
+x=$(echo "1 2 4"       | ./num standarddeviation)             && assert_within_tol 1.24722 "$x" "standarddeviation"
+x=$(echo "1 2 4"       | ./num stdev)                         && assert_within_tol 1.24722 "$x" "stdev"
+x=$(echo "1 2 4"       | ./num sd)                            && assert_within_tol 1.24722 "$x" "sd"
 
-x=$(echo "1 2 4"       | ./num coefficient-of-variance)       && assert_eq 0.534522 "$x" "coefficient-of-variance"
-x=$(echo "1 2 4"       | ./num coefficientofvariance)         && assert_eq 0.534522 "$x" "coefficientofvariance"
-x=$(echo "1 2 4"       | ./num coefficient-variance)          && assert_eq 0.534522 "$x" "coefficient-variance"
-x=$(echo "1 2 4"       | ./num coefficientvariance)           && assert_eq 0.534522 "$x" "coefficientvariance"
-x=$(echo "1 2 4"       | ./num co-var)                        && assert_eq 0.534522 "$x" "co-var"
-x=$(echo "1 2 4"       | ./num covar)                         && assert_eq 0.534522 "$x" "covar"
-x=$(echo "1 2 4"       | ./num cv)                            && assert_eq 0.534522 "$x" "cv"
+x=$(echo "1 2 4"       | ./num coefficient-of-variance)       && assert_within_tol 0.534522 "$x" "coefficient-of-variance"
+x=$(echo "1 2 4"       | ./num coefficientofvariance)         && assert_within_tol 0.534522 "$x" "coefficientofvariance"
+x=$(echo "1 2 4"       | ./num coefficient-variance)          && assert_within_tol 0.534522 "$x" "coefficient-variance"
+x=$(echo "1 2 4"       | ./num coefficientvariance)           && assert_within_tol 0.534522 "$x" "coefficientvariance"
+x=$(echo "1 2 4"       | ./num co-var)                        && assert_within_tol 0.534522 "$x" "co-var"
+x=$(echo "1 2 4"       | ./num covar)                         && assert_within_tol 0.534522 "$x" "covar"
+x=$(echo "1 2 4"       | ./num cv)                            && assert_within_tol 0.534522 "$x" "cv"
+
+echo "$passed tests passed of $total"
+if [ "$passed" == "$total" ]; then
+  echo "SUCCESS"
+  exit 0
+else
+  echo "FAILURE"
+  exit 1
+fi
