@@ -56,7 +56,7 @@ int main(int argc, char* argv[]) {
             if(i > 0) {
                 printf(" ");
             }
-            printf("%g", mode.modes[i]);
+            printf(NUMT_PRINTF, mode.modes[i]);
         }
         printf("\n");
         printf("%d modes\n", mode.count);
@@ -73,48 +73,48 @@ int main(int argc, char* argv[]) {
             printf(" ");
         }
         if(strcmp("mean", argv[i]) == 0 || strcmp("average", argv[i]) == 0 || strcmp("avg", argv[i]) == 0) {
-            printf("%g", num_mean(&input));
+            printf(NUMT_PRINTF, num_mean(&input));
         } else if(strcmp("sum", argv[i]) == 0 || strcmp("total", argv[i]) == 0) {
-            printf("%g", num_sum(&input));
+            printf(NUMT_PRINTF, num_sum(&input));
         } else if(strcmp("all", argv[i]) == 0) {
             for(count_t j = 0; j < input.count; j++) {
                 if(j > 0) {
                     printf(" ");
                 }
-                printf("%g", input.data[j]);
+                printf(NUMT_PRINTF, input.data[j]);
             }
         } else if(strcmp("first", argv[i]) == 0) {
-            printf("%g", num_first(&input));
+            printf(NUMT_PRINTF, num_first(&input));
         } else if(strcmp("last", argv[i]) == 0) {
-            printf("%g", num_last(&input));
+            printf(NUMT_PRINTF, num_last(&input));
         } else if(strcmp("n", argv[i]) == 0 || strcmp("count", argv[i]) == 0 || strcmp("length", argv[i]) == 0) {
-            printf("%g", num_n(&input));
+            printf(NUMT_PRINTF, num_n(&input));
         } else if(strcmp("min", argv[i]) == 0 || strcmp("minimum", argv[i]) == 0) {
-            printf("%g", num_min(&input));
+            printf(NUMT_PRINTF, num_min(&input));
         } else if(strcmp("max", argv[i]) == 0 || strcmp("maximum", argv[i]) == 0) {
-            printf("%g", num_max(&input));
+            printf(NUMT_PRINTF, num_max(&input));
         } else if(strcmp("range", argv[i]) == 0 || strcmp("spread", argv[i]) == 0) {
-            printf("%g", num_range(&input));
+            printf(NUMT_PRINTF, num_range(&input));
         } else if(strcmp("median", argv[i]) == 0 || strcmp("med", argv[i]) == 0) {
-            printf("%g", med.median);
+            printf(NUMT_PRINTF, med.median);
         } else if(strcmp("median-low", argv[i]) == 0 || strcmp("med-low", argv[i]) == 0 ||
                   strcmp("medianlow", argv[i]) == 0 || strcmp("medlow", argv[i]) == 0) {
-            printf("%g", med.median_low);
+            printf(NUMT_PRINTF, med.median_low);
         } else if(strcmp("median-high", argv[i]) == 0 || strcmp("med-high", argv[i]) == 0 ||
                   strcmp("medianhigh", argv[i]) == 0 || strcmp("medhigh", argv[i]) == 0) {
-            printf("%g", med.median_high);
+            printf(NUMT_PRINTF, med.median_high);
         } else if(strcmp("mode-high", argv[i]) == 0 ||
                   strcmp("modehigh", argv[i]) == 0) {
-            printf("%g", mode.modes[mode.count-1]);
+            printf(NUMT_PRINTF, mode.modes[mode.count-1]);
         } else if(strcmp("mode-low", argv[i]) == 0 ||
                   strcmp("modelow", argv[i]) == 0) {
-            printf("%g", mode.modes[0]);
+            printf(NUMT_PRINTF, mode.modes[0]);
         } else if(strcmp("mode", argv[i]) == 0) {
             for(count_t j = 0; j < mode.count; j++) {
                 if(j > 0) {
                     printf(" ");
                 }
-                printf("%g", mode.modes[j]);
+                printf(NUMT_PRINTF, mode.modes[j]);
             }
         } else if(strcmp("sum-of-squares", argv[i]) == 0 ||
                   strcmp("sum2", argv[i]) == 0 ||
@@ -122,15 +122,15 @@ int main(int argc, char* argv[]) {
                   strcmp("sumofsquares", argv[i]) == 0 ||
                   strcmp("sum-squares", argv[i]) == 0 ||
                   strcmp("sumsquares", argv[i]) == 0) {
-            printf("%g", num_sum_of_squares(&input));
+            printf(NUMT_PRINTF, num_sum_of_squares(&input));
         } else if(strcmp("variance", argv[i]) == 0 ||
                   strcmp("var", argv[i]) == 0) {
-            printf("%g", num_variance(&input));
+            printf(NUMT_PRINTF, num_variance(&input));
         } else if(strcmp("standard-deviation", argv[i]) == 0 ||
                   strcmp("standarddeviation", argv[i]) == 0 ||
                   strcmp("stdev", argv[i]) == 0 ||
                   strcmp("sd", argv[i]) == 0) {
-            printf("%g", num_standard_deviation(&input));
+            printf(NUMT_PRINTF, num_standard_deviation(&input));
         } else if(strcmp("coefficient-of-variance", argv[i]) == 0 ||
                   strcmp("coefficientofvariance", argv[i]) == 0 ||
                   strcmp("coefficient-variance", argv[i]) == 0 ||
@@ -138,7 +138,7 @@ int main(int argc, char* argv[]) {
                   strcmp("co-var", argv[i]) == 0 ||
                   strcmp("covar", argv[i]) == 0 ||
                   strcmp("cv", argv[i]) == 0) {
-            printf("%g", num_coefficient_of_variance(&input));
+            printf(NUMT_PRINTF, num_coefficient_of_variance(&input));
         }
     }
     printf("\n");
