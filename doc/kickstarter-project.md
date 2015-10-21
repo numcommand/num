@@ -209,10 +209,3 @@ A. That's a stretch goal.
 - For the time being, you'll install Num by downloading a single file, using a command such as curl, wget, git, etc. Details will be posted on the GitHub README page.
 
 - After Num launches, we expect to look at package managers including apt, yum, brew, etc.
-
-
-### Special Thanks
-
-Tony Fischetti, author of the qstats tool, and its contributors; Assaf Gordon, maintainer of the datamash tool, and its contributors; Arnold Robbins, maintainer of the gawk tool on Unix and POSIX systems, and its maintainers and contributors on all systems; Ross Ihaka and Robert Gentleman, creators of the R language, and its contributors; Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and Alan Edelman, creators of the Julia language, and its contributors; Linus Torvalds, creator of Linux and git, and their contributors; and all the myriad open source authors, advocates, and users.
-
-Advisers and draft readers, including Bill Lazar at Sumo Logic, Lawrence Yu at Blue Otter, Michael Pope at Living Social, and Even Howard at House in the Moon.
