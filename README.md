@@ -46,6 +46,11 @@ Install using `wget`:
 
     wget https://raw.githubusercontent.com/numcommand/num/master/implementations/num-awk/num -O /usr/local/bin/num
 
+If you use Mac OSX, then you also need GNU awk, such as:
+
+    brew install gawk --default-names
+
+
 Caution: the project is new and is alpha quality, so give it a try, and don't use it for production until we have a 1.0 release in November.
 
 If you have any issues with installation, please contact us directly or create a GitHub issue.
