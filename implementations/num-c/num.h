@@ -1,8 +1,14 @@
 #ifndef __NUMCOMMAND__
 #define __NUMCOMMAND__
 
-#define NUMT_SCANF "%f"
-typedef float num_t;
+#define NUMT_SCANF "%lf"
+#define NUMT_PRINTF "%lg"
+typedef double num_t;
+
+//#define NUMT_SCANF "%llu"
+//#define NUMT_PRINTF "%llu"
+//typedef unsigned long long num_t;
+
 typedef unsigned int count_t;
 typedef struct {
     num_t* data;
