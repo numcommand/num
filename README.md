@@ -1,5 +1,7 @@
 # Num: number utilties for mathematics
 
+<b>[Kickstarter project link](https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics) -- please spread the word -- donate $1 if you can</b>
+
 Num is a command line tool that provides number utilities for mathematics.
 
 Num focuses on ease of use and common functions such as min, max, sum, var, stdev, etc.
@@ -25,7 +27,7 @@ Examples:
 Help page:
 
   * [Examples](doc/examples.md)
-  * [Kickstarter project](doc/kickstarter-project.md)
+  * [Thanks](doc/thanks.md)
   * [When to use Num vs. other tools](doc/when-to-use-num-vs-other-tools.md)
   * [Command guide](doc/command-guide.md)
   * [Programmers guide](doc/programmers-guide.md)
@@ -42,7 +44,7 @@ Install using `curl`:
 
 Install using `wget`:
 
-    wget  https://raw.githubusercontent.com/numcommand/num/master/implementations/num-awk/num -O /usr/local/bin/num
+    wget https://raw.githubusercontent.com/numcommand/num/master/implementations/num-awk/num -O /usr/local/bin/num
 
 Caution: the project is new and is alpha quality, so give it a try, and don't use it for production until we have a 1.0 release in November.
 
