@@ -87,3 +87,7 @@ Cleaning functions:
 * `strip` a.k.a. `trim` - excise any non-number characters. Example "$1%" => 1.
 
 Other functions such as those in other math stats tools.
+
+Optimizaitons:
+
+* One-pass improved calculations as described by John D. Cook, for `mean`, `variance`, `standard-deviation`, `skewness`, `kurtosis`. See http://www.johndcook.com/blog/skewness_kurtosis/
