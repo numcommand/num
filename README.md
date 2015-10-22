@@ -16,7 +16,7 @@ Examples:
     7
 
     $ echo "1 2 4" | num min max
-    1 4 7
+    1 4
 
     $ echo "1 2 4" | num median mean
     2 2.33333
