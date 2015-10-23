@@ -147,30 +147,30 @@ Statistics Functions:
       The skewness, e.g. the lack of symmetry. TODO.
 
     kurtosis, kurt
-       The kurtosis, e.g. peakness or flatness. TODO.
+      The kurtosis, e.g. peakness or flatness. TODO.
 
     interquartile-range, iqr, midspread, middle-fifty.
        The interquartile range, which is quartile 3 - quartile 1.
 
     quartile-0, q0
-       Quartile 0, i.e. the minimum.
+      Quartile 0, a.k.a. minimum.
 
     quartile-1, q1
-      Quartile 1, a.k.a. lower quartile, the 25th percentile.
+      Quartile 1, a.k.a. lower quartile, 25th percentile.
 
     quartile-2, q2
-      Quartile 2, a.k.a. median, the 50th percentile.
+      Quartile 2, a.k.a. median, 50th percentile.
 
     quartile-3, q3
-      Quartile 3,  a.k.a. upper quartile, the 75th percentile.
+      Quartile 3, a.k.a. upper quartile, 75th percentile.
 
     quartile-4, q4
-       Quartile 4, i.e. the maximum.
+      Quartile 4, a.k.a. maximum.
 
 Filter Functions:
 
     sort
-       Sort the items ascending.
+      Sort the items, in ascending order.
 
 
 ## Input/Output
@@ -218,4 +218,4 @@ Created: 2015-03-28
 
 Updated: 2015-10-20
 
-Version: 0.2.0
+Version: 0.3.0
