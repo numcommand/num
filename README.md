@@ -16,7 +16,7 @@ Examples:
     7
 
     $ echo "1 2 4" | num min max
-    1 4 7
+    1 4
 
     $ echo "1 2 4" | num median mean
     2 2.33333
@@ -40,11 +40,11 @@ Download the `num` script to your own system, and put it somewhere you can run i
 
 Install using `curl`:
 
-    curl -sSL https://raw.githubusercontent.com/numcommand/num/master/implementations/num-awk/num -o /usr/local/bin/num
+    sudo curl -sSL https://raw.githubusercontent.com/numcommand/num/master/implementations/num-awk/num -o /usr/local/bin/num
 
 Install using `wget`:
 
-    wget https://raw.githubusercontent.com/numcommand/num/master/implementations/num-awk/num -O /usr/local/bin/num
+    sudo wget https://raw.githubusercontent.com/numcommand/num/master/implementations/num-awk/num -O /usr/local/bin/num
 
 If you use Mac OSX, then you also need GNU awk, such as:
 
