@@ -62,61 +62,94 @@ The roadmap includes a smoother safer installation process, using package manage
 
 Numbers Functions:
 
-    all                         All the items.
-    first                       The first item.
-    last                        The last item.
+    all
+      All the items.
 
-    n                           The number of items.
-    count                       "
-    length                      "
-    size                        "
+    first
+      The first item.
 
-    minimum                     The minimum value.
-    min                         "
+    last
+      The last item.
 
-    maximum                     The maximum value.
-    max                         "
+    n, count, length, size
+      The number of items.
 
-    range                       The range, which is maximum - minimum.
-    spread                      "
+    minimum, min
+      The minimum value.
 
-    sum                         The sum.
-    total                       "
+    maximum, max
+      The maximum value.
+
+    range, spread
+      The range, which is maximum - minimum.
+
+    sum, total
+      The sum total of all the items.
 
 Statistics Functions:
 
-    mean                        The arithmetic mean a.ka. average.
-    average                     "
+    mean, average, avg
+      The arithmetic mean a.ka. average.
 
-    median                      The median.
-    med                         "
+    median, med
+      The median.
 
-    median-low                  The low median, i.e. lesser of two middle values.
-    med-low                     "
+    median-low, med-low
+      The low median, i.e. lesser of two middle values.
 
-    median-high                 The high median, i.e. greater of two middle values.
-    med-high                    "
+    median-high, med-high
+      The high median, i.e. greater of two middle values.
 
-    mode                        The mode, which may be multiple numbers or UNDEF. TODO.
+    mode
+      The mode, which may be multiple numbers or UNDEF. TODO.
 
-    mode-low                    The least value of the mode values or UNDEF. TODO.
+    mode-low
+      The least value of the mode values or UNDEF. TODO.
 
-    mode-high                   The greatest value of the mode values or UNDEF. TODO.
+    mode-high
+      The greatest value of the mode values or UNDEF. TODO.
 
-    variance                    The variance.
-    var                         "
+    sum-of-squares, ss
+      The sum of squares (SS), a.k.a. sum of the squared deviation.
 
-    sum-of-squares              The sum of squares (SS).
-    sum2                        "
-    ss                          "
+    variance, var
+      The variance, which defaults to sample, not population.
 
-    standard-deviation          The standard deviation (SD).
-    stdev                       "
-    sd                          "
+    population-variance, p-variance, p-var
+       The population variance.
 
-    coefficient-of-variance     The coefficient of variance (CV).
-    covar                       "
-    cv                          "
+    sample-variance, s-variance, s-var
+      The sample variance.
+
+    standard-deviation, stdev, sd
+      The standard deviation (SD), which defaults to sample, not population.
+
+    population-standard-deviation, p-stdev, p-sd
+      The population standard deviation.
+
+    sample-standard-deviation, s-stdev, s-sd
+      The sample standard deviation.
+
+    coefficient-of-variance, covar, cv
+      The coefficient of variance (CV), defaults to sample, not population.
+
+    population-coefficient-of-variance, p-covar, p-cv
+      The population coefficient of variance.
+
+    sample-coefficient-of-variance, s-covar, s-cv
+      The sample coefficient of variance.
+
+    skewness, skew
+      The skewness, e.g. the lack of symmetry. TODO.
+
+    kurtosis, kurt
+       The kurtosis, e.g. peakness or flatness. TODO.
+
+    interquartile-range, iqr
+       The inter-quartile range, a.k.a. midspread, middle fifty. TODO.
+
+    q0, q1, q3, q4, q5
+       Quartiles. TODO.
 
 
 ## Input/Output

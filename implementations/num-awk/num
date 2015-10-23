@@ -8,21 +8,16 @@ set -euf
 #
 #     num [ options ] [ file ... ]
 #
-# This is a work in progress.
-#
-# Documentation is available:
-#
-#   * GitHub repository: https://github.com/numcommand/num
-#
-#   * Kickstarter project: https://kickstarter.com
+# Full documentation is available in the GitHub repository:
+# https://github.com/numcommand/num
 #
 # ## Tracking
 #
 # Author: Joel Parker Henderson (joel@joelparkerhenderson.com)
 # License: GPL, BSD, MIT
 # Created: 2015-03-28
-# Updated: 2015-10-16
-# Version: 0.0.2
+# Updated: 2015-10-22
+# Version: 0.3.0
 ##
 
 awk '
@@ -255,7 +250,7 @@ function mode_high(num, num_, options) {
     return num_["mode_high"]
 }
 
-# Sum of Squares, a.k.a. SS.
+# Sum of Squares, a.k.a. the sum of the squared deviations, a.k.a. SS.
 #
 # Example:
 #
@@ -273,48 +268,190 @@ function sum_of_squares(num, num_, options,  _sum, _mean, i) {
     return num_["sum_of_squares"]
 }
 
-# Variance
+# Population Variance.
 #
 # Example:
 #
 #     1 2 4 => 1.55556
 #
-function variance(num, num_, options,  _n, _mean, _diff, i) {
-    if (!("variance" in num_)) {
-        _n = n(num, num_, options)
-        _mean = mean(num, num_, options)
-        for (i in num){
-            _diff += (num[i] - _mean) ** 2
-        }
-        num_["variance"] = _diff / _n
+function population_variance(num, num_, options,  f) {
+    f="population_variance"
+    if (!(f in num_)) {
+        num_[f] = sum_of_squares(num, num_, options) / n(num, num_, options)
     }
-    return num_["variance"]
+    return num_[f]
 }
 
-# Standard Deviation, a.k.a. SD.
+# Sample Variance.
+#
+# Example:
+#
+#     1 2 4 => 2.33333
+#
+function sample_variance(num, num_, options,  f) {
+    f="sample_variance"
+    if (!(f in num_)) {
+        num_[f] = sum_of_squares(num, num_, options) / (n(num, num_, options) - 1)
+    }
+    return num_[f]
+}
+
+# Population Standard Deviation.
 #
 # Example:
 #
 #     1 2 4 => 1.24722
 #
-function standard_deviation(num, num_, options) {
-    if (!("standard_deviation" in num_)) {
-        num_["standard_deviation"] = sqrt(variance(num, num_, options))
+function population_standard_deviation(num, num_, options,  f) {
+    f="population_standard_deviation"
+    if (!(f in num_)) {
+        num_[f] = sqrt(population_variance(num, num_, options))
     }
-    return num_["standard_deviation"]
+    return num_[f]
 }
 
-# Coefficient of Variance, a.k.a. CV.
+# Sample Standard Deviation.
+#
+# Example:
+#
+#     1 2 4 => 1.52753
+#
+function sample_standard_deviation(num, num_, options,  f) {
+    f="sample_standard_deviation"
+    if (!(f in num_)) {
+        num_[f] = sqrt(sample_variance(num, num_, options))
+    }
+    return num_[f]
+}
+
+# Population Coefficient of Variance.
 #
 # Example:
 #
 #     1 2 4 => 0.534522
 #
-function coefficient_of_variance(num, num_, options) {
-    if (!("coefficient_of_variance" in num_)) {
-        num_["coefficient_of_variance"] = standard_deviation(num, num_, options) / mean(num, num_, options)
+function population_coefficient_of_variance(num, num_, options,  f) {
+    f="population_coefficient_of_variance"
+    if (!(f in num_)) {
+        num_[f] = population_standard_deviation(num, num_, options) / mean(num, num_, options)
     }
-    return num_["coefficient_of_variance"]
+    return num_[f]
+}
+
+# Sample Coefficient of Variance.
+#
+# Example:
+#
+#     1 2 4 => 0.654654
+#
+function sample_coefficient_of_variance(num, num_, options,  f) {
+    f="sample_coefficient_of_variance"
+    if (!(f in num_)) {
+        num_[f] = sample_standard_deviation(num, num_, options) / mean(num, num_, options)
+    }
+    return num_[f]
+}
+
+# Skewness
+#
+# Example:
+#
+#     TODO
+#
+function skewness(num, num_, options,  _mean, x, i) {
+    if (!("skewness" in num_)) {
+        num_["skewness"] = TODO
+    }
+    return num_["skewness"]
+}
+
+# Kurtosis
+#
+# Example:
+#
+#     TODO
+#
+function kurtosis(num, num_, options) {
+    if (!("kurtosis" in num_)) {
+        num_["kurtosis"] = TODO
+    }
+    return num_["kurtosis"]
+}
+
+# IQR
+#
+# Example:
+#
+#     TODO
+#
+function iqr(num, num_, options) {
+    if (!("iqr" in num_)) {
+        num_["iqr"] = TODO
+    }
+    return num_["iqr"]
+}
+
+# Q0
+#
+# Example:
+#
+#     TODO
+#
+function q0(num, num_, options) {
+    if (!("q0" in num_)) {
+        num_["q0"] = TODO
+    }
+    return num_["q0"]
+}
+
+# Q1
+#
+# Example:
+#
+#     TODO
+#
+function q1(num, num_, options) {
+    if (!("q1" in num_)) {
+        num_["q1"] = TODO
+    }
+    return num_["q1"]
+}
+# Q2
+#
+# Example:
+#
+#     TODO
+#
+function q2(num, num_, options) {
+    if (!("q2" in num_)) {
+        num_["q2"] = TODO
+    }
+    return num_["q2"]
+}
+
+# Q3
+#
+# Example:
+#
+#     TODO
+#
+function q3(num, num_, options) {
+    if (!("q3" in num_)) {
+        num_["q3"] = TODO
+    }
+    return num_["q3"]
+}
+# Q4
+#
+# Example:
+#
+#     TODO
+#
+function q4(num, num_, options) {
+    if (!("q4" in num_)) {
+        num_["q4"] = TODO
+    }
+    return num_["q4"]
 }
 
 ############################################################################
@@ -491,9 +628,84 @@ function init_word_list() {
     global_word_list["mode-low"] = global_word_list["modelow"] = "mode-low"
     global_word_list["mode-high"] = global_word_list["modehigh"] = "mode-high"
     global_word_list["sum-of-squares"] = global_word_list["sumofsquares"] = global_word_list["sum-squares"] = global_word_list["sumsquares"] = global_word_list["sum2"] = global_word_list["ss"] = "sum-of-squares"
-    global_word_list["variance"] = global_word_list["var"] = "variance"
-    global_word_list["standard-deviation"] = global_word_list["standarddeviation"] =  global_word_list["stdev"] = global_word_list["sd"] = "standard-deviation"
-    global_word_list["coefficient-of-variance"] = global_word_list["coefficientofvariance"] = global_word_list["coefficient-variance"] = global_word_list["coefficientvariance"] = global_word_list["co-var"] = global_word_list["covar"] = global_word_list["cv"] = "coefficient-of-variance"
+
+    # Convention: default is sample, not population.
+    global_word_list["variance"] = \
+    global_word_list["var"] = \
+    "sample-variance"
+
+    global_word_list["population-variance"] = \
+    global_word_list["populationvariance"] = \
+    global_word_list["p-variance"] = \
+    global_word_list["pvariance"] = \
+    global_word_list["p-var"] = \
+    global_word_list["pvar"] = \
+    "population-variance"
+
+    global_word_list["sample-variance"] = \
+    global_word_list["samplevariance"] = \
+    global_word_list["s-variance"] = \
+    global_word_list["svariance"] = \
+    global_word_list["s-var"] = \
+    global_word_list["svar"] = \
+    "sample-variance"
+
+    # Convention: default is sample, not population.
+    global_word_list["standard-deviation"] = \
+    global_word_list["standarddeviation"] = \
+    global_word_list["st-dev"] = \
+    global_word_list["stdev"] = \
+    global_word_list["sd"] = \
+    "sample-standard-deviation"
+
+    global_word_list["population-standard-deviation"] = \
+    global_word_list["populationstandarddeviation"] = \
+    global_word_list["p-st-dev"] = \
+    global_word_list["pstdev"] = \
+    global_word_list["p-sd"] = \
+    global_word_list["psd"] = \
+    "population-standard-deviation"
+
+    global_word_list["sample-standard-deviation"] = \
+    global_word_list["samplestandarddeviation"] = \
+    global_word_list["s-st-dev"] = \
+    global_word_list["sstdev"] = \
+    global_word_list["s-sd"] = \
+    global_word_list["ssd"] = \
+    "sample-standard-deviation"
+
+    # Convention: default is sample, not population.
+    global_word_list["coefficient-of-variance"] = \
+    global_word_list["coefficientofvariance"] = \
+    global_word_list["co-var"] = \
+    global_word_list["covar"] = \
+    global_word_list["cv"] = \
+    "sample-coefficient-of-variance"
+
+    global_word_list["population-coefficient-of-variance"] = \
+    global_word_list["populationcoefficientofvariance"] = \
+    global_word_list["p-co-var"] = \
+    global_word_list["pcovar"] = \
+    global_word_list["p-cv"] = \
+    global_word_list["pcv"] = \
+    "population-coefficient-of-variance"
+
+    global_word_list["sample-coefficient-of-variance"] = \
+    global_word_list["samplecoefficientofvariance"] = \
+    global_word_list["s-co-var"] = \
+    global_word_list["scovar"] = \
+    global_word_list["s-cv"] = \
+    global_word_list["scv"] = \
+    "sample-coefficient-of-variance"
+
+    global_word_list["skewness"] = global_word_list["skew"] = "skewness"
+    global_word_list["kurtosis"] = global_word_list["kurtosis"] = "kurtosis"
+    global_word_list["iqr"] = "iqr"
+    global_word_list["q0"] = "q0"
+    global_word_list["q1"] = "q1"
+    global_word_list["q2"] = "q2"
+    global_word_list["q3"] = "q3"
+    global_word_list["q4"] = "q4"
 }
 
 
@@ -551,12 +763,36 @@ function word_to_function(num, num_, options, word) {
         return mode_high(num, num_, options)
     else if (word == "sum-of-squares")
         return sum_of_squares(num, num_, options)
-    else if (word == "variance")
-        return variance(num, num_, options)
+    else if (word == "population-variance")
+        return population_variance(num, num_, options)
+    else if (word == "sample-variance")
+        return sample_variance(num, num_, options)
+    else if (word == "population-standard-deviation")
+        return population_standard_deviation(num, num_, options)
     else if (word == "standard-deviation")
         return standard_deviation(num, num_, options)
-    else if (word == "coefficient-of-variance")
-        return coefficient_of_variance(num, num_, options)
+    else if (word == "sample-standard-deviation")
+        return sample_standard_deviation(num, num_, options)
+    else if (word == "population-coefficient-of-variance")
+        return population_coefficient_of_variance(num, num_, options)
+    else if (word == "sample-coefficient-of-variance")
+        return sample_coefficient_of_variance(num, num_, options)
+    else if (word == "skewness")
+        return skewness(num, num_, options)
+    else if (word == "kurtosis")
+        return kurtosis(num, num_, options)
+    else if (word == "iqr")
+        return iqr(num, num_, options)
+    else if (word == "q0")
+        return q0(num, num_, options)
+    else if (word == "q1")
+        return q1(num, num_, options)
+    else if (word == "q2")
+        return q2(num, num_, options)
+    else if (word == "q3")
+        return q3(num, num_, options)
+    else if (word == "q4")
+        return q4(num, num_, options)
     else
         return ""
 }
