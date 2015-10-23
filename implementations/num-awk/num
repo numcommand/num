@@ -168,7 +168,7 @@ function mean(num, num_, options,  f) {
 function median(num, num_, options,  f, _n) {
     f="median"
     if (!(f in num_)) {
-        asort(num)  # TODO POSIX
+        sort(num, num_, options)
         _n = n(num, num_, options)
         if (_n % 2) {
             num_[f] = num_["median_low"] = num_["median_high"] = num[(_n + 1) / 2]
@@ -531,6 +531,28 @@ function quartile_4(num, num_, options,  f) {
     return num_[f]
 }
 
+# Sort in place.
+#
+# Example:
+#
+#     3 1 2 => 1 2 3
+#
+# Caution: This implementation requires the `asort` function,
+# which we believe is available in current `gawk` implementations,
+# but may not be POSIX-compliant.
+#
+# TODO: Research if `asort` is POSIX or if there are alternatives.
+#
+function sort(num, num_, options,  f) {
+    f="sort"
+    if (num_[f] != TRUE) {
+        asort(num)
+        num_[f] = TRUE
+    }
+    return ""
+}
+
+
 ############################################################################
 #
 # ARRAY UTILITIES
@@ -810,6 +832,9 @@ function init_word_list() {
     global_word_list["quartile-2"] = global_word_list["q2"] = "quartile_2"
     global_word_list["quartile-3"] = global_word_list["q3"] = "quartile_3"
     global_word_list["quartile-4"] = global_word_list["q4"] = "quartile_4"
+
+    global_word_list["sort"] = "sort"
+
 }
 
 
@@ -897,6 +922,8 @@ function word_to_function(num, num_, options, word) {
         return quartile_3(num, num_, options)
     else if (word == "quartile_4")
         return quartile_4(num, num_, options)
+    else if (word == "sort")
+        return sort(num, num_, options)
     else
         return ""
 }
@@ -929,7 +956,7 @@ function words_to_s(num, num_, options, words, sep,  word, i, s, s2) {
     for (i in words) {
         word = words[i]
         s2 = word_to_s(num, num_, options, word)
-        s = s s2 sep
+        if (s2 != "") s = s s2 sep
     }
     s = substr(s, 1, length(s) - length(sep))
     return s
