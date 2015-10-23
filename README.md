@@ -41,15 +41,23 @@ Download the `num` script to your own system, and put it somewhere you can run i
 Install using `curl`:
 
     sudo curl -sSL https://raw.githubusercontent.com/numcommand/num/master/implementations/num-awk/num -o /usr/local/bin/num
+    sudo chmod +x /usr/local/bin/num
 
 Install using `wget`:
 
     sudo wget https://raw.githubusercontent.com/numcommand/num/master/implementations/num-awk/num -O /usr/local/bin/num
-
-If you use Mac OSX, then you also need GNU awk, such as:
+    sudo chmod +x /usr/local/bin/num
+    
+If you use Mac OSX, then you also need to install GNU awk, such as:
 
     brew install gawk --default-names
 
+If you use BSD, Cygwin, or any other Unix-like system that lacks GNU awk, 
+then here's how to [install `gawk`](https://www.gnu.org/software/gawk/manual/html_node/Quick-Installation.html)
+
+https://www.gnu.org/software/gawk/manual/html_node/Quick-Installation.html
+
+    brew install gawk --default-names
 
 Caution: the project is new and is alpha quality, so give it a try, and don't use it for production until we have a 1.0 release in November.
 
