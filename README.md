@@ -149,8 +149,8 @@ Statistics Functions:
     kurtosis, kurt
        The kurtosis, e.g. peakness or flatness. TODO.
 
-    interquartile-range, iqr
-       The inter-quartile range, a.k.a. midspread, middle fifty.
+    interquartile-range, iqr, midspread, middle-fifty.
+       The interquartile range, which is quartile 3 - quartile 1.
 
     quartile-0, q0
        Quartile 0, i.e. the minimum.

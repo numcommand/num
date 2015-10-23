@@ -23,15 +23,21 @@
 
 * Kickstarter donors:
 Alex Brem,
+Barb Henderson,
 Bill Lazar,
 Dain White,
+Eric Austin,
 Even Howard,
+Ivica Kičić,
 John Allwine,
+Jonathan McCoy,
 Katy Atchison,
 Lawrence Yu,
 Luis Velez,
 Michael Pope,
 Nate Amarose,
+Odin Dutton,
+Paul Henderson,
 Steve Howard,
 and Anonymous.
 

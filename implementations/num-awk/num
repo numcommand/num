@@ -422,8 +422,8 @@ function kurtosis(num, num_, options,  f) {
 #
 #   * For more see https://en.wikipedia.org/wiki/Quartile
 #
-function iqr(num, num_, options,  f) {
-    f="iqr"
+function interquartile_range(num, num_, options,  f) {
+    f="interquartile_range"
     if (!(f in num_)) {
         num_[f] = quartile_3(num, num_, options) - quartile_1(num, num_, options)
     }
@@ -825,7 +825,10 @@ function init_word_list() {
 
     global_word_list["interquartile-range"] = \
     global_word_list["iqr"] = \
-    "iqr"
+    global_word_list["midspread"] = \
+    global_word_list["middle-fifty"] = \
+    global_word_list["middlefifty"] = \
+    "interquartile-range"
 
     global_word_list["quartile-0"] = global_word_list["q0"] = "quartile_0"
     global_word_list["quartile-1"] = global_word_list["q1"] = "quartile_1"
@@ -910,8 +913,8 @@ function word_to_function(num, num_, options, word) {
         return skewness(num, num_, options)
     else if (word == "kurtosis")
         return kurtosis(num, num_, options)
-    else if (word == "iqr")
-        return iqr(num, num_, options)
+    else if (word == "interquartile-range")
+        return interquartile_range(num, num_, options)
     else if (word == "quartile_0")
         return quartile_0(num, num_, options)
     else if (word == "quartile_1")
