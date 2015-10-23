@@ -55,10 +55,6 @@ If you use Mac OSX, then you also need to install GNU awk, such as:
 If you use BSD, Cygwin, or any other Unix-like system that lacks GNU awk, 
 then here's how to [install `gawk`](https://www.gnu.org/software/gawk/manual/html_node/Quick-Installation.html)
 
-https://www.gnu.org/software/gawk/manual/html_node/Quick-Installation.html
-
-    brew install gawk --default-names
-
 Caution: the project is new and is alpha quality, so give it a try, and don't use it for production until we have a 1.0 release in November.
 
 If you have any issues with installation, please contact us directly or create a GitHub issue.
