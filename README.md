@@ -146,10 +146,22 @@ Statistics Functions:
        The kurtosis, e.g. peakness or flatness. TODO.
 
     interquartile-range, iqr
-       The inter-quartile range, a.k.a. midspread, middle fifty. TODO.
+       The inter-quartile range, a.k.a. midspread, middle fifty.
 
-    q0, q1, q3, q4, q5
-       Quartiles. TODO.
+    quartile-0, q0
+       Quartile 0, i.e. the minimum.
+
+    quartile-1, q1
+      Quartile 1, a.k.a. lower quartile, the 25th percentile.
+
+    quartile-2, q2
+      Quartile 2, a.k.a. median, the 50th percentile.
+
+    quartile-3, q3
+      Quartile 3,  a.k.a. upper quartile, the 75th percentile.
+
+    quartile-4, q4
+       Quartile 4, i.e. the maximum.
 
 
 ## Input/Output
