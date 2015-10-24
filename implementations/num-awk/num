@@ -29,7 +29,7 @@ awk '
 ##
 
 function help() {
-    print "Num version 0.3.0."
+    print "Num version 0.4.0."
     print "Copyright (C) 2015 Joel Parker Henderson."
     print "Please see http://github.com/numcommand"
     print ""
@@ -550,6 +550,12 @@ function quartile_4(num, num_, options,  f) {
     return num_[f]
 }
 
+############################################################################
+#
+# TRANSFORM FUNCTIONS
+#
+##
+
 # Sort in place.
 #
 # Example:
@@ -571,6 +577,159 @@ function sort(num, num_, options,  f) {
     return ""
 }
 
+############################################################################
+#
+# MAPS
+#
+##
+
+# Map: absolute value.
+#
+# Example:
+#
+#     -1 -2 -3 => 1 2 3
+#
+function map_absolute_value(num, num_, options,  f) {
+    f="map_absolute_value"
+    if (num_[f] != TRUE) {
+        for (i in num) num[i] = abs(num[i])
+        split("",num_)
+        num_[f] = TRUE
+    }
+    return ""
+}
+
+# Map: round, a.k.a. nearest int.
+#
+# Example:
+#
+#     -1.9 1.9 => -2 2
+#
+function map_round(num, num_, options,  f) {
+    if (num_["integer"] == TRUE) return ""
+    f="map_round"
+    if (num_[f] != TRUE) {
+        for (i in num) num[i] = round(num[i])
+        split("",num_)
+        num_[f] = TRUE
+        num_["integer"] = TRUE
+    }
+    return ""
+}
+
+# Map: round off, a.k.a. truncate.
+#
+# Example:
+#
+#     -1.9 1.9 => -1 1
+#
+function map_round_off(num, num_, options,  f) {
+    if (num_["integer"] == TRUE) return ""
+    f="map_round_off"
+    if (num_[f] != TRUE) {
+        for (i in num) num[i] = int(num[i])
+        split("",num_)
+        num_[f] = TRUE
+    }
+    return ""
+}
+
+# Map: round up, a.k.a. ceiling.
+#
+# Example:
+#
+#     -1.9 1.9 => -1 2
+#
+function map_round_up(num, num_, options,  f) {
+    if (num_["integer"] == TRUE) return ""
+    f="map_round_up"
+    if (num_[f] != TRUE) {
+        for (i in num) num[i] = ceiling(num[i])
+        split("",num_)
+        num_[f] = TRUE
+    }
+    return ""
+}
+
+# Map: round down, a.k.a. floor.
+#
+# Example:
+#
+#     -1.9 1.9 => -1 2
+#
+function map_round_down(num, num_, options,  f) {
+    if (num_["integer"] == TRUE) return ""
+    f="map_round_down"
+    if (num_[f] != TRUE) {
+        for (i in num) num[i] = floor(num[i])
+        split("",num_)
+        num_[f] = TRUE
+    }
+    return ""
+}
+
+############################################################################
+#
+# MATH FUNCTIONS
+#
+##
+
+# Absolute value.
+#
+# Examples:
+#
+#    abs(1) => 1
+#    abs(-1) => 1
+#
+function abs(x) {
+    if (x >= 0) { return x } else { return -x }
+}
+
+# Truncate a.k.a. round.
+#
+# Examples:
+#
+#    round(1.9) => 2
+#    round(-1.9) => -2
+#
+function round(x) {
+    return (x >= 0) ? int(x + 0.5) : int(x - 0.5)
+}
+
+# Truncate a.k.a. round off.
+#
+# Examples:
+#
+#    truncate(1.9) => 1
+#    truncate(-1.9) => -1
+#
+function truncate(x) {
+    return int(x)
+}
+
+# Ceiling a.k.a. round up.
+#
+# Examples:
+#
+#    ceiling(1.9) => 2
+#    ceiling(-1.9) => -1
+#
+function ceiling(x,  y) {
+    y = int(x)
+    return (x == y) ? x : ( x >= 0 ) ? y + 1 : y
+}
+
+# Floor a.k.a. round down.
+#
+# Examples:
+#
+#    floor(1.9) => 1
+#    floor(-1.9) => -2
+#
+function floor(x,  y) {
+    y = int(x)
+    return (x == y) ? x : (x >= 0) ? y : y - 1
+}
 
 ############################################################################
 #
@@ -1063,7 +1222,32 @@ function init_word_list() {
     global_word_list["quartile3"] = global_word_list["q3"] = "quartile_3"
     global_word_list["quartile4"] = global_word_list["q4"] = "quartile_4"
 
+    ### Transforms
+
     global_word_list["sort"] = "sort"
+
+    ### Maps
+
+    global_word_list["absolutevalue"] = \
+    global_word_list["abs"] = \
+    "map_absolute_value"
+
+    global_word_list["round"] = \
+    "map_round"
+
+    global_word_list["roundoff"] = \
+    global_word_list["truncate"] = \
+    "map_round_off"
+
+    global_word_list["roundup"] = \
+    global_word_list["ceiling"] = \
+    "map_round_up"
+
+    global_word_list["rounddown"] = \
+    global_word_list["floor"] = \
+    "map_round_down"
+
+    ### Booleans
 
     global_word_list["isunique"] = \
     "is_unique"
@@ -1089,7 +1273,6 @@ function init_word_list() {
     "is_strictly_descending"
 
 }
-
 
 ############################################################################
 #
@@ -1177,6 +1360,16 @@ function word_to_function(num, num_, options, word) {
         return quartile_4(num, num_, options)
     else if (word == "sort")
         return sort(num, num_, options)
+    else if (word == "map_absolute_value")
+        return map_absolute_value(num, num_, options)
+    else if (word == "map_round")
+        return map_round(num, num_, options)
+    else if (word == "map_round_off")
+        return map_round_off(num, num_, options)
+    else if (word == "map_round_up")
+        return map_round_up(num, num_, options)
+    else if (word == "map_round_down")
+        return map_round_down(num, num_, options)
     else if (word == "is_unique")
         return is_unique(num, num_, options)
     else if (word == "is_ascending")
@@ -1236,8 +1429,8 @@ function words_to_s(num, num_, options, words, sep,  word, i, s, s2) {
 # Ready the global number array for new input and new metadata.
 #
 function start_input() {
-    split("", global_num)   # The input values.
-    split("", global_num_)  # The metadata, such as cached results.
+    clear_num_values()
+    clear_num_metadata()
 }
 
 # Stop receiving input.
@@ -1246,6 +1439,14 @@ function start_input() {
 #
 function stop_input() {
     global_num_["n"] = global_num_n
+}
+
+function clear_num_values() {
+    split("", global_num)
+}
+
+function clear_num_metadata() {
+    split("", global_num_)
 }
 
 # Parse word inputs by iterating: whenever a word is recognized,

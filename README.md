@@ -34,6 +34,7 @@ Help page:
   * [Known issues](doc/known-issues.md)
   * [To do list, including ideas for future versions](doc/todo.md)
 
+
 ## Install
 
 Download the `num` script to your own system, and put it somewhere you can run it.
@@ -174,24 +175,36 @@ Statistics Functions:
       Quartile 4, a.k.a. maximum.
 
   * difference, diff:
-      The difference between each number and the next number. (TODO)
+      The difference between each number and the next number. TODO.
 
-Filters:
+Transforms:
 
   * sort:
       Sort the items in ascending order.
 
   * unique:
-      Keep unique values; omit the rest. (TODO)
+      Keep unique values; omit the rest. TODO.
 
-  * truncate:
-      Convert each decimal to an integer by truncation. (TODO)
+Maps:
 
-  * round, nearest-integer, n-int:
-      Convert each decimal to an integer by rounding to the nearest integer. (TODO)
+  * round, integer:
+      Convert each number to the nearest integer.
+      Examples: 1.65 round => 2. -1.65 round-off => -2.
+
+  * round-off, truncate:
+      Convert each number to an integer by taking off the fractional part.
+      Examples: 1.65 round-off => 1. -1.65 round-off => -1.
+
+  * round-up, ceiling:
+      Convert each number to an integer by rounding up.
+      Example: 1.65 round-up => 2; -1.65 round-up => -1.
+
+  * round-down, floor:
+      Convert each number to an integer by rounding down.
+      Examples: 1.65 floor => 1. -1.65 floor => -2.
 
   * absolute-value, abs:
-      Convert any negative number to its absolute value i.e. positive number. (TODO)
+      Convert each number to its absolute value i.e. make it positive.
 
 Queries that return TRUE (1) or FALSE (0):
 
@@ -251,7 +264,7 @@ For example these are all the same:
     SumOfSquares    # mixed case
     SUMOFSQUARES    # upper case
 
-If a value is unknown, or not a number, then it will print as "?". (TODO)
+If a value is unknown, or not a number, then it will print as "?". TODO.
 
     $ echo "1 2 4" | num mode
     ?
@@ -265,6 +278,6 @@ License: GPL, BSD, MIT
 
 Created: 2015-03-28
 
-Updated: 2015-10-20
+Updated: 2015-10-24
 
-Version: 0.3.0
+Version: 0.4.0

@@ -101,7 +101,27 @@ x=$(echo "$in"         | ./num quartile-2)                          && assert_eq
 x=$(echo "$in"         | ./num quartile-3)                          && assert_eq 42.75 "$x" "quartile-3"
 x=$(echo "$in"         | ./num quartile-4)                          && assert_eq 49 "$x" "quartile-4"
 
+############################################################################
+#
+# TRANSFORMS
+#
+##
+
 x=$(echo "3 1 2"       | ./num sort all)                            && assert_eq "1 2 3" "$x" "sort"
+
+############################################################################
+#
+# MAPS
+#
+##
+
+x=$(echo "1 2 3"       | ./num absolute-value all)                  && assert_eq "1 2 3" "$x" "absolute-value"
+x=$(echo "-1 -2 -3"    | ./num absolute-value all)                  && assert_eq "1 2 3" "$x" "absolute-value"
+
+x=$(echo "-1.9 1.9"    | ./num round all)                           && assert_eq "-2 2" "$x" "round"
+x=$(echo "-1.9 1.9"    | ./num round-off all)                       && assert_eq "-1 1" "$x" "round-off"
+x=$(echo "-1.9 1.9"    | ./num round-up all)                        && assert_eq "-1 2" "$x" "round-up"
+x=$(echo "-1.9 1.9"    | ./num round-down all)                      && assert_eq "-2 1" "$x" "round-down"
 
 ############################################################################
 #
@@ -112,21 +132,21 @@ x=$(echo "3 1 2"       | ./num sort all)                            && assert_eq
 x=$(echo "1 2 3"       | ./num is-unique)                           && assert_eq $TRUE   "$x" "is-unique"
 x=$(echo "1 2 2"       | ./num is-unique)                           && assert_eq $FALSE  "$x" "is-unique"
 
-x=$(echo "1 2 3"       | ./num is-ascending)                        && assert_eq $TRUE  "$x" "is-ascending"
-x=$(echo "2 2 2"       | ./num is-ascending)                        && assert_eq $TRUE  "$x" "is-ascending"
-x=$(echo "3 2 1"       | ./num is-ascending)                        && assert_eq $FALSE "$x" "is-ascending"
+x=$(echo "1 2 3"       | ./num is-ascending)                        && assert_eq $TRUE  "$x" "is-ascending with unique"
+x=$(echo "2 2 2"       | ./num is-ascending)                        && assert_eq $TRUE  "$x" "is-ascending with dup"
+x=$(echo "3 2 1"       | ./num is-ascending)                        && assert_eq $FALSE "$x" "is-ascending false"
 
-x=$(echo "1 2 3"       | ./num is-strictly-ascending)               && assert_eq $TRUE  "$x" "is-strictly-ascending"
-x=$(echo "2 2 2"       | ./num is-strictly-ascending)               && assert_eq $FALSE "$x" "is-strictly-ascending"
-x=$(echo "3 2 1"       | ./num is-strictly-ascending)               && assert_eq $FALSE "$x" "is-strictly-ascending"
+x=$(echo "1 2 3"       | ./num is-strictly-ascending)               && assert_eq $TRUE  "$x" "is-strictly-ascending with unique"
+x=$(echo "2 2 2"       | ./num is-strictly-ascending)               && assert_eq $FALSE "$x" "is-strictly-ascending with dup"
+x=$(echo "3 2 1"       | ./num is-strictly-ascending)               && assert_eq $FALSE "$x" "is-strictly-ascending false"
 
-x=$(echo "1 2 3"       | ./num is-descending)                       && assert_eq $FALSE "$x" "is-descending"
-x=$(echo "2 2 2"       | ./num is-descending)                       && assert_eq $TRUE  "$x" "is-descending"
-x=$(echo "3 2 1"       | ./num is-descending)                       && assert_eq $TRUE  "$x" "is-descending"
+x=$(echo "1 2 3"       | ./num is-descending)                       && assert_eq $FALSE "$x" "is-descending with unique"
+x=$(echo "2 2 2"       | ./num is-descending)                       && assert_eq $TRUE  "$x" "is-descending with dup"
+x=$(echo "3 2 1"       | ./num is-descending)                       && assert_eq $TRUE  "$x" "is-descending false"
 
-x=$(echo "1 2 3"       | ./num is-strictly-descending)              && assert_eq $FALSE "$x" "is-strictly-descending"
-x=$(echo "2 2 2"       | ./num is-strictly-descending)              && assert_eq $FALSE "$x" "is-strictly-descending"
-x=$(echo "3 2 1"       | ./num is-strictly-descending)              && assert_eq $TRUE  "$x" "is-strictly-descending"
+x=$(echo "1 2 3"       | ./num is-strictly-descending)              && assert_eq $FALSE "$x" "is-strictly-descending with unique"
+x=$(echo "2 2 2"       | ./num is-strictly-descending)              && assert_eq $FALSE "$x" "is-strictly-descending with dup"
+x=$(echo "3 2 1"       | ./num is-strictly-descending)              && assert_eq $TRUE  "$x" "is-strictly-descending false"
 
 ############################################################################
 #
