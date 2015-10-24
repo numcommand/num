@@ -193,18 +193,19 @@ Maps:
 
   * round-off, truncate:
       Convert each number to an integer by taking off the fractional part.
-      Examples: 1.65 round-off => 1. -1.65 round-off => -1.
+      Examples: 1.9 => 1. -1.9 => -1.
 
   * round-up, ceiling:
       Convert each number to an integer by rounding up.
-      Example: 1.65 round-up => 2; -1.65 round-up => -1.
+      Example: 1.9 => 2; -1.9 => -1.
 
   * round-down, floor:
       Convert each number to an integer by rounding down.
-      Examples: 1.65 floor => 1. -1.65 floor => -2.
+      Examples: 1.9 => 1. -1.9 => -2.
 
   * absolute-value, abs:
-      Convert each number to its absolute value i.e. make it positive.
+      Convert each number to its absolute value a.k.a. positive.
+      Examples: -1 => 1. 1 => 1.
 
 Queries that return TRUE (1) or FALSE (0):
 
