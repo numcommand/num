@@ -24,6 +24,24 @@ awk '
 
 ############################################################################
 #
+# Sysadmin
+#
+##
+
+function help() {
+    print "Num version 0.3.0."
+    print "Copyright (C) 2015 Joel Parker Henderson."
+    print "Please see http://github.com/numcommand"
+    print ""
+    print "The system Awk command is:"
+    system("command -v awk")
+    print ""
+    system("awk -Wversion 2>/dev/null || awk --version")
+    exit
+}
+
+############################################################################
+#
 # Public Functions
 #
 ##
@@ -1221,8 +1239,12 @@ function stop_input() {
 #
 function parse_words(word_inputs, word_outputs, word_list,  i, word) {
     for (i in word_inputs) {
-        if (word_inputs[i] in word_list) {
-            word = word_list[word_inputs[i]]
+        word = word_inputs[i]
+        if (word == "--help" || word == "--version" || word == "--usage") {
+            help()
+            exit 0
+        } else if (word in word_list) {
+            word = word_list[word]
             delete word_inputs[i]
             arr_push(word_outputs, word)
         }

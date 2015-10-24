@@ -127,3 +127,13 @@ x=$(echo "3 2 1"       | ./num is-descending)                       && assert_eq
 x=$(echo "1 2 3"       | ./num is-strictly-descending)              && assert_eq $FALSE "$x" "is-strictly-descending"
 x=$(echo "2 2 2"       | ./num is-strictly-descending)              && assert_eq $FALSE "$x" "is-strictly-descending"
 x=$(echo "3 2 1"       | ./num is-strictly-descending)              && assert_eq $TRUE  "$x" "is-strictly-descending"
+
+############################################################################
+#
+# SYSADMIN FUNCTIONS
+#
+##
+
+x=$(./num --help    | head -1 | grep -o 'Num version')              && assert_eq "Num version" "$x" "--help"
+x=$(./num --version | head -1 | grep -o 'Num version')              && assert_eq "Num version" "$x" "--version"
+x=$(./num --usage   | head -1 | grep -o 'Num version')              && assert_eq "Num version" "$x" "--usage"

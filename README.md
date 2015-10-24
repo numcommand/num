@@ -62,6 +62,12 @@ If you have any issues with installation, please contact us directly or create a
 The roadmap includes a smoother safer installation process, using package managers such as `apt`, `yum`, `brew`, etc. If you would like to help with these, please contact us directly or create a GitHub issue.
 
 
+## Options
+
+  * --help, --version, --usage:
+      Print help text, version number, usage link, and awk details.
+
+
 ## Functions
 
 Numbers Functions:
