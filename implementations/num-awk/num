@@ -922,7 +922,7 @@ function init() {
 function init_constants() {
     FALSE = 0
     TRUE = 1
-    PI = 3.141592653589797
+    PI = 3.141592653589797  # also atan2(0,-1)
     TODO = "TODO"
     UNDEF = "UNDEF"
     ERROR = "ERROR"
@@ -945,24 +945,61 @@ function init_word_argv() {
 # TODO: research if there is a better way to initialize a dictionary.
 #
 function init_word_list() {
+
     global_word_list["all"] = "all"
     global_word_list["first"] = "first"
     global_word_list["last"] = "last"
-    global_word_list["n"] = global_word_list["count"] = global_word_list["length"] = global_word_list["size"] = "n"
+
+    global_word_list["n"] = \
+    global_word_list["count"] = \
+    global_word_list["length"] = \
+    global_word_list["size"] = \
+    "n"
+
     global_word_list["first"] = "first"
     global_word_list["last"] = "last"
-    global_word_list["min"] = global_word_list["minimum"] = "min"
-    global_word_list["max"] = global_word_list["maximum"] = "max"
-    global_word_list["range"] = global_word_list["spread"] = "range"
-    global_word_list["sum"] = global_word_list["total"] = "sum"
-    global_word_list["mean"] = global_word_list["average"] = global_word_list["avg"] = "mean"
-    global_word_list["median"] = global_word_list["med"] = "median"
-    global_word_list["medianlow"] = global_word_list["medlow"] = "median_low"
-    global_word_list["medianhigh"] = global_word_list["medhigh"] = "median_high"
+
+    global_word_list["min"] = \
+    global_word_list["minimum"] = \
+    "min"
+
+    global_word_list["max"] = \
+    global_word_list["maximum"] = \
+    "max"
+
+    global_word_list["range"] = \
+    global_word_list["spread"] = \
+    "range"
+
+    global_word_list["sum"] = \
+    global_word_list["total"] = \
+    "sum"
+
+    global_word_list["mean"] = \
+    global_word_list["average"] = \
+    global_word_list["avg"] = \
+    "mean"
+
+    global_word_list["median"] = \
+    global_word_list["med"] = \
+    "median"
+
+    global_word_list["medianlow"] = \
+    global_word_list["medlow"] = \
+    "median_low"
+
+    global_word_list["medianhigh"] = \
+    global_word_list["medhigh"] = \
+    "median_high"
+
     global_word_list["mode"] = "mode"
     global_word_list["modelow"] = "mode_low"
     global_word_list["modehigh"] = "mode_high"
-    global_word_list["sumofsquares"] = global_word_list["sumsquares"] = global_word_list["ss"] = "sum_of_squares"
+
+    global_word_list["sumofsquares"] = \
+    global_word_list["sumsquares"] = \
+    global_word_list["ss"] = \
+    "sum_of_squares"
 
     # Convention: default is sample, not population.
     global_word_list["variance"] = \
