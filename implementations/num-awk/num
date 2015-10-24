@@ -926,6 +926,7 @@ function init_constants() {
     TODO = "TODO"
     UNDEF = "UNDEF"
     ERROR = "ERROR"
+    NAN = "NAN"
 }
 
 # Initialize the word argv list.
