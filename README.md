@@ -66,111 +66,111 @@ The roadmap includes a smoother safer installation process, using package manage
 
 Numbers Functions:
 
-    all
+  * all:
       All the items.
 
-    first
+  * first:
       The first item.
 
-    last
+  * last:
       The last item.
 
-    n, count, length, size
+  * n, count, length, size:
       The number of items.
 
-    minimum, min
+  * minimum, min:
       The minimum value.
 
-    maximum, max
+  * maximum, max:
       The maximum value.
 
-    range, spread
+  * range, spread:
       The range, which is maximum - minimum.
 
-    sum, total
+  * sum, total:
       The sum total of all the items.
 
 Statistics Functions:
 
-    mean, average, avg
+  * mean, average, avg:
       The arithmetic mean a.ka. average.
 
-    median, med
+  * median, med:
       The median.
 
-    median-low, med-low
+  * median-low, med-low:
       The low median, i.e. lesser of two middle values.
 
-    median-high, med-high
+  * median-high, med-high:
       The high median, i.e. greater of two middle values.
 
-    mode
+  * mode:
       The mode, which may be multiple numbers or UNDEF. TODO.
 
-    mode-low
+  * mode-low:
       The least value of the mode values or UNDEF. TODO.
 
-    mode-high
+  * mode-high:
       The greatest value of the mode values or UNDEF. TODO.
 
-    sum-of-squares, ss
+  * sum-of-squares, ss:
       The sum of squares (SS), a.k.a. sum of the squared deviation.
 
-    variance, var
+  * variance, var:
       The variance, which defaults to sample, not population.
 
-    population-variance, p-variance, p-var
+  * population-variance, p-variance, p-var:
        The population variance.
 
-    sample-variance, s-variance, s-var
+  * sample-variance, s-variance, s-var:
       The sample variance.
 
-    standard-deviation, stdev, sd
+  * standard-deviation, stdev, sd:
       The standard deviation (SD), which defaults to sample, not population.
 
-    population-standard-deviation, p-stdev, p-sd
+  * population-standard-deviation, p-stdev, p-sd:
       The population standard deviation.
 
-    sample-standard-deviation, s-stdev, s-sd
+  * sample-standard-deviation, s-stdev, s-sd:
       The sample standard deviation.
 
-    coefficient-of-variance, covar, cv
+  * coefficient-of-variance, covar, cv:
       The coefficient of variance (CV), defaults to sample, not population.
 
-    population-coefficient-of-variance, p-covar, p-cv
+  * population-coefficient-of-variance, p-covar, p-cv:
       The population coefficient of variance.
 
-    sample-coefficient-of-variance, s-covar, s-cv
+  * sample-coefficient-of-variance, s-covar, s-cv:
       The sample coefficient of variance.
 
-    skewness, skew
+  * skewness, skew:
       The skewness, e.g. the lack of symmetry. TODO.
 
-    kurtosis, kurt
+  * kurtosis, kurt:
       The kurtosis, e.g. peakness or flatness. TODO.
 
-    interquartile-range, iqr, midspread, middle-fifty.
+  * interquartile-range, iqr, midspread, middle-fifty:
        The interquartile range, which is quartile 3 - quartile 1.
 
-    quartile-0, q0
+  * quartile-0, q0:
       Quartile 0, a.k.a. minimum.
 
-    quartile-1, q1
+  * quartile-1, q1:
       Quartile 1, a.k.a. lower quartile, 25th percentile.
 
-    quartile-2, q2
+  * quartile-2, q2:
       Quartile 2, a.k.a. median, 50th percentile.
 
-    quartile-3, q3
+  * quartile-3, q3:
       Quartile 3, a.k.a. upper quartile, 75th percentile.
 
-    quartile-4, q4
+  * quartile-4, q4:
       Quartile 4, a.k.a. maximum.
 
 Filter Functions:
 
-    sort
-      Sort the items, in ascending order.
+  * sort:
+      Sort the items in ascending order.
 
 
 ## Input/Output
