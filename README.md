@@ -167,10 +167,30 @@ Statistics Functions:
   * quartile-4, q4:
       Quartile 4, a.k.a. maximum.
 
-Filter Functions:
+Filter:
 
   * sort:
       Sort the items in ascending order.
+
+Queries that return TRUE (1) or FALSE (0):
+
+  * is-ascending, is-asc:
+      Is the data ascending, i.e. each next number is greater or equal?
+
+  * is-strictly-ascending, is-strict-asc:
+      Is the data strictly ascending, i.e. each next number is greater?
+
+  * is-non-ascending, is-non-asc:
+      Is the data non-ascending, i.e. some next number is lesser?
+
+  * is-descending, is-desc:
+     Is the data descending, i.e. each next number is lesser or equal?
+
+  * is-strictly-descending, is-strict-desc:
+      Is the data strictly descending, i.e. each next number is lesser?
+
+  * is-non-descending, is-non-desc:
+      Is the data non-descending, i.e. some next number is greater?
 
 
 ## Input/Output

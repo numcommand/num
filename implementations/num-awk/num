@@ -473,6 +473,7 @@ function quartile_1(num, num_, options,  f, _n, x) {
     }
     return num_[f]
 }
+
 # Quartile 2, a.k.a. Q2, median, the 50th percentile.
 #
 # Example:
@@ -550,6 +551,159 @@ function sort(num, num_, options,  f) {
         num_[f] = TRUE
     }
     return ""
+}
+
+
+############################################################################
+#
+# BOOLEAN FUNCTIONS
+#
+##
+
+# Is the list sorted in ascending order?
+#
+# Examples:
+#
+#    1 2 3 => TRUE
+#    3 2 1 => FALSE
+#    2 2 2 => TRUE
+#
+# A.k.a. non-descending.
+#
+# Return TRUE iff each successive number is greater or equal.
+#
+function is_ascending(num, num_, options,  f, x, i, flag) {
+    f="ascending"
+    if (!(f in num_)) {
+        if (num_["strictly_ascending"] == TRUE) {
+            num_[f] = TRUE
+        } else if (num_["descending"] == TRUE || num_["strictly_descending"] == TRUE) {
+            num_[f] = FALSE
+        } else {
+            flag = TRUE
+            for (i in num) {
+                if (x == "" || num[i] >= x) {
+                    x = num[i]
+                } else {
+                    flag = FALSE
+                    break
+                }
+            }
+            if (flag == TRUE) {
+                num_["strictly_descending"] = FALSE
+            }
+            num_[f] = flag
+        }
+    }
+    return num_[f]
+}
+
+# Is the list sorted in strictly ascending order?
+#
+# Examples:
+#
+#    1 2 3 => TRUE
+#    3 2 1 => FALSE
+#    2 2 2 => FALSE
+#
+# This is TRUE iff each successive number is greater.
+#
+function is_strictly_ascending(num, num_, options,  f, x, i, flag) {
+    f="strictly_ascending"
+    if (!(f in num_)) {
+        if (num_["descending"] == TRUE || num_["strictly_descending"] == TRUE) {
+            num_[f] = FALSE
+        } else {
+            flag = TRUE
+            for (i in num) {
+                if (x == "" || num[i] > x) {
+                    x = num[i]
+                } else {
+                    flag = FALSE
+                    break
+                }
+            }
+            if (flag == TRUE) {
+                num_["ascending"] = TRUE
+                num_["desending"] = num_["strictly_desending"] = FALSE
+            }
+            num_[f] = flag
+        }
+    }
+    return num_[f]
+}
+
+# Is the list sorted in descending order?
+#
+# Examples:
+#
+#    3 2 1 => TRUE
+#    1 2 3 => FALSE
+#    2 2 2 => TRUE
+#
+# A.k.a. non-ascending.
+#
+# Return TRUE when each successive number is lesser or equal.
+#
+function is_descending(num, num_, options,  f, x, i, flag) {
+    f="descending"
+    if (!(f in num_)) {
+        if (num_["strictly_descending"] == TRUE) {
+            num_[f] = TRUE
+        } else if (num_["ascending"] == TRUE || num_["strictly_ascending"] == TRUE) {
+            num_[f] = FALSE
+        } else {
+            flag = TRUE
+            for (i in num) {
+                if (x == "" || num[i] <= x) {
+                    x = num[i]
+                } else {
+                    flag = FALSE
+                    break
+                }
+            }
+            if (flag == TRUE) {
+               num_["strictly_ascending"] = FALSE
+            }
+            num_[f] = flag
+        }
+    }
+    return num_[f]
+}
+
+# Is the list sorted in strictly descending order?
+#
+# Examples:
+#
+#    3 2 1 => TRUE
+#    1 2 3 => FALSE
+#    2 2 2 => FALSE
+#
+# Return TRUE when each successive number is lesser.
+#
+function is_strictly_descending(num, num_,   f, x, i, flag) {
+    f="strictly_descending"
+    if (!(f in num_)) {
+        if ("ascending" in num) {
+            num_[f] = ! num_["ascending"]
+        } else {
+            flag = TRUE
+            for (i in num) {
+                if (x == "" || num[i] < x) {
+                    x = num[i]
+                } else {
+                    flag = FALSE
+                    break
+                }
+            }
+            if (flag == TRUE) {
+                num_["ascending"] = num_["strictly_ascending"] = FALSE
+                num_["desending"] = TRUE
+            }
+            num_[f] = flag
+        }
+    }
+    return num_[f]
 }
 
 
@@ -838,6 +992,38 @@ function init_word_list() {
 
     global_word_list["sort"] = "sort"
 
+    global_word_list["is-ascending"] = \
+    global_word_list["isascending"] = \
+    global_word_list["is-asc"] = \
+    global_word_list["isasc"] = \
+    global_word_list["is-non-descending"] = \
+    global_word_list["isnondescending"] = \
+    global_word_list["is-non-desc"] = \
+    global_word_list["isnondesc"] = \
+    "is-ascending"
+
+    global_word_list["is-strictly-ascending"] = \
+    global_word_list["isstrictlyascending"] = \
+    global_word_list["is-strict-asc"] = \
+    global_word_list["isstrictasc"] = \
+    "is-strictly-ascending"
+
+    global_word_list["is-descending"] = \
+    global_word_list["isdescending"] = \
+    global_word_list["is-desc"] = \
+    global_word_list["isdesc"] = \
+    global_word_list["is-non-ascending"] = \
+    global_word_list["isnonascending"] = \
+    global_word_list["is-non-asc"] = \
+    global_word_list["isnonasc"] = \
+    "is-descending"
+
+    global_word_list["is-strictly-descending"] = \
+    global_word_list["isstrictlydescending"] = \
+    global_word_list["is-strict-desc"] = \
+    global_word_list["isstrictdesc"] = \
+    "is-strictly-descending"
+
 }
 
 
@@ -927,6 +1113,14 @@ function word_to_function(num, num_, options, word) {
         return quartile_4(num, num_, options)
     else if (word == "sort")
         return sort(num, num_, options)
+    else if (word == "is-ascending")
+        return is_ascending(num, num_, options)
+    else if (word == "is-strictly-ascending")
+        return is_strictly_ascending(num, num_, options)
+    else if (word == "is-descending")
+        return is_descending(num, num_, options)
+    else if (word == "is-strictly-descending")
+        return is_strictly_descending(num, num_, options)
     else
         return ""
 }

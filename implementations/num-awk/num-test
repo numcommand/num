@@ -1,5 +1,9 @@
 #!/bin/sh
 
+TRUE=1
+FALSE=0
+TODO="TODO"
+
 assert_eq() {
   expect="$1"; actual="$2"; msg="$3"
   if [ "$expect" == "$actual" ]; then
@@ -10,7 +14,7 @@ assert_eq() {
 }
 
 assert_eq_todo() {
-  assert_eq "TODO" "$2" "$3"
+  assert_eq $TODO "$2" "$3"
 }
 
 demo="8.04 6.95 7.58 8.81 8.33 9.96 7.24 4.26 10.84 4.82 5.68"
@@ -98,3 +102,25 @@ x=$(echo "$in"         | ./num quartile-3)                          && assert_eq
 x=$(echo "$in"         | ./num quartile-4)                          && assert_eq 49 "$x" "quartile-4"
 
 x=$(echo "3 1 2"       | ./num sort all)                            && assert_eq "1 2 3" "$x" "sort"
+
+############################################################################
+#
+# BOOLEAN FUNCTIONS
+#
+##
+
+x=$(echo "1 2 3"       | ./num is-ascending)                        && assert_eq $TRUE  "$x" "is-ascending"
+x=$(echo "2 2 2"       | ./num is-ascending)                        && assert_eq $TRUE  "$x" "is-ascending"
+x=$(echo "3 2 1"       | ./num is-ascending)                        && assert_eq $FALSE "$x" "is-ascending"
+
+x=$(echo "1 2 3"       | ./num is-strictly-ascending)               && assert_eq $TRUE  "$x" "is-strictly-ascending"
+x=$(echo "2 2 2"       | ./num is-strictly-ascending)               && assert_eq $FALSE "$x" "is-strictly-ascending"
+x=$(echo "3 2 1"       | ./num is-strictly-ascending)               && assert_eq $FALSE "$x" "is-strictly-ascending"
+
+x=$(echo "1 2 3"       | ./num is-descending)                       && assert_eq $FALSE "$x" "is-descending"
+x=$(echo "2 2 2"       | ./num is-descending)                       && assert_eq $TRUE  "$x" "is-descending"
+x=$(echo "3 2 1"       | ./num is-descending)                       && assert_eq $TRUE  "$x" "is-descending"
+
+x=$(echo "1 2 3"       | ./num is-strictly-descending)              && assert_eq $FALSE "$x" "is-strictly-descending"
+x=$(echo "2 2 2"       | ./num is-strictly-descending)              && assert_eq $FALSE "$x" "is-strictly-descending"
+x=$(echo "3 2 1"       | ./num is-strictly-descending)              && assert_eq $TRUE  "$x" "is-strictly-descending"
