@@ -173,10 +173,25 @@ Statistics Functions:
   * quartile-4, q4:
       Quartile 4, a.k.a. maximum.
 
-Filter:
+  * difference, diff:
+      The difference between each number and the next number. (TODO)
+
+Filters:
 
   * sort:
       Sort the items in ascending order.
+
+  * unique:
+      Keep unique values; omit the rest. (TODO)
+
+  * truncate:
+      Convert each decimal to an integer by truncation. (TODO)
+
+  * round, nearest-integer, n-int:
+      Convert each decimal to an integer by rounding to the nearest integer. (TODO)
+
+  * absolute-value, abs:
+      Convert any negative number to its absolute value i.e. positive number. (TODO)
 
 Queries that return TRUE (1) or FALSE (0):
 
@@ -226,12 +241,17 @@ Output can use an output field separator (OFS):
 
 ## Notation
 
-Command line option dashes are optional, such as:
+Command line options accept any mix of dashes, underscores, and case.
 
-    $ echo "1 2 4" | num sum-of-squares
-    $ echo "1 2 4" | num sumofsquares
+For example these are all the same:
 
-If a value is unknown, or not a number, then it will print as "?". (#TODO)
+    sum-of-squares  # dashes
+    sum_of_squares  # underscores
+    sumofsquares    # lower case
+    SumOfSquares    # mixed case
+    SUMOFSQUARES    # upper case
+
+If a value is unknown, or not a number, then it will print as "?". (TODO)
 
     $ echo "1 2 4" | num mode
     ?
