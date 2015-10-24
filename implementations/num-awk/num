@@ -922,6 +922,7 @@ function init() {
 function init_constants() {
     FALSE = 0
     TRUE = 1
+    PI = 3.141592653589797
     TODO = "TODO"
     UNDEF = "UNDEF"
     ERROR = "ERROR"
