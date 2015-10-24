@@ -189,7 +189,7 @@ Maps:
       Examples: 1.65 round => 2. -1.65 round-off => -2.
 
   * round-off, truncate:
-      Convert each number to an integer by taking off the fractional part.
+      Convert each number to an integer by omitting the fractional part.
       Examples: 1.9 => 1. -1.9 => -1.
 
   * round-up, ceiling:
