@@ -15,11 +15,8 @@ Examples:
     $ echo "1 2 4" | num sum
     7
 
-    $ echo "1 2 4" | num min max
-    1 4
-
-    $ echo "1 2 4" | num median mean
-    2 2.33333
+    $ echo "1 2 4" | num min max median mean
+    1 4 2 2.33333
 
     $ echo "1 2 4" | num sum-of-squares standard-deviation
     4.66667 1.24722
