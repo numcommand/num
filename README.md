@@ -185,23 +185,23 @@ Transforms:
 Maps:
 
   * round, integer:
-      Convert each number to the nearest integer.
-      Examples: 1.65 round => 2. -1.65 round-off => -2.
+      Convert a number to nearest integer.
+      Examples: 1.9 => 2. -1.9 => -2.
 
   * round-off, truncate:
-      Convert each number to an integer by omitting the fractional part.
+      Convert a number to integer by omitting the fractional part.
       Examples: 1.9 => 1. -1.9 => -1.
 
   * round-up, ceiling:
-      Convert each number to an integer by rounding up.
+      Convert a number to integer by rounding up.
       Example: 1.9 => 2; -1.9 => -1.
 
   * round-down, floor:
-      Convert each number to an integer by rounding down.
+      Convert a number to integer by rounding down.
       Examples: 1.9 => 1. -1.9 => -2.
 
   * absolute-value, abs:
-      Convert each number to its absolute value a.k.a. positive.
+      Convert a number to absolute value a.k.a. positive.
       Examples: -1 => 1. 1 => 1.
 
 Queries that return TRUE (1) or FALSE (0):
