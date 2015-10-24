@@ -154,7 +154,7 @@ Statistics Functions:
       The kurtosis, e.g. peakness or flatness. TODO.
 
   * interquartile-range, iqr, midspread, middle-fifty:
-       The interquartile range, which is quartile 3 - quartile 1.
+       The interquartile range, which is q3 - q1.
 
   * quartile-0, q0:
       Quartile 0, a.k.a. minimum.
@@ -185,23 +185,23 @@ Transforms:
 Maps:
 
   * round, integer:
-      Convert a number to nearest integer.
+      Convert to nearest integer.
       Examples: 1.9 => 2. -1.9 => -2.
 
   * round-off, truncate:
-      Convert a number to integer by omitting the fractional part.
+      Convert to integer by omitting the fractional part.
       Examples: 1.9 => 1. -1.9 => -1.
 
   * round-up, ceiling:
-      Convert a number to integer by rounding up.
-      Example: 1.9 => 2; -1.9 => -1.
+      Convert to integer by rounding up.
+      Exampled: 1.9 => 2. -1.9 => -1.
 
   * round-down, floor:
-      Convert a number to integer by rounding down.
+      Convert to integer by rounding down.
       Examples: 1.9 => 1. -1.9 => -2.
 
   * absolute-value, abs:
-      Convert a number to absolute value a.k.a. positive.
+      Convert to absolute value a.k.a. positive.
       Examples: -1 => 1. 1 => 1.
 
 Queries that return TRUE (1) or FALSE (0):
