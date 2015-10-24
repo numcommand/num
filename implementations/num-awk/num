@@ -889,6 +889,20 @@ function arr_sorted_median_slice(arr, start, stop,  n, i) {
 
 ############################################################################
 #
+# DEBUG FUNCTIONS
+#
+##
+
+function out(msg) {
+    print msg
+}
+
+function err(msg) {
+    print msg | "cat 1>&2"  # POSIX compatible
+}
+
+############################################################################
+#
 # INITIALIZE
 #
 ##
