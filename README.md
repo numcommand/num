@@ -174,6 +174,9 @@ Filter:
 
 Queries that return TRUE (1) or FALSE (0):
 
+  * is-unique:
+      Is each item unique?
+
   * is-ascending, is-asc:
       Is the data ascending, i.e. each next number is greater or equal?
 

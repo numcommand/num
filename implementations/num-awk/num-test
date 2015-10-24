@@ -109,6 +109,9 @@ x=$(echo "3 1 2"       | ./num sort all)                            && assert_eq
 #
 ##
 
+x=$(echo "1 2 3"       | ./num is-unique)                           && assert_eq $TRUE   "$x" "is-unique"
+x=$(echo "1 2 2"       | ./num is-unique)                           && assert_eq $FALSE  "$x" "is-unique"
+
 x=$(echo "1 2 3"       | ./num is-ascending)                        && assert_eq $TRUE  "$x" "is-ascending"
 x=$(echo "2 2 2"       | ./num is-ascending)                        && assert_eq $TRUE  "$x" "is-ascending"
 x=$(echo "3 2 1"       | ./num is-ascending)                        && assert_eq $FALSE "$x" "is-ascending"

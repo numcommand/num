@@ -560,6 +560,31 @@ function sort(num, num_, options,  f) {
 #
 ##
 
+# Is the list all unique items?
+#
+# Examples:
+#
+#    1 2 3 => TRUE
+#    1 2 2 => FALSE
+#
+function is_unique(num, num_, options,  f, i, seen, flag) {
+    f="unique"
+    if (!(f in num_)) {
+        flag = TRUE
+        split("", seen)
+        for (i in num) {
+            if (num[i] in seen) {
+               flag = FALSE
+               break
+            } else {
+              seen[num[i]] = TRUE
+            }
+        }
+        num_[f] = flag
+    }
+    return num_[f]
+}
+
 # Is the list sorted in ascending order?
 #
 # Examples:
@@ -992,6 +1017,9 @@ function init_word_list() {
 
     global_word_list["sort"] = "sort"
 
+    global_word_list["is-unique"] = \
+    "is-unique"
+
     global_word_list["is-ascending"] = \
     global_word_list["isascending"] = \
     global_word_list["is-asc"] = \
@@ -1113,6 +1141,8 @@ function word_to_function(num, num_, options, word) {
         return quartile_4(num, num_, options)
     else if (word == "sort")
         return sort(num, num_, options)
+    else if (word == "is-unique")
+        return is_unique(num, num_, options)
     else if (word == "is-ascending")
         return is_ascending(num, num_, options)
     else if (word == "is-strictly-ascending")
