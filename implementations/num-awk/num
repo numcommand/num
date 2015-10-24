@@ -295,7 +295,7 @@ function sum_of_squares(num, num_, options,  f, _sum, _mean, i) {
         _sum = 0
         _mean = mean(num, num_, options)
         for (i in num) {
-            _sum += (num[i] - _mean) ** 2
+            _sum += (num[i] - _mean) ^ 2
         }
         num_[f] = _sum
     }
