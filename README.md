@@ -215,7 +215,7 @@ Maps:
 
   * round-up, ceiling:
       Convert to integer by rounding up.
-      Exampled: 1.9 => 2. -1.9 => -1.
+      Examples: 1.9 => 2. -1.9 => -1.
 
   * round-down, floor:
       Convert to integer by rounding down.
