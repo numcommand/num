@@ -123,6 +123,9 @@ Statistics Functions:
   * sum-of-squares, ss:
       The sum of squares (SS), a.k.a. sum of the squared deviation.
 
+  * sum-of-cubes:
+      The sum of cubes, a.k.a. sum of the cubed deviation.
+
   * variance, var:
       The variance, which defaults to sample, not population.
 
@@ -149,6 +152,24 @@ Statistics Functions:
 
   * sample-coefficient-of-variance, s-covar, s-cv:
       The sample coefficient of variance.
+
+  * second-moment-about-the-mean, second-moment:
+     The second moment about the mean; defaults to sample, not population.
+
+  * population-second-moment-about-the-mean, p-second-moment:
+      The population second moment about the mean.
+
+  * sample-second-moment-about-the-mean, s-second-moment:
+     The sample second moment about the mean.
+
+  * third-moment-about-the-mean, third-moment:
+     The third moment about the mean; defaults to sample, not population.
+
+  * population-third-moment-about-the-mean, p-third-moment:
+      The population third moment about the mean.
+
+  * sample-third-moment-about-the-mean, s-third-moment:
+     The sample third moment about the mean.
 
   * skewness, skew:
       The skewness, e.g. the lack of symmetry. TODO.

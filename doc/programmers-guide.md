@@ -16,13 +16,13 @@ Example:
         return x
     }
 
-A Num function is similar, plus uses an input parameter for numbers metadata, such as caching.
+A Num function is similar, plus uses an input parameter for numbers metadata such as caching, and and options parameter as a catch-all.
 
 The parameter for the numbers metadata ends with an underscore. This helps us keep track of it and know that it holds transient information, such as caching.
 
 Example:
 
-    function min(nums, nums_,   i) {
+    function min(nums, nums_,options,  x, i) {
         if (!("min" in nums_)) {
             x = nums[1]
             for (i in nums) if (nums[i] < x) x = nums[i]
@@ -37,7 +37,7 @@ See below for some of the metadata that we're aiming to use to speed up the proj
 
 Example:
 
-    function min(nums, nums_,  x, i) {
+    function min(nums, nums_,  options, x, i) {
         if (!("min" in nums_)) {
             if (nums_["ascending"])
                 nums_["min"] = nums[1]
@@ -54,7 +54,8 @@ Example:
 Some of the metadata keys that we're aiming to use:
 
   * `nums_["linear"]` boolean 0|1 if nums is linear numbers.
-  * `nums_["unique"]` boolean 0|1 if nums is unique numbers.
+  * `nums_["unique"]` boolean 0|1 if nums is all unique numbers.
+  * `nums_["integer"]` boolean 0|1 if nums is all integer numbers.
   * `nums_["ascending"]` boolean 0|1 if nums is sorted ascending.
   * `nums_["descending"]` boolean 0|1 if nums is sorted descending.
 
