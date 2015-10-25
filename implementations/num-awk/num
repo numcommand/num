@@ -1003,7 +1003,6 @@ function is_strictly_descending(num, num_,   f, x, i, flag) {
     return num_[f]
 }
 
-
 ############################################################################
 #
 # ARRAY UTILITIES
@@ -1192,6 +1191,7 @@ function err(msg) {
 #
 function init() {
     init_constants()
+    init_conf()
     init_word_argv()
     init_word_list()
 }
@@ -1206,6 +1206,19 @@ function init_constants() {
     UNDEF = "UNDEF"
     ERROR = "ERROR"
     NAN = "NAN"
+
+    # Function kinds: a way to track what a function will do.
+    FUN_KIND_CALC = "CALC"
+    FUN_KIND_SORT = "SORT"
+    FUN_KIND_MAP  = "MAP"
+    FUN_KIND_FLAG = "FLAG"
+    FUN_KIND_CONF = "CONF"
+}
+
+# Initialize the configuration dictionary.
+#
+function init_conf() {
+    split("", global_conf)
 }
 
 # Initialize the word argv list.
@@ -1234,9 +1247,6 @@ function init_word_list() {
     global_word_list["length"] = \
     global_word_list["size"] = \
     "n"
-
-    global_word_list["first"] = "first"
-    global_word_list["last"] = "last"
 
     global_word_list["min"] = \
     global_word_list["minimum"] = \
@@ -1421,6 +1431,83 @@ function init_word_list() {
     global_word_list["isstrictdesc"] = \
     "is_strictly_descending"
 
+    ### Configurations
+
+    global_word_list["outputcommaseparatedvalues"] = \
+    global_word_list["outcsv"] = \
+    "output_comma_separated_values"
+
+    global_word_list["outputtabseparatedvalues"] = \
+    global_word_list["outtab"] = \
+    "output_tab_separated_values"
+
+}
+
+function init_global_fun_kind() {
+
+    global_fun_kind["all"] = \
+    global_fun_kind["first"] = \
+    global_fun_kind["last"] =  \
+    global_fun_kind["min"] = \
+    global_fun_kind["max"] = \
+    global_fun_kind["n"] = \
+    global_fun_kind["range"] = \
+    global_fun_kind["sum"] = \
+    global_fun_kind["mean"] = \
+    global_fun_kind["meanest"] = \
+    global_fun_kind["median"] = \
+    global_fun_kind["median_low"] = \
+    global_fun_kind["median_high"] = \
+    global_fun_kind["mode"] = \
+    global_fun_kind["mode_low"] = \
+    global_fun_kind["modehigh"] = \
+    global_fun_kind["sum_of_squares"] = \
+    global_fun_kind["sum_of_cubes"] = \
+    global_fun_kind["population_variance"] = \
+    global_fun_kind["sample_variance"] = \
+    global_fun_kind["population_standard_deviation"] = \
+    global_fun_kind["sample_standard_deviation"] = \
+    global_fun_kind["population_coefficient_of_variance"] = \
+    global_fun_kind["sample_coefficient_of_variance"] = \
+    global_fun_kind["population_second_moment_about_the_mean"] = \
+    global_fun_kind["sample_secondmoment_about_the_mean"] = \
+    global_fun_kind["population_third_moment_about_the_mean"] = \
+    global_fun_kind["sample_third_moment_about_the_mean"] = \
+    global_fun_kind["skewness"] = \
+    global_fun_kind["kurtosis"] = \
+    global_fun_kind["interquartile_range"] = \
+    global_fun_kind["quartile_0"] = \
+    global_fun_kind["quartile_1"] = \
+    global_fun_kind["quartile_2"] = \
+    global_fun_kind["quartile_3"] = \
+    global_fun_kind["quartile_4"] = \
+    FUN_KIND_CALC
+
+    global_fun_kind["sort"] = \
+    global_fun_kind["sort_ascending"] = \
+    global_fun_kind["sort_descending"] = \
+    global_fun_kind["shuffle"] = \
+    FUN_KIND_SORT
+
+    global_fun_kind["map_absolute_value"] = \
+    global_fun_kind["map_round"] = \
+    global_fun_kind["map_round_off"] = \
+    global_fun_kind["map_round_up"] = \
+    global_fun_kind["map_round_down"] = \
+    FUN_KIND_MAP
+
+    global_fun_kind["is_unique"] = \
+    global_fun_kind["is_ascending"] = \
+    global_fun_kind["is_strictly_ascending"] = \
+    global_fun_kind["is_descending"] = \
+    global_fun_kind["is_strictly_descending"] = \
+    global_fun_kind["is_nonascending"] = \
+    global_fun_kind["is_nondescending"] = \
+    FUN_KIND_FLAG
+
+    global_fun_kind["output_comma_separated_values"] = \
+    global_fun_kind["output_tab_separated_values"] = \
+    FUN_KIND_CONF
 }
 
 ############################################################################
@@ -1428,6 +1515,23 @@ function init_word_list() {
 # WORDS
 #
 ##
+
+# Given a word, set a configuration setting.
+#
+# Call this function for each option word a.k.a. flag,
+# before any calculation happens and any work happens.
+#
+# This function must only set `conf` keys and values.
+# This function must NOT do any calculations, work, etc.
+#
+function word_to_conf(word, conf) {
+    if (word == "output_comma_separated_values")
+        conf["output_field_separator"] = ","
+    else if (word == "output_tab_separated_values")
+        conf["output_field_separator"] = "\t"
+    else
+        return ""
+}
 
 # Given a word, call its function.
 #
