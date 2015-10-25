@@ -70,6 +70,9 @@ x=$(echo "1 2 4" | ./num mean) &&
 x=$(echo "$demo" | ./num mean) &&
     assert_eq 7.50091 "$x" "mean with demo"
 
+x=$(echo "1 2 4" | ./num meanest) &&
+    assert_eq 2 "$x" "meanest"
+
 x=$(echo "1 2 4" | ./num median) &&
     assert_eq 2 "$x" "median with exact"
 

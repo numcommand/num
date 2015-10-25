@@ -97,7 +97,10 @@ Numbers Functions:
 Statistics Functions:
 
   * mean, average, avg:
-      The arithmetic mean a.ka. average.
+     The arithmetic mean a.ka. average.
+
+  * meanest:
+      The value that is closest numerically to the mean.
 
   * median, med:
       The median.
