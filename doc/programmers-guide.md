@@ -5,49 +5,56 @@ This file is for programmers who are reading the Num source code or writing Num 
 
 ### Introduction
 
-A typical `awk` function uses input parameters and returns an output.
+A typical `awk` function looks like this:
 
-Example:
-
-
-    function min(nums,  x, i) {
-        x = nums[1]
-        for (i in nums) if (nums[i] < x) x = nums[i]
+    function sum(num,  i, x) {
+        for (i in num) x += num[i]
         return x
     }
 
-A Num function is similar, plus uses an input parameter for numbers metadata such as caching, and and options parameter as a catch-all.
+A `num` function is similar, plus has parameters for numbers metadata, and arbitrary options, and a function name:
 
-The parameter for the numbers metadata ends with an underscore. This helps us keep track of it and know that it holds transient information, such as caching.
-
-Example:
-
-    function min(nums, nums_,options,  x, i) {
-        if (!("min" in nums_)) {
-            x = nums[1]
-            for (i in nums) if (nums[i] < x) x = nums[i]
-            nums_["min"] = x
+    function sum(num, num_  options,  f, i, x) {  # The num_ underscore array is metadata
+        f = "sum"                                 # The function name is the metadata key
+        if (!(f in num_)) {                       # Check the metadata cache
+            for (i in num) x += num[i]            # Calculate as usual
+            num_[f] = x                           # Set the metadata cache
         }
-        return nums_["min"]
+        return num_[f]
     }
 
-A Num function may be able to optimize by using the numbers metadata, such as results of other functions.
+Each `num` function also has a corresponding metadata function, that defines help, also-known-as synonyms, and possibly more in the future.
 
-See below for some of the metadata that we're aiming to use to speed up the project.
+    function sum_(  f)
+        f = "sum"
+        function_[f,"help"] = "Sum all the values."
+        function_[f,"aka"] = "total"
+    }
+
+A metadata varaible always ends with an underscore. This helps us keep track.
+
+
+### Metadata Optimization
+
+A `num` function may be able to use metadata optimization.
+
+For example, if the `min` function knows that the numbers are sorted ascending or sorted desending, then the `min` function can immediately return the first or last item, rather than doing a full array scan.
 
 Example:
 
-    function min(nums, nums_,  options, x, i) {
-        if (!("min" in nums_)) {
-            if (nums_["ascending"])
-                nums_["min"] = nums[1]
+    function min(num, num_,  options,  f, x, i) {
+        f = "min"
+        if (!(f in num_)) {
+            if (num_["ascending"])
+                num_[f] = first(num)
+            else if (num_["descending"])
+                num_[f] = last(num)
             else {
-                x = nums[1]
-                for (i in nums) if (nums[i] < x) x = nums[i]
-                nums_["min"] = x
+                for (i in num) if (x == "" || num[i] < x) x = num[i]
+                num_[f] = x
             }
         }
-        return nums_["min"]
+        return num_[f]
     }
 
 
@@ -84,40 +91,25 @@ The project uses these function conventions:
 
 The project uses these coding conventions:
 
-  * Prefer term `nums` for a numbers array vs. `arr` for a generic array.
-    The term `nums` is a contract that the array is always all numbers.
+  * Prefer term `num` for a numbers array vs. `arr` for a generic array.
 
   * Prefer operatior whitespace vs. none. Example: use `a = b` not `a=b`.
     This is atypical for awk, but typical for Go, Python, Ruby, etc.
 
-  * Prefer POSIX vs. gawk for coding. Example: use `x ** 2` not `x ^ 2`.
+  * Prefer POSIX vs. gawk for coding. Example: use `x ^ 2` not `x ** 2`.
     For significant divergences between POSIX and gawk, ideally this code
     has a POSIX function and gawk function, and chooses the right one.
 
   * Prefer clarity vs. small optimizations. Example: intermediate vars.
-    If a user has a need for speed or size, it is wiser to use R, Go, etc.
     Big optimizations are always welcome and can be added here quickly.
+    If a user has a need for speed or size, it is wiser to use R, Go, etc.
 
   * Local vars may be prefixed with "_". Example: "_foo" is local.
     This is most useful when a var has the same name as a function.
+
+  * Metadata vars may be suffixed with "_". Example: "foo_" is metadata.
 
 Rule out for now:
 
   * Launch using `#/usr/bin/env awk` because we need the `-f` arg.
   * Launch using `#/usr/bin/env -S ..` because we want POSIX.
-
-### To Do
-
-To do list for our upcoming work:
-
-  * Upgrade to calc by column (a.k.a. field) or row (a.k.a. record).
-
-  * Create packages for apt, yum, brew, etc.
-
-  * Improve documentation, especially for novices.
-
-  * Improve tests, especially for corner cases.
-
-  * Improve POSIX compatibility, e.g. `length` function.
-
-  * Improve functionality, e.g. add boolean checks, number ranges.

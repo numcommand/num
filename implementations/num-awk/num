@@ -55,6 +55,11 @@ function all(num, num_, options,  f) {
     }
     return num_[f]
 }
+function all_(  f){
+   f="all"
+   function_[f,"help"] = "Get all the items."
+   function_[f,"aka"] = "each"
+}
 
 # First item.
 #
@@ -68,6 +73,11 @@ function first(num, num_, options,  f) {
         num_[f] = arr_first(num)
     }
     return num_[f]
+}
+function first_(  f){
+    f="first"
+    function_[f,"help"] = "Get the first item."
+    function_[f,"aka"] = "head"
 }
 
 # Last item.
@@ -83,6 +93,11 @@ function last(num, num_, options,  f) {
     }
     return num_[f]
 }
+function last_(  f){
+    f="last"
+    function_[f,"help"] = "Get the last item."
+    function_[f,"aka"] = "tail"
+}
 
 # Number of items, a.k.a. count, length.
 #
@@ -96,6 +111,11 @@ function n(num, num_, options,  f) {
         num_[f] = arr_length(num)
     }
     return num_[f]
+}
+function n_(  f){
+    f="n"
+    function_[f,"help"] = "Get the number of items."
+    function_[f,"aka"] = "count length size"
 }
 
 # Minimum value.
@@ -111,6 +131,11 @@ function min(num, num_, options,  f, _min, i) {
     }
     return num_[f]
 }
+function min_(  f){
+    f="min"
+    function_[f,"help"] = "Get the minimum value."
+    function_[f,"aka"] = "minimum least lowest"
+}
 
 # Maximum value.
 #
@@ -125,6 +150,11 @@ function max(num, num_, options,  f, _max, i) {
     }
     return num_[f]
 }
+function max_(  f){
+    f="max"
+    function_[f,"help"] = "Get the maximum value."
+    function_[f,"aka"] = "minimum greatest highest"
+}
 
 # Range, a.k.a. spread.
 #
@@ -138,6 +168,11 @@ function range(num, num_, options,  f) {
         num_[f] = max(num, num_, options) - min(num, num_, options)
     }
     return num_[f]
+}
+function range_(  f){
+    f="range"
+    function_[f,"help"] = "Get the range."
+    function_[f,"aka"] = "spread breadth"
 }
 
 # Sum, a.k.a. total.
@@ -157,6 +192,11 @@ function sum(num, num_, options,  f, _sum, i) {
     }
     return num_[f]
 }
+function sum_(  f){
+    f="sum"
+    function_[f,"help"] = "Get the sum."
+    function_[f,"aka"] = "total"
+}
 
 # Mean, a.k.a. arithmetic mean, average.
 #
@@ -175,6 +215,11 @@ function mean(num, num_, options,  f) {
     }
     return num_[f]
 }
+function mean_(  f){
+    f="mean"
+    function_[f,"help"] = "Get the mean, a.k.a artihmetic mean, average."
+    function_[f,"aka"] = "average avg"
+}
 
 # Meanest, i.e. the value closest to the mean.
 #
@@ -188,6 +233,11 @@ function meanest(num, num_, options,  f) {
         num_[f] = arr_closest_value(num, mean(num, num_))
     }
     return num_[f]
+}
+function meanest_(  f){
+    f="meanest"
+    function_[f,"help"] = "Get the meanest, i.e. value closest to the mean."
+    function_[f,"aka"] = ""
 }
 
 # Median.
@@ -212,6 +262,11 @@ function median(num, num_, options,  f, _n) {
     }
     return num_["median"]
 }
+function median_(  f){
+    f="median"
+    function_[f,"help"] = "Get the median."
+    function_[f,"aka"] = "med"
+}
 
 # Median-low: get the lesser median.
 #
@@ -227,6 +282,11 @@ function median_low(num, num_, options,  f, _n) {
     }
     return num_[f]
 }
+function median_low_(  f){
+    f="median_low"
+    function_[f,"help"] = "Get the median that is lower a.k.a. lesser."
+    function_[f,"aka"] = "med_low"
+}
 
 # Median-high: get the greater median.
 #
@@ -241,6 +301,10 @@ function median_high(num, num_, options,  f, _n) {
         median(num, num_, options)  # n.b. median sets median_low
     }
     return num_[f]
+}
+function median_high_(  f){
+  function_["median_high","help"] = "Get the median that is higher a.k.a. greater."
+  function_["median_high","aka"] = "med_high"
 }
 
 # Mode: get the mode, which may be a number, or list, or UNDEF.
@@ -260,6 +324,11 @@ function mode(num, num_, options,  f) {
     }
     return num_[f]
 }
+function mode_(  f){
+    f="mode"
+    function_[f,"help"] = "Get the mode, which may be a value, or list, or UNDEF."
+    function_[f,"aka"] = ""
+}
 
 # Mode-low: get the first mode, if any, or UNDEF.
 #
@@ -277,6 +346,11 @@ function mode_low(num, num_, options,  f) {
         num_[f] = TODO
     }
     return num_[f]
+}
+function mode_low_(  f){
+    f="mode_low"
+    function_[f,"help"] = "Get the first mode, if any, or UNDEF."
+    function_[f,"aka"] = ""
 }
 
 # Mode-high: get the last mode, if any, or UNDEF.
@@ -296,6 +370,11 @@ function mode_high(num, num_, options,  f) {
     }
     return num_[f]
 }
+function mode_high_(  f){
+    f="mode_high"
+    function_[f,"help"] = "Get the last mode, if any, or UNDEF."
+    function_[f,"aka"] = ""
+}
 
 # Sum of Squares, a.k.a. the sum of the squared deviations, a.k.a. SS.
 #
@@ -312,8 +391,13 @@ function sum_of_squares(num, num_, options,  f, _sum, _mean, i) {
     }
     return num_[f]
 }
+function sum_of_squares_(  f){
+    f="sum_of_squares"
+    function_[f,"help"] = "Get the sum of squares, a.k.a. sum of the squared deviation, a.k.a. SS."
+    function_[f,"aka"] = "sumsquares ss"
+}
 
-# Sum of Cubes, a.k.a. the sum of the cubed deviations.
+# Sum of Cubes, a.k.a. sum of the cubed deviations.
 #
 # Example:
 #
@@ -327,6 +411,11 @@ function sum_of_cubes(num, num_, options,  f, _sum, _mean, i) {
         num_[f] = _sum
     }
     return num_[f]
+}
+function sum_of_cubes_(  f){
+    f="sum_of_cubes"
+    function_[f,"help"] = "Get the  sum of cubes, a.k.a. sum of the cubed deviations."
+    function_[f,"aka"] = ""
 }
 
 # Population Variance.
@@ -342,6 +431,11 @@ function population_variance(num, num_, options,  f) {
     }
     return num_[f]
 }
+function population_variance_(  f){
+    f="population_variance"
+    function_[f,"help"] = "Get the population variance."
+    function_[f,"aka"] = ""
+}
 
 # Sample Variance.
 #
@@ -355,6 +449,11 @@ function sample_variance(num, num_, options,  f) {
         num_[f] = sum_of_squares(num, num_, options) / (n(num, num_, options) - 1)
     }
     return num_[f]
+}
+function sample_variance_(  f){
+    f="sample_variance"
+    function_[f,"help"] = "Get the sample variance."
+    function_[f,"aka"] = ""
 }
 
 # Population Standard Deviation.
@@ -370,6 +469,11 @@ function population_standard_deviation(num, num_, options,  f) {
     }
     return num_[f]
 }
+function population_standard_deviation_(  f){
+    f="population_standard_deviation"
+    function_[f,"help"] = "Get the population standard deviation."
+    function_[f,"aka"] = ""
+}
 
 # Sample Standard Deviation.
 #
@@ -383,6 +487,11 @@ function sample_standard_deviation(num, num_, options,  f) {
         num_[f] = sqrt(sample_variance(num, num_, options))
     }
     return num_[f]
+}
+function sample_standard_deviation_(  f){
+    f="sample_standard_deviation"
+    function_[f,"help"] = "Get the sample standard deviation"
+    function_[f,"aka"] = ""
 }
 
 # Population Coefficient of Variance.
@@ -398,6 +507,11 @@ function population_coefficient_of_variance(num, num_, options,  f) {
     }
     return num_[f]
 }
+function population_coefficient_of_variance_(  f){
+    f="population_coefficient_of_variance"
+    function_[f,"help"] = "Get the population coefficient of variance."
+    function_[f,"aka"] = ""
+}
 
 # Sample Coefficient of Variance.
 #
@@ -411,6 +525,11 @@ function sample_coefficient_of_variance(num, num_, options,  f) {
         num_[f] = sample_standard_deviation(num, num_, options) / mean(num, num_, options)
     }
     return num_[f]
+}
+function sample_coefficient_of_variance_(  f){
+    f="sample_coefficient_of_variance"
+    function_[f,"help"] = "Get the sample coefficient of variance"
+    function_[f,"aka"] = ""
 }
 
 # Population second moment about the mean.
@@ -429,6 +548,11 @@ function population_second_moment_about_the_mean(num, num_, options) {
     }
     return num_[f]
 }
+function population_second_moment_(  f){
+    f="population_second_moment"
+    function_[f,"help"] = "Get the population second moment about the mean."
+    function_[f,"aka"] = ""
+}
 
 # Sample second moment about the mean.
 #
@@ -445,6 +569,11 @@ function sample_second_moment_about_the_mean(num, num_, options) {
         num_[f] = sum_of_squares(num, num_, options) / (n(num, num_, options) - 1)
     }
     return num_[f]
+}
+function sample_second_moment_(  f){
+    f="sample_second_moment"
+    function_[f,"help"] = "Get the sample second moment about the mean."
+    function_[f,"aka"] = ""
 }
 
 # Population third moment about the mean.
@@ -463,6 +592,11 @@ function population_third_moment_about_the_mean(num, num_, options) {
     }
     return num_[f]
 }
+function population_third_moment_(  f){
+    f="population_third_moment"
+    function_[f,"help"] = "Get the population third moment about the mean."
+    function_[f,"aka"] = ""
+}
 
 # Sample third moment about the mean.
 #
@@ -480,6 +614,11 @@ function sample_third_moment_about_the_mean(num, num_, options) {
     }
     return num_[f]
 }
+function sample_third_moment_(  f){
+    f="sample_third_moment"
+    function_[f,"help"] = "Get the sample third moment about the mean."
+    function_[f,"aka"] = ""
+}
 
 # Skewness
 #
@@ -494,6 +633,11 @@ function skewness(num, num_, options,  f, _mean, x, i) {
     }
     return num_[f]
 }
+function skewness_(  f){
+    f="skewness"
+    function_[f,"help"] = "Get the skewness."
+    function_[f,"aka"] = ""
+}
 
 # Kurtosis
 #
@@ -507,6 +651,11 @@ function kurtosis(num, num_, options,  f) {
         num_[f] = TODO
     }
     return num_[f]
+}
+function kurtosis_(  f){
+    f="kurtosis"
+    function_[f,"help"] = "Get the kurtosis."
+    function_[f,"aka"] = ""
 }
 
 # Interquartile Range, a.k.a. IQR.
@@ -542,8 +691,13 @@ function interquartile_range(num, num_, options,  f) {
     }
     return num_[f]
 }
+function interquartile_range_(  f){
+    f="interquartile_range"
+    function_[f,"help"] = "Get the interquartile range, a.k.a. IQR."
+    function_[f,"aka"] = ""
+}
 
-# Quartile 0, a.k.a. Q0, minimum, the 0th percentile.
+# Quartile 0, a.k.a. Q0, 0th percentile, minimum.
 #
 # Example:
 #
@@ -556,8 +710,13 @@ function quartile_0(num, num_, options,  f) {
     }
     return num_[f]
 }
+function quartile_0_(  f){
+    f="quartile_0"
+    function_[f,"help"] = "Get the quartile 0, a.k.a. Q0, 0th percentile, minimum."
+    function_[f,"aka"] = ""
+}
 
-# Quartile 1, a.k.a. Q1, lower quartile, the 25th percentile.
+# Quartile 1, a.k.a. Q1, 25th percentile, lower quartile.
 #
 # Example:
 #
@@ -586,8 +745,13 @@ function quartile_1(num, num_, options,  f, _n, x) {
     }
     return num_[f]
 }
+function quartile_1_(  f){
+    f="quartile_1"
+    function_[f,"help"] = "Get the quartile 1, a.k.a. Q1, 25th percentile, lower quartile."
+    function_[f,"aka"] = ""
+}
 
-# Quartile 2, a.k.a. Q2, median, the 50th percentile.
+# Quartile 2, a.k.a. Q2, 50th percentile, median.
 #
 # Example:
 #
@@ -600,8 +764,13 @@ function quartile_2(num, num_, options,  f) {
     }
     return num_[f]
 }
+function quartile_2_(  f){
+    f="quartile_2"
+    function_[f,"help"] = "Get the quartile 2, a.k.a. Q2, 50th percentile, median."
+    function_[f,"aka"] = ""
+}
 
-# Quartile 3, a.k.a. Q3, upper quartile, the 75th percentile.
+# Quartile 3, a.k.a. Q3, 75th percentile, upper quartile.
 #
 # Example:
 #
@@ -630,8 +799,13 @@ function quartile_3(num, num_, options,  f, _n, x) {
     }
     return num_[f]
 }
+function quartile_3_(  f){
+    f="quartile_3"
+    function_[f,"help"] = "Get the quartile 3, a.k.a. Q3, 75th percentile, upper quartile."
+    function_[f,"aka"] = ""
+}
 
-# Quartile 4, a.k.a. Q4, maximum, the 100th percentile.
+# Quartile 4, a.k.a. Q4, 100th percentile, maximum.
 #
 # Example:
 #
@@ -643,6 +817,11 @@ function quartile_4(num, num_, options,  f) {
         num_[f] = max(num, num_, options)
     }
     return num_[f]
+}
+function quartile_4_(  f){
+    f="quartile_4"
+    function_[f,"help"] = "Get the quartile 4, a.k.a. Q4, 100th percentile, maximum."
+    function_[f,"aka"] = ""
 }
 
 ############################################################################
@@ -671,6 +850,11 @@ function sort(num, num_, options,  f) {
     }
     return ""
 }
+function sort_(  f){
+    f="sort"
+    function_[f,"help"] = "Sort the values in ascending order."
+    function_[f,"aka"] = ""
+}
 
 ############################################################################
 #
@@ -693,8 +877,13 @@ function map_absolute_value(num, num_, options,  f) {
     }
     return ""
 }
+function map_absolute_value_(  f){
+    f="map_absolute_value"
+    function_[f,"help"] = "Map with absolute value."
+    function_[f,"aka"] = ""
+}
 
-# Map: round, a.k.a. nearest int.
+# Map: round, a.k.a. nearest integer.
 #
 # Example:
 #
@@ -710,6 +899,11 @@ function map_round(num, num_, options,  f) {
         num_["integer"] = TRUE
     }
     return ""
+}
+function map_round_(  f){
+    f="map_round"
+    function_[f,"help"] = "Map with round, a.k.a. nearest integer."
+    function_[f,"aka"] = ""
 }
 
 # Map: round off, a.k.a. truncate.
@@ -728,6 +922,11 @@ function map_round_off(num, num_, options,  f) {
     }
     return ""
 }
+function map_round_off_(  f){
+    f="map_round_off"
+    function_[f,"help"] = "Map with round off, a.k.a. truncate."
+    function_[f,"aka"] = ""
+}
 
 # Map: round up, a.k.a. ceiling.
 #
@@ -745,6 +944,11 @@ function map_round_up(num, num_, options,  f) {
     }
     return ""
 }
+function map_round_up_(  f){
+    f="map_round_up"
+    function_[f,"help"] = "Map with round up, a.k.a. ceiling."
+    function_[f,"aka"] = ""
+}
 
 # Map: round down, a.k.a. floor.
 #
@@ -761,6 +965,11 @@ function map_round_down(num, num_, options,  f) {
         num_[f] = TRUE
     }
     return ""
+}
+function map_round_down_(  f){
+    f="map_round_down"
+    function_[f,"help"] = "Map with round down, a.k.a. floor."
+    function_[f,"aka"] = ""
 }
 
 ############################################################################
