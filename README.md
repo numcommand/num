@@ -15,11 +15,8 @@ Examples:
     $ echo "1 2 4" | num sum
     7
 
-    $ echo "1 2 4" | num min max
-    1 4
-
-    $ echo "1 2 4" | num median mean
-    2 2.33333
+    $ echo "1 2 4" | num min max median mean
+    1 4 2 2.33333
 
     $ echo "1 2 4" | num sum-of-squares standard-deviation
     4.66667 1.24722
@@ -178,7 +175,7 @@ Statistics Functions:
       The kurtosis, e.g. peakness or flatness. TODO.
 
   * interquartile-range, iqr, midspread, middle-fifty:
-       The interquartile range, which is quartile 3 - quartile 1.
+       The interquartile range, which is q3 - q1.
 
   * quartile-0, q0:
       Quartile 0, a.k.a. minimum.
@@ -209,23 +206,24 @@ Transforms:
 Maps:
 
   * round, integer:
-      Convert each number to the nearest integer.
-      Examples: 1.65 round => 2. -1.65 round-off => -2.
+      Convert to nearest integer.
+      Examples: 1.9 => 2. -1.9 => -2.
 
   * round-off, truncate:
-      Convert each number to an integer by taking off the fractional part.
-      Examples: 1.65 round-off => 1. -1.65 round-off => -1.
+      Convert to integer by omitting the fractional part.
+      Examples: 1.9 => 1. -1.9 => -1.
 
   * round-up, ceiling:
-      Convert each number to an integer by rounding up.
-      Example: 1.65 round-up => 2; -1.65 round-up => -1.
+      Convert to integer by rounding up.
+      Exampled: 1.9 => 2. -1.9 => -1.
 
   * round-down, floor:
-      Convert each number to an integer by rounding down.
-      Examples: 1.65 floor => 1. -1.65 floor => -2.
+      Convert to integer by rounding down.
+      Examples: 1.9 => 1. -1.9 => -2.
 
   * absolute-value, abs:
-      Convert each number to its absolute value i.e. make it positive.
+      Convert to absolute value a.k.a. positive.
+      Examples: -1 => 1. 1 => 1.
 
 Queries that return TRUE (1) or FALSE (0):
 
