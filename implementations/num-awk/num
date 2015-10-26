@@ -1837,7 +1837,7 @@ function parse_argv() {
 # should print anything to the screen during normal operation.
 #
 function print_output() {
-    print words_to_s(global_num, global_num_, global_options, global_word_argv)
+    print words_to_s(global_num, global_num_, global_options, global_word_argv, OFS)
 }
 
 ############################################################################
