@@ -56,7 +56,7 @@ function all(num, num_, options,  f) {
     return num_[f]
 }
 function all_(  f) {
-   functioning("all", "each", "Get all the items.")
+   function_metadata("all", "each", "Get all the items.")
 }
 
 # First item.
@@ -73,7 +73,7 @@ function first(num, num_, options,  f) {
     return num_[f]
 }
 function first_(  f) {
-    functioning("first", "head", "Get the first item.")
+    function_metadata("first", "head", "Get the first item.")
 }
 
 # Last item.
@@ -90,7 +90,7 @@ function last(num, num_, options,  f) {
     return num_[f]
 }
 function last_(  f) {
-    functioning("last", "tail", "Get the last item.")
+    function_metadata("last", "tail", "Get the last item.")
 }
 
 # Number of items, a.k.a. count, length.
@@ -107,7 +107,7 @@ function n(num, num_, options,  f) {
     return num_[f]
 }
 function n_(  f) {
-    functioning("n", "count length size", "Get the number of items, a.k.a. count, length, size.")
+    function_metadata("n", "count length size", "Get the number of items, a.k.a. count, length, size.")
 }
 
 # Minimum value.
@@ -124,7 +124,7 @@ function min(num, num_, options,  f, _min, i) {
     return num_[f]
 }
 function min_(  f) {
-    functioning("min", "minimum least lowest", "Get the minimum value, a.k.a. least, lowest.")
+    function_metadata("min", "minimum least lowest", "Get the minimum value, a.k.a. least, lowest.")
 }
 
 # Maximum value.
@@ -141,7 +141,7 @@ function max(num, num_, options,  f, _max, i) {
     return num_[f]
 }
 function max_(  f) {
-    functioning("max", "maximum greatest highest", "Get the maximum value, a.k.a. greatest, highest.")
+    function_metadata("max", "maximum greatest highest", "Get the maximum value, a.k.a. greatest, highest.")
 }
 
 # Range, a.k.a. spread.
@@ -158,7 +158,7 @@ function range(num, num_, options,  f) {
     return num_[f]
 }
 function range_(  f) {
-    functioning("range", "breadth spread", "Get the range, a.k.a. breadth, spread.")
+    function_metadata("range", "breadth spread", "Get the range, a.k.a. breadth, spread.")
 }
 
 # Sum, a.k.a. total.
@@ -179,7 +179,7 @@ function sum(num, num_, options,  f, _sum, i) {
     return num_[f]
 }
 function sum_(  f) {
-    functioning("sum", "total", "Get the sum.")
+    function_metadata("sum", "total", "Get the sum.")
 }
 
 # Mean, a.k.a. arithmetic mean, average.
@@ -200,7 +200,7 @@ function mean(num, num_, options,  f) {
     return num_[f]
 }
 function mean_(  f) {
-    functioning("mean", "average avg", "Get the mean, a.k.a artihmetic mean, average.")
+    function_metadata("mean", "average avg", "Get the mean, a.k.a artihmetic mean, average.")
 }
 
 # Meanest, i.e. the value closest to the mean.
@@ -217,7 +217,7 @@ function meanest(num, num_, options,  f) {
     return num_[f]
 }
 function meanest_(  f) {
-    functioning("meanest", "", "Get the meanest, i.e. value closest to the mean.")
+    function_metadata("meanest", "", "Get the meanest, i.e. value closest to the mean.")
 }
 
 # Median.
@@ -243,7 +243,7 @@ function median(num, num_, options,  f, _n) {
     return num_["median"]
 }
 function median_(  f) {
-    functioning("median", "med", "Get the median.")
+    function_metadata("median", "med", "Get the median.")
 }
 
 # Median-low: get the lesser median.
@@ -261,7 +261,7 @@ function median_low(num, num_, options,  f, _n) {
     return num_[f]
 }
 function median_low_(  f) {
-    functioning("median_low", "med_low", "Get the median that is lower a.k.a. lesser.")
+    function_metadata("median_low", "med_low", "Get the median that is lower a.k.a. lesser.")
 }
 
 # Median-high: get the greater median.
@@ -279,7 +279,7 @@ function median_high(num, num_, options,  f, _n) {
     return num_[f]
 }
 function median_high_(  f) {
-  functioning("median_high", "med_high", "Get the median that is higher a.k.a. greater.")
+  function_metadata("median_high", "med_high", "Get the median that is higher a.k.a. greater.")
 }
 
 # Mode: get the mode, which may be a number, or list, or UNDEF.
@@ -300,7 +300,7 @@ function mode(num, num_, options,  f) {
     return num_[f]
 }
 function mode_(  f) {
-    functioning("mode", "", "Get the mode, which may be a value, or list, or UNDEF.")
+    function_metadata("mode", "", "Get the mode, which may be a value, or list, or UNDEF.")
 }
 
 # Mode-low: get the first mode, if any, or UNDEF.
@@ -321,7 +321,7 @@ function mode_low(num, num_, options,  f) {
     return num_[f]
 }
 function mode_low_(  f) {
-    functioning("mode_low", "", "Get the first mode, if any, or UNDEF.")
+    function_metadata("mode_low", "", "Get the first mode, if any, or UNDEF.")
 }
 
 # Mode-high: get the last mode, if any, or UNDEF.
@@ -342,7 +342,7 @@ function mode_high(num, num_, options,  f) {
     return num_[f]
 }
 function mode_high_(  f) {
-    functioning("mode_high", "", "Get the last mode, if any, or UNDEF.")
+    function_metadata("mode_high", "", "Get the last mode, if any, or UNDEF.")
 }
 
 # Sum of Squares, a.k.a. the sum of the squared deviations, a.k.a. SS.
@@ -361,7 +361,7 @@ function sum_of_squares(num, num_, options,  f, _sum, _mean, i) {
     return num_[f]
 }
 function sum_of_squares_(  f) {
-    functioning("sum_of_squares", "sum_squares ss", "Get the sum of squares, a.k.a. sum of the squared deviation, a.k.a. SS.")
+    function_metadata("sum_of_squares", "sum_squares ss", "Get the sum of squares, a.k.a. sum of the squared deviation, a.k.a. SS.")
 }
 
 # Sum of Cubes, a.k.a. sum of the cubed deviations.
@@ -380,7 +380,7 @@ function sum_of_cubes(num, num_, options,  f, _sum, _mean, i) {
     return num_[f]
 }
 function sum_of_cubes_(  f) {
-    functioning("sum_of_cubes", "sum_cubes", "Get the  sum of cubes, a.k.a. sum of the cubed deviations.")
+    function_metadata("sum_of_cubes", "sum_cubes", "Get the  sum of cubes, a.k.a. sum of the cubed deviations.")
 }
 
 # Population Variance.
@@ -397,7 +397,7 @@ function population_variance(num, num_, options,  f) {
     return num_[f]
 }
 function population_variance_(  f) {
-    functioning("population_variance", "p_var", "Get the population variance.")
+    function_metadata("population_variance", "p_var", "Get the population variance.")
 }
 
 # Sample Variance.
@@ -414,7 +414,7 @@ function sample_variance(num, num_, options,  f) {
     return num_[f]
 }
 function sample_variance_(  f) {
-    functioning("sample_variance", "s_var", "Get the sample variance.")
+    function_metadata("sample_variance", "s_var", "Get the sample variance.")
 }
 
 # Population Standard Deviation.
@@ -431,7 +431,7 @@ function population_standard_deviation(num, num_, options,  f) {
     return num_[f]
 }
 function population_standard_deviation_(  f) {
-    functioning("population_standard_deviation", "p_st_dev p_s_d", "Get the population standard deviation.")
+    function_metadata("population_standard_deviation", "p_st_dev p_s_d", "Get the population standard deviation.")
 }
 
 # Sample Standard Deviation.
@@ -448,7 +448,7 @@ function sample_standard_deviation(num, num_, options,  f) {
     return num_[f]
 }
 function sample_standard_deviation_(  f) {
-    functioning("sample_standard_deviation", "s_st_dev s_s_d", "Get the sample standard deviation")
+    function_metadata("sample_standard_deviation", "s_st_dev s_s_d", "Get the sample standard deviation")
 }
 
 # Population Coefficient of Variance.
@@ -465,7 +465,7 @@ function population_coefficient_of_variance(num, num_, options,  f) {
     return num_[f]
 }
 function population_coefficient_of_variance_(  f) {
-    functioning("population_coefficient_of_variance", "p_co_var p_c_v", "Get the population coefficient of variance.")
+    function_metadata("population_coefficient_of_variance", "p_co_var p_c_v", "Get the population coefficient of variance.")
 }
 
 # Sample Coefficient of Variance.
@@ -482,7 +482,7 @@ function sample_coefficient_of_variance(num, num_, options,  f) {
     return num_[f]
 }
 function sample_coefficient_of_variance_(  f) {
-    functioning("sample_coefficient_of_variance", "s_co_var s_c_v", "Get the sample coefficient of variance")
+    function_metadata("sample_coefficient_of_variance", "s_co_var s_c_v", "Get the sample coefficient of variance")
 }
 
 # Population second moment about the mean.
@@ -502,7 +502,7 @@ function population_second_moment_about_the_mean(num, num_, options) {
     return num_[f]
 }
 function population_second_moment_about_the_mean_(  f) {
-    functioning("population_second_moment_about_the_mean", "population_second_moment p_second_moment", "Get the population second moment about the mean.")
+    function_metadata("population_second_moment_about_the_mean", "population_second_moment p_second_moment", "Get the population second moment about the mean.")
 }
 
 # Sample second moment about the mean.
@@ -522,7 +522,7 @@ function sample_second_moment_about_the_mean(num, num_, options) {
     return num_[f]
 }
 function sample_second_moment_about_the_mean_(  f) {
-    functioning("sample_second_moment_about_the_mean", "sample_second_moment s_second_momement", "Get the sample second moment about the mean.")
+    function_metadata("sample_second_moment_about_the_mean", "sample_second_moment s_second_momement", "Get the sample second moment about the mean.")
 }
 
 # Population third moment about the mean.
@@ -542,7 +542,7 @@ function population_third_moment_about_the_mean(num, num_, options) {
     return num_[f]
 }
 function population_third_moment_about_the_mean_(  f) {
-    functioning("population_third_moment_about_the_mean", "population_third_moment p_third_moment", "Get the population third moment about the mean.")
+    function_metadata("population_third_moment_about_the_mean", "population_third_moment p_third_moment", "Get the population third moment about the mean.")
 }
 
 # Sample third moment about the mean.
@@ -562,7 +562,7 @@ function sample_third_moment_about_the_mean(num, num_, options) {
     return num_[f]
 }
 function sample_third_moment_about_the_mean_(  f) {
-    functioning("sample_third_moment_about_the_mean", "sample_third_moment s_third_moment", "Get the sample third moment about the mean.")
+    function_metadata("sample_third_moment_about_the_mean", "sample_third_moment s_third_moment", "Get the sample third moment about the mean.")
 }
 
 # Skewness
@@ -579,7 +579,7 @@ function skewness(num, num_, options,  f) {
     return num_[f]
 }
 function skewness_(  f) {
-    functioning("skewness", "skew", "Get the skewness.")
+    function_metadata("skewness", "skew", "Get the skewness.")
 }
 
 # Kurtosis
@@ -596,7 +596,7 @@ function kurtosis(num, num_, options,  f) {
     return num_[f]
 }
 function kurtosis_(  f) {
-    functioning("kurtosis", "kurt", "Get the kurtosis.")
+    function_metadata("kurtosis", "kurt", "Get the kurtosis.")
 }
 
 # Interquartile Range, a.k.a. IQR.
@@ -633,7 +633,7 @@ function interquartile_range(num, num_, options,  f) {
     return num_[f]
 }
 function interquartile_range_(  f) {
-    functioning("interquartile_range", "i_q_r mid_spread middle_fifty", "Get the interquartile range, a.k.a. IQR.")
+    function_metadata("interquartile_range", "i_q_r mid_spread middle_fifty", "Get the interquartile range, a.k.a. IQR.")
 }
 
 # Quartile 0, a.k.a. Q0, 0th percentile, minimum.
@@ -650,7 +650,7 @@ function quartile_0(num, num_, options,  f) {
     return num_[f]
 }
 function quartile_0_(  f) {
-    functioning("quartile_0", "q_0 0_percent", "Get the quartile 0, a.k.a. Q0, 0th percentile, minimum.")
+    function_metadata("quartile_0", "q_0 0_percent", "Get the quartile 0, a.k.a. Q0, 0th percentile, minimum.")
 }
 
 # Quartile 1, a.k.a. Q1, 25th percentile, lower quartile.
@@ -683,7 +683,7 @@ function quartile_1(num, num_, options,  f, _n, x) {
     return num_[f]
 }
 function quartile_1_(  f) {
-    functioning("quartile_1", "q_1 25_percent", "Get the quartile 1, a.k.a. Q1, 25th percentile, lower quartile.")
+    function_metadata("quartile_1", "q_1 25_percent", "Get the quartile 1, a.k.a. Q1, 25th percentile, lower quartile.")
 }
 
 # Quartile 2, a.k.a. Q2, 50th percentile, median.
@@ -700,7 +700,7 @@ function quartile_2(num, num_, options,  f) {
     return num_[f]
 }
 function quartile_2_(  f) {
-    functioning("quartile_2", "q_2 50_percent", "Get the quartile 2, a.k.a. Q2, 50th percentile, median.")
+    function_metadata("quartile_2", "q_2 50_percent", "Get the quartile 2, a.k.a. Q2, 50th percentile, median.")
 }
 
 # Quartile 3, a.k.a. Q3, 75th percentile, upper quartile.
@@ -733,7 +733,7 @@ function quartile_3(num, num_, options,  f, _n, x) {
     return num_[f]
 }
 function quartile_3_(  f) {
-    functioning("quartile_3", "q_3 75_percent", "Get the quartile 3, a.k.a. Q3, 75th percentile, upper quartile.")
+    function_metadata("quartile_3", "q_3 75_percent", "Get the quartile 3, a.k.a. Q3, 75th percentile, upper quartile.")
 }
 
 # Quartile 4, a.k.a. Q4, 100th percentile, maximum.
@@ -750,7 +750,7 @@ function quartile_4(num, num_, options,  f) {
     return num_[f]
 }
 function quartile_4_(  f) {
-    functioning("quartile_4", "q_4 100_percent", "Get the quartile 4, a.k.a. Q4, 100th percentile, maximum.")
+    function_metadata("quartile_4", "q_4 100_percent", "Get the quartile 4, a.k.a. Q4, 100th percentile, maximum.")
 }
 
 ############################################################################
@@ -780,7 +780,7 @@ function sort(num, num_, options,  f) {
     return ""
 }
 function sort_(  f) {
-    functioning("sort", "sort_ascending sort_asc", "Sort the values in ascending order.")
+    function_metadata("sort", "sort_ascending sort_asc", "Sort the values in ascending order.")
 }
 
 ############################################################################
@@ -805,7 +805,7 @@ function map_absolute_value(num, num_, options,  f) {
     return ""
 }
 function map_absolute_value_(  f) {
-    functioning("map_absolute_value", "absolute_value abs", "Map using absolute value.")
+    function_metadata("map_absolute_value", "absolute_value abs", "Map using absolute value.")
 }
 
 # Map: round, a.k.a. nearest integer.
@@ -826,7 +826,7 @@ function map_round(num, num_, options,  f) {
     return ""
 }
 function map_round_(  f) {
-    functioning("map_round", "round nearest_integer n_int", "Map using round, a.k.a. nearest integer.")
+    function_metadata("map_round", "round nearest_integer n_int", "Map using round, a.k.a. nearest integer.")
 }
 
 # Map: round off, a.k.a. truncate.
@@ -846,7 +846,7 @@ function map_round_off(num, num_, options,  f) {
     return ""
 }
 function map_round_off_(  f) {
-    functioning("map_round_off", "round_off truncate", "Map using round off, a.k.a. truncate.")
+    function_metadata("map_round_off", "round_off truncate", "Map using round off, a.k.a. truncate.")
 }
 
 # Map: round up, a.k.a. ceiling.
@@ -866,7 +866,7 @@ function map_round_up(num, num_, options,  f) {
     return ""
 }
 function map_round_up_(  f) {
-    functioning("map_round_up", "round_up ceiling", "Map using round up, a.k.a. ceiling.")
+    function_metadata("map_round_up", "round_up ceiling", "Map using round up, a.k.a. ceiling.")
 }
 
 # Map: round down, a.k.a. floor.
@@ -886,7 +886,7 @@ function map_round_down(num, num_, options,  f) {
     return ""
 }
 function map_round_down_(  f) {
-    functioning("map_round_down", "round_down floor", "Map using round down, a.k.a. floor.")
+    function_metadata("map_round_down", "round_down floor", "Map using round down, a.k.a. floor.")
 }
 
 ############################################################################
@@ -983,7 +983,7 @@ function is_unique(num, num_, options,  f, i, seen, flag) {
     return num_[f]
 }
 function is_unique_(  f) {
-    functioning("is_unique", "", "Is the list all unique items?")
+    function_metadata("is_unique", "", "Is the list all unique items?")
 }
 
 # Is the list sorted in ascending order?
@@ -1024,7 +1024,7 @@ function is_ascending(num, num_, options,  f, x, i, flag) {
     return num_[f]
 }
 function is_ascending_(  f) {
-    functioning("is_ascending", "is_asc", "Is the list sorted in ascending order?")
+    function_metadata("is_ascending", "is_asc", "Is the list sorted in ascending order?")
 }
 
 # Is the list sorted in strictly ascending order?
@@ -1062,7 +1062,7 @@ function is_strictly_ascending(num, num_, options,  f, x, i, flag) {
     return num_[f]
 }
 function is_strictly_ascending_(  f) {
-    functioning("is_strictly_ascending", "is_strict_asc", "Is the list sorted in strictly ascending order?")
+    function_metadata("is_strictly_ascending", "is_strict_asc", "Is the list sorted in strictly ascending order?")
 }
 
 # Is the list sorted in descending order?
@@ -1103,7 +1103,7 @@ function is_descending(num, num_, options,  f, x, i, flag) {
     return num_[f]
 }
 function is_descending_(  f) {
-    functioning("is_descending", "is_desc", "Is the list sorted in descending order?")
+    function_metadata("is_descending", "is_desc", "Is the list sorted in descending order?")
 }
 
 # Is the list sorted in strictly descending order?
@@ -1141,7 +1141,7 @@ function is_strictly_descending(num, num_,   f, x, i, flag) {
     return num_[f]
 }
 function is_strictly_descending_(  f) {
-    functioning("is_strictly_descending", "is_strict_desc", "Is the list sorted in strictly descending order?")
+    function_metadata("is_strictly_descending", "is_strict_desc", "Is the list sorted in strictly descending order?")
 }
 
 ############################################################################
@@ -1335,7 +1335,7 @@ function init() {
     init_conf()
     init_word_argv()
     init_word_list()
-    init_function_metadata()
+    function_metadata_loader()
 }
 
 # Initialize constants that we use; these are essentially like defines.
@@ -1511,7 +1511,47 @@ function init_global_fun_kind() {
     FUN_KIND_CONF
 }
 
-function init_function_metadata() {
+############################################################################
+#
+# FUNCTION CONNECTIONS
+#
+##
+
+# Initialize function metadata for a given function.
+#
+# Example:
+#
+#    function hello() {
+#        print "hello world"
+#    }
+#
+#    function hello_() {
+#        function_metadata("hello", "hi hola", "Print hello world")
+#    }
+#
+# The example creates these:
+#
+#    function_["hello","aliases"] = "hi hola"
+#    function_["hello", "help"] = "Print hello world"
+#    global_word_list["hello"] = "hello"
+#    global_word_list["hi"] = "hello"
+#    global_word_list["hola"] = "hello"
+#
+function function_metadata(name, aliases, help) {
+    function_[name, "aliases"] = aliases
+    function_[name, "help"] = help
+    synonyms = name " " aliases
+    split(synonyms, arr)
+    for (i in arr) {
+        synonym = arr[i]
+        gsub(/_/,"", synonym)
+        global_word_list[synonym] = name
+    }
+}
+
+# Initialize function metadata for all our functions.
+#
+function function_metadata_loader() {
     all_()
     first_()
     last_()
@@ -1561,36 +1601,71 @@ function init_function_metadata() {
     is_strictly_descending_()
 }
 
-# Initialize function metadata for a given function.
+# Function call: given a function name, call its function.
 #
 # Example:
 #
-#    function hello() {
-#        print "hello world"
-#    }
+#     num = 1 2 4
+#     num_ = []
+#     function_call("sum", num, num_, options)
+#     => 7 (by calling the `sum` function)
 #
-#    function hello_() {
-#        functioning("hello", "hi hola", "Print hello world")
-#    }
+# Note: this implementation uses if..else instead of
+# any switch or case, because we want POSIX usability.
 #
-# The example creates these:
+# TODO: Research if it is possible to also support
+# gawk indirect functions, such as @f(...).
 #
-#    function_["hello","aliases"] = "hi hola"
-#    function_["hello", "help"] = "Print hello world"
-#    global_word_list["hello"] = "hello"
-#    global_word_list["hi"] = "hello"
-#    global_word_list["hola"] = "hello"
-#
-function functioning(name, aliases, help) {
-    function_[name, "aliases"] = aliases
-    function_[name, "help"] = help
-    synonyms = name " " aliases
-    split(synonyms, arr)
-    for (i in arr) {
-        synonym = arr[i]
-        gsub(/_/,"", synonym)
-        global_word_list[synonym] = name
-    }
+function function_call(f, num, num_, options) {
+    if (f == "") return ("")
+    else if (f == "all") return (all(num, num_, options))
+    else if (f == "first") return (first(num, num_, options))
+    else if (f == "last") return (last(num, num_, options))
+    else if (f == "n") return (n(num, num_, options))
+    else if (f == "min") return min(num, num_, options)
+    else if (f == "max") return max(num, num_, options)
+    else if (f == "range") return range(num, num_, options)
+    else if (f == "sum") return sum(num, num_, options)
+    else if (f == "mean") return mean(num, num_, options)
+    else if (f == "meanest") return meanest(num, num_, options)
+    else if (f == "median") return median(num, num_, options)
+    else if (f == "median_low") return median_low(num, num_, options)
+    else if (f == "median_high") return median_high(num, num_, options)
+    else if (f == "mode") return mode(num, num_, options)
+    else if (f == "mode_low") return mode_low(num, num_, options)
+    else if (f == "mode_high") return mode_high(num, num_, options)
+    else if (f == "sum_of_squares") return sum_of_squares(num, num_, options)
+    else if (f == "population_variance") return population_variance(num, num_, options)
+    else if (f == "sample_variance") return sample_variance(num, num_, options)
+    else if (f == "population_standard_deviation") return population_standard_deviation(num, num_, options)
+    else if (f == "standard_deviation") return standard_deviation(num, num_, options)
+    else if (f == "sample_standard_deviation") return sample_standard_deviation(num, num_, options)
+    else if (f == "population_coefficient_of_variance") return population_coefficient_of_variance(num, num_, options)
+    else if (f == "sample_coefficient_of_variance") return sample_coefficient_of_variance(num, num_, options)
+    else if (f == "population_second_moment_about_the_mean") return population_second_moment_about_the_mean(num, num_, options)
+    else if (f == "sample_second_moment_about_the_mean") return sample_second_moment_about_the_mean(num, num_, options)
+    else if (f == "population_third_moment_about_the_mean") return population_third_moment_about_the_mean(num, num_, options)
+    else if (f == "sample_third_moment_about_the_mean") return sample_third_moment_about_the_mean(num, num_, options)
+    else if (f == "skewness") return skewness(num, num_, options)
+    else if (f == "kurtosis") return kurtosis(num, num_, options)
+    else if (f == "interquartile_range") return interquartile_range(num, num_, options)
+    else if (f == "quartile_0") return quartile_0(num, num_, options)
+    else if (f == "quartile_1") return quartile_1(num, num_, options)
+    else if (f == "quartile_2") return quartile_2(num, num_, options)
+    else if (f == "quartile_3") return quartile_3(num, num_, options)
+    else if (f == "quartile_4") return quartile_4(num, num_, options)
+    else if (f == "sort") return sort(num, num_, options)
+    else if (f == "map_absolute_value") return map_absolute_value(num, num_, options)
+    else if (f == "map_round") return map_round(num, num_, options)
+    else if (f == "map_round_off") return map_round_off(num, num_, options)
+    else if (f == "map_round_up") return map_round_up(num, num_, options)
+    else if (f == "map_round_down") return map_round_down(num, num_, options)
+    else if (f == "is_unique") return is_unique(num, num_, options)
+    else if (f == "is_ascending") return is_ascending(num, num_, options)
+    else if (f == "is_strictly_ascending") return is_strictly_ascending(num, num_, options)
+    else if (f == "is_descending") return is_descending(num, num_, options)
+    else if (f == "is_strictly_descending") return is_strictly_descending(num, num_, options)
+    else return ""
 }
 
 ############################################################################
@@ -1616,72 +1691,6 @@ function word_to_conf(word, conf) {
         return ""
 }
 
-# Given a word, call its function.
-#
-# Example:
-#
-#     num = 1 2 4
-#     num_ = []
-#     word_to_function(num, num_, "sum")
-#     => 7 (by calling the `sum` function)
-#
-# Note: this implementation uses if..else instead of
-# any switch or case, because we want POSIX usability.
-#
-# TODO: Consider changing this to use gawk indirect functions.
-#
-function word_to_function(num, num_, options, word) {
-    if (word == "") return ""
-    else if (word == "all") return (all(num, num_, options))
-    else if (word == "first") return (first(num, num_, options))
-    else if (word == "last") return (last(num, num_, options))
-    else if (word == "n") return (n(num, num_, options))
-    else if (word == "min") return min(num, num_, options)
-    else if (word == "max") return max(num, num_, options)
-    else if (word == "range") return range(num, num_, options)
-    else if (word == "sum") return sum(num, num_, options)
-    else if (word == "mean") return mean(num, num_, options)
-    else if (word == "meanest") return meanest(num, num_, options)
-    else if (word == "median") return median(num, num_, options)
-    else if (word == "median_low") return median_low(num, num_, options)
-    else if (word == "median_high") return median_high(num, num_, options)
-    else if (word == "mode") return mode(num, num_, options)
-    else if (word == "mode_low") return mode_low(num, num_, options)
-    else if (word == "mode_high") return mode_high(num, num_, options)
-    else if (word == "sum_of_squares") return sum_of_squares(num, num_, options)
-    else if (word == "population_variance") return population_variance(num, num_, options)
-    else if (word == "sample_variance") return sample_variance(num, num_, options)
-    else if (word == "population_standard_deviation") return population_standard_deviation(num, num_, options)
-    else if (word == "standard_deviation") return standard_deviation(num, num_, options)
-    else if (word == "sample_standard_deviation") return sample_standard_deviation(num, num_, options)
-    else if (word == "population_coefficient_of_variance") return population_coefficient_of_variance(num, num_, options)
-    else if (word == "sample_coefficient_of_variance") return sample_coefficient_of_variance(num, num_, options)
-    else if (word == "population_second_moment_about_the_mean") return population_second_moment_about_the_mean(num, num_, options)
-    else if (word == "sample_second_moment_about_the_mean") return sample_second_moment_about_the_mean(num, num_, options)
-    else if (word == "population_third_moment_about_the_mean") return population_third_moment_about_the_mean(num, num_, options)
-    else if (word == "sample_third_moment_about_the_mean") return sample_third_moment_about_the_mean(num, num_, options)
-    else if (word == "skewness") return skewness(num, num_, options)
-    else if (word == "kurtosis") return kurtosis(num, num_, options)
-    else if (word == "interquartile_range") return interquartile_range(num, num_, options)
-    else if (word == "quartile_0") return quartile_0(num, num_, options)
-    else if (word == "quartile_1") return quartile_1(num, num_, options)
-    else if (word == "quartile_2") return quartile_2(num, num_, options)
-    else if (word == "quartile_3") return quartile_3(num, num_, options)
-    else if (word == "quartile_4") return quartile_4(num, num_, options)
-    else if (word == "sort") return sort(num, num_, options)
-    else if (word == "map_absolute_value") return map_absolute_value(num, num_, options)
-    else if (word == "map_round") return map_round(num, num_, options)
-    else if (word == "map_round_off") return map_round_off(num, num_, options)
-    else if (word == "map_round_up") return map_round_up(num, num_, options)
-    else if (word == "map_round_down") return map_round_down(num, num_, options)
-    else if (word == "is_unique") return is_unique(num, num_, options)
-    else if (word == "is_ascending") return is_ascending(num, num_, options)
-    else if (word == "is_strictly_ascending") return is_strictly_ascending(num, num_, options)
-    else if (word == "is_descending") return is_descending(num, num_, options)
-    else if (word == "is_strictly_descending") return is_strictly_descending(num, num_, options)
-    else return ""
-}
-
 # Given a word, return the result as a string.
 #
 # Example:
@@ -1692,7 +1701,7 @@ function word_to_function(num, num_, options, word) {
 #     => "7"
 #
 function word_to_s(num, num_, options, word,  s) {
-    s = word_to_function(num, num_, options, word)
+    s = function_call(word, num, num_, options)
     return s
 }
 
