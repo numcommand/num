@@ -17,157 +17,427 @@ assert_eq_todo() {
     assert_eq $TODO "$2" "$3"
 }
 
-demo="8.04 6.95 7.58 8.81 8.33 9.96 7.24 4.26 10.84 4.82 5.68"
+###
+#
+# all
+#
+###
 
 x=$(echo "1 2 4" | ./num all) &&
-    assert_eq "1 2 4" "$x" "all"
+    assert_eq "1 2 4" "$x" "all, with row"
+
+x=$(echo "1\n2\n4\n" | ./num all) &&
+    assert_eq "1 2 4" "$x" "all, with col"
+
+###
+#
+# first
+#
+###
 
 x=$(echo "1 2 4" | ./num first) &&
-    assert_eq 1 "$x" "first"
+    assert_eq 1 "$x" "first, with row"
+
+x=$(echo "1\n2\n4\n" | ./num first) &&
+    assert_eq 1 "$x" "first, with col"
+
+###
+#
+# last
+#
+###
 
 x=$(echo "1 2 4" | ./num last) &&
-    assert_eq 4 "$x" "last"
+    assert_eq 4 "$x" "last, with row"
+
+x=$(echo "1\n2\n4\n" | ./num last) &&
+    assert_eq 4 "$x" "last, with col"
+
+###
+#
+# n
+#
+###
 
 x=$(echo "1 2 4" | ./num n) &&
-    assert_eq 3 "$x" "n"
+    assert_eq 3 "$x" "n, with row"
 
-x=$(echo "$demo" | ./num n) &&
-    assert_eq 11 "$x" "n with demo"
+x=$(echo "1\n2\n4\n" | ./num n) &&
+    assert_eq 3 "$x" "n, with col"
+
+###
+#
+# minimum
+#
+###
 
 x=$(echo "1 2 4" | ./num minimum) &&
-    assert_eq 1 "$x" "minimum"
+    assert_eq 1 "$x" "minimum, with row"
 
-x=$(echo "1 2 4" | ./num min) &&
-    assert_eq 1 "$x" "min"
+x=$(echo "1\n2\n4\n" | ./num minimum) &&
+    assert_eq 1 "$x" "minimum, with col"
+
+###
+#
+# maximum
+#
+###
 
 x=$(echo "1 2 4" | ./num maximum) &&
-    assert_eq 4 "$x" "maximum"
+    assert_eq 4 "$x" "maximum, wih row"
 
-x=$(echo "1 2 4" | ./num max) &&
-    assert_eq 4 "$x" "max"
+x=$(echo "1\n2\n4\n" | ./num maximum) &&
+    assert_eq 4 "$x" "maximum, wih col"
+
+###
+#
+# range
+#
+###
 
 x=$(echo "1 2 4" | ./num range) &&
-    assert_eq 3 "$x" "range"
+    assert_eq 3 "$x" "range, with row"
 
-x=$(echo "1 2 4" | ./num spread) &&
-    assert_eq 3 "$x" "spread"
+x=$(echo "1 2 4" | ./num range) &&
+    assert_eq 3 "$x" "range, with col"
 
 ############################################################################
 #
 # STATISTICS
 #
-##
+###
+
+###
+#
+# sum
+#
+###
 
 x=$(echo "1 2 4" | ./num sum) &&
-    assert_eq 7 "$x" "sum"
+    assert_eq 7 "$x" "sum, with row"
 
-x=$(echo "1 2 4" | ./num total) &&
-    assert_eq 7 "$x" "total"
+x=$(echo "1\n2\n4\n" | ./num sum) &&
+    assert_eq 7 "$x" "sum, with col"
+
+###
+#
+# mean
+#
+###
 
 x=$(echo "1 2 4" | ./num mean) &&
-    assert_eq 2.33333 "$x" "mean"
+    assert_eq 2.33333 "$x" "mean ,with row"
 
-x=$(echo "$demo" | ./num mean) &&
-    assert_eq 7.50091 "$x" "mean with demo"
+x=$(echo "1\n2\n4\n" | ./num mean) &&
+    assert_eq 2.33333 "$x" "mean, with col"
+
+###
+#
+# meanest
+#
+###
 
 x=$(echo "1 2 4" | ./num meanest) &&
-    assert_eq 2 "$x" "meanest"
+    assert_eq 2 "$x" "meanest, with row"
+
+x=$(echo "1\n2\n4\n" | ./num meanest) &&
+    assert_eq 2 "$x" "meanest, with col"
+
+###
+#
+# median
+#
+###
 
 x=$(echo "1 2 4" | ./num median) &&
-    assert_eq 2 "$x" "median with exact"
+    assert_eq 2 "$x" "median, with row, with exact median"
+
+x=$(echo "1\n2\n4\n" | ./num median) &&
+    assert_eq 2 "$x" "median, with col, with exact median"
 
 x=$(echo "1 2 3 4" | ./num median) &&
-    assert_eq 2.5 "$x" "median with average"
+    assert_eq 2.5 "$x" "median, with row, with split median"
+
+x=$(echo "1\n2\n3\n4\n" | ./num median) &&
+    assert_eq 2.5 "$x" "median, with col, with split median"
+
+###
+#
+# median-low
+#
+###
 
 x=$(echo "1 2 4" | ./num median-low) &&
-    assert_eq 2 "$x" "median-low with exact median"
+    assert_eq 2 "$x" "median-low, with row, with exact median"
+
+x=$(echo "1\n2\n4\n" | ./num median-low) &&
+    assert_eq 2 "$x" "median-low, with col, with exact median"
 
 x=$(echo "1 2 3 4" | ./num median-low) &&
-    assert_eq 2 "$x" "median-low with split median"
+    assert_eq 2 "$x" "median-low, with row, with split median"
+
+x=$(echo "1\n2\n3\n4\n" | ./num median-low) &&
+    assert_eq 2 "$x" "median-low, with col, with split median"
+
+###
+#
+# median-high
+#
+###
 
 x=$(echo "1 2 4" | ./num median-high) &&
-    assert_eq 2 "$x" "median-high with exact median"
+    assert_eq 2 "$x" "median-high, with row, with exact median"
+
+x=$(echo "1\n2\n4\n" | ./num median-high) &&
+    assert_eq 2 "$x" "median-high, with col, with exact median"
 
 x=$(echo "1 2 3 4" | ./num median-high) &&
-    assert_eq 3 "$x" "median-high with split median"
+    assert_eq 3 "$x" "median-high, with row, with split median"
+
+x=$(echo "1\n2\n3\n4\n" | ./num median-high) &&
+    assert_eq 3 "$x" "median-high, with col, with split median"
+
+###
+#
+# mode
+#
+##
 
 x=$(echo "1 2 2 3" | ./num mode) &&
-    assert_eq_todo "2" "$x" "modes with unimodal"
+    assert_eq_todo "2" "$x" "mode, with row, with unimodal"
+
+x=$(echo "1\n2\n2\n3" | ./num mode) &&
+    assert_eq_todo "2" "$x" "mode, with col, with unimodal"
 
 x=$(echo "1 1 2 3 3" | ./num mode) &&
-    assert_eq_todo "1 3" "$x" "modes with bimodal"
+    assert_eq_todo "1 3" "$x" "mode, with row, with bimodal"
+
+x=$(echo "1\n1\n2\n3\n3\n" | ./num mode) &&
+    assert_eq_todo "1 3" "$x" "mode, with col, with bimodal"
 
 x=$(echo "1 2 3" | ./num mode) &&
-    assert_eq_todo "UNDEF" "$x" "modes with nonmodal"
+    assert_eq_todo "UNDEF" "$x" "mode, with row, with nonmodal"
+
+x=$(echo "1\n2\n3\n" | ./num mode) &&
+    assert_eq_todo "UNDEF" "$x" "mode, with col, with nonmodal"
+
+###
+#
+# mode-low
+#
+###
 
 x=$(echo "1 2 2 3" | ./num mode-low) &&
-    assert_eq_todo 2 "$x" "mode-low with unimodal"
+    assert_eq_todo 2 "$x" "mode-low, with row, with unimodal"
+
+x=$(echo "1\n2\n2\n3" | ./num mode-low) &&
+    assert_eq_todo 2 "$x" "mode-low, with col, with unimodal"
 
 x=$(echo "1 1 2 3 3" | ./num mode-low) &&
-    assert_eq_todo 1 "$x" "mode-low with bimodal"
+    assert_eq_todo 1 "$x" "mode-low, with row, with bimodal"
+
+x=$(echo "1\n1\n2\n3\n3\n" | ./num mode-low) &&
+    assert_eq_todo 1 "$x" "mode-low, with col, with bimodal"
 
 x=$(echo "1 2 3" | ./num mode-low) &&
-    assert_eq_todo "UNDEF" "$x" "mode-low with nonmodal"
+    assert_eq_todo "UNDEF" "$x" "mode-low, with row, with nonmodal"
+
+x=$(echo "1\n2\n3\n" | ./num mode-low) &&
+    assert_eq_todo "UNDEF" "$x" "mode-low, with col, with nonmodal"
+
+###
+#
+# mode-high
+#
+###
 
 x=$(echo "1 2 2 3" | ./num mode-high) &&
-    assert_eq_todo 2 "$x" "mode-high with unimodal"
+    assert_eq_todo 2 "$x" "mode-high, with row, with unimodal"
+
+x=$(echo "1\n2\n2\n3\n" | ./num mode-high) &&
+    assert_eq_todo 2 "$x" "mode-high, with col, with unimodal"
 
 x=$(echo "1 1 2 3 3" | ./num mode-high) &&
-    assert_eq_todo 3 "$x" "mode-high with bimodal"
+    assert_eq_todo 3 "$x" "mode-high, with row, with bimodal"
+
+x=$(echo "1\n1\n2\n3\n3\n" | ./num mode-high) &&
+    assert_eq_todo 3 "$x" "mode-high, with col, with bimodal"
 
 x=$(echo "1 2 3" | ./num mode-high) &&
-    assert_eq_todo "UNDEF" "$x" "mode-high with nonmodal"
+    assert_eq_todo "UNDEF" "$x" "mode-high, with row, with nonmodal"
+
+x=$(echo "1\n2\n3\n" | ./num mode-high) &&
+    assert_eq_todo "UNDEF" "$x" "mode-high, with col, with nonmodal"
+
+###
+#
+# sum-of-squares
+#
+###
 
 x=$(echo "1 2 4" | ./num sum-of-squares) &&
-    assert_eq 4.66667 "$x" "sum-of-squares"
+    assert_eq 4.66667 "$x" "sum-of-squares, with row"
+
+x=$(echo "1\n2\n4\n" | ./num sum-of-squares) &&
+    assert_eq 4.66667 "$x" "sum-of-squares, with col"
+
+###
+#
+# sum-of-cubes
+#
+###
+
+#TODO
+
+###
+#
+# population-variance
+#
+###
 
 x=$(echo "1 2 4" | ./num population-variance) &&
-    assert_eq 1.55556 "$x" "population-variance"
+    assert_eq 1.55556 "$x" "population-variance, with row"
 
-x=$(echo "$demo" | ./num population-variance) &&
-    assert_eq 3.75206 "$x" "population-variance with demo"
+x=$(echo "1\n2\n4\n" | ./num population-variance) &&
+    assert_eq 1.55556 "$x" "population-variance, with col"
+
+###
+#
+# sample-variance
+#
+###
 
 x=$(echo "1 2 4" | ./num sample-variance) &&
-    assert_eq 2.33333 "$x" "sample-variance"
+    assert_eq 2.33333 "$x" "sample-variance, with row"
 
-x=$(echo "$demo" | ./num sample-variance) &&
-    assert_eq 4.12727 "$x" "sample-variance with demo"
+x=$(echo "1\n2\n4\n" | ./num sample-variance) &&
+    assert_eq 2.33333 "$x" "sample-variance, with col"
+
+###
+#
+# population-standard-deviation
+#
+###
 
 x=$(echo "1 2 4" | ./num population-standard-deviation) &&
-    assert_eq 1.24722 "$x" "population-standard-deviation"
+    assert_eq 1.24722 "$x" "population-standard-deviation, with row"
 
-x=$(echo "$demo" | ./num population-standard-deviation) &&
-    assert_eq 1.93702 "$x" "population-standard-deviation with demo"
+x=$(echo "1\n2\n4\n" | ./num population-standard-deviation) &&
+    assert_eq 1.24722 "$x" "population-standard-deviation, with col"
+
+###
+#
+# sample-standard-deviation
+#
+###
 
 x=$(echo "1 2 4" | ./num sample-standard-deviation) &&
-    assert_eq 1.52753 "$x" "sample-standard-deviation"
+    assert_eq 1.52753 "$x" "sample-standard-deviation, with row"
 
-x=$(echo "$demo" | ./num sample-standard-deviation) &&
-    assert_eq 2.03157 "$x" "sample-standard-deviation with demo"
+x=$(echo "1\n2\n4\n" | ./num sample-standard-deviation) &&
+    assert_eq 1.52753 "$x" "sample-standard-deviation, with col"
+
+###
+#
+# population-coefficient-of-variance
+#
+###
 
 x=$(echo "1 2 4" | ./num population-coefficient-of-variance) &&
-    assert_eq 0.534522 "$x" "population-coefficient-of-variance"
+    assert_eq 0.534522 "$x" "population-coefficient-of-variance, with row"
+
+x=$(echo "1\n2\n4\n" | ./num population-coefficient-of-variance) &&
+    assert_eq 0.534522 "$x" "population-coefficient-of-variance, with col"
+
+###
+#
+# sample-coefficient-of-variance
+#
+###
 
 x=$(echo "1 2 4" | ./num sample-coefficient-of-variance) &&
-    assert_eq 0.654654 "$x" "sample-coefficient-of-variance"
+    assert_eq 0.654654 "$x" "sample-coefficient-of-variance, with row"
+
+x=$(echo "1\n2\n4\n" | ./num sample-coefficient-of-variance) &&
+    assert_eq 0.654654 "$x" "sample-coefficient-of-variance, with col"
+
+###
+#
+# population-second-moment-about-the_mean
+#
+###
 
 x=$(echo "1 2 4" | ./num population-second-moment-about-the_mean) &&
-    assert_eq 1.55556 "$x" "population-second-moment-about-the-mean"
+    assert_eq 1.55556 "$x" "population-second-moment-about-the-mean, with row"
+
+x=$(echo "1\n2\n4\n" | ./num population-second-moment-about-the_mean) &&
+    assert_eq 1.55556 "$x" "population-second-moment-about-the-mean, with col"
+
+###
+#
+# sample-second-moment-about-the_mean
+#
+###
 
 x=$(echo "1 2 4" | ./num sample-second-moment-about-the_mean) &&
-    assert_eq 2.33333 "$x" "sample-second-moment-about-the-mean"
+    assert_eq 2.33333 "$x" "sample-second-moment-about-the-mean, with row"
+
+x=$(echo "1\n2\n4\n" | ./num sample-second-moment-about-the_mean) &&
+    assert_eq 2.33333 "$x" "sample-second-moment-about-the-mean, with col"
+
+###
+#
+# population-third-moment-about-the_mean
+#
+###
 
 x=$(echo "1 2 4" | ./num population-third-moment-about-the_mean) &&
-    assert_eq 0.740741 "$x" "population-third-moment-about-the_mean"
+    assert_eq 0.740741 "$x" "population-third-moment-about-the-mean, with row"
+
+x=$(echo "1\n2\n4\n" | ./num population-third-moment-about-the_mean) &&
+    assert_eq 0.740741 "$x" "population-third-moment-about-the-mean, with col"
+
+###
+#
+# sample-third-moment-about-the_mean
+#
+###
 
 x=$(echo "1 2 4" | ./num sample-third-moment-about-the_mean)&&
-    assert_eq 1.11111  "$x" "sample-third-moment-about-the-mean"
+    assert_eq 1.11111  "$x" "sample-third-moment-about-the-mean, with row"
 
-x=$(echo "$demo" | ./num skewness) &&
-    assert_eq_todo -0.0533 "$x" "skewness"
+x=$(echo "1\n2\n4\n" | ./num sample-third-moment-about-the_mean)&&
+    assert_eq 1.11111  "$x" "sample-third-moment-about-the-mean, with col"
+
+###
+#
+# skewness
+#
+###
+
+x=$(echo "1 2 4" | ./num skewness) &&
+    assert_eq_todo 0 "$x" "skewness, with row"
+
+x=$(echo "1\n2\n\4\n" | ./num skewness) &&
+    assert_eq_todo 0 "$x" "skewness, with col"
+
+###
+#
+# kurtosis
+#
+###
 
 x=$(echo "1 2 4" | ./num kurtosis) &&
-    assert_eq_todo 0 "$x" "kurtosis"
+    assert_eq_todo 0 "$x" "kurtosis, with row"
+
+x=$(echo "1\n2\n4\n" | ./num kurtosis) &&
+    assert_eq_todo 0 "$x" "kurtosis, with col"
+
+###
+#
+# interquartile range and quartiles
+#
+###
 
 # To test quartiles, choose input that will succeed
 # if-and-only-if the num implementation is Method 3,
@@ -175,112 +445,266 @@ x=$(echo "1 2 4" | ./num kurtosis) &&
 #
 # See https://en.wikipedia.org/wiki/Quartile
 
-in="6 7 15 36 39 40 41 42 43 47 49"
+in_row="6 7 15 36 39 40 41 42 43 47 49"
+in_col="6\n7\n15\n36\n39\n40\n41\n42\n43\n47\n49\n"
 
-x=$(echo "$in" | ./num interquartile-range) &&
-    assert_eq 22.5 "$x" "interquartile-range"
+x=$(echo "$in_row" | ./num interquartile-range) &&
+    assert_eq 22.5 "$x" "interquartile-range, with row"
 
-x=$(echo "$in" | ./num quartile-0) &&
-    assert_eq 6 "$x" "quartile-0"
+x=$(echo "$in_row" | ./num interquartile-range) &&
+    assert_eq 22.5 "$x" "interquartile-range, with col"
 
-x=$(echo "$in" | ./num quartile-1) &&
-    assert_eq 20.25 "$x" "quartile-1"
+x=$(echo "$in_row" | ./num quartile-0) &&
+    assert_eq 6 "$x" "quartile-0, with row"
 
-x=$(echo "$in" | ./num quartile-2) &&
-    assert_eq 40 "$x" "quartile-2"
+x=$(echo "$in_col" | ./num quartile-0) &&
+    assert_eq 6 "$x" "quartile-0, with col"
 
-x=$(echo "$in" | ./num quartile-3) &&
-    assert_eq 42.75 "$x" "quartile-3"
+x=$(echo "$in_row" | ./num quartile-1) &&
+    assert_eq 20.25 "$x" "quartile-1, with row"
 
-x=$(echo "$in" | ./num quartile-4) &&
-    assert_eq 49 "$x" "quartile-4"
+x=$(echo "$in_col" | ./num quartile-1) &&
+    assert_eq 20.25 "$x" "quartile-1, with col"
+
+x=$(echo "$in_row" | ./num quartile-2) &&
+    assert_eq 40 "$x" "quartile-2, with row"
+
+x=$(echo "$in_col" | ./num quartile-2) &&
+    assert_eq 40 "$x" "quartile-2, with col"
+
+x=$(echo "$in_row" | ./num quartile-3) &&
+    assert_eq 42.75 "$x" "quartile-3, with row"
+
+x=$(echo "$in_col" | ./num quartile-3) &&
+    assert_eq 42.75 "$x" "quartile-3, with col"
+
+x=$(echo "$in_row" | ./num quartile-4) &&
+    assert_eq 49 "$x" "quartile-4, with row"
+
+x=$(echo "$in_col" | ./num quartile-4) &&
+    assert_eq 49 "$x" "quartile-4, with col"
 
 ############################################################################
 #
 # TRANSFORMS
 #
-##
+###
+
+###
+#
+# sort
+#
+###
 
 x=$(echo "3 1 2" | ./num sort all) &&
-    assert_eq "1 2 3" "$x" "sort"
+    assert_eq "1 2 3" "$x" "sort, with row"
+
+x=$(echo "3\n1\n2\n" | ./num sort all) &&
+    assert_eq "1 2 3" "$x" "sort, with col"
 
 ############################################################################
 #
 # MAPS
 #
-##
+###
+
+###
+#
+# absolute-value
+#
+###
 
 x=$(echo "1 2 3" | ./num absolute-value all) &&
-    assert_eq "1 2 3" "$x" "absolute-value"
+    assert_eq "1 2 3" "$x" "absolute-value, with row, with all positive"
+
+x=$(echo "1\n2\n3\n" | ./num absolute-value all) &&
+    assert_eq "1 2 3" "$x" "absolute-value, with col, with all positive"
 
 x=$(echo "-1 -2 -3" | ./num absolute-value all) &&
-    assert_eq "1 2 3" "$x" "absolute-value"
+    assert_eq "1 2 3" "$x" "absolute-value, with row, with all negative"
+
+x=$(echo "-1\n-2\n-3\n" | ./num absolute-value all) &&
+    assert_eq "1 2 3" "$x" "absolute-value, with col, with all negative"
+
+###
+#
+# round
+#
+###
 
 x=$(echo "-1.9 1.9" | ./num round all) &&
-    assert_eq "-2 2" "$x" "round"
+    assert_eq "-2 2" "$x" "round, with row"
+
+x=$(echo "-1.9\n1.9\n" | ./num round all) &&
+    assert_eq "-2 2" "$x" "round, with col"
+
+###
+#
+# round-off
+#
+###
 
 x=$(echo "-1.9 1.9" | ./num round-off all) &&
-    assert_eq "-1 1" "$x" "round-off"
+    assert_eq "-1 1" "$x" "round-off, with row"
+
+x=$(echo "-1.9\n1.9\n" | ./num round-off all) &&
+    assert_eq "-1 1" "$x" "round-off, with col"
+
+###
+#
+# round-up
+#
+###
 
 x=$(echo "-1.9 1.9" | ./num round-up all) &&
-    assert_eq "-1 2" "$x" "round-up"
+    assert_eq "-1 2" "$x" "round-up, with row"
+
+x=$(echo "-1.9\n1.9\n" | ./num round-up all) &&
+    assert_eq "-1 2" "$x" "round-up, with col"
+
+###
+#
+# round-down
+#
+###
 
 x=$(echo "-1.9 1.9" | ./num round-down all) &&
-    assert_eq "-2 1" "$x" "round-down"
+    assert_eq "-2 1" "$x" "round-down, with row"
+
+x=$(echo "-1.9\n1.9\n" | ./num round-down all) &&
+    assert_eq "-2 1" "$x" "round-down, with col"
 
 ############################################################################
 #
 # BOOLEAN FUNCTIONS
 #
-##
+###
+
+###
+#
+# is-unique
+#
+###
 
 x=$(echo "1 2 3" | ./num is-unique) &&
-    assert_eq $TRUE   "$x" "is-unique"
+    assert_eq $TRUE "$x" "is-unique, with row, with unique"
+
+x=$(echo "1\n2\n3\n" | ./num is-unique) &&
+    assert_eq $TRUE "$x" "is-unique, with col, with unique"
 
 x=$(echo "1 2 2" | ./num is-unique) &&
-    assert_eq $FALSE  "$x" "is-unique"
+    assert_eq $FALSE  "$x" "is-unique, with row, with dup"
+
+x=$(echo "1\n2\n2\n" | ./num is-unique) &&
+    assert_eq $FALSE  "$x" "is-unique, with col, with dup"
+
+###
+#
+# is-ascending
+#
+###
 
 x=$(echo "1 2 3" | ./num is-ascending) &&
-    assert_eq $TRUE  "$x" "is-ascending with unique"
+    assert_eq $TRUE "$x" "is-ascending, with row, with ascending unique"
+
+x=$(echo "1\n2\n3\n" | ./num is-ascending) &&
+    assert_eq $TRUE "$x" "is-ascending, with col, with ascending unique"
 
 x=$(echo "2 2 2" | ./num is-ascending) &&
-    assert_eq $TRUE  "$x" "is-ascending with dup"
+    assert_eq $TRUE "$x" "is-ascending, with row, with dup"
+
+x=$(echo "2\n2\n2\n" | ./num is-ascending) &&
+    assert_eq $TRUE "$x" "is-ascending, with col, with dup"
 
 x=$(echo "3 2 1" | ./num is-ascending) &&
-    assert_eq $FALSE "$x" "is-ascending false"
+    assert_eq $FALSE "$x" "is-ascending, with row, with descending"
+
+x=$(echo "3\n2\n1\n" | ./num is-ascending) &&
+    assert_eq $FALSE "$x" "is-ascending, with col, with descending"
+
+###
+#
+# is-strictly-ascending)
+#
+###
 
 x=$(echo "1 2 3" | ./num is-strictly-ascending) &&
-    assert_eq $TRUE  "$x" "is-strictly-ascending with unique"
+    assert_eq $TRUE  "$x" "is-strictly-ascending, with row, with unique"
+
+x=$(echo "1\n2\n3\n" | ./num is-strictly-ascending) &&
+    assert_eq $TRUE  "$x" "is-strictly-ascending, with col, with unique"
 
 x=$(echo "2 2 2" | ./num is-strictly-ascending) &&
-    assert_eq $FALSE "$x" "is-strictly-ascending with dup"
+    assert_eq $FALSE "$x" "is-strictly-ascending, with row, with dup"
+
+x=$(echo "2\n2\n2\n" | ./num is-strictly-ascending) &&
+    assert_eq $FALSE "$x" "is-strictly-ascending, with col, with dup"
 
 x=$(echo "3 2 1" | ./num is-strictly-ascending) &&
-    assert_eq $FALSE "$x" "is-strictly-ascending false"
+    assert_eq $FALSE "$x" "is-strictly-ascending, with row, with descending"
 
-x=$(echo "1 2 3" | ./num is-descending) &&
-    assert_eq $FALSE "$x" "is-descending with unique"
+x=$(echo "3\n2\n1" | ./num is-strictly-ascending) &&
+    assert_eq $FALSE "$x" "is-strictly-ascending, with col, with descending"
 
-x=$(echo "2 2 2" | ./num is-descending) &&
-    assert_eq $TRUE  "$x" "is-descending with dup"
+###
+#
+# is-descending
+#
+###
 
 x=$(echo "3 2 1" | ./num is-descending) &&
-    assert_eq $TRUE  "$x" "is-descending false"
+    assert_eq $TRUE "$x" "is-descending, with row, with unique"
 
-x=$(echo "1 2 3" | ./num is-strictly-descending) &&
-    assert_eq $FALSE "$x" "is-strictly-descending with unique"
+x=$(echo "3\n2\n1\n" | ./num is-descending) &&
+    assert_eq $TRUE "$x" "is-descending, with col, with unique"
 
-x=$(echo "2 2 2" | ./num is-strictly-descending) &&
-    assert_eq $FALSE "$x" "is-strictly-descending with dup"
+x=$(echo "2 2 2" | ./num is-descending) &&
+    assert_eq $TRUE "$x" "is-descending, with row, with dup"
+
+x=$(echo "2\n2\n2\n" | ./num is-descending) &&
+    assert_eq $TRUE "$x" "is-descending, with col, with dup"
+
+x=$(echo "1 2 3" | ./num is-descending) &&
+    assert_eq $FALSE "$x" "is-descending, with row, with ascending"
+
+x=$(echo "1\n2\n3\n" | ./num is-descending) &&
+    assert_eq $FALSE "$x" "is-descending, with col, with ascending"
+
+###
+#
+# is-strictly-descending
+#
+###
 
 x=$(echo "3 2 1" | ./num is-strictly-descending) &&
-    assert_eq $TRUE  "$x" "is-strictly-descending false"
+    assert_eq $TRUE "$x" "is-strictly-descending, with row, with unique"
+
+x=$(echo "3\n2\n1\n" | ./num is-strictly-descending) &&
+    assert_eq $TRUE "$x" "is-strictly-descending, with col, with unique"
+
+x=$(echo "2 2 2" | ./num is-strictly-descending) &&
+    assert_eq $FALSE "$x" "is-strictly-descending, with row, with dup"
+
+x=$(echo "2\n2\n2\n" | ./num is-strictly-descending) &&
+    assert_eq $FALSE "$x" "is-strictly-descending, with col, with dup"
+
+x=$(echo "1 2 3" | ./num is-strictly-descending) &&
+    assert_eq $FALSE "$x" "is-strictly-descending, with row, with ascending"
+
+x=$(echo "1\n2\n3\n" | ./num is-strictly-descending) &&
+    assert_eq $FALSE "$x" "is-strictly-descending, with col, with ascending"
 
 ############################################################################
 #
 # SYSADMIN FUNCTIONS
 #
 ##
+
+###
+#
+# help, version, usage
+#
+###
 
 x=$(./num --help | head -1 | grep -o 'Num version') &&
     assert_eq "Num version" "$x" "--help"
