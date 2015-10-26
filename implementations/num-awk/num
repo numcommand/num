@@ -234,6 +234,30 @@ function mean_(  f) {
 
 ###
 #
+# Mean absolute deviation.
+#
+# The average distance between each value and the mean.
+#
+# Example:
+#
+#     1 2 4 => 1.11111
+#
+function mean_absolute_deviation(num, num_, options,  f, i, x) {
+    f="mean_absolute_deviation"
+    if (!(f in num_)) {
+        _mean = mean(num, num_, options)
+        for (i in num) x += abs(num[i] - _mean)
+        num_[f] = x / n(num, num_, options)
+    }
+    return num_[f]
+}
+
+function mean_absolute_deviation_(  f) {
+    function_metadata("mean_absolute_deviation", "mad", "Get the average distance between each value and the mean.")
+}
+
+###
+#
 # Meanest, i.e. the value closest to the mean.
 #
 # Example:
@@ -1643,6 +1667,7 @@ function init_global_fun_kind() {
     global_fun_kind["range"] = \
     global_fun_kind["sum"] = \
     global_fun_kind["mean"] = \
+    global_fun_kind["mean_absolute_deviation"] = \
     global_fun_kind["meanest"] = \
     global_fun_kind["median"] = \
     global_fun_kind["median_low"] = \
@@ -1753,6 +1778,7 @@ function function_metadata_loader() {
     range_()
     sum_()
     mean_()
+    mean_absolute_deviation_()
     meanest_()
     median_()
     median_low_()
@@ -1821,6 +1847,7 @@ function function_call(f, num, num_, options) {
     else if (f == "range") return range(num, num_, options)
     else if (f == "sum") return sum(num, num_, options)
     else if (f == "mean") return mean(num, num_, options)
+    else if (f == "mean_absolute_deviation") return mean_absolute_deviation(num, num_, options)
     else if (f == "meanest") return meanest(num, num_, options)
     else if (f == "median") return median(num, num_, options)
     else if (f == "median_low") return median_low(num, num_, options)

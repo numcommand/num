@@ -126,10 +126,22 @@ x=$(echo "1\n2\n4\n" | ./num sum) &&
 ###
 
 x=$(echo "1 2 4" | ./num mean) &&
-    assert_eq 2.33333 "$x" "mean ,with row"
+    assert_eq 2.33333 "$x" "mean, with row"
 
 x=$(echo "1\n2\n4\n" | ./num mean) &&
     assert_eq 2.33333 "$x" "mean, with col"
+
+###
+#
+# mean-aboslute-deviation
+#
+###
+
+x=$(echo "1 2 4" | ./num mean-aboslute-deviation) &&
+    assert_eq 1.11111 "$x" "mean-aboslute-deviation, with row"
+
+x=$(echo "1\n2\n4\n" | ./num mean-aboslute-deviation) &&
+    assert_eq 1.11111 "$x" "mean, with col"
 
 ###
 #

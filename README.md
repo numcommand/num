@@ -99,6 +99,9 @@ Statistics Functions:
   * mean, average, avg:
      The arithmetic mean a.ka. average.
 
+  * mean-absolute-deviation, mad:
+     The average distance between each value and the mean.
+
   * meanest:
       The value that is closest numerically to the mean.
 
