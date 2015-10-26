@@ -70,188 +70,188 @@ The roadmap includes a smoother safer installation process, using package manage
 
 Numbers Functions:
 
-  * all:
+  * all:<br>
       All the items.
 
-  * first:
+  * first:<br>
       The first item.
 
-  * last:
+  * last:<br>
       The last item.
 
-  * n, count, length, size:
+  * n, count, length, size:<br>
       The number of items.
 
-  * minimum, min:
+  * minimum, min:<br>
       The minimum value.
 
-  * maximum, max:
+  * maximum, max:<br>
       The maximum value.
 
-  * range, spread:
+  * range, spread:<br>
       The range, which is maximum - minimum.
 
-  * sum, total:
+  * sum, total:<br>
       The sum total of all the items.
 
 Statistics Functions:
 
-  * mean, average, avg:
+  * mean, average, avg:<br>
      The arithmetic mean a.ka. average.
 
-  * mean-absolute-deviation, mad:
+  * mean-absolute-deviation, mad:<br>
      The average distance between each value and the mean.
 
-  * meanest:
+  * meanest:<br>
       The value that is closest numerically to the mean.
 
-  * median, med:
+  * median, med:<br>
       The median.
 
-  * median-low, med-low:
+  * median-low, med-low:<br>
       The low median, i.e. lesser of two middle values.
 
-  * median-high, med-high:
+  * median-high, med-high:<br>
       The high median, i.e. greater of two middle values.
 
-  * mode:
+  * mode:<br>
       The mode, which may be multiple numbers or UNDEF. TODO.
 
-  * mode-low:
+  * mode-low:<br>
       The least value of the mode values or UNDEF. TODO.
 
-  * mode-high:
+  * mode-high:<br>
       The greatest value of the mode values or UNDEF. TODO.
 
-  * sum-of-squares, ss:
+  * sum-of-squares, ss:<br>
       The sum of squares (SS), a.k.a. sum of the squared deviation.
 
-  * sum-of-cubes:
+  * sum-of-cubes:<br>
       The sum of cubes, a.k.a. sum of the cubed deviation.
 
-  * variance, var:
+  * variance, var:<br>
       The variance. Use sample, not population.
 
-  * population-variance, p-variance, p-var:
+  * population-variance, p-variance, p-var:<br>
        The population variance.
 
-  * sample-variance, s-variance, s-var:
+  * sample-variance, s-variance, s-var:<br>
       The sample variance.
 
-  * standard-deviation, stdev, sd:
+  * standard-deviation, stdev, sd:<br>
       The standard deviation (SD). Use sample, not population.
 
-  * population-standard-deviation, p-stdev, p-sd:
+  * population-standard-deviation, p-stdev, p-sd:<br>
       The population standard deviation.
 
-  * sample-standard-deviation, s-stdev, s-sd:
+  * sample-standard-deviation, s-stdev, s-sd:<br>
       The sample standard deviation.
 
-  * coefficient-of-variance, covar, cv:
+  * coefficient-of-variance, covar, cv:<br>
       The coefficient of variance (CV). Use sample, not population.
 
-  * population-coefficient-of-variance, p-covar, p-cv:
+  * population-coefficient-of-variance, p-covar, p-cv:<br>
       The population coefficient of variance.
 
-  * sample-coefficient-of-variance, s-covar, s-cv:
+  * sample-coefficient-of-variance, s-covar, s-cv:<br>
       The sample coefficient of variance.
 
-  * second-moment-about-the-mean, second-moment:
+  * second-moment-about-the-mean, second-moment:<br>
      The second moment about the mean. Use sample, not population.
 
-  * population-second-moment-about-the-mean, p-second-moment:
+  * population-second-moment-about-the-mean, p-second-moment:<br>
       The population second moment about the mean.
 
-  * sample-second-moment-about-the-mean, s-second-moment:
+  * sample-second-moment-about-the-mean, s-second-moment:<br>
      The sample second moment about the mean.
 
-  * third-moment-about-the-mean, third-moment:
+  * third-moment-about-the-mean, third-moment:<br>
      The third moment about the mean. Use sample, not population.
 
-  * population-third-moment-about-the-mean, p-third-moment:
+  * population-third-moment-about-the-mean, p-third-moment:<br>
       The population third moment about the mean.
 
-  * sample-third-moment-about-the-mean, s-third-moment:
+  * sample-third-moment-about-the-mean, s-third-moment:<br>
      The sample third moment about the mean.
 
-  * skewness, skew:
+  * skewness, skew:<br>
       The skewness, e.g. the lack of symmetry. TODO.
 
-  * kurtosis, kurt:
+  * kurtosis, kurt:<br>
       The kurtosis, e.g. peakness or flatness. TODO.
 
-  * interquartile-range, iqr, midspread, middle-fifty:
+  * interquartile-range, iqr, midspread, middle-fifty:<br>
        The interquartile range, which is q3 - q1.
 
-  * quartile-0, q0:
+  * quartile-0, q0:<br>
       Quartile 0, a.k.a. minimum.
 
-  * quartile-1, q1:
+  * quartile-1, q1:<br>
       Quartile 1, a.k.a. lower quartile, 25th percentile.
 
-  * quartile-2, q2:
+  * quartile-2, q2:<br>
       Quartile 2, a.k.a. median, 50th percentile.
 
-  * quartile-3, q3:
+  * quartile-3, q3:<br>
       Quartile 3, a.k.a. upper quartile, 75th percentile.
 
-  * quartile-4, q4:
+  * quartile-4, q4:<br>
       Quartile 4, a.k.a. maximum.
 
-  * difference, diff:
+  * difference, diff:<br>
       The difference between each number and the next number. TODO.
 
 Transforms:
 
-  * sort:
+  * sort:<br>
       Sort the items in ascending order.
 
-  * unique:
+  * unique:<br>
       Keep unique values; omit the rest. TODO.
 
 Maps:
 
-  * round, integer:
-      Convert to nearest integer.
+  * round, integer:<br>
+      Convert to nearest integer.<br>
       Examples: 1.9 => 2. -1.9 => -2.
 
-  * round-off, truncate:
-      Convert to integer by omitting the fractional part.
+  * round-off, truncate:<br>
+      Convert to integer by omitting the fractional part.<br>
       Examples: 1.9 => 1. -1.9 => -1.
 
-  * round-up, ceiling:
-      Convert to integer by rounding up.
-      Examples: 1.9 => 2. -1.9 => -1.
+  * round-up, ceiling:<br>
+      Convert to integer by rounding up.<br>
+      Examples:<br> 1.9 => 2. -1.9 => -1.
 
-  * round-down, floor:
-      Convert to integer by rounding down.
+  * round-down, floor:<br>
+      Convert to integer by rounding down.<br>
       Examples: 1.9 => 1. -1.9 => -2.
 
-  * absolute-value, abs, magnitude:
+  * absolute-value, abs, magnitude:<br>
       Convert to absolute value a.k.a. magnitude, positive numbers.
       Examples: -1 => 1. 1 => 1.
 
 Queries that return TRUE (1) or FALSE (0):
 
-  * is-unique:
+  * is-unique:<br>
       Is each item unique?
 
-  * is-ascending, is-asc:
+  * is-ascending, is-asc:<br>
       Is the data ascending, i.e. each next number is greater or equal?
 
-  * is-strictly-ascending, is-strict-asc:
+  * is-strictly-ascending, is-strict-asc:<br>
       Is the data strictly ascending, i.e. each next number is greater?
 
-  * is-non-ascending, is-non-asc:
+  * is-non-ascending, is-non-asc:<br>
       Is the data non-ascending, i.e. some next number is lesser?
 
-  * is-descending, is-desc:
+  * is-descending, is-desc:<br>
      Is the data descending, i.e. each next number is lesser or equal?
 
-  * is-strictly-descending, is-strict-desc:
+  * is-strictly-descending, is-strict-desc:<br>
       Is the data strictly descending, i.e. each next number is lesser?
 
-  * is-non-descending, is-non-desc:
+  * is-non-descending, is-non-desc:<br>
       Is the data non-descending, i.e. some next number is greater?
 
 
