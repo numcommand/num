@@ -480,7 +480,7 @@ function population_variance(num, num_, options,  f) {
 }
 
 function population_variance_(  f) {
-    function_metadata("population_variance", "p_var", "Get the population variance.")
+    function_metadata("population_variance", "p_var population_second_moment_about_the_mean p_second_moment", "Get the population variance, a.k.a. sample second moment about the mean.")
 }
 
 ###
@@ -500,7 +500,7 @@ function sample_variance(num, num_, options,  f) {
 }
 
 function sample_variance_(  f) {
-    function_metadata("sample_variance", "s_var", "Get the sample variance.")
+    function_metadata("sample_variance", "s_var sample_second_moment_about_the_mean, s_second_moment", "Get the sample variance, a.k.a. sample second moment about the mean.")
 }
 
 ###
@@ -585,52 +585,6 @@ function sample_coefficient_of_variance_(  f) {
 
 ###
 #
-# Population second moment about the mean.
-#
-#   * Sum each value’s deviation from the mean cubed.
-#   * Divide by the number of items.
-#
-# Example:
-#
-#     TODO
-#
-function population_second_moment_about_the_mean(num, num_, options) {
-    f="population_second_moment_about_the_mean"
-    if (!(f in num_)) {
-        num_[f] = sum_of_squares(num, num_, options) / n(num, num_, options)
-    }
-    return num_[f]
-}
-
-function population_second_moment_about_the_mean_(  f) {
-    function_metadata("population_second_moment_about_the_mean", "population_second_moment p_second_moment", "Get the population second moment about the mean.")
-}
-
-###
-#
-# Sample second moment about the mean.
-#
-#   * Sum each value’s deviation from the mean cubed.
-#   * Divide by the number of items - 1.
-#
-# Example:
-#
-#     TODO
-#
-function sample_second_moment_about_the_mean(num, num_, options) {
-    f="sample_second_moment"
-    if (!(f in num_)) {
-        num_[f] = sum_of_squares(num, num_, options) / (n(num, num_, options) - 1)
-    }
-    return num_[f]
-}
-
-function sample_second_moment_about_the_mean_(  f) {
-    function_metadata("sample_second_moment_about_the_mean", "sample_second_moment s_second_momement", "Get the sample second moment about the mean.")
-}
-
-###
-#
 # Population third moment about the mean.
 #
 #   * Sum each value’s deviation from the mean cubed.
@@ -702,6 +656,12 @@ function skewness_(  f) {
 # Example:
 #
 #     TODO
+#
+# The kurtosis is also a nondimensional quantity. It measures the relative
+# peakness or flatness of a distribution, relative to a normal distribution.
+# A distribution with positive kurtosis (peakness) is termed leptokurtic.
+# A distribution with negative kurtosis (flatness) is termed platykurtic.
+# An in-between distribution is termed mesokurtic.
 #
 function kurtosis(num, num_, options,  f) {
     f="kurtosis"
@@ -1607,7 +1567,7 @@ function init_word_list() {
     # Convention: default is sample, not population.
     global_word_list["secondmomentaboutthemean"] = \
     global_word_list["secondmoment"] = \
-    "sample_second_moment_about_the_mean"
+    "sample_variance"
 
     # Convention: default is sample, not population.
     global_word_list["thirdmomentaboutthemean"] = \
@@ -1683,8 +1643,6 @@ function init_global_fun_kind() {
     global_fun_kind["sample_standard_deviation"] = \
     global_fun_kind["population_coefficient_of_variance"] = \
     global_fun_kind["sample_coefficient_of_variance"] = \
-    global_fun_kind["population_second_moment_about_the_mean"] = \
-    global_fun_kind["sample_secondmoment_about_the_mean"] = \
     global_fun_kind["population_third_moment_about_the_mean"] = \
     global_fun_kind["sample_third_moment_about_the_mean"] = \
     global_fun_kind["skewness"] = \
@@ -1794,8 +1752,6 @@ function function_metadata_loader() {
     sample_standard_deviation_()
     population_coefficient_of_variance_()
     sample_coefficient_of_variance_()
-    population_second_moment_about_the_mean_()
-    sample_second_moment_about_the_mean_()
     population_third_moment_about_the_mean_()
     sample_third_moment_about_the_mean_()
     skewness_()
@@ -1864,8 +1820,6 @@ function function_call(f, num, num_, options) {
     else if (f == "sample_standard_deviation") return sample_standard_deviation(num, num_, options)
     else if (f == "population_coefficient_of_variance") return population_coefficient_of_variance(num, num_, options)
     else if (f == "sample_coefficient_of_variance") return sample_coefficient_of_variance(num, num_, options)
-    else if (f == "population_second_moment_about_the_mean") return population_second_moment_about_the_mean(num, num_, options)
-    else if (f == "sample_second_moment_about_the_mean") return sample_second_moment_about_the_mean(num, num_, options)
     else if (f == "population_third_moment_about_the_mean") return population_third_moment_about_the_mean(num, num_, options)
     else if (f == "sample_third_moment_about_the_mean") return sample_third_moment_about_the_mean(num, num_, options)
     else if (f == "skewness") return skewness(num, num_, options)

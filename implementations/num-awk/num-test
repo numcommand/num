@@ -375,30 +375,6 @@ x=$(echo "1\n2\n4\n" | ./num sample-coefficient-of-variance) &&
 
 ###
 #
-# population-second-moment-about-the_mean
-#
-###
-
-x=$(echo "1 2 4" | ./num population-second-moment-about-the_mean) &&
-    assert_eq 1.55556 "$x" "population-second-moment-about-the-mean, with row"
-
-x=$(echo "1\n2\n4\n" | ./num population-second-moment-about-the_mean) &&
-    assert_eq 1.55556 "$x" "population-second-moment-about-the-mean, with col"
-
-###
-#
-# sample-second-moment-about-the_mean
-#
-###
-
-x=$(echo "1 2 4" | ./num sample-second-moment-about-the_mean) &&
-    assert_eq 2.33333 "$x" "sample-second-moment-about-the-mean, with row"
-
-x=$(echo "1\n2\n4\n" | ./num sample-second-moment-about-the_mean) &&
-    assert_eq 2.33333 "$x" "sample-second-moment-about-the-mean, with col"
-
-###
-#
 # population-third-moment-about-the_mean
 #
 ###

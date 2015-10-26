@@ -129,13 +129,13 @@ Statistics Functions:
   * sum-of-cubes:<br>
       The sum of cubes, a.k.a. sum of the cubed deviation.
 
-  * variance, var:<br>
+  * variance, var, second-moment-about-the-mean, second-moment:<br>
       The variance. Use sample, not population.
 
-  * population-variance, p-variance, p-var:<br>
+  * population-variance, p-variance, p-var, population-second-moment-about-the-mean, p-second-moment:<br>
        The population variance.
 
-  * sample-variance, s-variance, s-var:<br>
+  * sample-variance, s-variance, s-var, sample-second-moment-about-the-mean, s-second-moment:<br>
       The sample variance.
 
   * standard-deviation, stdev, sd:<br>
@@ -155,15 +155,6 @@ Statistics Functions:
 
   * sample-coefficient-of-variance, s-covar, s-cv:<br>
       The sample coefficient of variance.
-
-  * second-moment-about-the-mean, second-moment:<br>
-     The second moment about the mean. Use sample, not population.
-
-  * population-second-moment-about-the-mean, p-second-moment:<br>
-      The population second moment about the mean.
-
-  * sample-second-moment-about-the-mean, s-second-moment:<br>
-     The sample second moment about the mean.
 
   * third-moment-about-the-mean, third-moment:<br>
      The third moment about the mean. Use sample, not population.
