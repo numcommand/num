@@ -1,7 +1,8 @@
 #!/bin/sh
 set -euf
 
-##
+###
+#
 # Num: number utilties for mathematics and statistics.
 #
 # Syntax:
@@ -18,7 +19,8 @@ set -euf
 # Created: 2015-03-28
 # Updated: 2015-10-25
 # Version: 0.5.0
-##
+#
+###
 
 awk '
 
@@ -26,7 +28,7 @@ awk '
 #
 # Sysadmin
 #
-##
+###
 
 function help() {
     print "Num version 0.5.0."
@@ -44,8 +46,10 @@ function help() {
 #
 # Public Functions
 #
-##
+###
 
+###
+#
 # All items.
 #
 function all(num, num_, options,  f) {
@@ -60,6 +64,8 @@ function all_(  f) {
    function_metadata("all", "each", "Get all the items.")
 }
 
+###
+#
 # First item.
 #
 # Example:
@@ -78,6 +84,8 @@ function first_(  f) {
     function_metadata("first", "head", "Get the first item.")
 }
 
+###
+#
 # Last item.
 #
 # Example:
@@ -96,6 +104,8 @@ function last_(  f) {
     function_metadata("last", "tail", "Get the last item.")
 }
 
+###
+#
 # Number of items, a.k.a. count, length.
 #
 # Example:
@@ -114,6 +124,8 @@ function n_(  f) {
     function_metadata("n", "count length size", "Get the number of items, a.k.a. count, length, size.")
 }
 
+###
+#
 # Minimum value.
 #
 # Example:
@@ -132,6 +144,8 @@ function min_(  f) {
     function_metadata("min", "minimum least lowest", "Get the minimum value, a.k.a. least, lowest.")
 }
 
+###
+#
 # Maximum value.
 #
 # Example:
@@ -150,6 +164,8 @@ function max_(  f) {
     function_metadata("max", "maximum greatest highest", "Get the maximum value, a.k.a. greatest, highest.")
 }
 
+###
+#
 # Range, a.k.a. spread.
 #
 # Example:
@@ -168,6 +184,8 @@ function range_(  f) {
     function_metadata("range", "breadth spread", "Get the range, a.k.a. breadth, spread.")
 }
 
+###
+#
 # Sum, a.k.a. total.
 #
 # Example:
@@ -190,6 +208,8 @@ function sum_(  f) {
     function_metadata("sum", "total", "Get the sum.")
 }
 
+###
+#
 # Mean, a.k.a. arithmetic mean, average.
 #
 # Example:
@@ -212,6 +232,8 @@ function mean_(  f) {
     function_metadata("mean", "average avg", "Get the mean, a.k.a artihmetic mean, average.")
 }
 
+###
+#
 # Meanest, i.e. the value closest to the mean.
 #
 # Example:
@@ -230,6 +252,8 @@ function meanest_(  f) {
     function_metadata("meanest", "", "Get the meanest, i.e. value closest to the mean.")
 }
 
+###
+#
 # Median.
 #
 # Example:
@@ -257,6 +281,8 @@ function median_(  f) {
     function_metadata("median", "med", "Get the median.")
 }
 
+###
+#
 # Median-low: get the lesser median.
 #
 # Example:
@@ -276,6 +302,8 @@ function median_low_(  f) {
     function_metadata("median_low", "med_low", "Get the median that is lower a.k.a. lesser.")
 }
 
+###
+#
 # Median-high: get the greater median.
 #
 # Example:
@@ -295,6 +323,8 @@ function median_high_(  f) {
   function_metadata("median_high", "med_high", "Get the median that is higher a.k.a. greater.")
 }
 
+###
+#
 # Mode: get the mode, which may be a number, or list, or UNDEF.
 #
 # TODO: IMPLEMENT
@@ -317,6 +347,8 @@ function mode_(  f) {
     function_metadata("mode", "", "Get the mode, which may be a value, or list, or UNDEF.")
 }
 
+###
+#
 # Mode-low: get the first mode, if any, or UNDEF.
 #
 # TODO: IMPLEMENT
@@ -339,6 +371,8 @@ function mode_low_(  f) {
     function_metadata("mode_low", "", "Get the first mode, if any, or UNDEF.")
 }
 
+###
+#
 # Mode-high: get the last mode, if any, or UNDEF.
 #
 # TODO: IMPLEMENT
@@ -361,6 +395,8 @@ function mode_high_(  f) {
     function_metadata("mode_high", "", "Get the last mode, if any, or UNDEF.")
 }
 
+###
+#
 # Sum of Squares, a.k.a. the sum of the squared deviations, a.k.a. SS.
 #
 # Example:
@@ -381,6 +417,8 @@ function sum_of_squares_(  f) {
     function_metadata("sum_of_squares", "sum_squares ss", "Get the sum of squares, a.k.a. sum of the squared deviation, a.k.a. SS.")
 }
 
+###
+#
 # Sum of Cubes, a.k.a. sum of the cubed deviations.
 #
 # Example:
@@ -401,6 +439,8 @@ function sum_of_cubes_(  f) {
     function_metadata("sum_of_cubes", "sum_cubes", "Get the  sum of cubes, a.k.a. sum of the cubed deviations.")
 }
 
+###
+#
 # Population Variance.
 #
 # Example:
@@ -419,6 +459,8 @@ function population_variance_(  f) {
     function_metadata("population_variance", "p_var", "Get the population variance.")
 }
 
+###
+#
 # Sample Variance.
 #
 # Example:
@@ -437,6 +479,8 @@ function sample_variance_(  f) {
     function_metadata("sample_variance", "s_var", "Get the sample variance.")
 }
 
+###
+#
 # Population Standard Deviation.
 #
 # Example:
@@ -455,6 +499,8 @@ function population_standard_deviation_(  f) {
     function_metadata("population_standard_deviation", "p_st_dev p_s_d", "Get the population standard deviation.")
 }
 
+###
+#
 # Sample Standard Deviation.
 #
 # Example:
@@ -473,6 +519,8 @@ function sample_standard_deviation_(  f) {
     function_metadata("sample_standard_deviation", "s_st_dev s_s_d", "Get the sample standard deviation")
 }
 
+###
+#
 # Population Coefficient of Variance.
 #
 # Example:
@@ -491,6 +539,8 @@ function population_coefficient_of_variance_(  f) {
     function_metadata("population_coefficient_of_variance", "p_co_var p_c_v", "Get the population coefficient of variance.")
 }
 
+###
+#
 # Sample Coefficient of Variance.
 #
 # Example:
@@ -509,6 +559,8 @@ function sample_coefficient_of_variance_(  f) {
     function_metadata("sample_coefficient_of_variance", "s_co_var s_c_v", "Get the sample coefficient of variance")
 }
 
+###
+#
 # Population second moment about the mean.
 #
 #   * Sum each value’s deviation from the mean cubed.
@@ -530,6 +582,8 @@ function population_second_moment_about_the_mean_(  f) {
     function_metadata("population_second_moment_about_the_mean", "population_second_moment p_second_moment", "Get the population second moment about the mean.")
 }
 
+###
+#
 # Sample second moment about the mean.
 #
 #   * Sum each value’s deviation from the mean cubed.
@@ -551,6 +605,8 @@ function sample_second_moment_about_the_mean_(  f) {
     function_metadata("sample_second_moment_about_the_mean", "sample_second_moment s_second_momement", "Get the sample second moment about the mean.")
 }
 
+###
+#
 # Population third moment about the mean.
 #
 #   * Sum each value’s deviation from the mean cubed.
@@ -572,6 +628,8 @@ function population_third_moment_about_the_mean_(  f) {
     function_metadata("population_third_moment_about_the_mean", "population_third_moment p_third_moment", "Get the population third moment about the mean.")
 }
 
+###
+#
 # Sample third moment about the mean.
 #
 #   * Sum each value’s deviation from the mean cubed.
@@ -593,6 +651,8 @@ function sample_third_moment_about_the_mean_(  f) {
     function_metadata("sample_third_moment_about_the_mean", "sample_third_moment s_third_moment", "Get the sample third moment about the mean.")
 }
 
+###
+#
 # Skewness
 #
 # Example:
@@ -611,6 +671,8 @@ function skewness_(  f) {
     function_metadata("skewness", "skew", "Get the skewness.")
 }
 
+###
+#
 # Kurtosis
 #
 # Example:
@@ -629,6 +691,8 @@ function kurtosis_(  f) {
     function_metadata("kurtosis", "kurt", "Get the kurtosis.")
 }
 
+###
+#
 # Interquartile Range, a.k.a. IQR.
 #
 # Example:
@@ -667,6 +731,8 @@ function interquartile_range_(  f) {
     function_metadata("interquartile_range", "i_q_r mid_spread middle_fifty", "Get the interquartile range, a.k.a. IQR.")
 }
 
+###
+#
 # Quartile 0, a.k.a. Q0, 0th percentile, minimum.
 #
 # Example:
@@ -685,6 +751,8 @@ function quartile_0_(  f) {
     function_metadata("quartile_0", "q_0 0_percent", "Get the quartile 0, a.k.a. Q0, 0th percentile, minimum.")
 }
 
+###
+#
 # Quartile 1, a.k.a. Q1, 25th percentile, lower quartile.
 #
 # Example:
@@ -719,6 +787,8 @@ function quartile_1_(  f) {
     function_metadata("quartile_1", "q_1 25_percent", "Get the quartile 1, a.k.a. Q1, 25th percentile, lower quartile.")
 }
 
+###
+#
 # Quartile 2, a.k.a. Q2, 50th percentile, median.
 #
 # Example:
@@ -737,6 +807,8 @@ function quartile_2_(  f) {
     function_metadata("quartile_2", "q_2 50_percent", "Get the quartile 2, a.k.a. Q2, 50th percentile, median.")
 }
 
+###
+#
 # Quartile 3, a.k.a. Q3, 75th percentile, upper quartile.
 #
 # Example:
@@ -771,6 +843,8 @@ function quartile_3_(  f) {
     function_metadata("quartile_3", "q_3 75_percent", "Get the quartile 3, a.k.a. Q3, 75th percentile, upper quartile.")
 }
 
+###
+#
 # Quartile 4, a.k.a. Q4, 100th percentile, maximum.
 #
 # Example:
@@ -793,8 +867,10 @@ function quartile_4_(  f) {
 #
 # TRANSFORM FUNCTIONS
 #
-##
+###
 
+###
+#
 # Sort in place.
 #
 # Example:
@@ -824,8 +900,10 @@ function sort_(  f) {
 #
 # MAPS
 #
-##
+###
 
+###
+#
 # Map: absolute value.
 #
 # Example:
@@ -846,6 +924,8 @@ function map_absolute_value_(  f) {
     function_metadata("map_absolute_value", "absolute_value abs", "Map using absolute value.")
 }
 
+###
+#
 # Map: round, a.k.a. nearest integer.
 #
 # Example:
@@ -868,6 +948,8 @@ function map_round_(  f) {
     function_metadata("map_round", "round nearest_integer n_int", "Map using round, a.k.a. nearest integer.")
 }
 
+###
+#
 # Map: round off, a.k.a. truncate.
 #
 # Example:
@@ -889,6 +971,8 @@ function map_round_off_(  f) {
     function_metadata("map_round_off", "round_off truncate", "Map using round off, a.k.a. truncate.")
 }
 
+###
+#
 # Map: round up, a.k.a. ceiling.
 #
 # Example:
@@ -910,6 +994,8 @@ function map_round_up_(  f) {
     function_metadata("map_round_up", "round_up ceiling", "Map using round up, a.k.a. ceiling.")
 }
 
+###
+#
 # Map: round down, a.k.a. floor.
 #
 # Example:
@@ -935,8 +1021,10 @@ function map_round_down_(  f) {
 #
 # MATH FUNCTIONS
 #
-##
+###
 
+###
+#
 # Absolute value.
 #
 # Examples:
@@ -948,6 +1036,8 @@ function abs(x) {
     if (x >= 0) { return x } else { return -x }
 }
 
+###
+#
 # Truncate a.k.a. round.
 #
 # Examples:
@@ -959,6 +1049,8 @@ function round(x) {
     return (x >= 0) ? int(x + 0.5) : int(x - 0.5)
 }
 
+###
+#
 # Truncate a.k.a. round off.
 #
 # Examples:
@@ -970,6 +1062,8 @@ function truncate(x) {
     return int(x)
 }
 
+###
+#
 # Ceiling a.k.a. round up.
 #
 # Examples:
@@ -982,6 +1076,8 @@ function ceiling(x,  y) {
     return (x == y) ? x : (x >= 0) ? y + 1 : y
 }
 
+###
+#
 # Floor a.k.a. round down.
 #
 # Examples:
@@ -998,8 +1094,10 @@ function floor(x,  y) {
 #
 # BOOLEAN FUNCTIONS
 #
-##
+###
 
+###
+#
 # Is the list all unique items?
 #
 # Examples:
@@ -1029,6 +1127,8 @@ function is_unique_(  f) {
     function_metadata("is_unique", "", "Is the list all unique items?")
 }
 
+###
+#
 # Is the list sorted in ascending order?
 #
 # Examples:
@@ -1071,6 +1171,8 @@ function is_ascending_(  f) {
     function_metadata("is_ascending", "is_asc", "Is the list sorted in ascending order?")
 }
 
+###
+#
 # Is the list sorted in strictly ascending order?
 #
 # Examples:
@@ -1110,6 +1212,8 @@ function is_strictly_ascending_(  f) {
     function_metadata("is_strictly_ascending", "is_strict_asc", "Is the list sorted in strictly ascending order?")
 }
 
+###
+#
 # Is the list sorted in descending order?
 #
 # Examples:
@@ -1152,6 +1256,8 @@ function is_descending_(  f) {
     function_metadata("is_descending", "is_desc", "Is the list sorted in descending order?")
 }
 
+###
+#
 # Is the list sorted in strictly descending order?
 #
 # Examples:
@@ -1195,8 +1301,10 @@ function is_strictly_descending_(  f) {
 #
 # ARRAY UTILITIES
 #
-##
+###
 
+###
+#
 # Dump an array, suitable for debugging.
 #
 # Example:
@@ -1210,6 +1318,8 @@ function arr_dump(arr) {
     for (k in arr) print k, arr[k]
 }
 
+###
+#
 # Is an array empty?
 #
 # Example:
@@ -1224,6 +1334,8 @@ function arr_empty(arr,  i) {
     return 1
 }
 
+###
+#
 # Length of an array.
 #
 # Example:
@@ -1237,6 +1349,8 @@ function arr_length(arr,  i, k) {
     return k
 }
 
+###
+#
 # Return the first item in an array.
 #
 # Example:
@@ -1257,6 +1371,8 @@ function arr_last(arr) {
     return arr[arr_length(arr)]
 }
 
+###
+#
 # Get the minimum value, by doing a scan of the entire array.
 #
 # Example:
@@ -1269,6 +1385,8 @@ function arr_min_via_scan(arr,  _min) {
     return _min
 }
 
+###
+#
 # Get the maxmimum value, by doing a scan of the entire array.
 #
 # Example:
@@ -1281,6 +1399,8 @@ function arr_max_via_scan(arr,  _max) {
     return _max
 }
 
+###
+#
 # Get the closest value to a target value in an array.
 #
 # Example:
@@ -1306,6 +1426,8 @@ function arr_closest_value(arr, target,  _closest_value, _closest_delta, _delta,
     return _closest_value
 }
 
+###
+#
 # Join an array to a string, with a separator string.
 #
 # Example:
@@ -1319,6 +1441,8 @@ function arr_join(arr, sep,  s, i) {
     return s
 }
 
+###
+#
 # Push one item on an array stack, by using the `length` function.
 #
 # Example:
@@ -1331,6 +1455,8 @@ function arr_push(arr, item) {
     arr[length(arr)+1] = item
 }
 
+###
+#
 # Calculate the median of a sorted array,
 # with slice start and slice stop.
 #
@@ -1373,6 +1499,8 @@ function err(msg) {
 #
 ##
 
+###
+#
 # Initialize everything.
 #
 # This calls various `init_*` functions.
@@ -1385,6 +1513,8 @@ function init() {
     function_metadata_loader()
 }
 
+###
+#
 # Initialize constants that we use; these are essentially like defines.
 #
 function init_constants() {
@@ -1396,7 +1526,7 @@ function init_constants() {
     ERROR = "ERROR"
     NAN = "NAN"
 
-    # Function kinds: a way to track what a function will do.
+    # Function kinds: a way to track what a function will do. #TODO
     FUN_KIND_CALC = "CALC"
     FUN_KIND_SORT = "SORT"
     FUN_KIND_MAP  = "MAP"
@@ -1404,12 +1534,16 @@ function init_constants() {
     FUN_KIND_CONF = "CONF"
 }
 
+##
+#
 # Initialize the configuration dictionary.
 #
 function init_conf() {
     split("", global_conf)
 }
 
+###
+#
 # Initialize the word argv list.
 #
 # The word argv list holds the argv items that this script cares about.
@@ -1419,6 +1553,8 @@ function init_word_argv() {
     split("", global_word_argv)
 }
 
+###
+#
 # Initialize the global word list lookup array.
 #
 # This is to recognize words that a user types on the command line.
@@ -1491,6 +1627,11 @@ function init_word_list() {
 
 }
 
+###
+#
+# Initialize the global functions kind lookup.
+#
+#
 function init_global_fun_kind() {
 
     global_fun_kind["all"] = \
@@ -1562,8 +1703,10 @@ function init_global_fun_kind() {
 #
 # FUNCTION CONNECTIONS
 #
-##
+###
 
+###
+#
 # Initialize function metadata for a given function.
 #
 # Example:
@@ -1596,6 +1739,8 @@ function function_metadata(name, aliases, help) {
     }
 }
 
+###
+#
 # Initialize function metadata for all our functions.
 #
 function function_metadata_loader() {
@@ -1648,6 +1793,8 @@ function function_metadata_loader() {
     is_strictly_descending_()
 }
 
+###
+#
 # Function call: given a function name, call its function.
 #
 # Example:
@@ -1660,8 +1807,8 @@ function function_metadata_loader() {
 # Note: this implementation uses if..else instead of
 # any switch or case, because we want POSIX usability.
 #
-# TODO: Research if it is possible to also support
-# gawk indirect functions, such as @f(...).
+# TODO: Research if it is possible to simultaneously support
+# gawk indirect functions, to do a function call via `@f()`.
 #
 function function_call(f, num, num_, options) {
     if (f == "") return ("")
@@ -1719,8 +1866,10 @@ function function_call(f, num, num_, options) {
 #
 # WORDS
 #
-##
+###
 
+###
+#
 # Given a word, set a configuration setting.
 #
 # Call this function for each option word a.k.a. flag,
@@ -1738,6 +1887,8 @@ function word_to_conf(word, conf) {
         return ""
 }
 
+###
+#
 # Given a word, return the result as a string.
 #
 # Example:
@@ -1752,6 +1903,8 @@ function word_to_s(num, num_, options, word,  s) {
     return s
 }
 
+###
+#
 # Given words, return the result as a string.
 #
 # Example:
@@ -1778,6 +1931,8 @@ function words_to_s(num, num_, options, words, sep,  word, i, s, s2) {
 #
 ##
 
+###
+#
 # Start receiving input.
 #
 # Ready the global number array for new input and new metadata.
@@ -1787,6 +1942,8 @@ function start_input() {
     clear_num_metadata()
 }
 
+###
+#
 # Stop receiving input.
 #
 # Set any work in progress here.
@@ -1803,6 +1960,8 @@ function clear_num_metadata() {
     split("", global_num_)
 }
 
+###
+#
 # Parse word inputs by iterating: whenever a word is recognized,
 # then move it from the word inputs array to the word matches array.
 #
@@ -1825,12 +1984,16 @@ function parse_words(word_inputs, word_outputs, word_list,  i, word) {
     }
 }
 
+###
+#
 # Parse the command line ARGV inputs to recognized word outputs.
 #
 function parse_argv() {
     parse_words(ARGV, global_word_argv, global_word_list)
 }
 
+###
+#
 # Print output to the screen.
 #
 # This is the core output function, and the only one that
