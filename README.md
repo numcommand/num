@@ -1,6 +1,6 @@
 # Num: number utilties for mathematics
 
-<b>[Kickstarter project link](https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics) -- please spread the word -- donate $1 if you can</b>
+<b>[Kickstarter project link](https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics) -- please spread the word -- [donate $1 if you can](https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics)</b>
 
 Num is a command line tool that provides number utilities for mathematics.
 
