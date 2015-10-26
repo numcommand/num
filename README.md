@@ -224,8 +224,8 @@ Maps:
       Convert to integer by rounding down.
       Examples: 1.9 => 1. -1.9 => -2.
 
-  * absolute-value, abs:
-      Convert to absolute value a.k.a. positive.
+  * absolute-value, abs, magnitude:
+      Convert to absolute value a.k.a. magnitude, positive numbers.
       Examples: -1 => 1. 1 => 1.
 
 Queries that return TRUE (1) or FALSE (0):

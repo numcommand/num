@@ -423,7 +423,7 @@ function sum_of_squares_(  f) {
 #
 # Example:
 #
-#     1 2 4 => 4.66667
+#     1 2 4 => 2.22222
 #
 function sum_of_cubes(num, num_, options,  f, _sum, _mean, i) {
     f="sum_of_cubes"
@@ -921,7 +921,7 @@ function map_absolute_value(num, num_, options,  f) {
 }
 
 function map_absolute_value_(  f) {
-    function_metadata("map_absolute_value", "absolute_value abs", "Map using absolute value.")
+    function_metadata("map_absolute_value", "absolute_value abs magnitude", "Map using absolute value.")
 }
 
 ###
@@ -1829,6 +1829,7 @@ function function_call(f, num, num_, options) {
     else if (f == "mode_low") return mode_low(num, num_, options)
     else if (f == "mode_high") return mode_high(num, num_, options)
     else if (f == "sum_of_squares") return sum_of_squares(num, num_, options)
+    else if (f == "sum_of_cubes") return sum_of_cubes(num, num_, options)
     else if (f == "population_variance") return population_variance(num, num_, options)
     else if (f == "sample_variance") return sample_variance(num, num_, options)
     else if (f == "population_standard_deviation") return population_standard_deviation(num, num_, options)
