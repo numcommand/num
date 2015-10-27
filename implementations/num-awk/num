@@ -421,46 +421,50 @@ function mode_high_(  f) {
 
 ###
 #
-# Sum of Squares, a.k.a. the sum of the squared deviations, a.k.a. SS.
+# Sum of Squares, a.k.a. the sum of each deviation to the power of 2, a.k.a. SS.
 #
 # Example:
 #
 #     1 2 4 => 4.66667
 #
-function sum_of_squares(num, num_, options,  f, _sum, _mean, i) {
-    f="sum_of_squares"
-    if (!(f in num_)) {
-        _mean = mean(num, num_, options)
-        for (i in num) _sum += (num[i] - _mean) ^ 2
-        num_[f] = _sum
-    }
-    return num_[f]
+function sum_of_squares(num, num_, options) {
+    return sum_of_mean_deviation_exp(num, num_, options, 2)
 }
 
 function sum_of_squares_(  f) {
-    function_metadata("sum_of_squares", "sum_squares ss", "Get the sum of squares, a.k.a. sum of the squared deviation, a.k.a. SS.")
+    function_metadata("sum_of_squares", "sum_squares ss", "Get the sum of squares, a.k.a. sum of each mean deviation to the power of 2.")
 }
 
 ###
 #
-# Sum of Cubes, a.k.a. sum of the cubed deviations.
+# Sum of Cubes, a.k.a. sum of each mean deviation to the power of 3.
 #
 # Example:
 #
 #     1 2 4 => 2.22222
 #
 function sum_of_cubes(num, num_, options,  f, _sum, _mean, i) {
-    f="sum_of_cubes"
-    if (!(f in num_)) {
-        _mean = mean(num, num_, options)
-        for (i in num) _sum += (num[i] - _mean) ^ 3
-        num_[f] = _sum
-    }
-    return num_[f]
+    return sum_of_mean_deviation_exp(num, num_, options, 3)
 }
 
 function sum_of_cubes_(  f) {
-    function_metadata("sum_of_cubes", "sum_cubes", "Get the  sum of cubes, a.k.a. sum of the cubed deviations.")
+    function_metadata("sum_of_cubes", "sum_cubes", "Get the  sum of cubes, a.k.a. sum of each mean deviation to the power of 3.")
+}
+
+###
+#
+# Sum of Quads, a.k.a. sum of each mean deviation to the power of 4.
+#
+# Example:
+#
+#     1 2 4 => TODO
+#
+function sum_of_quads(num, num_, options,  f, _sum, _mean, i) {
+    return sum_of_mean_deviation_exp(num, num_, options, 4)
+}
+
+function sum_of_quads_(  f) {
+    function_metadata("sum_of_quads", "sum_quads", "Get the  sum of quads, a.k.a. sum of each mean deviation to the power of 4.")
 }
 
 ###
@@ -472,11 +476,7 @@ function sum_of_cubes_(  f) {
 #     1 2 4 => 1.55556
 #
 function population_variance(num, num_, options,  f) {
-    f="population_variance"
-    if (!(f in num_)) {
-        num_[f] = sum_of_squares(num, num_, options) / n(num, num_, options)
-    }
-    return num_[f]
+    return sum_of_mean_deviation_exp_over_x(num, num_, options, 2, n(num, num_, options))
 }
 
 function population_variance_(  f) {
@@ -492,11 +492,7 @@ function population_variance_(  f) {
 #     1 2 4 => 2.33333
 #
 function sample_variance(num, num_, options,  f) {
-    f="sample_variance"
-    if (!(f in num_)) {
-        num_[f] = sum_of_squares(num, num_, options) / (n(num, num_, options) - 1)
-    }
-    return num_[f]
+    return sum_of_mean_deviation_exp_over_x(num, num_, options, 2, n(num, num_, options) - 1)
 }
 
 function sample_variance_(  f) {
@@ -585,94 +581,107 @@ function sample_coefficient_of_variance_(  f) {
 
 ###
 #
-# Population third moment about the mean.
+# Population skewness
 #
-#   * Sum each value’s deviation from the mean cubed.
+# Example:
+#
+#     1 2 4 => 0.740741
+#
+# A.k.a. population third moment about the mean.
+#
+# If skewness is greater than zero, the distribution is positively skewed.
+# If it is less than zero, it is negatively skewed.
+# Zero means it is symmetric.
+#
+# Calculation:
+#
+#   * Sum each value deviation from the mean cubed.
 #   * Divide by the number of items.
 #
-# Example:
-#
-#     TODO
-#
-function population_third_moment_about_the_mean(num, num_, options) {
-    f="population_third_moment_about_the_mean"
-    if (!(f in num_)) {
-        num_[f] = sum_of_cubes(num, num_, options) / n(num, num_, options)
-    }
-    return num_[f]
+function population_skewness(num, num_, options,  f) {
+    return sum_of_mean_deviation_exp_over_x(num, num_, options, 3, n(num, num_, options))
 }
 
-function population_third_moment_about_the_mean_(  f) {
-    function_metadata("population_third_moment_about_the_mean", "population_third_moment p_third_moment", "Get the population third moment about the mean.")
+function population_skewness_(  f) {
+    function_metadata("population_skewness", "p_skew population_third_moment_about_the_mean population_third_moment p_third_moment", "Get the population skewness, a.k.a. population third moment about the mean.")
 }
 
 ###
 #
-# Sample third moment about the mean.
+# Sample skewness
 #
-#   * Sum each value’s deviation from the mean cubed.
+# Example:
+#
+#     TODO
+#
+# A.k.a. population third moment about the mean.
+#
+# Calculation:
+#
+#   * Sum each value deviation from the mean cubed.
 #   * Divide by the number of items - 1.
 #
-# Example:
-#
-#     TODO
-#
-function sample_third_moment_about_the_mean(num, num_, options) {
-    f="sample_third_moment_about_the_mean"
-    if (!(f in num_)) {
-        num_[f] = sum_of_cubes(num, num_, options) / (n(num, num_, options) - 1)
-    }
-    return num_[f]
+function sample_skewness(num, num_, options,  f) {
+    return sum_of_mean_deviation_exp_over_x(num, num_, options, 3, (n(num, num_, options) - 1))
 }
 
-function sample_third_moment_about_the_mean_(  f) {
-    function_metadata("sample_third_moment_about_the_mean", "sample_third_moment s_third_moment", "Get the sample third moment about the mean.")
+function sample_skewness_(  f) {
+    function_metadata("sample_skewness", "s_skew sample_third_moment_about_the_mean sample_third_moment s_third_moment", "Get the sample skewness, a.k.a. sample third moment about the mean.")
 }
 
 ###
 #
-# Skewness
+# Population kurtosis
 #
 # Example:
 #
 #     TODO
 #
-function skewness(num, num_, options,  f) {
-    f="skewness"
-    if (!(f in num_)) {
-        num_[f] = TODO
-    }
-    return num_[f]
+# A.k.a. population fourth moment about the mean.
+#
+# Calculation:
+#
+#   * Sum each value’s deviation from the mean quaded.
+#   * Divide by the number of items .
+#
+# The kurtosis formula measures the degree of peak.
+#
+# Kurtosis equals 3 for a normal distribution.
+#
+# Kurtosis is also a nondimensional quantity.
+#
+# Kurtosis measures the relative peakness or flatness of a distribution,
+# relative to a normal distribution.
+#
+#   * Positive kurtosis (peakness) is termed leptokurtic.
+#   * Negative kurtosis (flatness) is termed platykurtic.
+#   * In-between is termed mesokurtic.
+#
+function population_kurtosis(num, num_, options,  f) {
+    return sum_of_mean_deviation_exp_over_x(num, num_, options, 4, n(num, num_, options))
 }
 
-function skewness_(  f) {
-    function_metadata("skewness", "skew", "Get the skewness.")
+function population_kurtosis_(  f) {
+    function_metadata("population_kurtosis", "p_kurt population_fourth_moment_about_the_mean population_fourth_moment p_fourth_moment", "Get the kurtosis, a.k.a. population fourth moment about the mean.")
 }
+
 
 ###
 #
-# Kurtosis
+# Sample kurtosis
 #
 # Example:
 #
 #     TODO
 #
-# The kurtosis is also a nondimensional quantity. It measures the relative
-# peakness or flatness of a distribution, relative to a normal distribution.
-# A distribution with positive kurtosis (peakness) is termed leptokurtic.
-# A distribution with negative kurtosis (flatness) is termed platykurtic.
-# An in-between distribution is termed mesokurtic.
+# A.k.a. population fourth moment about the mean.
 #
-function kurtosis(num, num_, options,  f) {
-    f="kurtosis"
-    if (!(f in num_)) {
-        num_[f] = TODO
-    }
-    return num_[f]
+function sample_kurtosis(num, num_, options,  f) {
+    return sum_of_mean_deviation_exp_over_x(num, num_, options, 4, n(num, num_, options) - 1)
 }
 
-function kurtosis_(  f) {
-    function_metadata("kurtosis", "kurt", "Get the kurtosis.")
+function sample_kurtosis_(  f) {
+    function_metadata("sample_kurtosis", "s_kurt sample_fourth_moment_about_the_mean sample_fourth_moment s_fourth_moment", "Get the kurtosis, a.k.a. sample fourth moment about the mean.")
 }
 
 ###
@@ -1283,6 +1292,30 @@ function is_strictly_descending_(  f) {
 
 ############################################################################
 #
+# HELPERS
+#
+###
+
+function sum_of_mean_deviation_exp(num, num_, options, exponent,  f, i, _mean, _sum) {
+    f = "sum_of_mean_deviation_exp " exponent
+    if (!(f in num_)) {
+        _mean = mean(num, num_, options)
+        for (i in num) _sum += (num[i] - _mean) ^ exponent
+        num_[f] = _sum
+    }
+    return num_[f]
+}
+
+function sum_of_mean_deviation_exp_over_x(num, num_, options, exponent, x,  f) {
+    f = "sum_of_mean_deviation_exp_over_x " exponent " " x
+    if (!(f in num_)) {
+        num_[f] = sum_of_mean_deviation_exp(num, num_, options, exponent) / x
+    }
+   return num_[f]
+}
+
+############################################################################
+#
 # ARRAY UTILITIES
 #
 ###
@@ -1572,7 +1605,12 @@ function init_word_list() {
     # Convention: default is sample, not population.
     global_word_list["thirdmomentaboutthemean"] = \
     global_word_list["thirdmoment"] = \
-    "sample_third_moment_about_the_mean"
+    "sample_skewness"
+
+    # Convention: default is sample, not population.
+    global_word_list["fourthmomentaboutthemean"] = \
+    global_word_list["fourthmoment"] = \
+    "sample_kurtosis"
 
     ### Booleans
 
@@ -1643,10 +1681,10 @@ function init_global_fun_kind() {
     global_fun_kind["sample_standard_deviation"] = \
     global_fun_kind["population_coefficient_of_variance"] = \
     global_fun_kind["sample_coefficient_of_variance"] = \
-    global_fun_kind["population_third_moment_about_the_mean"] = \
-    global_fun_kind["sample_third_moment_about_the_mean"] = \
-    global_fun_kind["skewness"] = \
-    global_fun_kind["kurtosis"] = \
+    global_fun_kind["population_skewness"] = \
+    global_fun_kind["sample_skewness"] = \
+    global_fun_kind["population_kurtosis"] = \
+    global_fun_kind["sample_kurtosis"] = \
     global_fun_kind["interquartile_range"] = \
     global_fun_kind["quartile_0"] = \
     global_fun_kind["quartile_1"] = \
@@ -1746,16 +1784,17 @@ function function_metadata_loader() {
     mode_high_()
     sum_of_squares_()
     sum_of_cubes_()
+    sum_of_quads_()
     population_variance_()
     sample_variance_()
     population_standard_deviation_()
     sample_standard_deviation_()
     population_coefficient_of_variance_()
     sample_coefficient_of_variance_()
-    population_third_moment_about_the_mean_()
-    sample_third_moment_about_the_mean_()
-    skewness_()
-    kurtosis_()
+    population_skewness_()
+    sample_skewness_()
+    population_kurtosis_()
+    sample_kurtosis_()
     interquartile_range_()
     quartile_0_()
     quartile_1_()
@@ -1813,6 +1852,7 @@ function function_call(f, num, num_, options) {
     else if (f == "mode_high") return mode_high(num, num_, options)
     else if (f == "sum_of_squares") return sum_of_squares(num, num_, options)
     else if (f == "sum_of_cubes") return sum_of_cubes(num, num_, options)
+    else if (f == "sum_of_quads") return sum_of_quads(num, num_, options)
     else if (f == "population_variance") return population_variance(num, num_, options)
     else if (f == "sample_variance") return sample_variance(num, num_, options)
     else if (f == "population_standard_deviation") return population_standard_deviation(num, num_, options)
@@ -1820,10 +1860,10 @@ function function_call(f, num, num_, options) {
     else if (f == "sample_standard_deviation") return sample_standard_deviation(num, num_, options)
     else if (f == "population_coefficient_of_variance") return population_coefficient_of_variance(num, num_, options)
     else if (f == "sample_coefficient_of_variance") return sample_coefficient_of_variance(num, num_, options)
-    else if (f == "population_third_moment_about_the_mean") return population_third_moment_about_the_mean(num, num_, options)
-    else if (f == "sample_third_moment_about_the_mean") return sample_third_moment_about_the_mean(num, num_, options)
-    else if (f == "skewness") return skewness(num, num_, options)
-    else if (f == "kurtosis") return kurtosis(num, num_, options)
+    else if (f == "population_skewness") return population_skewness(num, num_, options)
+    else if (f == "sample_skewness") return sample_skewness(num, num_, options)
+    else if (f == "population_kurtosis") return population_kurtosis(num, num_, options)
+    else if (f == "sample_kurtosis") return sample_kurtosis(num, num_, options)
     else if (f == "interquartile_range") return interquartile_range(num, num_, options)
     else if (f == "quartile_0") return quartile_0(num, num_, options)
     else if (f == "quartile_1") return quartile_1(num, num_, options)

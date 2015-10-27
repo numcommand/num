@@ -94,16 +94,18 @@ Numbers Functions:
   * sum, total:<br>
       The sum total of all the items.
 
-Statistics Functions:
+Mean:
 
   * mean, average, avg:<br>
-     The arithmetic mean a.ka. average.
+      The arithmetic mean a.ka. average.
 
   * mean-absolute-deviation, mad:<br>
-     The average distance between each value and the mean.
+      The average distance between each value and the mean.
 
   * meanest:<br>
       The value that is closest numerically to the mean.
+
+Median:
 
   * median, med:<br>
       The median.
@@ -113,6 +115,8 @@ Statistics Functions:
 
   * median-high, med-high:<br>
       The high median, i.e. greater of two middle values.
+
+Mode:
 
   * mode:<br>
       The mode, which may be multiple numbers or UNDEF. TODO.
@@ -129,6 +133,8 @@ Statistics Functions:
   * sum-of-cubes:<br>
       The sum of cubes, a.k.a. sum of the cubed deviation.
 
+Variance:
+
   * variance, var, second-moment-about-the-mean, second-moment:<br>
       The variance. Use sample, not population.
 
@@ -137,6 +143,8 @@ Statistics Functions:
 
   * sample-variance, s-variance, s-var, sample-second-moment-about-the-mean, s-second-moment:<br>
       The sample variance.
+
+Standard Deviation:
 
   * standard-deviation, stdev, sd:<br>
       The standard deviation (SD). Use sample, not population.
@@ -153,26 +161,32 @@ Statistics Functions:
   * population-coefficient-of-variance, p-covar, p-cv:<br>
       The population coefficient of variance.
 
-  * sample-coefficient-of-variance, s-covar, s-cv:<br>
-      The sample coefficient of variance.
+Skewness:
 
-  * third-moment-about-the-mean, third-moment:<br>
-     The third moment about the mean. Use sample, not population.
+  * skewness, skew, third-moment-about-the-mean, third-moment:<br>
+      The skewness, e.g. the lack of symmetry. Use sample, not population.
 
-  * population-third-moment-about-the-mean, p-third-moment:<br>
-      The population third moment about the mean.
+  * population-skewness, p-skew, population-third-moment-about-the-mean, population-third-moment:<br>
+      The population skewness, e.g. the lack of symmetry.
 
-  * sample-third-moment-about-the-mean, s-third-moment:<br>
-     The sample third moment about the mean.
+  * sample-skewness, s-skew, sample-third-moment-about-the-mean, sample-third-moment:<br>
+      The sample skewness, e.g. the lack of symmetry.
 
-  * skewness, skew:<br>
-      The skewness, e.g. the lack of symmetry. TODO.
+Kurtosis:
 
-  * kurtosis, kurt:<br>
-      The kurtosis, e.g. peakness or flatness. TODO.
+  * kurtosis, kurt, fourth-moment-about-the-mean, fourth-moment:<br>
+      The kurtosis, e.g. peakness or flatness. Use sample, not population.
+
+  * population-kurtosis, p-kurt, population-fourth-moment-about-the-mean, population-fourth-moment:<br>
+      The population kurtosis, e.g. peakness or flatness.
+
+  * sample-kurtosis, s-kurt, sample-fourth-moment-about-the-mean, sample-fourth-moment:<br>
+      The sample kurtosis, e.g. peakness or flatness.
+
+Quartiles:
 
   * interquartile-range, iqr, midspread, middle-fifty:<br>
-       The interquartile range, which is q3 - q1.
+      The interquartile range, which is q3 - q1.
 
   * quartile-0, q0:<br>
       Quartile 0, a.k.a. minimum.
@@ -200,7 +214,7 @@ Transforms:
   * unique:<br>
       Keep unique values; omit the rest. TODO.
 
-Maps:
+Rounding:
 
   * round, integer:<br>
       Convert to nearest integer.<br>
@@ -217,6 +231,8 @@ Maps:
   * round-down, floor:<br>
       Convert to integer by rounding down.<br>
       Examples: 1.9 => 1. -1.9 => -2.
+
+Mappings:
 
   * absolute-value, abs, magnitude:<br>
       Convert to absolute value a.k.a. magnitude, positive numbers.
