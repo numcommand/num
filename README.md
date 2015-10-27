@@ -143,10 +143,10 @@ Variance:
   * variance, var:<br>
       The variance. Use sample, not population.
 
-  * population-variance, p-variance, p-var, population-second-moment-about-the-mean, p-second-moment:<br>
+  * population-variance, p-variance, p-var:<br>
       The population variance.
 
-  * sample-variance, s-variance, s-var, sample-second-moment-about-the-mean, s-second-moment:<br>
+  * sample-variance, s-variance, s-var:<br>
       The sample variance.
 
 Standard Deviation:
@@ -171,21 +171,21 @@ Skewness:
   * skewness, skew, third-moment-about-the-mean, third-moment:<br>
       The skewness, e.g. the lack of symmetry. Use sample, not population.
 
-  * population-skewness, p-skew, population-third-moment-about-the-mean, population-third-moment:<br>
+  * population-skewness, p-skew:<br>
       The population skewness, e.g. the lack of symmetry.
 
-  * sample-skewness, s-skew, sample-third-moment-about-the-mean, sample-third-moment:<br>
+  * sample-skewness, s-skew:<br>
       The sample skewness, e.g. the lack of symmetry.
 
 Kurtosis:
 
-  * kurtosis, kurt, fourth-moment-about-the-mean, fourth-moment:<br>
+  * kurtosis, kurt:<br>
       The kurtosis, e.g. peakness or flatness. Use sample, not population.
 
-  * population-kurtosis, p-kurt, population-fourth-moment-about-the-mean, population-fourth-moment:<br>
+  * population-kurtosis, p-kurt:<br>
       The population kurtosis, e.g. peakness or flatness.
 
-  * sample-kurtosis, s-kurt, sample-fourth-moment-about-the-mean, sample-fourth-moment:<br>
+  * sample-kurtosis, s-kurt:<br>
       The sample kurtosis, e.g. peakness or flatness.
 
 Moments About The Mean:
