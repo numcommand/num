@@ -344,6 +344,6 @@ License: GPL, BSD, MIT
 
 Created: 2015-03-28
 
-Updated: 2015-10-24
+Updated: 2015-10-26
 
-Version: 0.4.0
+Version: 0.6.0
