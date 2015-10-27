@@ -237,9 +237,6 @@ Quartiles:
   * quartile-4, q4:<br>
       Quartile 4, a.k.a. maximum.
 
-  * difference, diff:<br>
-      The difference between each number and the next number. TODO.
-
 Transforms:
 
   * sort:<br>
@@ -247,6 +244,9 @@ Transforms:
 
   * unique:<br>
       Keep unique values; omit the rest. TODO.
+
+  * difference, diff:<br>
+      The difference between each number and the next number. TODO.
 
 Rounding:
 
