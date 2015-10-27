@@ -127,11 +127,16 @@ Mode:
   * mode-high:<br>
       The greatest value of the mode values or UNDEF. TODO.
 
+Sum Of:
+
   * sum-of-squares, ss:<br>
-      The sum of squares (SS), a.k.a. sum of the squared deviation.
+      The sum of squares, a.k.a. sum of each mean deviation to the power of 2.
 
   * sum-of-cubes:<br>
-      The sum of cubes, a.k.a. sum of the cubed deviation.
+      The sum of cubes, a.k.a. sum of each mean deviation to the power of 3.
+
+  * sum-of-quadss:<br>
+      The sum of quads, a.k.a. sum of each mean deviation to the power of 4.
 
 Variance:
 
