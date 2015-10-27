@@ -168,7 +168,7 @@ Standard Deviation:
 
 Skewness:
 
-  * skewness, skew, third-moment-about-the-mean, third-moment:<br>
+  * skewness, skew:<br>
       The skewness, e.g. the lack of symmetry. Use sample, not population.
 
   * population-skewness, p-skew:<br>
@@ -206,7 +206,7 @@ Moments About The Mean:
       The population third moment about the mean, a.k.a. population skewness.
 
   * sample-third-moment-about-the-mean, s-third-moment:<br>
-      The sample third moment about the mean, a.k.a. sample kurtosis.
+      The sample third moment about the mean, a.k.a. sample skewness.
 
   * fourth-moment-about-the-mean, fourth-moment:<br>
       The fourth moment about the mean, a.k.a. kurtosis. Use sample, not population.
