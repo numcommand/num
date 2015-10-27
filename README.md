@@ -140,11 +140,11 @@ Sum Of:
 
 Variance:
 
-  * variance, var, second-moment-about-the-mean, second-moment:<br>
+  * variance, var:<br>
       The variance. Use sample, not population.
 
   * population-variance, p-variance, p-var, population-second-moment-about-the-mean, p-second-moment:<br>
-       The population variance.
+      The population variance.
 
   * sample-variance, s-variance, s-var, sample-second-moment-about-the-mean, s-second-moment:<br>
       The sample variance.
@@ -187,6 +187,35 @@ Kurtosis:
 
   * sample-kurtosis, s-kurt, sample-fourth-moment-about-the-mean, sample-fourth-moment:<br>
       The sample kurtosis, e.g. peakness or flatness.
+
+Moments About The Mean:
+
+  * second-moment-about-the-mean, second-moment:<br>
+      The second moment about the mean, a.k.a. variance. Use sample, not population.
+
+  * population-second-moment-about-the-mean, p-second-moment:<br>
+      The population second moment about the mean, a.k.a. population variance.
+
+  * sample-second-moment-about-the-mean, s-second-moment:<br>
+      The sample second moment about the mean, a.k.a. sample variance.
+
+  * third-moment-about-the-mean, third-moment:<br>
+      The third moment about the mean, a.k.a. skewness. Use sample, not population.
+
+  * population-third-moment-about-the-mean, p-third-moment:<br>
+      The population third moment about the mean, a.k.a. population skewness.
+
+  * sample-third-moment-about-the-mean, s-third-moment:<br>
+      The sample third moment about the mean, a.k.a. sample kurtosis.
+
+  * fourth-moment-about-the-mean, fourth-moment:<br>
+      The fourth moment about the mean, a.k.a. kurtosis. Use sample, not population.
+
+  * population-fourth-moment-about-the-mean, p-fourth-moment:<br>
+      The population fourth moment about the mean, a.k.a. population kurtosis.
+
+  * sample-fourth-moment-about-the-mean, s-fourth-moment:<br>
+      The sample fourth moment about the mean, a.k.a. sample kurtosis.
 
 Quartiles:
 
