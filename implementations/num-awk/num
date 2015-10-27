@@ -475,7 +475,7 @@ function sum_of_quads_(  f) {
 #
 #     1 2 4 => 1.55556
 #
-function population_variance(num, num_, options,  f) {
+function population_variance(num, num_, options) {
     return sum_of_mean_deviation_exp_over_x(num, num_, options, 2, n(num, num_, options))
 }
 
@@ -1059,7 +1059,7 @@ function abs(x) {
 
 ###
 #
-# Truncate a.k.a. round.
+# Round to the nearest integer.
 #
 # Examples:
 #
