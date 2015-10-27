@@ -504,6 +504,18 @@ x=$(echo "-1\n-2\n-3\n" | ./num absolute-value all) &&
 
 ###
 #
+# normalize
+#
+###
+
+x=$(echo "1 2 4" | ./num normalize all) &&
+    assert_eq "0 0.333333 1" "$x" "normalize, with row"
+
+x=$(echo "1\n2\n4\n" | ./num normalize all) &&
+    assert_eq "0 0.333333 1" "$x" "normalize, with col"
+
+###
+#
 # round
 #
 ###

@@ -239,6 +239,9 @@ Quartiles:
 
 Transforms:
 
+  * normalize:<br>
+      Normalize each value to be within 0-1.
+
   * sort:<br>
       Sort the items in ascending order.
 

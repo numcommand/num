@@ -919,6 +919,34 @@ function map_absolute_value_(  f) {
 
 ###
 #
+# Map: normalize each value to be 0 to 1.
+#
+# Example:
+#
+#     1 2 4 => 0 0.33333 1
+#
+function map_normalize(num, num_, options,  f, min_old, max_old, min_new, max_new, multiply, add) {
+    f="map_normalize"
+    if (num_[f] != TRUE) {
+        min_old = min(num, num_, options)
+        max_old = max(num, num_, options)
+        min_new = 0
+        max_new = 1
+        multiply = (max_new - min_new) / (max_old - min_old)
+        add = min_new - (multiply * min_old)
+        for (i in num) num[i] = num[i] * multiply + add
+        split("",num_)
+        num_[f] = TRUE
+    }
+    return ""
+}
+
+function map_normalize_(  f) {
+    function_metadata("map_normalize", "normalize norm", "Map using normalize.")
+}
+
+###
+#
 # Map: round, a.k.a. nearest integer.
 #
 # Example:
@@ -1700,6 +1728,7 @@ function init_global_fun_kind() {
     FUN_KIND_SORT
 
     global_fun_kind["map_absolute_value"] = \
+    global_fun_kind["map_normalize"] = \
     global_fun_kind["map_round"] = \
     global_fun_kind["map_round_off"] = \
     global_fun_kind["map_round_up"] = \
@@ -1803,6 +1832,7 @@ function function_metadata_loader() {
     quartile_4_()
     sort_()
     map_absolute_value_()
+    map_normalize_()
     map_round_()
     map_round_off_()
     map_round_up_()
@@ -1872,6 +1902,7 @@ function function_call(f, num, num_, options) {
     else if (f == "quartile_4") return quartile_4(num, num_, options)
     else if (f == "sort") return sort(num, num_, options)
     else if (f == "map_absolute_value") return map_absolute_value(num, num_, options)
+    else if (f == "map_normalize") return map_normalize(num, num_, options)
     else if (f == "map_round") return map_round(num, num_, options)
     else if (f == "map_round_off") return map_round_off(num, num_, options)
     else if (f == "map_round_up") return map_round_up(num, num_, options)
