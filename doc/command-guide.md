@@ -1,17 +1,36 @@
-# Command guide for related Unix tools
+# Command guide for related tools
+
+This page describes some related tools that are available on most Unix-like systems.
+
+### The `cat` command
+
+The `cat` command typically prints the contents of a file.
+
+Example to print a file of data then sum:
+
+    $ cat data.txt
+    1 2 3
+    4 5 6
+    7 8 9
+
+    $ cat data.txt | num sum
+    55
+
 
 ### The `awk` command
 
-Example to select a particular column:
+The `awk` command typically processes text, fields, records, and data.
 
-    $ cat example.txt
-    aa bb cc
-    dd ee ff
-    gg hh ii
-    $ cat example.txt | awk '{print $2}'
-    bb
-    ee
-    hh
+Example to select column 2 then sum:
+
+    $ awk '{print $2}' data.txt
+    2
+    5
+    8
+
+    $ awk '{print $2}' data.txt | num sum
+    15
+
 
 ### The `seq` command
 
@@ -24,6 +43,12 @@ Example:
     2
     3
 
+Example to sum:
+
+    $ seq 3 | num sum
+    6
+
+
 ### The `shuffle` command
 
 Shuffle a list, a.k.a. randomize the order of list items.
@@ -35,18 +60,19 @@ Example:
     1
     2
 
-Sample items by using the `-n` flag:
+Sample items from the list by using the `-n` flag:
 
     $ seq 10 | shuf -n 3
     7
     2
     5
 
+
 ### The `wc` command
 
-Word count. Typically counts lines, words, and characters.
+Word count, which typically counts lines, words, and characters.
 
 Example:
 
-    $ echo "aa bb cc" | wc
-    1 3 9
+    $ wc data.txt
+    3 9 15
