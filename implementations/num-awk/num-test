@@ -303,6 +303,14 @@ x=$(echo "1\n2\n4\n" | ./num sum-of-squares) &&
 
 ###
 #
+# sum-of-quads
+#
+###
+
+#TODO
+
+###
+#
 # population-variance
 #
 ###
