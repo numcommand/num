@@ -18,18 +18,22 @@ Examples:
     $ echo "1 2 4" | num min max median mean
     1 4 2 2.33333
 
-    $ echo "1 2 4" | num sum-of-squares standard-deviation
-    4.66667 1.24722
+    $ echo "1 2 4" | num variance skewness kurtosis
+    2.33333 1.11111 5.44444
 
-Help page:
+For newcomers:
 
   * [Examples](doc/examples.md)
   * [Thanks](doc/thanks.md)
+  * [Command guide for related tools](doc/command-guide.md)
   * [When to use Num vs. other tools](doc/when-to-use-num-vs-other-tools.md)
-  * [Command guide](doc/command-guide.md)
+
+For programmers:
+
   * [Programmers guide](doc/programmers-guide.md)
   * [Known issues](doc/known-issues.md)
   * [To do list, including ideas for future versions](doc/todo.md)
+  * [Library of awk functions](implementations/num-awk/lib)
 
 
 ## Install
@@ -53,11 +57,13 @@ If you use Mac OSX, then you also need to install GNU awk, such as:
 If you use BSD, Cygwin, or any other Unix-like system that lacks GNU awk,
 then here's how to [install `gawk`](https://www.gnu.org/software/gawk/manual/html_node/Quick-Installation.html)
 
-Caution: the project is new and is alpha quality, so give it a try, and don't use it for production until we have a 1.0 release in November.
+Notes:
 
-If you have any issues with installation, please contact us directly or create a GitHub issue.
+  * The project is new and is alpha quality, so give it a try, and don't use it for production until we have a 1.0 release in mid-November.
 
-The roadmap includes a smoother safer installation process, using package managers such as `apt`, `yum`, `brew`, etc. If you would like to help with these, please contact us directly or create a GitHub issue.
+  * If you have any issues with installation, please contact us directly, or create a GitHub issue.
+
+  * The roadmap includes a smoother safer installation process, using package managers such as `apt`, `yum`, `brew`, etc. If you would like to help with these, please contact us directly or create a GitHub issue.
 
 
 ## Options
