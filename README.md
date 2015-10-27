@@ -135,7 +135,7 @@ Sum Of:
   * sum-of-cubes:<br>
       The sum of cubes, a.k.a. sum of each mean deviation to the power of 3.
 
-  * sum-of-quadss:<br>
+  * sum-of-quads:<br>
       The sum of quads, a.k.a. sum of each mean deviation to the power of 4.
 
 Variance:
