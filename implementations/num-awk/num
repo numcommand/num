@@ -443,7 +443,7 @@ function sum_of_squares_(  f) {
 #
 #     1 2 4 => 2.22222
 #
-function sum_of_cubes(num, num_, options,  f, _sum, _mean, i) {
+function sum_of_cubes(num, num_, options) {
     return sum_of_mean_deviation_exp(num, num_, options, 3)
 }
 
@@ -459,7 +459,7 @@ function sum_of_cubes_(  f) {
 #
 #     1 2 4 => TODO
 #
-function sum_of_quads(num, num_, options,  f, _sum, _mean, i) {
+function sum_of_quads(num, num_, options) {
     return sum_of_mean_deviation_exp(num, num_, options, 4)
 }
 
