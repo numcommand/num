@@ -68,7 +68,7 @@ Notes:
 
 ## Options
 
-  * --help, --version, --usage:
+  * --help, --version, --usage:<br>
       Print help text, version number, usage link, and awk details.
 
 
