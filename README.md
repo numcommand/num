@@ -66,6 +66,51 @@ Notes:
   * The roadmap includes a smoother safer installation process, using package managers such as `apt`, `yum`, `brew`, etc. If you would like to help with these, please contact us directly or create a GitHub issue.
 
 
+## Input
+
+You can read standard input pipe:
+
+    $ echo "1 2 4" | num sum
+    7
+
+You can read files:
+
+    $ echo "1 2 4" > data.txt
+    $ num sum data.txt
+    7
+
+You can customize the input field separator (FS) and the input record separator (RS):
+
+    $ echo "1,2,3;4,5,6" | num sum FS=',' RS=';'
+    21
+
+
+## Output
+
+You can customize the output field separator (OFS):
+
+    $ echo "1 2 4" | num sum min max mean OFS=','
+    7,1,4,2.33333
+
+
+## Notation
+
+Command line options accept any mix of dashes, underscores, and case.
+
+For example these are all the same:
+
+    sum-of-squares  # dashes
+    sum_of_squares  # underscores
+    sumofsquares    # lower case
+    SumOfSquares    # mixed case
+    SUMOFSQUARES    # upper case
+
+If a value is unknown, or not a number, then it will print as "?". TODO.
+
+    $ echo "1 2 4" | num mode
+    ?
+
+
 ## Options
 
   * --help, --version, --usage:<br>
@@ -331,46 +376,6 @@ Queries that return TRUE (1) or FALSE (0):
 
   * is-non-descending, is-non-desc:<br>
       Is the data non-descending, i.e. some next number is greater?
-
-
-## Input/Output
-
-Input can use stdin or an input file:
-
-    $ echo "1 2 4" | num sum
-    7
-
-    $ echo "1 2 4" > data.txt
-    $ num sum data.txt
-    7
-
-Input can use an input field separator (FS) and/or input record separator (RS):
-
-    $ echo "1,2,3;4,5,6" | num sum FS=',' RS=';'
-    21
-
-Output can use an output field separator (OFS):
-
-    $ echo "1 2 4" | num sum min max mean OFS=','
-    7,1,4,2.33333
-
-
-## Notation
-
-Command line options accept any mix of dashes, underscores, and case.
-
-For example these are all the same:
-
-    sum-of-squares  # dashes
-    sum_of_squares  # underscores
-    sumofsquares    # lower case
-    SumOfSquares    # mixed case
-    SUMOFSQUARES    # upper case
-
-If a value is unknown, or not a number, then it will print as "?". TODO.
-
-    $ echo "1 2 4" | num mode
-    ?
 
 
 ## Project Tracking
