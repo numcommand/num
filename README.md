@@ -33,7 +33,7 @@ For programmers:
   * [Programmers guide](doc/programmers-guide.md)
   * [Known issues](doc/known-issues.md)
   * [To do list, including ideas for future versions](doc/todo.md)
-  * [Library of awk functions](implementations/num-awk/lib)
+  * [Library of awk functions](implementations/num-awk)
 
 
 ## Install
