@@ -68,7 +68,7 @@ Notes:
 
 ## Input
 
-You can read standard input pipe:
+You can read standard input:
 
     $ echo "1 2 4" | num sum
     7
