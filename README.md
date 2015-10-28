@@ -194,7 +194,7 @@ Kurtosis:
   * sample-kurtosis, s-kurt:<br>
       The sample kurtosis, e.g. peakness or flatness.
 
-Moments About The Mean:
+Second Moment About The Mean:
 
   * second-moment-about-the-mean, second-moment:<br>
       The second moment about the mean, a.k.a. variance. Use sample, not population.
@@ -205,6 +205,8 @@ Moments About The Mean:
   * sample-second-moment-about-the-mean, s-second-moment:<br>
       The sample second moment about the mean, a.k.a. sample variance.
 
+Third Moment About The Mean:
+
   * third-moment-about-the-mean, third-moment:<br>
       The third moment about the mean, a.k.a. skewness. Use sample, not population.
 
@@ -213,6 +215,8 @@ Moments About The Mean:
 
   * sample-third-moment-about-the-mean, s-third-moment:<br>
       The sample third moment about the mean, a.k.a. sample skewness.
+
+Fourth Moment About The Mean:
 
   * fourth-moment-about-the-mean, fourth-moment:<br>
       The fourth moment about the mean, a.k.a. kurtosis. Use sample, not population.
