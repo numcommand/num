@@ -299,7 +299,11 @@ x=$(echo "1\n2\n4\n" | ./num sum-of-squares) &&
 #
 ###
 
-#TODO
+x=$(echo "1 2 4" | ./num sum-of-cubes) &&
+    assert_eq 2.22222 "$x" "sum-of-cubes, with row"
+
+x=$(echo "1\n2\n4\n" | ./num sum-of-cubes) &&
+    assert_eq 2.22222 "$x" "sum-of-cubes, with col"
 
 ###
 #
@@ -307,7 +311,12 @@ x=$(echo "1\n2\n4\n" | ./num sum-of-squares) &&
 #
 ###
 
-#TODO
+x=$(echo "1 2 4" | ./num sum-of-quads) &&
+    assert_eq 10.8889 "$x" "sum-of-quads, with row"
+
+x=$(echo "1\n2\n4\n" | ./num sum-of-quads) &&
+    assert_eq 10.8889 "$x" "sum-of-quads, with col"
+
 
 ###
 #
