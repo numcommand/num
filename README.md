@@ -121,49 +121,49 @@ If a value is unknown, or not a number, then it will print as "?". TODO.
 
 Numbers Functions:
 
-  * all:<br>
+  * <b>all</b><br>
     All the items.
 
         echo "1 2 4" | num all
         1 2 4
 
-  * first:<br>
+  * <b>first</b><br>
     The first item.
 
         echo "1 2 4" | num first
         1
 
-  * last:<br>
+  * <b>last</b><br>
     The last item.
 
         echo "1 2 4" | num last
         4
 
-  * n, count, length, size:<br>
+  * <b>n, count, length, size</b><br>
     The number of items.
 
         echo "1 2 4" | num n
         3
 
-  * minimum, min:<br>
+  * <b>minimum, min</b><br>
     The minimum value.
 
         echo "1 2 4" | num minimum
         1
 
-  * maximum, max:<br>
+  * <b>maximum, max</b><br>
     The maximum value.
 
         echo "1 2 4" | num maximum
         1
 
-  * range, spread:<br>
+  * <b>range, spread</b><br>
     The range, which is maximum - minimum.
 
         echo "1 2 4" | num range
         3
 
-  * sum, total:<br>
+  * <b>sum, total</b><br>
     The sum total of all the items.
 
         echo "1 2 4" | num sum
@@ -171,210 +171,210 @@ Numbers Functions:
 
 Mean:
 
-  * mean, average, avg:<br>
+  * <b>mean, average, avg</b><br>
       The arithmetic mean a.ka. average.
 
-  * mean-absolute-deviation, mad:<br>
+  * <b>mean-absolute-deviation, mad</b><br>
       The average distance between each value and the mean.
 
-  * meanest:<br>
+  * <b>meanest</b><br>
       The value that is closest numerically to the mean.
 
 Median:
 
-  * median, med:<br>
+  * <b>median, med</b><br>
       The median.
 
-  * median-low, med-low:<br>
+  * <b>median-low, med-low</b><br>
       The low median, i.e. lesser of two middle values.
 
-  * median-high, med-high:<br>
+  * <b>median-high, med-high</b><br>
       The high median, i.e. greater of two middle values.
 
 Mode:
 
-  * mode:<br>
+  * <b>mode</b><br>
       The mode, which may be multiple numbers or UNDEF. TODO.
 
-  * mode-low:<br>
+  * <b>mode-low</b><br>
       The least value of the mode values or UNDEF. TODO.
 
-  * mode-high:<br>
+  * <b>mode-high</b><br>
       The greatest value of the mode values or UNDEF. TODO.
 
 Sum Of:
 
-  * sum-of-squares, ss:<br>
+  * <b>sum-of-squares, ss</b><br>
       The sum of squares, a.k.a. sum of each mean deviation to the power of 2.
 
-  * sum-of-cubes:<br>
+  * <b>sum-of-cubes</b><br>
       The sum of cubes, a.k.a. sum of each mean deviation to the power of 3.
 
-  * sum-of-quads:<br>
+  * <b>sum-of-quads</b><br>
       The sum of quads, a.k.a. sum of each mean deviation to the power of 4.
 
 Variance:
 
-  * variance, var:<br>
+  * <b>variance, var</b><br>
       The variance. Use sample, not population.
 
-  * population-variance, p-variance, p-var:<br>
+  * <b>population-variance, p-variance, p-var</b><br>
       The population variance.
 
-  * sample-variance, s-variance, s-var:<br>
+  * <b>sample-variance, s-variance, s-var</b><br>
       The sample variance.
 
 Standard Deviation:
 
-  * standard-deviation, stdev, sd:<br>
+  * <b>standard-deviation, stdev, sd</b><br>
       The standard deviation (SD). Use sample, not population.
 
-  * population-standard-deviation, p-stdev, p-sd:<br>
+  * <b>population-standard-deviation, p-stdev, p-sd</b><br>
       The population standard deviation.
 
-  * sample-standard-deviation, s-stdev, s-sd:<br>
+  * <b>sample-standard-deviation, s-stdev, s-sd</b><br>
       The sample standard deviation.
 
-  * coefficient-of-variance, covar, cv:<br>
+  * <b>coefficient-of-variance, covar, cv</b><br>
       The coefficient of variance (CV). Use sample, not population.
 
-  * population-coefficient-of-variance, p-covar, p-cv:<br>
+  * <b>population-coefficient-of-variance, p-covar, p-cv</b><br>
       The population coefficient of variance.
 
 Skewness:
 
-  * skewness, skew:<br>
+  * <b>skewness, skew</b><br>
       The skewness, e.g. the lack of symmetry. Use sample, not population.
 
-  * population-skewness, p-skew:<br>
+  * <b>population-skewness, p-skew</b><br>
       The population skewness, e.g. the lack of symmetry.
 
-  * sample-skewness, s-skew:<br>
+  * <b>sample-skewness, s-skew</b><br>
       The sample skewness, e.g. the lack of symmetry.
 
 Kurtosis:
 
-  * kurtosis, kurt:<br>
+  * <b>kurtosis, kurt</b><br>
       The kurtosis, e.g. peakness or flatness. Use sample, not population.
 
-  * population-kurtosis, p-kurt:<br>
+  * <b>population-kurtosis, p-kurt</b><br>
       The population kurtosis, e.g. peakness or flatness.
 
-  * sample-kurtosis, s-kurt:<br>
+  * <b>sample-kurtosis, s-kurt</b><br>
       The sample kurtosis, e.g. peakness or flatness.
 
 Second Moment About The Mean:
 
-  * second-moment-about-the-mean, second-moment:<br>
+  * <b>second-moment-about-the-mean, second-moment</b><br>
       The second moment about the mean, a.k.a. variance. Use sample, not population.
 
-  * population-second-moment-about-the-mean, p-second-moment:<br>
+  * <b>population-second-moment-about-the-mean, p-second-moment</b><br>
       The population second moment about the mean, a.k.a. population variance.
 
-  * sample-second-moment-about-the-mean, s-second-moment:<br>
+  * <b>sample-second-moment-about-the-mean, s-second-moment</b><br>
       The sample second moment about the mean, a.k.a. sample variance.
 
 Third Moment About The Mean:
 
-  * third-moment-about-the-mean, third-moment:<br>
+  * <b>third-moment-about-the-mean, third-moment</b><br>
       The third moment about the mean, a.k.a. skewness. Use sample, not population.
 
-  * population-third-moment-about-the-mean, p-third-moment:<br>
+  * <b>population-third-moment-about-the-mean, p-third-moment</b><br>
       The population third moment about the mean, a.k.a. population skewness.
 
-  * sample-third-moment-about-the-mean, s-third-moment:<br>
+  * <b>sample-third-moment-about-the-mean, s-third-moment</b><br>
       The sample third moment about the mean, a.k.a. sample skewness.
 
 Fourth Moment About The Mean:
 
-  * fourth-moment-about-the-mean, fourth-moment:<br>
+  * <b>fourth-moment-about-the-mean, fourth-moment</b><br>
       The fourth moment about the mean, a.k.a. kurtosis. Use sample, not population.
 
-  * population-fourth-moment-about-the-mean, p-fourth-moment:<br>
+  * <b>population-fourth-moment-about-the-mean, p-fourth-moment</b><br>
       The population fourth moment about the mean, a.k.a. population kurtosis.
 
-  * sample-fourth-moment-about-the-mean, s-fourth-moment:<br>
+  * <b>sample-fourth-moment-about-the-mean, s-fourth-moment</b><br>
       The sample fourth moment about the mean, a.k.a. sample kurtosis.
 
 Quartiles:
 
-  * interquartile-range, iqr, midspread, middle-fifty:<br>
+  * <b>interquartile-range, iqr, midspread, middle-fifty</b><br>
       The interquartile range, which is q3 - q1.
 
-  * quartile-0, q0:<br>
+  * <b>quartile-0, q0</b><br>
       Quartile 0, a.k.a. minimum.
 
-  * quartile-1, q1:<br>
+  * <b>quartile-1, q1</b><br>
       Quartile 1, a.k.a. lower quartile, 25th percentile.
 
-  * quartile-2, q2:<br>
+  * <b>quartile-2, q2</b><br>
       Quartile 2, a.k.a. median, 50th percentile.
 
-  * quartile-3, q3:<br>
+  * <b>quartile-3, q3</b><br>
       Quartile 3, a.k.a. upper quartile, 75th percentile.
 
-  * quartile-4, q4:<br>
+  * <b>quartile-4, q4</b><br>
       Quartile 4, a.k.a. maximum.
 
 Transforms:
 
-  * normalize:<br>
+  * <b>normalize</b><br>
       Normalize each value to be within 0-1.
 
-  * sort:<br>
+  * <b>sort</b><br>
       Sort the items in ascending order.
 
-  * unique:<br>
+  * <b>unique</b><br>
       Keep unique values; omit the rest. TODO.
 
-  * difference, diff:<br>
+  * <b>difference, diff</b><br>
       The difference between each number and the next number. TODO.
 
 Rounding:
 
-  * round, integer:<br>
+  * <b>round, integer</b><br>
       Convert to nearest integer.<br>
       Examples: 1.9 => 2. -1.9 => -2.
 
-  * round-off, truncate:<br>
+  * <b>round-off, truncate</b><br>
       Convert to integer by omitting the fractional part.<br>
       Examples: 1.9 => 1. -1.9 => -1.
 
-  * round-up, ceiling:<br>
+  * <b>round-up, ceiling</b><br>
       Convert to integer by rounding up.<br>
       Examples: 1.9 => 2. -1.9 => -1.
 
-  * round-down, floor:<br>
+  * <b>round-down, floor</b><br>
       Convert to integer by rounding down.<br>
       Examples: 1.9 => 1. -1.9 => -2.
 
 Mappings:
 
-  * absolute-value, abs, magnitude:<br>
+  * <b>absolute-value, abs, magnitude</b><br>
       Convert to absolute value a.k.a. magnitude, positive numbers.
       Examples: -1 => 1. 1 => 1.
 
 Queries that return TRUE (1) or FALSE (0):
 
-  * is-unique:<br>
+  * <b>is-unique</b><br>
       Is each item unique?
 
-  * is-ascending, is-asc:<br>
+  * <b>is-ascending, is-asc</b><br>
       Is the data ascending, i.e. each next number is greater or equal?
 
-  * is-strictly-ascending, is-strict-asc:<br>
+  * <b>is-strictly-ascending, is-strict-asc</b><br>
       Is the data strictly ascending, i.e. each next number is greater?
 
-  * is-non-ascending, is-non-asc:<br>
+  * <b>is-non-ascending, is-non-asc</b><br>
       Is the data non-ascending, i.e. some next number is lesser?
 
-  * is-descending, is-desc:<br>
+  * <b>is-descending, is-desc</b><br>
      Is the data descending, i.e. each next number is lesser or equal?
 
-  * is-strictly-descending, is-strict-desc:<br>
+  * <b>is-strictly-descending, is-strict-desc</b><br>
       Is the data strictly descending, i.e. each next number is lesser?
 
-  * is-non-descending, is-non-desc:<br>
+  * <b>is-non-descending, is-non-desc</b><br>
       Is the data non-descending, i.e. some next number is greater?
 
 
