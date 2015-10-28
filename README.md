@@ -90,31 +90,37 @@ Numbers Functions:
 
   * last:<br>
     The last item.
+
         echo "1 2 4" | num last
         4
 
   * n, count, length, size:<br>
     The number of items.
+
         echo "1 2 4" | num n
         3
 
   * minimum, min:<br>
     The minimum value.
+
         echo "1 2 4" | num minimum
         1
 
   * maximum, max:<br>
     The maximum value.
+
         echo "1 2 4" | num maximum
         1
 
   * range, spread:<br>
     The range, which is maximum - minimum.
+
         echo "1 2 4" | num range
         3
 
   * sum, total:<br>
     The sum total of all the items.
+
         echo "1 2 4" | num sum
         7
 
