@@ -95,15 +95,15 @@ You can customize the output field separator (OFS):
 
 ## Notation
 
-Command line options accept any mix of dashes, underscores, and case.
+Command line options accept any mix of dashes, underscores, and capitalizations.
 
 For example these are all the same:
 
-    sum-of-squares  # dashes
-    sum_of_squares  # underscores
-    sumofsquares    # lower case
-    SumOfSquares    # mixed case
-    SUMOFSQUARES    # upper case
+    sum-of-squares
+    sum_of_squares
+    sumofsquares
+    SumOfSquares
+    SUMOFSQUARES
 
 If a value is unknown, or not a number, then it will print as "?". TODO.
 
