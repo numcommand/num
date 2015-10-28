@@ -273,7 +273,7 @@ Rounding:
 
   * round-up, ceiling:<br>
       Convert to integer by rounding up.<br>
-      Examples:<br> 1.9 => 2. -1.9 => -1.
+      Examples: 1.9 => 2. -1.9 => -1.
 
   * round-down, floor:<br>
       Convert to integer by rounding down.<br>
