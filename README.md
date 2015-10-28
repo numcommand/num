@@ -174,72 +174,131 @@ Mean:
   * <b>mean, average, avg</b><br>
       The arithmetic mean a.ka. average.
 
+        echo "1 2 4" | num mean
+        2.33333
+
   * <b>mean-absolute-deviation, mad</b><br>
       The average distance between each value and the mean.
 
+        echo "1 2 4" | num mean-absolute-deviation
+        1.11111
+
   * <b>meanest</b><br>
       The value that is closest numerically to the mean.
+
+        echo "1 2 4" | num meanest
+        2
 
 Median:
 
   * <b>median, med</b><br>
       The median.
 
+        echo "1 2 3 4" | num median
+        2.5
+
   * <b>median-low, med-low</b><br>
       The low median, i.e. lesser of two middle values.
 
+        echo "1 2 3 4" | num median
+        2
+
   * <b>median-high, med-high</b><br>
       The high median, i.e. greater of two middle values.
+
+        echo "1 2 3 4" | num median
+        3
 
 Mode:
 
   * <b>mode</b><br>
       The mode, which may be multiple numbers or UNDEF. TODO.
 
+        echo "1 2 2 3" | num mode
+        2
+
   * <b>mode-low</b><br>
       The least value of the mode values or UNDEF. TODO.
 
+        echo "1 1 2 2 3 3" | num mode-low
+        1
+
   * <b>mode-high</b><br>
       The greatest value of the mode values or UNDEF. TODO.
+
+        echo "1 1 2 2 3 3" | num mode-high
+        3
 
 Sum Of:
 
   * <b>sum-of-squares, ss</b><br>
       The sum of squares, a.k.a. sum of each mean deviation to the power of 2.
 
+        echo "1 2 4" | num sum-of-squares
+        4.66667
+
   * <b>sum-of-cubes</b><br>
       The sum of cubes, a.k.a. sum of each mean deviation to the power of 3.
 
+        echo "1 2 4" | num sum-of-cubes
+        2.22222
+
   * <b>sum-of-quads</b><br>
       The sum of quads, a.k.a. sum of each mean deviation to the power of 4.
+
+        echo "1 2 4" | num sum-of-quads
+        10.8889
 
 Variance:
 
   * <b>variance, var</b><br>
       The variance. Use sample, not population.
 
+        echo "1 2 4" | num variance
+        2.33333
+
   * <b>population-variance, p-variance, p-var</b><br>
       The population variance.
 
+        echo "1 2 4" | num population-variance
+        1.55556
+
   * <b>sample-variance, s-variance, s-var</b><br>
       The sample variance.
+
+        echo "1 2 4" | num sample-variance
+        2.33333
 
 Standard Deviation:
 
   * <b>standard-deviation, stdev, sd</b><br>
       The standard deviation (SD). Use sample, not population.
 
+        echo "1 2 4" | num standard-deviation
+        1.52753
+
   * <b>population-standard-deviation, p-stdev, p-sd</b><br>
       The population standard deviation.
 
+        echo "1 2 4" | num population-standard-deviation
+        1.24722
+
   * <b>sample-standard-deviation, s-stdev, s-sd</b><br>
       The sample standard deviation.
+
+        echo "1 2 4" | num sample-standard-deviation
+        1.52753
+
+Coefficient Of Variance:
 
   * <b>coefficient-of-variance, covar, cv</b><br>
       The coefficient of variance (CV). Use sample, not population.
 
   * <b>population-coefficient-of-variance, p-covar, p-cv</b><br>
       The population coefficient of variance.
+
+  * <b>sample-coefficient-of-variance, s-covar, s-cv</b><br>
+      The sample coefficient of variance.
 
 Skewness:
 
