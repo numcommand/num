@@ -1,6 +1,6 @@
 ############################################################################
 #
-# QUEUE
+# num-queue.awk
 #
 ###
 
@@ -17,9 +17,9 @@
 #
 # Return the item for chainability.
 #
-function enqueue(arr, item,  index) {
-    index = length(arr) + 1
-    arr[index] = item
+function enqueue(arr, item,  i) {
+    i = length(arr) + 1
+    arr[i] = item
     return item
 }
 
@@ -36,6 +36,6 @@ function enqueue(arr, item,  index) {
 #
 # Return the item.
 #
-function dequeue(arr,  item, index) {
+function dequeue(arr,  item, i) {
     return shift(arr)
 }

@@ -1,6 +1,6 @@
 ############################################################################
 #
-# LIST
+# num-list.awk
 #
 ###
 
@@ -13,7 +13,7 @@
 #     1 2 4 => 3
 #
 function n(arr) {
-    length(arr)  # TODO: resolve length vs. POSIX
+    return length(arr)  # TODO: POSIX
 }
 
 ###
@@ -37,7 +37,7 @@ function first(arr) {
 #   1 2 4 => 4
 #
 function last(arr) {
-    return arr[length(arr)]  # TODO: resolve length vs. POSIX
+    return arr[length(arr)]  # TODO: POSIX
 }
 
 ###
@@ -61,8 +61,13 @@ function all(arr) {
 #
 # This implementation does a scan of the entire array.
 #
-function min(arr,  _min) {
-    for (i in arr) if (_min == "" || arr[i] < _min) _min = arr[i]
+function min(arr,  _min, i) {
+    _min = ""
+    for (i in arr) {
+        if (_min == "" || arr[i] < _min) {
+            _min = arr[i]
+        }
+    }
     return _min
 }
 
@@ -76,8 +81,13 @@ function min(arr,  _min) {
 #
 # This implementation does a scan of the entire array.
 #
-function max(arr) {
-    for (i in arr) if (_max == "" || arr[i] > _max) _max = arr[i]
+function max(arr,  _max, i) {
+    _max = ""
+    for (i in arr) {
+        if (_max == "" || arr[i] > _max) {
+            _max = arr[i]
+        }
+    }
     return _max
 }
 

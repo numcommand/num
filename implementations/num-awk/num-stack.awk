@@ -1,6 +1,6 @@
 ############################################################################
 #
-# STACK
+# num-stack.awk
 #
 ###
 
@@ -17,9 +17,9 @@
 #
 # Return the item for chainability.
 #
-function push(arr, item,  index) {
-    index = length(arr) + 1
-    arr[index] = item
+function push(arr, item,  i) {
+    i = length(arr) + 1
+    arr[i] = item
     return item
 }
 
@@ -36,9 +36,9 @@ function push(arr, item,  index) {
 #
 # Return the item.
 #
-function pop(arr,  item, index) {
-    index = length(arr)
-    item = arr[index]
-    delete arr[index]
+function pop(arr,  item, i) {
+    i = length(arr)
+    item = arr[i]
+    delete arr[i]
     return item
 }

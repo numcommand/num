@@ -1,6 +1,6 @@
 ############################################################################
 #
-# QUARTILES
+# num-quartiles.awk
 #
 # This implemention uses the smoothing method for discrete distrubtions:
 #
@@ -62,16 +62,14 @@ function quartile_1(arr,  _n, q1, i, x) {
     _n = n(arr)
     if ((_n % 2) == 0) {
         i = (_n / 2) - 1
-        q1 = arr_sorted_median_slice(num, 1, i)
-    }
-    else if ((_n % 4) == 1) {
+        q1 = arr_sorted_median_slice(arr, 1, i)
+    } else if ((_n % 4) == 1) {
         x = ((_n - 1) / 4)
-        q1 = (0.25 * num[x]) + (0.75 * num[x+1])
-    }
-    else if ((_n % 4) == 3) {
+        q1 = (0.25 * arr[x]) + (0.75 * arr[x+1])
+    } else if ((_n % 4) == 3) {
         x = ((_n - 3) / 4)
-        q1 = (0.75 * num[x+1]) + (0.25 * num[x+2])
-    else {
+        q1 = (0.75 * arr[x+1]) + (0.25 * arr[x+2])
+    } else {
         q1 = ""
     }
     return q1
@@ -103,15 +101,15 @@ function quartile_3(arr,  _n, q3, i, x) {
     _n = n(arr)
     if ((_n % 2) == 0) {
         i = (_n % 2) + 1
-        q3 = arr_sorted_median_slice(num, i, _n)
+        q3 = arr_sorted_median_slice(arr, i, _n)
     }
     else if ((_n % 4) == 1) {
         x = (_n - 1) / 4
-        q3 = (0.75 * num[3 * x + 1]) + (0.25 * num[3 * x + 2])
+        q3 = (0.75 * arr[3 * x + 1]) + (0.25 * arr[3 * x + 2])
     }
     else if ((_n % 4) == 3) {
         x = (_n - 3) / 4
-        q3 = (0.25 * num[3 * x + 2]) + (0.75 * num[3 * x + 3])
+        q3 = (0.25 * arr[3 * x + 2]) + (0.75 * arr[3 * x + 3])
     }
     else {
         q3 = ""
