@@ -1,14 +1,10 @@
 # Num: number utilties for mathematics
 
-<b>[Kickstarter project link](https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics) -- please spread the word -- [donate $1 if you can](https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics)</b>
+<b>[NmCommand.com website](http://www.numcommand.com)</b> -- the documentation available on the new website.
 
-Num is a command line tool that provides number utilities for mathematics.
+<b>[Kickstarter project](https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics)</b> -- please spread the word and donate to raise our ranking.
 
-Num focuses on ease of use and common functions such as min, max, sum, var, stdev, etc.
-
-Syntax:
-
-    num [ options ] [ file ... ]
+Num is a command line tool that provides number utilities for mathematics and statistics.
 
 Examples:
 
