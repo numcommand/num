@@ -19,6 +19,20 @@ function sum(arr,  x) {
 
 ###
 #
+# Product.
+#
+# Example:
+#
+#     1 2 4 => 8
+#
+function product(arr,  x) {
+    x = 1
+    for (i in arr) x *= arr[i]
+    return x
+}
+
+###
+#
 # Mean, a.k.a. arithmetic mean, average.
 #
 # Example:

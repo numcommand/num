@@ -121,6 +121,18 @@ x=$(echo "1\n2\n4\n" | ./num sum) &&
 
 ###
 #
+# product
+#
+###
+
+x=$(echo "1 2 4" | ./num product) &&
+    assert_eq 8 "$x" "product, with row"
+
+x=$(echo "1\n2\n4\n" | ./num product) &&
+    assert_eq 8 "$x" "product, with col"
+
+###
+#
 # mean
 #
 ###

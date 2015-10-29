@@ -169,6 +169,13 @@ Numbers Functions:
         echo "1 2 4" | num sum
         7
 
+
+  * <b>product</b><br>
+    The product all the items.
+
+        echo "1 2 4" | num product
+        8
+
 Mean:
 
   * <b>mean, average, avg</b><br>

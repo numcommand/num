@@ -427,6 +427,20 @@ function sum(arr,  x) {
 
 ###
 #
+# Product.
+#
+# Example:
+#
+#     1 2 4 => 8
+#
+function product(arr,  x) {
+    x = 1
+    for (i in arr) x *= arr[i]
+    return x
+}
+
+###
+#
 # Mean, a.k.a. arithmetic mean, average.
 #
 # Example:
@@ -834,6 +848,24 @@ function num_sum(num, num_, opts,  f, _sum, i) {
 
 function num_sum_init() {
     function_init("sum total", "Get the sum, a.k.a. total.")
+}
+
+###
+#
+# Product.
+#
+# Example:
+#
+#     1 2 4 => 8
+#
+function num_product(num, num_, opts,  f, _product, i) {
+    f = "num_product"
+    if (!(f in num_)) num_[f] = product(num)
+    return num_[f]
+}
+
+function num_product_init() {
+    function_init("product", "Get the product.")
 }
 
 ###
@@ -2173,6 +2205,7 @@ function init_global_fun_kind() {
     global_fun_kind["num_n"] = \
     global_fun_kind["num_range"] = \
     global_fun_kind["num_sum"] = \
+    global_fun_kind["num_product"] = \
     global_fun_kind["num_mean"] = \
     global_fun_kind["num_mean_absolute_deviation"] = \
     global_fun_kind["num_meanest"] = \
@@ -2283,6 +2316,7 @@ function function_init_loader() {
     num_max_init()
     num_range_init()
     num_sum_init()
+    num_product_init()
     num_mean_init()
     num_mean_absolute_deviation_init()
     num_meanest_init()
@@ -2352,6 +2386,7 @@ function function_call(f, num, num_, opts) {
     else if (f == "num_max") return num_max(num, num_, opts)
     else if (f == "num_range") return num_range(num, num_, opts)
     else if (f == "num_sum") return num_sum(num, num_, opts)
+    else if (f == "num_product") return num_product(num, num_, opts)
     else if (f == "num_mean") return num_mean(num, num_, opts)
     else if (f == "num_mean_absolute_deviation") return num_mean_absolute_deviation(num, num_, opts)
     else if (f == "num_meanest") return num_meanest(num, num_, opts)
