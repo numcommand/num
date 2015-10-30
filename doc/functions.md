@@ -107,7 +107,7 @@ The value that is closest numerically to the mean.
 #### trimean (TODO)
 
 The trimean.
-The advantage of using the trimean, instead of the mean, is the trimean is robust to outliers.
+The advantage of using the trimean vs. the mean: the trimean is robust to outliers.
 The trimean equals (quartile-1 + 2 * median + quartile-3) / 4.
 
     echo "1 2 4" | num trimean

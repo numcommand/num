@@ -487,6 +487,21 @@ function mean_absolute_deviation(arr,  _mean, _n, x) {
 
 ###
 #
+# Trimean.
+#
+# Example:
+#
+#     1 1.75 3 27.75 99 => 8.875
+#
+function trimean(arr,  _q1, _q2, _q3) {
+    _q1 = quartile_1(arr)
+    _q2 = quartile_2(arr)
+    _q3 = quartile_3(arr)
+    return (_q1 + _q2 + _q2 + _q3) / 4
+}
+
+###
+#
 # Median.
 #
 # Example:
@@ -936,6 +951,29 @@ function num_meanest(num, num_, opts,  f) {
 
 function num_meanest_init() {
     function_init("meanest", "Get the meanest, i.e. value closest to the mean.")
+}
+
+###
+#
+# Trimean.
+#
+# Example:
+#
+#     1 2 3 4 99 => 8.875
+#
+function num_trimean(num, num_, opts,  f, _median, _q1, _q3) {
+    f = "num_trimean"
+    if (!(f in num_)) {
+        _q1 = num_quartile_1(num, num_, opts)
+        _q2 = num_quartile_2(num, num_, opts)
+        _q3 = num_quartile_3(num, num_, opts)
+        num_[f] = (_q1 + _q2 + _q2 + _q3) / 4
+    }
+    return num_[f]
+}
+
+function num_trimean_init() {
+    function_init("trimean", "Calculate the trimean.")
 }
 
 ###
@@ -2269,6 +2307,7 @@ function init_global_fun_kind() {
     global_fun_kind["num_mean"] = \
     global_fun_kind["num_mean_absolute_deviation"] = \
     global_fun_kind["num_meanest"] = \
+    global_fun_kind["num_trimean"] = \
     global_fun_kind["num_median"] = \
     global_fun_kind["num_median_low"] = \
     global_fun_kind["num_median_high"] = \
@@ -2380,6 +2419,7 @@ function function_init_loader() {
     num_mean_init()
     num_mean_absolute_deviation_init()
     num_meanest_init()
+    num_trimean_init()
     num_median_init()
     num_median_low_init()
     num_median_high_init()
@@ -2450,6 +2490,7 @@ function function_call(f, num, num_, opts) {
     else if (f == "num_mean") return num_mean(num, num_, opts)
     else if (f == "num_mean_absolute_deviation") return num_mean_absolute_deviation(num, num_, opts)
     else if (f == "num_meanest") return num_meanest(num, num_, opts)
+    else if (f == "num_trimean") return num_trimean(num, num_, opts)
     else if (f == "num_median") return num_median(num, num_, opts)
     else if (f == "num_median_low") return num_median_low(num, num_, opts)
     else if (f == "num_median_high") return num_median_high(num, num_, opts)

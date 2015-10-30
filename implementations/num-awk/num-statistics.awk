@@ -76,6 +76,21 @@ function mean_absolute_deviation(arr,  _mean, _n, x) {
 
 ###
 #
+# Trimean.
+#
+# Example:
+#
+#     1 1.75 3 27.75 99 => 8.875
+#
+function trimean(arr,  _q1, _q2, _q3) {
+    _q1 = quartile_1(arr)
+    _q2 = quartile_2(arr)
+    _q3 = quartile_3(arr)
+    return (_q1 + _q2 + _q2 + _q3) / 4
+}
+
+###
+#
 # Median.
 #
 # Example:
