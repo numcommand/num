@@ -1,4 +1,4 @@
-# Programmers guide
+# Programmer guide
 
 This file is for programmers who are reading the Num source code or writing Num functions.
 
