@@ -53,8 +53,8 @@ function mean(arr) {
 #
 # Requirement: the array is linear
 #
-function mean_with_linear_n_min_max(arr, n, min, max) {
-    return min + (max - min) / n
+function mean_with_linear_n_min_max(arr, _n, _min, _max) {
+    return _min + (_max - _min) / n
 }
 
 ###

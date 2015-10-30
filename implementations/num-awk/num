@@ -22,6 +22,10 @@ set -euf
 #
 ###
 
+# To run this for testing and debugging, try using gawk with flags:
+#
+#     gawk --posix --lint
+#
 awk '
 
 ############################################################################
@@ -217,7 +221,6 @@ function last(arr) {
 # it is enable indirect function calling.
 #
 function all(arr) {
-    return arr
 }
 
 ###
@@ -461,8 +464,8 @@ function mean(arr) {
 #
 # Requirement: the array is linear
 #
-function mean_with_linear_n_min_max(arr, n, min, max) {
-    return min + (max - min) / n
+function mean_with_linear_n_min_max(arr,  _n, _min, _max) {
+    return _min + (_max - _min) / _n
 }
 
 ###
@@ -2038,11 +2041,11 @@ function arr_join(arr, sep,  s, i) {
 #     arr_median(arr)
 #     => 2
 #
-function arr_sorted_median_slice(arr, start, stop,  n, i) {
+function arr_sorted_median_slice(arr, start, stop,  _n, i) {
     if (start == "") start = 1
     if (stop == "") stop = arr_length(arr)
-    n = 1 + stop - start
-    if (n % 2) {
+    _n = 1 + stop - start
+    if (_n % 2) {
         i = (start - 1) + ((_n + 1) / 2)
         return arr[i]
     } else {
@@ -2065,6 +2068,7 @@ function arr_sorted_median_slice(arr, start, stop,  n, i) {
 #
 function init() {
     init_constants()
+    #init_lint()
     init_conf()
     init_word_argv()
     init_word_list()
@@ -2090,6 +2094,62 @@ function init_constants() {
     FUN_KIND_MAP  = "MAP"
     FUN_KIND_FLAG = "FLAG"
     FUN_KIND_CONF = "CONF"
+}
+
+##
+# Initialize lint protection.
+#
+function init_lint() {
+    split("", a)
+    all(a)
+
+    ## Quartiles
+    quartile_0(a)
+    quartile_1(a)
+    quartile_2(a)
+    quartile_3(a)
+    quartile_4(a)
+    interquartile_range(a)
+
+    ## Round
+    nint(0)
+    truncate(0)
+    ceiling(0)
+    floor(0)
+
+    ## Print
+    out("")
+    err("")
+
+    ## List
+    unshift(a,0)
+    shift(a)
+
+    ## Stack
+    push(a,0)
+    pop(a)
+
+    ## Queue
+    enqueue(a0)
+    dequeue(a)
+
+    ## Statitics
+    mean_absolute_deviation(a)
+    median_low(a)
+    median_high(a)
+    sum_of_mean_deviation_exp(a)
+
+    ## Math
+    min(a)
+    max(a)
+    range(a)
+    abs(a)
+
+    ## TODO: these may need fixing
+    arr_empty(a)
+    arr_dump()
+    #word_to_conf()
+    #init_global_fun_kind
 }
 
 ##
@@ -2352,7 +2412,7 @@ function function_init_loader() {
     num_map_round_off_init()
     num_map_round_up_init()
     num_map_round_down_init()
-    num_is_unique()
+    num_is_unique_init()
     num_is_ascending_init()
     num_is_strictly_ascending_init()
     num_is_descending_init()
@@ -2402,7 +2462,6 @@ function function_call(f, num, num_, opts) {
     else if (f == "num_population_variance") return num_population_variance(num, num_, opts)
     else if (f == "num_sample_variance") return num_sample_variance(num, num_, opts)
     else if (f == "num_population_standard_deviation") return num_population_standard_deviation(num, num_, opts)
-    else if (f == "num_standard_deviation") return num_standard_deviation(num, num_, opts)
     else if (f == "num_sample_standard_deviation") return num_sample_standard_deviation(num, num_, opts)
     else if (f == "num_population_coefficient_of_variance") return num_population_coefficient_of_variance(num, num_, opts)
     else if (f == "num_sample_coefficient_of_variance") return num_sample_coefficient_of_variance(num, num_, opts)
@@ -2585,8 +2644,8 @@ BEGIN{
 }
 
 {
-    split($0, arr)
-    for(i in arr) global_num[++global_num_n] = arr[i]
+    split($0, _arr)
+    for(i in _arr) global_num[++global_num_n] = _arr[i]
 }
 
 END{

@@ -48,7 +48,6 @@ function last(arr) {
 # it is enable indirect function calling.
 #
 function all(arr) {
-    return arr
 }
 
 ###
