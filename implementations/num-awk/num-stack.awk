@@ -11,13 +11,13 @@
 # Example:
 #
 #     arr = 1 2
-#     push(arr, 4)
+#     num_push(arr, 4)
 #     => 4
 #     => arr == 1 2 4
 #
 # Return the item for chainability.
 #
-function push(arr, item,  i) {
+function num_push(arr, item,  i) {
     i = length(arr) + 1
     arr[i] = item
     return item
@@ -30,13 +30,13 @@ function push(arr, item,  i) {
 # Example:
 #
 #     arr = 1 2 4
-#     pop(arr)
+#     num_pop(arr)
 #     => 4
 #     => arr == 1 2
 #
 # Return the item.
 #
-function pop(arr,  item, i) {
+function num_pop(arr,  item, i) {
     i = length(arr)
     item = arr[i]
     delete arr[i]

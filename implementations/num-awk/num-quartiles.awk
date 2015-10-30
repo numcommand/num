@@ -30,10 +30,15 @@
 #
 # Example:
 #
-#     TODO
+#     num_interquartile_range(1 2 3 4 5) => 2.5
 #
-function interquartile_range(arr) {
+function num_interquartile_range(arr) {
     return quartile_3(arr) - quartile_1(arr)
+}
+
+# Alias
+function num_iqr(arr) {
+    return num_interquartile_range(arr)
 }
 
 ###
@@ -42,10 +47,15 @@ function interquartile_range(arr) {
 #
 # Example:
 #
-#     TODO
+#     num_quartile_0(1 2 3 4 5) => 1
 #
-function quartile_0(arr) {
+function num_quartile_0(arr) {
     return min(arr)
+}
+
+# Alias
+function num_q0(arr) {
+    return num_quartile_0(arr)
 }
 
 ###
@@ -54,15 +64,15 @@ function quartile_0(arr) {
 #
 # Example:
 #
-#     TODO
+#     num_quartile_1(1 2 3 4 5) => 1.75
 #
 # Requires sorted array.
 #
-function quartile_1(arr,  _n, q1, i, x) {
+function num_quartile_1(arr,  _n, q1, i, x) {
     _n = n(arr)
     if ((_n % 2) == 0) {
         i = (_n / 2) - 1
-        q1 = arr_sorted_median_slice(arr, 1, i)
+        q1 = num_arr_sorted_median_slice(arr, 1, i)
     } else if ((_n % 4) == 1) {
         x = ((_n - 1) / 4)
         q1 = (0.25 * arr[x]) + (0.75 * arr[x+1])
@@ -75,16 +85,26 @@ function quartile_1(arr,  _n, q1, i, x) {
     return q1
 }
 
+# Alias
+function num_q1(arr) {
+    return num_quartile_1(arr)
+}
+
 ###
 #
 # Quartile 2, a.k.a. Q2, 50th percentile, median.
 #
 # Example:
 #
-#     TODO
+#     num_quartile_1(1 2 3 4 5) => 3
 #
-function quartile_2(arr,  f) {
+function num_quartile_2(arr,  f) {
     return median(arr)
+}
+
+# Alias
+function num_q2(arr) {
+    return num_quartile_2(arr)
 }
 
 ###
@@ -93,15 +113,15 @@ function quartile_2(arr,  f) {
 #
 # Example:
 #
-#     TODO
+#     num_quartile_1(1 2 3 4 5) => 4.25
 #
 # Requires sorted array.
 #
-function quartile_3(arr,  _n, q3, i, x) {
+function num_quartile_3(arr,  _n, q3, i, x) {
     _n = n(arr)
     if ((_n % 2) == 0) {
         i = (_n % 2) + 1
-        q3 = arr_sorted_median_slice(arr, i, _n)
+        q3 = num_arr_sorted_median_slice(arr, i, _n)
     }
     else if ((_n % 4) == 1) {
         x = (_n - 1) / 4
@@ -117,14 +137,24 @@ function quartile_3(arr,  _n, q3, i, x) {
     return q3
 }
 
+# Alias
+function num_q3(arr) {
+    return num_quartile_3(arr)
+}
+
 ###
 #
 # Quartile 4, a.k.a. Q4, 100th percentile, maximum.
 #
 # Example:
 #
-#     TODO
+#     num_quartile_1(1 2 3 4 5) => 5
 #
-function quartile_4(arr) {
+function num_quartile_4(arr) {
     return max(arr)
+}
+
+# Alias
+function num_q4(arr) {
+    return num_quartile_4(arr)
 }

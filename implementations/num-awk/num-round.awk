@@ -10,19 +10,19 @@
 #
 # Examples:
 #
-#    round(1.9) => 2
-#    round(-1.9) => -2
+#    num_round(1.9) => 2
+#    num_round(-1.9) => -2
 #
-#    nint(1.9) => 2
-#    nint(-1.9) => -2
+#    num_nint(1.9) => 2
+#    num_nint(-1.9) => -2
 #
-function round(x) {
+function num_round(x) {
     return (x >= 0) ? int(x + 0.5) : int(x - 0.5)
 }
 
 # Alias
-function nint(x) {
-    return round(x)
+function num_nint(x) {
+    return num_round(x)
 }
 
 ###
@@ -31,19 +31,19 @@ function nint(x) {
 #
 # Examples:
 #
-#    round_off(1.9) => 1
-#    round_off(-1.9) => -1
+#    num_round_off(1.9) => 1
+#    num_round_off(-1.9) => -1
 #
-#    truncate(1.9) => 1
-#    truncate(-1.9) => -1
+#    num_truncate(1.9) => 1
+#    num_truncate(-1.9) => -1
 #
-function round_off(x) {
+function num_round_off(x) {
     return int(x)
 }
 
 # Alias
-function truncate(x) {
-    return round_off(x)
+function num_truncate(x) {
+    return num_round_off(x)
 }
 
 ###
@@ -52,20 +52,20 @@ function truncate(x) {
 #
 # Examples:
 #
-#    round_up(1.9) => 2
-#    round_up(-1.9) => -1
+#    num_round_up(1.9) => 2
+#    num_round_up(-1.9) => -1
 #
-#    ceiling(1.9) => 2
-#    ceiling(-1.9) => -1
+#    num_ceiling(1.9) => 2
+#    num_ceiling(-1.9) => -1
 #
-function round_up(x,  y) {
+function num_round_up(x,  y) {
     y = int(x)
     return (x == y) ? x : (x >= 0) ? y + 1 : y
 }
 
 # Alias
-function ceiling(x) {
-    return round_up(x)
+function num_ceiling(x) {
+    return num_round_up(x)
 }
 
 ###
@@ -74,18 +74,18 @@ function ceiling(x) {
 #
 # Examples:
 #
-#    round_down(1.9) => 1
-#    round_down(-1.9) => -2
+#    num_round_down(1.9) => 1
+#    num_round_down(-1.9) => -2
 #
-#    floor(1.9) => 1
-#    floor(-1.9) => -2
+#    num_floor(1.9) => 1
+#    num_floor(-1.9) => -2
 #
-function round_down(x,  y) {
+function num_round_down(x,  y) {
     y = int(x)
     return (x == y) ? x : (x >= 0) ? y : y - 1
 }
 
 # Alias
-function floor(x) {
+function num_floor(x) {
     round_down(x)
 }

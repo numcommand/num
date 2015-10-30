@@ -114,9 +114,6 @@ The trimean equals (quartile-1 + 2 * median + quartile-3) / 4.
     TODO
 
 
-
-
-
 ## Median
 
 

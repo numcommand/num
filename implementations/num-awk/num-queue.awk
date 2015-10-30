@@ -11,13 +11,13 @@
 # Example:
 #
 #     arr = 1 2
-#     enqueue(arr, 4)
+#     num_enqueue(arr, 4)
 #     => 4
 #     => arr == 1 2 4
 #
 # Return the item for chainability.
 #
-function enqueue(arr, item,  i) {
+function num_enqueue(arr, item,  i) {
     i = length(arr) + 1
     arr[i] = item
     return item
@@ -30,12 +30,12 @@ function enqueue(arr, item,  i) {
 # Example:
 #
 #     arr = 1 2 4
-#     dequeue(arr)
+#     num_dequeue(arr)
 #     => 1
 #     => arr == 2 4
 #
 # Return the item.
 #
-function dequeue(arr,  item, i) {
-    return shift(arr)
+function num_dequeue(arr,  item, i) {
+    return num_shift(arr)
 }

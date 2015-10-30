@@ -6,40 +6,13 @@
 
 ###
 #
-# Sum, a.k.a. total.
-#
-# Example:
-#
-#     1 2 4 => 7
-#
-function sum(arr,  x) {
-    for (i in arr) x += arr[i]
-    return x
-}
-
-###
-#
-# Product.
-#
-# Example:
-#
-#     1 2 4 => 8
-#
-function product(arr,  x) {
-    x = 1
-    for (i in arr) x *= arr[i]
-    return x
-}
-
-###
-#
 # Mean, a.k.a. arithmetic mean, average.
 #
 # Example:
 #
-#     1 2 4 => 2.33333
+#     num_mean(1 2 4) => 2.33333
 #
-function mean(arr) {
+function num_mean(arr) {
     return sum(arr) / n(arr)
 }
 
@@ -49,11 +22,11 @@ function mean(arr) {
 #
 # Example:
 #
-#     1 2 4 => 2.33333
+#     num_mean_with_linear_n_min_max(1 2 4) => 2.33333
 #
-# Requirement: the array is linear
+# Requirement: the array is linear.
 #
-function mean_with_linear_n_min_max(arr, _n, _min, _max) {
+function num_mean_with_linear_n_min_max(arr, _n, _min, _max) {
     return _min + (_max - _min) / n
 }
 
@@ -65,13 +38,18 @@ function mean_with_linear_n_min_max(arr, _n, _min, _max) {
 #
 # Example:
 #
-#     1 2 4 => 1.11111
+#     num_mean_absolute_deviation(1 2 4) => 1.11111
 #
-function mean_absolute_deviation(arr,  _mean, _n, x) {
-    _mean = mean(arr)
-    _n = n(arr)
+function num_mean_absolute_deviation(arr,  _mean, _n, x) {
+    _mean = num_mean(arr)
+    _n = num_n(arr)
     for (i in arr) x += abs(arr[i] - _mean)
     return x / _n
+}
+
+# Alias
+function num_mad(arr) {
+    return num_mean_absolute_deviation(arr)
 }
 
 ###
@@ -80,12 +58,14 @@ function mean_absolute_deviation(arr,  _mean, _n, x) {
 #
 # Example:
 #
-#     1 1.75 3 27.75 99 => 8.875
+#    num_trimean(1 1.75 3 27.75 99) => 8.875
 #
-function trimean(arr,  _q1, _q2, _q3) {
-    _q1 = quartile_1(arr)
-    _q2 = quartile_2(arr)
-    _q3 = quartile_3(arr)
+# Requirement: the array is sorted.
+#
+function num_trimean(arr,  _q1, _q2, _q3) {
+    _q1 = num_quartile_1(arr)
+    _q2 = num_quartile_2(arr)
+    _q3 = num_quartile_3(arr)
     return (_q1 + _q2 + _q2 + _q3) / 4
 }
 
@@ -95,13 +75,13 @@ function trimean(arr,  _q1, _q2, _q3) {
 #
 # Example:
 #
-#     1 2 4 => 2
-#     1 2 4 99 => 3
+#     num_median(1 2 4) => 2
+#     num_median(1 2 4 99) => 3
 #
 # Requirement: the array is sorted.
 #
-function median(arr,  _n, i) {
-    _n = n(arr)
+function num_median(arr,  _n, i) {
+    _n = num_n(arr)
     if (_n % 2) {
         i = (_n + 1) / 2
         return arr[i]
@@ -117,11 +97,11 @@ function median(arr,  _n, i) {
 #
 # Example:
 #
-#     1 2 4 => 2
-#     1 2 4 99 => 2
+#     num_median_low(1 2 4) => 2
+#     num_median_low(1 2 4 99) => 2
 #
-function median_low(arr,  _n, i) {
-    _n = n(arr)
+function num_median_low(arr,  _n, i) {
+    _n = num_n(arr)
     if (_n % 2) {
         i = (_n + 1) / 2
     } else {
@@ -136,11 +116,11 @@ function median_low(arr,  _n, i) {
 #
 # Example:
 #
-#     1 2 4 => 2
-#     1 2 4 99 => 4
+#     num_median_high(1 2 4) => 2
+#     num_median_high(1 2 4 99) => 4
 #
-function median_high(arr,  _n, i) {
-    _n = n(arr)
+function num_median_high(arr,  _n, i) {
+    _n = num_n(arr)
     if (_n % 2) {
         i = (_n + 1) / 2
     } else {
@@ -161,8 +141,8 @@ function median_high(arr,  _n, i) {
 #
 # Typically useful to calculate variance, skewness, kurtosis.
 #
-function sum_of_mean_deviation_exp(arr, exponent,  i, _sum, _mean) {
-    _mean = mean(arr)
+function num_sum_of_mean_deviation_exp(arr, exponent,  i, _sum, _mean) {
+    _mean = num_mean(arr)
     for (i in arr) _sum += (arr[i] - _mean) ^ exponent
     return _sum
 }

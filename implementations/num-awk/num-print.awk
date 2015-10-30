@@ -10,9 +10,10 @@
 #
 # Example:
 #
-#     out("hello")
+#     num_out("hello")
+#     => Print "hello" to STDOUT
 #
-function out(msg) {
+function num_out(msg) {
     print msg
 }
 
@@ -22,10 +23,11 @@ function out(msg) {
 #
 # Example:
 #
-#     err("hello")
+#     num_err("hello")
+#     => Print "hello" to STDERR
 #
 # This is purposefully POSIX compatible.
 #
-function err(msg) {
+function num_err(msg) {
     print msg | "cat 1>&2"
 }

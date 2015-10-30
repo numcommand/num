@@ -12,7 +12,7 @@
 #
 #     1 2 4 => 3
 #
-function n(arr) {
+function num_n(arr) {
     return length(arr)  # TODO: POSIX
 }
 
@@ -24,7 +24,7 @@ function n(arr) {
 #
 #   1 2 4 => 1
 #
-function first(arr) {
+function num_first(arr) {
     return arr[1]
 }
 
@@ -36,7 +36,7 @@ function first(arr) {
 #
 #   1 2 4 => 4
 #
-function last(arr) {
+function num_last(arr) {
     return arr[length(arr)]  # TODO: POSIX
 }
 
@@ -44,10 +44,10 @@ function last(arr) {
 #
 # All items.
 #
-# Note that this function does nothing;
-# it is enable indirect function calling.
+# Note that this function num_does nothing;
+# it is enable indirect function num_calling.
 #
-function all(arr) {
+function num_all(arr) {
 }
 
 ###
@@ -60,7 +60,7 @@ function all(arr) {
 #
 # This implementation does a scan of the entire array.
 #
-function min(arr,  _min, i) {
+function num_min(arr,  _min, i) {
     _min = ""
     for (i in arr) {
         if (_min == "" || arr[i] < _min) {
@@ -80,7 +80,7 @@ function min(arr,  _min, i) {
 #
 # This implementation does a scan of the entire array.
 #
-function max(arr,  _max, i) {
+function num_max(arr,  _max, i) {
     _max = ""
     for (i in arr) {
         if (_max == "" || arr[i] > _max) {
@@ -98,6 +98,6 @@ function max(arr,  _max, i) {
 #
 #     1 2 4 => 3
 #
-function range(arr) {
-    return max(arr) - min(arr)
+function num_range(arr) {
+    return num_max(arr) - num_min(arr)
 }
