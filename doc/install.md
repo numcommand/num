@@ -30,5 +30,7 @@ Notes:
 
 <p><hr>
 <nav>
-* <b>[Next Page: Examples: how to use Num for shell scripting](examples.md)</b>
+<ul>
+<li><b>[Next Page: Examples: how to use Num for shell scripting](examples.md)</b></li>
+</ul>
 </nav>

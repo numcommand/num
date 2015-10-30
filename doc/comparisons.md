@@ -44,6 +44,8 @@ We suggest Python and its tools, such as pandas and scikit, when:
 
 <p><hr>
 <nav>
-* <b>[Prev Page: Commands: how to use related command line tools and scripts](commands.md)</b>
-* <b>[Next Page: FAQ: Frequently Asked Questions](faq.md)</b>
+<ul>
+<li><b>[Prev Page: Commands: how to use related command line tools and scripts](commands.md)</b></li>
+<li><b>[Next Page: FAQ: Frequently Asked Questions](faq.md)</b></li>
+</ul>
 </nav>

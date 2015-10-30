@@ -48,6 +48,8 @@ We use the `parallel` command to divide the work among cores.
 
 <p><hr>
 <nav>
-* <b>[Prev Page: Install: how to download and set up](install.md)</b>
-* <b>[Next Page: Functions: the complete list of all capabilities](functions.md)</b>
+<ul>
+<li><b>[Prev Page: Install: how to download and set up](install.md)</b></li>
+<li><b>[Next Page: Functions: the complete list of all capabilities](functions.md)</b></li>
+</ul>
 </nav>

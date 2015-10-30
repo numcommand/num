@@ -508,6 +508,8 @@ Is the data non-descending, i.e. some next number is greater?
 
 <p><hr>
 <nav>
-* <b>[Prev Page: Examples: how to use Num for shell scripting](examples.md)</b>
-* <b>[Next Page: Commands: how to use related command line tools and scripts](commands.md)</b>
+<ul>
+<li><b>[Prev Page: Examples: how to use Num for shell scripting](examples.md)</b></li>
+<li><b>[Next Page: Commands: how to use related command line tools and scripts](commands.md)</b></li>
+</ul>
 </nav>

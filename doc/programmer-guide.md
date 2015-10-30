@@ -117,6 +117,8 @@ Rule out for now:
 
 <p><hr>
 <nav>
-* <b>[Prev Page: Known issues](known-issues.md)</b>
-* <b>[Next Page: Programmer library of awk functions](programmer-library-of-awk-functions.md)</b>
+<ul>
+<li><b>[Prev Page: Known issues](known-issues.md)</b></li>
+<li><b>[Next Page: Programmer library of awk functions](programmer-library-of-awk-functions.md)</b></li>
+</ul>
 </nav>

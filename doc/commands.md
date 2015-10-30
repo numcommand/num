@@ -80,6 +80,8 @@ Example:
 
 <p><hr>
 <nav>
-* <b>[Prev Page: Functions: the complete list of all capabilities](functions.md)</b>
-* <b>[Next Page: Comparisons: when to use Num vs. other tools](comparisons.md)</b>
+<ul>
+<li><b>[Prev Page: Functions: the complete list of all capabilities](functions.md)</b></li>
+<li><b>[Next Page: Comparisons: when to use Num vs. other tools](comparisons.md)</b></li>
+</ul>
 </nav>

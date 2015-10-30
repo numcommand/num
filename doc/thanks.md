@@ -66,6 +66,8 @@ and Anonymous.
 
 <p><hr>
 <nav>
-* <b>[Prev Page: FAQ: Frequently Asked Questions](faq.md)</b>
-* <b>[Next Page: To do: plans and ideas for our future versions](todo.md)</b>
+<ul>
+<li><b>[Prev Page: FAQ: Frequently Asked Questions](faq.md)</b></li>
+<li><b>[Next Page: To do: plans and ideas for our future versions](todo.md)</b></li>
+</ul>
 </nav>
