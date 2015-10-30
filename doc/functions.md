@@ -12,10 +12,10 @@ all
 
 All the items.
 
-```
+<pre><code>
 echo "1 2 4" | num all
 1 2 4
-```
+</code></pre>
 
 </dd>
 
