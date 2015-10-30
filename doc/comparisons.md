@@ -1,9 +1,16 @@
 # Comparisons: when to use Num vs. other tools
 
-Use Num when you have small data, or small tasks, or one-time needs, or development needs.
-For example, if you want a quick one-time result on your command line, then Num is good.
+Use Num when:
 
-Use other tools when you have large data, or large tasks, or oft-repeating needs, or production stability needs.
+  * small data and small tasks
+  * or one-time needs
+  * or development-quality stability
+
+Use other tools when you have:
+
+   * large data and large tasks
+   * or repeating needs and automation
+   *  or production-quality stability
 
 ### When to use datamash, or qstats, etc.
 
@@ -14,7 +21,7 @@ We suggest these small compiled binaries when:
 * You think of numbers in terms of streams and pipes.
 * You already use system tools, such as awk, grep, sed, make, etc.
 * Your data set fits in available RAM and is suitable for Unix pipes.
-* You want a quick way to pipe information to commands, without any dependencies.
+* You want a quick way to pipe text to commands, with no dependencies.
 * Your ideal tools are small, compiled once, with no dependencies, and no add ons.
 
 ### When to use R, or Julia, etc.
@@ -23,7 +30,7 @@ We suggest R and its tools, such as CRAN and R Studio, when:
 
 * You're a statistician.
 * Your needs include doing data exploration.
-* You think of numbers in terms of vectors and functions, such as matrix mathematics.
+* You think of numbers in terms of vectors and functions.
 * You already use a statistics tool, such as R Studio, Matlab, or Mathematica.
 * Your data set fits comfortably in your computer's memory.
 * You want a quick easy way to try visualizations and algorithms for yourself.
