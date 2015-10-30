@@ -338,15 +338,7 @@ Quartile 4, a.k.a. maximum.
 
 ## Transforms
 
-Transforms change each item in the list. Transforms are sometimes knowns as "maps" or "iterators" in other languages.
-
-
-#### normalize
-
-Normalize each value to be within 0..1.
-
-    echo "1 2 4" | num normalize all
-    0 0.333333 1
+Transforms change the list.
 
 
 #### sort
@@ -371,6 +363,27 @@ The difference between each number and the next number. TODO.
 
     echo "2 3 1 5" | num difference all
     1 -2 4
+
+
+## Mappings
+
+Mappings work on each value.
+
+
+#### absolute-value, abs, magnitude
+
+Convert to absolute value a.k.a. magnitude, positive numbers.
+
+    echo "-1 1" | num absolute-value all
+    1 1
+
+
+#### normalize
+
+Normalize each value to be within 0..1.
+
+    echo "1 2 4" | num normalize all
+    0 0.333333 1
 
 
 ## Rounding
@@ -408,17 +421,6 @@ Convert to integer by rounding down.<br>
     -2 1
 
 
-
-
-## Mappings
-
-
-#### absolute-value, abs, magnitude
-
-Convert to absolute value a.k.a. magnitude, positive numbers.
-
-    echo "-1 1" | num absolute-value all
-    1 1
 
 
 
