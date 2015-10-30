@@ -1,415 +1,751 @@
 # Functions: the complete list of all capabilities
 
+
 ## Numbers Functions
 
-### all
+<dl>
+
+<dt>
+all
+</dt>
+<dd>
 
 All the items.
 
     echo "1 2 4" | num all
     1 2 4
 
-### first
+</dd>
+
+<dt>
+first
+</dt>
+<dd>
 
 The first item.
 
     echo "1 2 4" | num first
     1
 
-### last
+</dd>
+
+<dt>
+last
+</dt>
+<dd>
 
 The last item.
 
     echo "1 2 4" | num last
     4
 
-### n, count, length, size
+</dd>
+
+<dt>
+n, count, length, size
+</dt>
+<dd>
 
 The number of items.
 
     echo "1 2 4" | num n
     3
 
-### minimum, min
+</dd>
+
+<dt>
+minimum, min
+</dt>
+<dd>
 
 The minimum value.
 
     echo "1 2 4" | num minimum
     1
 
-### maximum, max
+</dd>
+
+<dt>
+maximum, max
+</dt>
+<dd>
 
 The maximum value.
 
     echo "1 2 4" | num maximum
     1
 
-### range, spread
+<dt>
+range, spread
+</dt>
+<dd>
 
 The range, which is maximum - minimum.
 
     echo "1 2 4" | num range
     3
 
-### sum, total
+</dd>
+
+<dt>
+sum, total
+</dt>
+<dd>
 
 The sum total of all the items.
 
     echo "1 2 4" | num sum
     7
 
+</dd>
 
-### product
+<dt>
+product
+</dt>
+<dd>
 
 The product all the items.
 
     echo "1 2 4" | num product
     8
 
+</dd>
+
+</dl>
+
 
 ## Mean
 
-### mean, average, avg
-      The arithmetic mean a.ka. average.
+<dl>
+
+<dt>
+mean, average, avg
+</dt>
+<dd>
+
+The arithmetic mean a.ka. average.
 
     echo "1 2 4" | num mean
     2.33333
 
-### mean-absolute-deviation, mad
-      The average distance between each value and the mean.
+</dd>
+
+<dt>
+mean-absolute-deviation, mad
+</dt>
+<dd>
+
+The average distance between each value and the mean.
 
     echo "1 2 4" | num mean-absolute-deviation
     1.11111
 
-### meanest
-      The value that is closest numerically to the mean.
+</dd>
+
+<dt>
+meanest
+</dt>
+<dd>
+
+The value that is closest numerically to the mean.
 
     echo "1 2 4" | num meanest
     2
 
+</dd>
+
+<dt>
+trimean (TODO)
+</dt>
+<dd>
+
+The trimean.
+The advantage of using the trimean, instead of the mean, is the trimean is robust to outliers.
+The trimean equals (quartile-1 + 2 * median + quartile-3) / 4.
+
+    echo "1 2 4" | num trimean
+    TODO
+
+
+</dd>
+
+</dl>
+
 
 ## Median
 
-### median, med
-      The median.
+<dl>
+
+<dt>
+median, med
+</dt>
+<dd>
+
+The median.
 
     echo "1 2 3 4" | num median
     2.5
 
-### median-low, med-low
-      The low median, i.e. lesser of two middle values.
+</dd>
+
+<dt>
+median-low, med-low
+</dt>
+<dd>
+
+The low median, i.e. lesser of two middle values.
 
     echo "1 2 3 4" | num median
     2
 
-### median-high, med-high
-      The high median, i.e. greater of two middle values.
+</dd>
+
+<dt>
+median-high, med-high
+</dt>
+<dd>
+
+The high median, i.e. greater of two middle values.
 
     echo "1 2 3 4" | num median
     3
+
+</dd>
+
+</dl>
 
 
 ## Mode
 
-### mode
-      The mode, which may be multiple numbers or UNDEF. TODO.
+<dl>
+<dt>
+mode
+</dt>
+<dd>
+
+The mode, which may be multiple numbers or UNDEF. TODO.
 
     echo "1 2 2 3" | num mode
     2
 
-### mode-low
-      The least value of the mode values or UNDEF. TODO.
+</dd>
+
+<dt>
+mode-low
+</dt>
+<dd>
+
+The least value of the mode values or UNDEF. TODO.
 
     echo "1 1 2 2 3 3" | num mode-low
     1
 
-### mode-high
-      The greatest value of the mode values or UNDEF. TODO.
+</dd>
+
+<dt>
+mode-high
+</dt>
+<dd>
+
+The greatest value of the mode values or UNDEF. TODO.
 
     echo "1 1 2 2 3 3" | num mode-high
     3
 
+</dd>
+
+</dl>
+
 
 ## Sum Of
 
-### sum-of-squares, ss
+<dl>
+
+<dt>
+sum-of-squares, ss
+</dt>
+<dd>
 
 The sum of squares, a.k.a. sum of each mean deviation to the power of 2.
 
     echo "1 2 4" | num sum-of-squares
     4.66667
 
-### sum-of-cubes
+</dd>
+
+<dt>
+sum-of-cubes
+</dt>
+<dd>
 
 The sum of cubes, a.k.a. sum of each mean deviation to the power of 3.
 
     echo "1 2 4" | num sum-of-cubes
     2.22222
 
-### sum-of-quads
+</dd>
+
+<dt>
+sum-of-quads
+</dt>
+<dd>
 
 The sum of quads, a.k.a. sum of each mean deviation to the power of 4.
 
     echo "1 2 4" | num sum-of-quads
     10.8889
 
+</dd>
 
-## Variance
+</dl>
 
-### variance, var
 
-The variance. Use sample, not population.
+## Distributions
+
+<dt>
+variance, var
+<br>sample-variance, s-variance, s-var
+<br>population-variance, p-variance, p-var
+</dt>
+<dd>
+
+The variance.
 
     echo "1 2 4" | num variance
     2.33333
 
-### population-variance, p-variance, p-var
+</dd>
 
-The population variance.
+<dt>
+standard-deviation, stdev, sd
+<br>sample-standard-deviation, s-stdev, s-sd
+<br>population-standard-deviation, p-stdev, p-sd
+</dt>
+<dd>
 
-    echo "1 2 4" | num population-variance
-    1.55556
-
-### sample-variance, s-variance, s-var
-
-The sample variance.
-
-    echo "1 2 4" | num sample-variance
-    2.33333
-
-Standard Deviation:
-
-### standard-deviation, stdev, sd
-
-The standard deviation (SD). Use sample, not population.
+The standard deviation (SD).
 
     echo "1 2 4" | num standard-deviation
     1.52753
 
-### population-standard-deviation, p-stdev, p-sd
+</dd>
 
-The population standard deviation.
+<dt>
+coefficient-of-variance, covar, cv
+<br>sample-coefficient-of-variance, s-covar, s-cv
+<br>population-coefficient-of-variance, p-covar, p-cv
+</dt>
+<dd>
 
-    echo "1 2 4" | num population-standard-deviation
-    1.24722
+The coefficient of variance (CV).
 
-### sample-standard-deviation, s-stdev, s-sd
+    echo "1 2 4" | num coefficient-of-variance
+    0.654654
 
-The sample standard deviation.
+</dd>
 
-    echo "1 2 4" | num sample-standard-deviation
-    1.52753
+<dt>
+skewness, skew
+<br>sample-skewness, s-skew
+<br>population-skewness, p-skew
+</dt>
+<dd>
 
+The skewness, e.g. the lack of symmetry.
 
-## Coefficient Of Variance
+    echo "1 2 4" | num skewness
+    1.11111
 
-### coefficient-of-variance, covar, cv
+</dd>
 
-The coefficient of variance (CV). Use sample, not population.
+<dt>
+kurtosis, kurt
+<br>sample-kurtosis, s-kurt
+<br>population-kurtosis, p-kurt
+</dt>
+<dd>
 
+The kurtosis, e.g. peakness or flatness.
+Default uses sample, not population.
 
-### population-coefficient-of-variance, p-covar, p-cv
+    echo "1 2 4" | num kurtosis
+    5.44444
 
-The population coefficient of variance.
+</dd>
 
-
-### sample-coefficient-of-variance, s-covar, s-cv
-
-The sample coefficient of variance.
-
-
-## Skewness
-
-### skewness, skew
-
-The skewness, e.g. the lack of symmetry. Use sample, not population.
-
-
-### population-skewness, p-skew
-
-The population skewness, e.g. the lack of symmetry.
-
-### sample-skewness, s-skew
-
-The sample skewness, e.g. the lack of symmetry.
-
-
-## Kurtosis
-
-### kurtosis, kurt
-
-The kurtosis, e.g. peakness or flatness. Use sample, not population.
-
-### population-kurtosis, p-kurt
-
-The population kurtosis, e.g. peakness or flatness.
-
-### sample-kurtosis, s-kurt
-
-The sample kurtosis, e.g. peakness or flatness.
+</dl>
 
 
-## Second Moment About The Mean
+## Moments about the mean
 
-### second-moment-about-the-mean, second-moment
+<dl>
 
-The second moment about the mean, a.k.a. variance. Use sample, not population.
+<dt>
+second-moment-about-the-mean, second-moment
+<br>sample-second-moment-about-the-mean, s-second-moment
+<br>population-second-moment-about-the-mean, p-second-moment
+</dt>
+<dd>
 
-### population-second-moment-about-the-mean, p-second-moment
+The second moment about the mean. A.k.a. variance.
 
-The population second moment about the mean, a.k.a. population variance.
+    echo "1 2 4" | num second-moment-about-the-mean
+    2.33333
 
-### sample-second-moment-about-the-mean, s-second-moment
+</dd>
 
-The sample second moment about the mean, a.k.a. sample variance.
+<dt>
+third-moment-about-the-mean, third-moment
+<br>sample-third-moment-about-the-mean, s-third-moment
+<br>population-third-moment-about-the-mean, p-third-moment
+</dt>
+<dd>
 
+The third moment about the mean. A.k.a. skewness.
 
-## Third Moment About The Mean
+    echo "1 2 4" | num third-moment-about-the-mean
+    1.11111
 
-### third-moment-about-the-mean, third-moment
+</dd>
 
-The third moment about the mean, a.k.a. skewness. Use sample, not population.
+<dt>
+fourth-moment-about-the-mean, fourth-moment
+<br>sample-fourth-moment-about-the-mean, s-fourth-moment
+<br>population-fourth-moment-about-the-mean, p-fourth-moment
+</dt>
+<dd>
 
-### population-third-moment-about-the-mean, p-third-moment
+The fourth moment about the mean. A.k.a. kurtosis.
 
-The population third moment about the mean, a.k.a. population skewness.
+    echo "1 2 4" | num fourth-moment-about-the-mean
+    5.44444
 
-### sample-third-moment-about-the-mean, s-third-moment
+</dd>
 
-The sample third moment about the mean, a.k.a. sample skewness.
-
-
-## Fourth Moment About The Mean
-
-### fourth-moment-about-the-mean, fourth-moment
-
-The fourth moment about the mean, a.k.a. kurtosis. Use sample, not population.
-
-### population-fourth-moment-about-the-mean, p-fourth-moment
-
-The population fourth moment about the mean, a.k.a. population kurtosis.
-
-### sample-fourth-moment-about-the-mean, s-fourth-moment
-
-The sample fourth moment about the mean, a.k.a. sample kurtosis.
+</dl>
 
 
 ## Quartiles
 
-### interquartile-range, iqr, midspread, middle-fifty
+Quartiles divide an ordered data set into four equal parts.
 
-The interquartile range, which is q3 - q1.
+  * Q0 is the minimum.
+  * Q1 is the "middle" value in the first half of the rank-ordered data set.
+  * Q2 is the median value in the set.
+  * Q3 is the "middle" value in the second half of the rank-ordered data set.
+  * Q4 is the maximum.
 
-### quartile-0, q0
+Num uses a weighted average to calculate quartiles, because this is robust. For details please see https://en.wikipedia.org/wiki/Quartile and the "Method 3" description.
+
+<dl>
+
+<dt>
+interquartile-range, iqr, midspread, middle-fifty
+</dt>
+<dd>
+
+The interquartile range. This is calculated by using Q3 - Q1.
+
+    echo "6 7 15 36 39 40 41 42 43 47 49" | interquartile-range
+    22.5
+
+</dd>
+
+<dt>
+quartile-0, q0
+</dt>
+<dd>
 
 Quartile 0, a.k.a. minimum.
 
-### quartile-1, q1
+    echo "6 7 15 36 39 40 41 42 43 47 49" | quartile-0
+    6
+
+</dd>
+
+<dt>
+quartile-1, q1
+</dt>
+<dd>
 
 Quartile 1, a.k.a. lower quartile, 25th percentile.
 
-### quartile-2, q2
+    echo "6 7 15 36 39 40 41 42 43 47 49" | quartile-1
+    20.25
+
+</dd>
+
+<dt>quartile-2, q2
+</dt>
+<dd>
 
 Quartile 2, a.k.a. median, 50th percentile.
 
-### quartile-3, q3
+    echo "6 7 15 36 39 40 41 42 43 47 49" | quartile-2
+    40
+
+</dd>
+
+<dt>quartile-3, q3
+</dt>
+<dd>
 
 Quartile 3, a.k.a. upper quartile, 75th percentile.
 
-### quartile-4, q4
+    echo "6 7 15 36 39 40 41 42 43 47 49" | quartile-3
+    42.75
+
+<dt>quartile-4, q4
+</dt>
+<dd>
 
 Quartile 4, a.k.a. maximum.
+
+    echo "6 7 15 36 39 40 41 42 43 47 49" | quartile-4
+    49
+
+</dd>
+
+</dl>
 
 
 ## Transforms
 
-### normalize
+Transforms change each item in the list. Transforms are sometimes knowns as "maps" or "iterators" in other languages.
 
-Normalize each value to be within 0-1.
+<dl>
 
-### sort
+<dt>
+normalize
+</dt>
+<dd>
+
+Normalize each value to be within 0..1.
+
+    echo "1 2 4" | num normalize all
+    0 0.333333 1
+
+</dd>
+
+
+<dt>
+sort
+</dt>
+<dd>
 
 Sort the items in ascending order.
 
-### unique
+    echo "3 1 2" | num sort all
+    1 2 3
+
+</dd>
+
+<dt>
+unique
+</dt>
+<dd>
 
 Keep unique values; omit the rest. TODO.
 
-### difference, diff
+    echo "1 2 2 3 3 3" | num unique all
+    1 2 3
+
+</dd>
+
+<dt>
+difference, diff, interval
+</dt>
+<dd>
 
 The difference between each number and the next number. TODO.
+
+    echo "2 3 1 5" | num difference all
+    1 -2 4
+
+</dd>
+
+</dl>
 
 
 ## Rounding
 
-### round, integer
+<dt>
+round, integer
+</dt>
+<dd>
 
 Convert to nearest integer.<br>
 
-Examples: 1.9 => 2. -1.9 => -2.
+    echo "-1.9 1.9" | num round all
+    2 2
 
+</dd>
 
-### round-off, truncate
+<dt>round-off, truncate
+</dt>
+<dd>
 
 Convert to integer by omitting the fractional part.<br>
 
-Examples: 1.9 => 1. -1.9 => -1.
+    echo "-1.9 1.9" | num round all
+    -1 1
 
-### round-up, ceiling
+</dd>
+
+<dt>round-up, ceiling
+</dt>
+<dd>
 
 Convert to integer by rounding up.<br>
 
-Examples: 1.9 => 2. -1.9 => -1.
+    echo "-1.9 1.9" | num round all
+    -1 2
 
-### round-down, floor
+</dd>
+
+<dt>round-down, floor
+</dt>
+<dd>
 
 Convert to integer by rounding down.<br>
 
-Examples: 1.9 => 1. -1.9 => -2.
+    echo "-1.9 1.9" | num round all
+    -2 1
+
+</dd>
+
+</dl>
 
 
 ## Mappings
 
-### absolute-value, abs, magnitude
+<dl>
+
+<dt>
+absolute-value, abs, magnitude
+</dt>
+<dd>
 
 Convert to absolute value a.k.a. magnitude, positive numbers.
 
-Examples: -1 => 1. 1 => 1.
+    echo "-1 1" | num absolute-value all
+    1 1
 
+</dd>
+
+</dl>
 
 ## Queries
 
 Queries return TRUE as 1, or FALSE as 0.
 
-### is-unique
+<dl>
+
+<dt>
+is-unique
+</dt>
+<dd>
 
 Is each item unique?
 
+    echo "1 2 3" | num is-unique
+    1
 
-### is-ascending, is-asc
+    echo "2 2 2" | num is-unique
+    0
+
+</dd>
+
+<dt>
+is-ascending, is-asc
+</dt>
+<dd>
 
 Is the data ascending, i.e. each next number is greater or equal?
 
+    echo "1 2 3" | num is-ascending
+    1
 
-### is-strictly-ascending, is-strict-asc
+    echo "3 2 1" | num is-ascending
+    0
+
+</dd>
+
+<dt>
+is-strictly-ascending, is-strict-asc
+</dt>
+<dd>
 
 Is the data strictly ascending, i.e. each next number is greater?
 
-### is-non-ascending, is-non-asc
+    echo "1 2 3" | num is-strictly-ascending
+    1
+
+    echo "3 2 1" | num is-strictly-ascending
+    0
+
+</dd>
+
+<dt>
+is-non-ascending, is-non-asc
+</dt>
+<dd>
 
 Is the data non-ascending, i.e. some next number is lesser?
 
-### is-descending, is-desc
+    echo "1 2 3" | num is-non-ascending
+    0
+
+    echo "3 2 1" | num is-non-ascending
+    1
+
+
+<dt>
+is-descending, is-desc
+</dt>
+<dd>
 
 Is the data descending, i.e. each next number is lesser or equal?
 
-### is-strictly-descending, is-strict-desc
+    echo "3 2 1" | num is-descending
+    1
+
+    echo "1 2 3" | num is-descending
+    0
+
+</dd>
+
+<dt>
+is-strictly-descending, is-strict-desc
+</dt>
+<dd>
 
 Is the data strictly descending, i.e. each next number is lesser?
 
-### is-non-descending, is-non-desc
+    echo "3 2 1" | num is-strictly-descending
+    1
+
+    echo "1 2 3" | num is-strictly-descending
+    0
+
+</dd>
+
+<dt>
+is-non-descending, is-non-desc
+</dt>
+<dd>
 
 Is the data non-descending, i.e. some next number is greater?
+
+    echo "3 2 1" | num is-non-descending
+    0
+
+    echo "1 2 3" | num is-non-descending
+    1
+
+</dd>
+
+</dt>
 
 
 <p><hr>
