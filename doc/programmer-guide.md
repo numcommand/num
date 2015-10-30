@@ -104,10 +104,10 @@ The project uses these coding conventions:
     Big optimizations are always welcome and can be added here quickly.
     If a user has a need for speed or size, it is wiser to use R, Go, etc.
 
-  * Local vars may be prefixed with "_". Example: "_foo" is local.
+  * Local vars may be prefixed with "\_". Example: "\_foo" is local.
     This is most useful when a var has the same name as a function.
 
-  * Metadata vars may be suffixed with "_". Example: "foo_" is metadata.
+  * Metadata vars may be suffixed with "\_". Example: "foo\_" is metadata.
 
 Rule out for now:
 
