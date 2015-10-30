@@ -205,9 +205,7 @@ The sum of quads, a.k.a. sum of each mean deviation to the power of 4.
 
 ## Distributions
 
-#### variance, var
-<br>sample-variance, s-variance, s-var
-<br>population-variance, p-variance, p-var
+#### variance, var<br>sample-variance, s-variance, s-var<br>population-variance, p-variance, p-var
 
 The variance.
 
@@ -215,9 +213,7 @@ The variance.
     2.33333
 
 
-#### standard-deviation, stdev, sd
-<br>sample-standard-deviation, s-stdev, s-sd
-<br>population-standard-deviation, p-stdev, p-sd
+#### standard-deviation, stdev, sd<br>sample-standard-deviation, s-stdev, s-sd<br>population-standard-deviation, p-stdev, p-sd
 
 The standard deviation (SD).
 
@@ -225,9 +221,7 @@ The standard deviation (SD).
     1.52753
 
 
-#### coefficient-of-variance, covar, cv
-<br>sample-coefficient-of-variance, s-covar, s-cv
-<br>population-coefficient-of-variance, p-covar, p-cv
+#### coefficient-of-variance, covar, cv<br>sample-coefficient-of-variance, s-covar, s-cv<br>population-coefficient-of-variance, p-covar, p-cv
 
 The coefficient of variance (CV).
 
@@ -235,9 +229,7 @@ The coefficient of variance (CV).
     0.654654
 
 
-#### skewness, skew
-<br>sample-skewness, s-skew
-<br>population-skewness, p-skew
+#### skewness, skew<br>sample-skewness, s-skew<br>population-skewness, p-skew
 
 The skewness, e.g. the lack of symmetry.
 
@@ -245,9 +237,7 @@ The skewness, e.g. the lack of symmetry.
     1.11111
 
 
-#### kurtosis, kurt
-<br>sample-kurtosis, s-kurt
-<br>population-kurtosis, p-kurt
+#### kurtosis, kurt<br>sample-kurtosis, s-kurt<br>population-kurtosis, p-kurt
 
 The kurtosis, e.g. peakness or flatness.
 Default uses sample, not population.
@@ -256,14 +246,10 @@ Default uses sample, not population.
     5.44444
 
 
-
-
 ## Moments about the mean
 
 
-#### second-moment-about-the-mean, second-moment
-<br>sample-second-moment-about-the-mean, s-second-moment
-<br>population-second-moment-about-the-mean, p-second-moment
+#### second-moment-about-the-mean, second-moment<br>sample-second-moment-about-the-mean, s-second-moment<br>population-second-moment-about-the-mean, p-second-moment
 
 The second moment about the mean. A.k.a. variance.
 
@@ -271,9 +257,7 @@ The second moment about the mean. A.k.a. variance.
     2.33333
 
 
-#### third-moment-about-the-mean, third-moment
-<br>sample-third-moment-about-the-mean, s-third-moment
-<br>population-third-moment-about-the-mean, p-third-moment
+#### third-moment-about-the-mean, third-moment<br>sample-third-moment-about-the-mean, s-third-moment<br>population-third-moment-about-the-mean, p-third-moment
 
 The third moment about the mean. A.k.a. skewness.
 
@@ -281,16 +265,12 @@ The third moment about the mean. A.k.a. skewness.
     1.11111
 
 
-#### fourth-moment-about-the-mean, fourth-moment
-<br>sample-fourth-moment-about-the-mean, s-fourth-moment
-<br>population-fourth-moment-about-the-mean, p-fourth-moment
+#### fourth-moment-about-the-mean, fourth-moment<br>sample-fourth-moment-about-the-mean, s-fourth-moment<br>population-fourth-moment-about-the-mean, p-fourth-moment
 
 The fourth moment about the mean. A.k.a. kurtosis.
 
     echo "1 2 4" | num fourth-moment-about-the-mean
     5.44444
-
-
 
 
 ## Quartiles
@@ -330,7 +310,7 @@ Quartile 1, a.k.a. lower quartile, 25th percentile.
     20.25
 
 
-<dt>quartile-2, q2
+#### quartile-2, q2
 
 Quartile 2, a.k.a. median, 50th percentile.
 
@@ -338,14 +318,15 @@ Quartile 2, a.k.a. median, 50th percentile.
     40
 
 
-<dt>quartile-3, q3
+#### quartile-3, q3
 
 Quartile 3, a.k.a. upper quartile, 75th percentile.
 
     echo "6 7 15 36 39 40 41 42 43 47 49" | quartile-3
     42.75
 
-<dt>quartile-4, q4
+
+#### quartile-4, q4
 
 Quartile 4, a.k.a. maximum.
 
@@ -366,7 +347,6 @@ Normalize each value to be within 0..1.
 
     echo "1 2 4" | num normalize all
     0 0.333333 1
-
 
 
 #### sort
@@ -393,9 +373,8 @@ The difference between each number and the next number. TODO.
     1 -2 4
 
 
-
-
 ## Rounding
+
 
 #### round, integer
 
@@ -405,7 +384,7 @@ Convert to nearest integer.<br>
     2 2
 
 
-<dt>round-off, truncate
+#### round-off, truncate
 
 Convert to integer by omitting the fractional part.<br>
 
@@ -413,7 +392,7 @@ Convert to integer by omitting the fractional part.<br>
     -1 1
 
 
-<dt>round-up, ceiling
+#### round-up, ceiling
 
 Convert to integer by rounding up.<br>
 
@@ -421,7 +400,7 @@ Convert to integer by rounding up.<br>
     -1 2
 
 
-<dt>round-down, floor
+#### round-down, floor
 
 Convert to integer by rounding down.<br>
 
@@ -523,8 +502,6 @@ Is the data non-descending, i.e. some next number is greater?
 
     echo "1 2 3" | num is-non-descending
     1
-
-
 
 
 <p><hr>
