@@ -1,4 +1,4 @@
-# Command guide for related tools
+# Commands: how to use related command line tools and scripts
 
 This page describes some related tools that are available on most Unix-like systems.
 
@@ -76,3 +76,10 @@ Example:
 
     $ wc data.txt
     3 9 15
+
+
+<p><hr>
+<nav>
+* <b>[Prev Page: Functions: the complete list of all capabilities](functions.md)</b>
+* <b>[Next Page: Comparisons: when to use Num vs. other tools](comparisons.md)</b>
+</nav>

@@ -1,4 +1,4 @@
-# When to use Num vs. other tools
+# Comparisons: when to use Num vs. other tools
 
 Use Num when you have small data, or small tasks, or one-time needs, or development needs.
 For example, if you want a quick one-time result on your command line, then Num is good.
@@ -40,3 +40,10 @@ We suggest Python and its tools, such as pandas and scikit, when:
 * Your data set exceeds your computer's memory.
 * You want production environment deployments of visualizations and algorithms.
 * Your ideal tools use a general purpose programming language.
+
+
+<p><hr>
+<nav>
+* <b>[Prev Page: Commands: how to use related command line tools and scripts](commands.md)</b>
+* <b>[Next Page: FAQ: Frequently Asked Questions](faq.md)</b>
+</nav>

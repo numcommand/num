@@ -1,4 +1,4 @@
-# Examples
+# Examples: how to use Num for shell scripting
 
 
 ### How much data is in a directory?
@@ -44,3 +44,10 @@ We connect to the Craigslist website then parse prices.
 We use the `parallel` command to divide the work among cores.
 
     $ cat data.txt | parallel --pipe num sum | num sum
+
+
+<p><hr>
+<nav>
+* <b>[Prev Page: Install: how to download and set up](install.md)</b>
+* <b>[Next Page: Functions: the complete list of all capabilities](functions.md)</b>
+</nav>

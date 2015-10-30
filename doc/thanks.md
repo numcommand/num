@@ -1,4 +1,4 @@
-# Thanks
+# Thanks: our coders, advisors, sponsors, donors, and helpers
 
 ### Coders
 
@@ -51,7 +51,7 @@
 [Steve Howard](https://www.kickstarter.com/profile/132523397),
 and Anonymous.
 
-### Special Thanks
+### Helpers
 
 * Project readers: Andy Bas, Chris Clark, Marcus Breese, Matt Cohen.
 * Project feedback: Janis Papanagnou, Andrew Schorr.
@@ -62,3 +62,10 @@ and Anonymous.
 * Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and Alan Edelman, creators of the Julia language, and its contributors.
 * Linus Torvalds, creator of Linux and git, and their contributors.
 * All the myriad open source authors, advocates, and users.
+
+
+<p><hr>
+<nav>
+* <b>[Prev Page: FAQ: Frequently Asked Questions](faq.md)</b>
+* <b>[Next Page: To do: plans and ideas for our future versions](todo.md)</b>
+</nav>

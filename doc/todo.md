@@ -1,6 +1,6 @@
-# To do
+# To do: plans and ideas for our future versions
 
-### Planned for version 1.x
+### Plans for version 1.x
 
 Add source code in progress.
 
@@ -91,3 +91,10 @@ Other functions such as those in other math stats tools.
 Optimizaitons:
 
 * One-pass improved calculations as described by John D. Cook, for `mean`, `variance`, `standard-deviation`, `skewness`, `kurtosis`. See http://www.johndcook.com/blog/skewness_kurtosis/
+
+
+<p><hr>
+<nav>
+* <b>[Prev Page: Thanks: our coders, advisors, sponsors, donors, and helpers](thanks.md)</b>
+* <b>[Next Page: Programmer guide](programmer-guide.md)</b>
+</nav>

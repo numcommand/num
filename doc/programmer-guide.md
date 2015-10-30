@@ -113,3 +113,10 @@ Rule out for now:
 
   * Launch using `#/usr/bin/env awk` because we need the `-f` arg.
   * Launch using `#/usr/bin/env -S ..` because we want POSIX.
+
+
+<p><hr>
+<nav>
+* <b>[Prev Page: When to use Num vs. other tools](when-to-use-num-vs-other-tools.md)</b>
+* <b>[Next Page: Programmer library of awk functions](doc/programmer-library-of-awk-functions.md)</b>
+</nav>
