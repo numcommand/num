@@ -1,8 +1,8 @@
 # Num: number utilties for mathematics
 
-<b>[NmCommand.com website](http://www.numcommand.com)</b> -- the documentation available on the new website.
+<b>[Num command website](http://www.numcommand.com)</b>
 
-<b>[Kickstarter project](https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics)</b> -- please spread the word and donate to raise our ranking.
+<b>[Kickstarter project](https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics)</b> -- please spread the word and donate $1.
 
 Num is a command line tool that provides number utilities for mathematics and statistics.
 
@@ -78,19 +78,3 @@ If a value is unknown, or not a number, then it will print as "?". TODO.
 
     $ echo "1 2 4" | num mode
     ?
-
-
-## Options
-
-  * --help, --version, --usage:<br>
-      Print help text, version number, usage link, and awk details.
-
-## Project Tracking
-
-Author: Joel Parker Henderson (joel@joelparkerhenderson.com)
-
-Created: 2015-03-28
-
-Updated: 2015-10-26
-
-Version: 0.6.0
