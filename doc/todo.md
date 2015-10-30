@@ -96,5 +96,5 @@ Optimizaitons:
 <p><hr>
 <nav>
 * <b>[Prev Page: Thanks: our coders, advisors, sponsors, donors, and helpers](thanks.md)</b>
-* <b>[Next Page: Programmer guide](programmer-guide.md)</b>
+* <b>[Next Page: Known issues](known-issues.md)</b>
 </nav>

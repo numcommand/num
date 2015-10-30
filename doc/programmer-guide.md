@@ -117,6 +117,6 @@ Rule out for now:
 
 <p><hr>
 <nav>
-* <b>[Prev Page: When to use Num vs. other tools](when-to-use-num-vs-other-tools.md)</b>
-* <b>[Next Page: Programmer library of awk functions](doc/programmer-library-of-awk-functions.md)</b>
+* <b>[Prev Page: Known issues](known-issues.md)</b>
+* <b>[Next Page: Programmer library of awk functions](programmer-library-of-awk-functions.md)</b>
 </nav>

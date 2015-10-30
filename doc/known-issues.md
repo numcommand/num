@@ -11,6 +11,6 @@ Known issues:
 
 <p><hr>
 <nav>
-* <b>[Prev Page: Programmer library of awk functions](programmer-library-of-awk-functions.md)</b>
-* <b>[Next Page: Thanks](thanks.md)</b>
+* <b>[Prev Page: To do: plans and ideas for our future versions](todo.md)</b>
+* <b>[Next Page: Programmer library of awk functions](programmer-library-of-awk-functions.md)</b>
 </nav>
