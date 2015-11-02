@@ -33,7 +33,7 @@ function num_sample_standard_deviation_(num, num_, opts,  f) {
 }
 
 function num_sample_standard_deviation_init() {
-    function_init("sample_standard_deviation s_st_dev s_s_d", "Get the sample standard deviation")
+    function_init("sample_standard_deviation s_st_dev s_s_d standard_deviation std_dev sd", "Get the sample standard deviation")
 }
 
 # Alias

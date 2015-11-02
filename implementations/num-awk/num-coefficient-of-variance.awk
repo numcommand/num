@@ -33,7 +33,7 @@ function num_sample_coefficient_of_variance_(num, num_, opts,  f) {
 }
 
 function num_sample_coefficient_of_variance_init() {
-    function_init("sample_coefficient_of_variance s_co_var s_c_v", "Get the sample coefficient of variance")
+    function_init("sample_coefficient_of_variance s_co_var s_c_v coefficent_of_variance co_var c_v", "Get the sample coefficient of variance")
 }
 
 # Alias

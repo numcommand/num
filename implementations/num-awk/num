@@ -136,23 +136,6 @@ function init_word_argv() {
 function init_word_list() {
 
     # Convention: default is sample, not population.
-    global_word_list["variance"] = \
-    global_word_list["var"] = \
-    "num_sample_variance"
-
-    # Convention: default is sample, not population.
-    global_word_list["standarddeviation"] = \
-    global_word_list["stdev"] = \
-    global_word_list["sd"] = \
-    "num_sample_standard_deviation"
-
-    # Convention: default is sample, not population.
-    global_word_list["coefficientofvariance"] = \
-    global_word_list["covar"] = \
-    global_word_list["cv"] = \
-    "num_sample_coefficient_of_variance"
-
-    # Convention: default is sample, not population.
     global_word_list["secondmomentaboutthemean"] = \
     global_word_list["secondmoment"] = \
     "num_sample_variance"
