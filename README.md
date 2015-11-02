@@ -2,12 +2,7 @@
 
 Num is a command line tool for mathematics and statistics.
 
-<ul>
-<li>[NumCommand.com website](http://www.numcommand.com)</li>
-<li>[Kickstarter project](https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics)</b> -- please spread the word and donate $1.</li>
-<li>Con
-
-Examples:
+Example:
 
     $ echo "1 2 4" | num sum
     7
@@ -24,58 +19,21 @@ Get started:
   * [Examples: how to use Num for shell scripting](doc/examples.md)
   * [Functions: the complete list of all capabilities](doc/functions.md)
   * [FAQ: Frequently Asked Questions](doc/faq.md)
+  * [Kickstarter project](https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics)</b> -- please spread the word and donate $1.</li>
 
 Project pages:
 
+  * [NumCommand.com website](http://www.numcommand.com)
+  * [Thanks: our coders, advisors, sponsors, donors, and helpers](doc/thanks.md)
   * [Commands: how to use related command line tools and scripts](doc/commands.md)
   * [Comparisons: when to use Num vs. other tools, such as C, R, Python, etc.](doc/comparisons.md)
+  * [Input/Output and options for running Num](doc/input-output-options.md)
+Planning pages:
+
   * [To do: plans and ideas for our future versions](doc/todo.md)
   * [Known issues](doc/known-issues.md)
+
+Programmer pages:
+
   * [Programmer guide](doc/programmer-guide.md)
   * [Programmer library of awk functions](doc/programmer-library-of-awk-functions.md)
-  * [Thanks: our coders, advisors, sponsors, donors, and helpers](doc/thanks.md)
-
-
-## Input
-
-You can read standard input:
-
-    $ echo "1 2 4" | num sum
-    7
-
-You can read files:
-
-    $ echo "1 2 4" > data.txt
-    $ num sum data.txt
-    7
-
-You can customize the input field separator (FS) and the input record separator (RS):
-
-    $ echo "1,2,3;4,5,6" | num sum FS=',' RS=';'
-    21
-
-
-## Output
-
-You can customize the output field separator (OFS):
-
-    $ echo "1 2 4" | num sum min max mean OFS=','
-    7,1,4,2.33333
-
-
-## Notation
-
-Command line options accept any mix of dashes, underscores, and capitalizations.
-
-For example these are all the same:
-
-    sum-of-squares
-    sum_of_squares
-    sumofsquares
-    SumOfSquares
-    SUMOFSQUARES
-
-If a value is unknown, or not a number, then it will print as "?". TODO.
-
-    $ echo "1 2 4" | num mode
-    ?
