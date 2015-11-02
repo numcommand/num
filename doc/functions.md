@@ -104,15 +104,15 @@ The value that is closest numerically to the mean.
     2
 
 
-#### trimean (TODO)
+#### trimean
 
 The trimean.
-The advantage of using the trimean vs. the mean: the trimean is robust to outliers.
-The trimean equals (quartile-1 + 2 * median + quartile-3) / 4.
 
     echo "1 2 4" | num trimean
-    TODO
+    8.875
 
+The advantage of using the trimean vs. the mean: the trimean is robust to outliers.
+The trimean equals (quartile-1 + 2 * median + quartile-3) / 4.
 
 ## Median
 
@@ -246,7 +246,7 @@ Default uses sample, not population.
 ## Moments about the mean
 
 
-#### second-moment-about-the-mean, second-moment<br>sample-second-moment-about-the-mean, s-second-moment<br>population-second-moment-about-the-mean, p-second-moment
+#### second-moment-about-the-mean, 2matm<br>sample-second-moment-about-the-mean, s2matm<br>population-second-moment-about-the-mean, p2matm
 
 The second moment about the mean. A.k.a. variance.
 
@@ -254,7 +254,7 @@ The second moment about the mean. A.k.a. variance.
     2.33333
 
 
-#### third-moment-about-the-mean, third-moment<br>sample-third-moment-about-the-mean, s-third-moment<br>population-third-moment-about-the-mean, p-third-moment
+#### third-moment-about-the-mean, 3matm<br>sample-third-moment-about-the-mean, s3matm<br>population-third-moment-about-the-mean, p3matm
 
 The third moment about the mean. A.k.a. skewness.
 
@@ -262,7 +262,7 @@ The third moment about the mean. A.k.a. skewness.
     1.11111
 
 
-#### fourth-moment-about-the-mean, fourth-moment<br>sample-fourth-moment-about-the-mean, s-fourth-moment<br>population-fourth-moment-about-the-mean, p-fourth-moment
+#### fourth-moment-about-the-mean, 4matm<br>sample-fourth-moment-about-the-mean, s4matm<br>population-fourth-moment-about-the-mean, p4matm
 
 The fourth moment about the mean. A.k.a. kurtosis.
 
