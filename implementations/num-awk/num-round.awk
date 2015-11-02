@@ -2,6 +2,13 @@
 #
 # num-round.awk
 #
+# We provide four kinds of rounding:
+#
+#   * round a.k.a. nint.
+#   * round off a.k.a. truncate.
+#   * round up a.k.a. ceiling.
+#   * round down a.k.a. floor.
+#
 ###
 
 ###
@@ -16,6 +23,8 @@
 #    num_nint(1.9) => 2
 #    num_nint(-1.9) => -2
 #
+###
+
 function num_round(x) {
     return (x >= 0) ? int(x + 0.5) : int(x - 0.5)
 }
@@ -37,6 +46,8 @@ function num_nint(x) {
 #    num_truncate(1.9) => 1
 #    num_truncate(-1.9) => -1
 #
+###
+
 function num_round_off(x) {
     return int(x)
 }
@@ -80,6 +91,8 @@ function num_ceiling(x) {
 #    num_floor(1.9) => 1
 #    num_floor(-1.9) => -2
 #
+###
+
 function num_round_down(x,  y) {
     y = int(x)
     return (x == y) ? x : (x >= 0) ? y : y - 1
@@ -87,5 +100,5 @@ function num_round_down(x,  y) {
 
 # Alias
 function num_floor(x) {
-    round_down(x)
+    num_round_down(x)
 }

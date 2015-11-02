@@ -416,7 +416,7 @@ x=$(echo "1\n2\n4\n" | ./num sample-coefficient-of-variance) &&
 
 ###
 #
-# population-skewness
+# skewness
 #
 ###
 
@@ -518,6 +518,18 @@ x=$(echo "3 1 2" | ./num sort all) &&
 
 x=$(echo "3\n1\n2\n" | ./num sort all) &&
     assert_eq "1 2 3" "$x" "sort, with col"
+
+x=$(echo "3 1 2" | ./num sort-ascending all) &&
+    assert_eq "1 2 3" "$x" "sort-ascending, with row"
+
+x=$(echo "3\n1\n2\n" | ./num sort-ascending all) &&
+    assert_eq "1 2 3" "$x" "sort-ascending, with col"
+
+x=$(echo "3 1 2" | ./num sort-descending all) &&
+    assert_eq "3 2 1" "$x" "sort-descending, with row"
+
+x=$(echo "3\n1\n2\n" | ./num sort-descending all) &&
+    assert_eq "3 2 1" "$x" "sort-descending, with col"
 
 ############################################################################
 #
