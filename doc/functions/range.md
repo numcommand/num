@@ -1,4 +1,4 @@
-# range, spread
+# range, interval, breadth, spread
 
 The range, which is maximum - minimum.
 

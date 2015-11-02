@@ -27,5 +27,5 @@ function num_product_(num, num_, opts,  f) {
 }
 
 function num_product_init() {
-    function_init("product", "Get the product.")
+    function_init("product", "Get the product.", "https://wikipedia.org/wiki/Product_(mathematics)")
 }

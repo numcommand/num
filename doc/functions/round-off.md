@@ -1,4 +1,4 @@
-# round-off, truncate
+# round-off, round-towards-zero, truncate
 
 Convert to integer by omitting the fractional part.<br>
 

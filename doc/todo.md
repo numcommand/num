@@ -1,18 +1,5 @@
 # To do: plans and ideas for our future versions
 
-### Plans for version 1.x
-
-Add source code in progress.
-
-Add installation instructions.
-
-Announce on Kickstarter.
-
-Add Unix options:
-
-* `--help`
-* `--version`
-
 
 ### Ideas for version 2.x and future
 

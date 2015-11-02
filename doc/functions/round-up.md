@@ -1,4 +1,4 @@
-# round-up, ceiling
+# round-up, round-towards-positive-infinity, ceiling
 
 Convert to integer by rounding up.<br>
 

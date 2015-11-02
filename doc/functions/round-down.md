@@ -1,4 +1,4 @@
-# round-down, floor
+# round-down, round-towards-negative-infinity, floor
 
 Convert to integer by rounding down.<br>
 

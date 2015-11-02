@@ -1,15 +1,15 @@
-# coefficient-of-variance, covar, cv
+# coefficient-of-variance, covar, cv, relative-standard-deviation, rsd
 
-The coefficient of variance (CV).
+The coefficient of variance (CV), a.k.a. relative standard deviation (RSD).
 
     echo "1 2 4" | num coefficient-of-variance
     0.654654
 
 
-The coefficient-of-variance is the sample coefficient-of-variance, not population coefficient-of-variance.
+This calculates for a sample, not a population.
 
 These are also available:
 <ul>
-<li>sample-coefficient-of-variance, scovar, scv
-<li>population-coefficient-of-variance, pcovar, pcv
+<li>sample-coefficient-of-variance, scovar, scv, sample-relative-standard-deviation, srsd
+<li>population-coefficient-of-variance, pcovar, pcv, population-relative-standard-deviation, prsd
 </ul>

@@ -51,7 +51,7 @@ The maximum value.
     echo "1 2 4" | num maximum
     1
 
-#### range, spread
+#### range, interval, breadth, spread
 
 The range, which is maximum - minimum.
 
@@ -202,39 +202,68 @@ The sum of quads, a.k.a. sum of each mean deviation to the power of 4.
 
 ## Distributions
 
-#### variance, var<br>sample-variance, s-variance, s-var<br>population-variance, p-variance, p-var
+#### variance, var
 
 The variance.
 
     echo "1 2 4" | num variance
     2.33333
 
+This calculates for a sample, not a population.
 
-#### standard-deviation, stdev, sd<br>sample-standard-deviation, s-stdev, s-sd<br>population-standard-deviation, p-stdev, p-sd
+These are also available:
+<ul>
+<li>sample-variance, svar
+<li>population-variance, pvar
+</ul>
+
+#### standard-deviation, stdev, sd
 
 The standard deviation (SD).
 
     echo "1 2 4" | num standard-deviation
     1.52753
 
+This calculates for a sample, not a population.
 
-#### coefficient-of-variance, covar, cv<br>sample-coefficient-of-variance, s-covar, s-cv<br>population-coefficient-of-variance, p-covar, p-cv
+These are also available:
+<ul>
+<li>sample-standard-deviation, sstdev, ssd
+<li>population-standard-deviation, pstdev, psd
+</ul>
 
-The coefficient of variance (CV).
+#### coefficient-of-variance, covar, cv, relative-standard-deviation, rsd
+
+The coefficient of variance (CV), a.k.a. relative standard deviation (RSD).
 
     echo "1 2 4" | num coefficient-of-variance
     0.654654
 
+This calculates for a sample, not a population.
 
-#### skewness, skew<br>sample-skewness, s-skew<br>population-skewness, p-skew
+These are also available:
+<ul>
+<li>sample-coefficient-of-variance, scovar, scv, sample-relative-standard-deviation, srsd
+<li>population-coefficient-of-variance, pcovar, pcv, population-relative-standard-deviation, prsd
+</ul>
+
+#### skewness, skew
 
 The skewness, e.g. the lack of symmetry.
 
     echo "1 2 4" | num skewness
     1.11111
 
+This calculates for a sample, not a population.
 
-#### kurtosis, kurt<br>sample-kurtosis, s-kurt<br>population-kurtosis, p-kurt
+These are also available:
+<ul>
+<li>sample-skewness, sskew
+<li>population-skewness, pskew
+</ul>
+
+
+#### kurtosis, kurt
 
 The kurtosis, e.g. peakness or flatness.
 Default uses sample, not population.
@@ -242,6 +271,13 @@ Default uses sample, not population.
     echo "1 2 4" | num kurtosis
     5.44444
 
+This calculates for a sample, not a population.
+
+These are also available:
+<ul>
+<li>sample-kurtosis, skurt
+<li>population-kurtosis, pkurt
+</ul>
 
 ## Moments about the mean
 
@@ -400,7 +436,7 @@ Normalize each value to be within 0..1.
 ## Rounding
 
 
-#### round, nint
+#### round, round-towards-nearest, nint
 
 Convert to nearest integer.<br>
 
@@ -408,7 +444,7 @@ Convert to nearest integer.<br>
     2 2
 
 
-#### round-off, truncate
+#### round-off, round-towards-zero, truncate
 
 Convert to integer by omitting the fractional part.<br>
 
@@ -416,7 +452,7 @@ Convert to integer by omitting the fractional part.<br>
     -1 1
 
 
-#### round-up, ceiling
+#### round-up, round-towards-positive-infinity, ceiling
 
 Convert to integer by rounding up.<br>
 
@@ -424,7 +460,7 @@ Convert to integer by rounding up.<br>
     -1 2
 
 
-#### round-down, floor
+#### round-down, round-towards-negative-infinity, floor
 
 Convert to integer by rounding down.<br>
 

@@ -57,7 +57,7 @@ function num_all_(num, num_, opts) {
 }
 
 function num_all_init() {
-   function_init("all each", "Get all the items.")
+   function_init("all each", "Get all the items.", "https://en.wikipedia.org/wiki/Enumeration")
 }
 
 ############################################################################
@@ -185,46 +185,6 @@ function init_word_list() {
     global_word_list["outtab"] = \
     "num_output_tab_separated_values"
 
-}
-
-############################################################################
-#
-# FUNCTION CONNECTIONS
-#
-###
-
-###
-#
-# Initialize function metadata for a given function.
-#
-# Example:
-#
-#    function num_hello() {
-#        print "hello world"
-#    }
-#
-#    function num_hello_init() {
-#        function_init("hello hi hola", "Print hello world")
-#    }
-#
-# The example creates these:
-#
-#    function_["num_hello","names"] = "hello hi hola"
-#    function_["num_hello", "help"] = "Print hello world"
-#    global_word_list["hello"] = "num_hello"
-#    global_word_list["hi"] = "num_hello"
-#    global_word_list["hola"] = "num_hello"
-#
-function function_init(names, help,  f, i, name, name_list) {
-    split(names, name_list)
-    f = "num_" name_list[1]
-    function_[f, "names"] = names
-    function_[f, "help"] = help
-    for (i in name_list) {
-        name = name_list[i]
-        gsub(/_/,"", name)
-        global_word_list[name] = f
-    }
 }
 
 ############################################################################

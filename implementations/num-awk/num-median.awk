@@ -68,7 +68,7 @@ function num_median_(num, num_, opts,  f, i, _n) {
 }
 
 function num_median_init() {
-    function_init("median med", "Get the median.")
+    function_init("median med", "Get the median.", "https://en.wikipedia.org/wiki/Normalization_(statistics)")
 }
 
 ###
@@ -99,7 +99,7 @@ function num_median_low_(num, num_, opts,  f, _n) {
 }
 
 function num_median_low_init() {
-    function_init("median_low med_low", "Get the median that is lower a.k.a. lesser.")
+    function_init("median_low med_low", "Get the median that is lower a.k.a. lesser.", "https://en.wikipedia.org/wiki/Normalization_(statistics)")
 }
 
 ###
@@ -132,5 +132,5 @@ function num_median_high_(num, num_, opts,  f, _n) {
 }
 
 function num_median_high_init() {
-  function_init("median_high med_high", "Get the median that is higher a.k.a. greater.")
+    function_init("median_high med_high", "Get the median that is higher a.k.a. greater.", "https://en.wikipedia.org/wiki/Normalization_(statistics)")
 }

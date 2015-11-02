@@ -25,7 +25,7 @@ function num_n_(num, num_, opts,  f) {
 }
 
 function num_n_init() {
-    function_init("n count length size", "Get the number of items, a.k.a. count, length, size.")
+    function_init("n count length size", "Get the number of items, a.k.a. count, length, size.", "https://en.wikipedia.org/wiki/Enumeration")
 }
 
 ###
@@ -49,7 +49,7 @@ function num_first_(num, num_, opts,  f) {
 }
 
 function num_first_init() {
-    function_init("first head", "Get the first item.")
+    function_init("first head", "Get the first item.", "https://en.wikipedia.org/wiki/Enumeration")
 }
 
 ###
@@ -73,7 +73,7 @@ function num_last_(num, num_, opts,  f) {
 }
 
 function num_last_init() {
-    function_init("last tail", "Get the last item.")
+    function_init("last tail", "Get the last item.", "https://en.wikipedia.org/wiki/Enumeration")
 }
 
 ###
@@ -105,7 +105,7 @@ function num_min_(num, num_, opts,  f) {
 }
 
 function num_min_init() {
-    function_init("min minimum least lowest", "Get the minimum value, a.k.a. least, lowest.")
+    function_init("min minimum least lowest", "Get the minimum value, a.k.a. least, lowest.", "https://en.wikipedia.org/wiki/Maxima_and_minima")
 }
 
 ###
@@ -135,7 +135,7 @@ function num_max_(num, num_, opts,  f) {
 }
 
 function num_max_init() {
-    function_init("max maximum greatest highest", "Get the maximum value, a.k.a. greatest, highest.")
+    function_init("max maximum greatest highest", "Get the maximum value, a.k.a. greatest, highest.", "https://en.wikipedia.org/wiki/Maxima_and_minima")
 }
 
 ###
@@ -159,5 +159,5 @@ function num_range_(num, num_, opts,  f) {
 }
 
 function num_range_init() {
-    function_init("range breadth spread", "Get the range, a.k.a. breadth, spread.")
+    function_init("range interval breadth spread", "Get the range, a.k.a. interval, breadth, spread.", "https://en.wikipedia.org/wiki/Range_(statistics)")
 }

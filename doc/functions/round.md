@@ -1,4 +1,4 @@
-# round, nint
+# round, round-toward-nearest, nint
 
 Convert to nearest integer.<br>
 

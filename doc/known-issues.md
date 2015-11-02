@@ -1,6 +1,11 @@
 # Known issues
 
+
 Known issues:
+
+  * The script uses the phrase "coefficient of variance" whereas Wikipedia uses the phrase "coefficient of variation"; figure out which is better.
+
+  * Change the function manager init to be a consistent name.
 
   * Mode and its friends aren't implemented yet; they return TODO.
 

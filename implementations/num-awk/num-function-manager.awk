@@ -6,6 +6,42 @@
 
 ###
 #
+# Initialize function metadata for a given function.
+#
+# Example:
+#
+#    function num_hello() {
+#        print "hello world"
+#    }
+#
+#    function num_hello_init() {
+#        function_init("hello hi hola", "Print a greeting", "http://example.com/hello.html")
+#    }
+#
+# The example creates these:
+#
+#    function_["num_hello","names"] = "hello hi hola"
+#    function_["num_hello", "help"] = "Print a greeting"
+#    function_["num_hello", "link"] = "http://example.com/hello.html"
+#    global_word_list["hello"] = "num_hello"
+#    global_word_list["hi"] = "num_hello"
+#    global_word_list["hola"] = "num_hello"
+#
+function function_init(names, help, link,  f, i, name, name_list) {
+    split(names, name_list)
+    f = "num_" name_list[1]
+    function_[f, "names"] = names
+    function_[f, "help"] = help
+    function_[f, "link"] = link
+    for (i in name_list) {
+        name = name_list[i]
+        gsub(/_/,"", name)
+        global_word_list[name] = f
+    }
+}
+
+###
+#
 # Initialize every file and function.
 #
 function function_manager_init() {

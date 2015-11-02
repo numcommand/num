@@ -12,6 +12,8 @@
 
 function init_lint() {
     split("", a)
+
+    ## Basics
     num_all(a)
 
     ## Quartiles
