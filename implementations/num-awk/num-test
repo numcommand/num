@@ -344,9 +344,27 @@ x=$(echo "1\n2\n4\n" | ./num sum-of-quads) &&
 
 ###
 #
-# population-variance
+# variance
 #
 ###
+
+## Default
+
+x=$(echo "1 2 4" | ./num variance) &&
+    assert_eq 2.33333 "$x" "variance, with row"
+
+x=$(echo "1\n2\n4\n" | ./num variance) &&
+    assert_eq 2.33333 "$x" "variance, with col"
+
+## Sample
+
+x=$(echo "1 2 4" | ./num sample-variance) &&
+    assert_eq 2.33333 "$x" "sample-variance, with row"
+
+x=$(echo "1\n2\n4\n" | ./num sample-variance) &&
+    assert_eq 2.33333 "$x" "sample-variance, with col"
+
+## Population
 
 x=$(echo "1 2 4" | ./num population-variance) &&
     assert_eq 1.55556 "$x" "population-variance, with row"
@@ -356,21 +374,27 @@ x=$(echo "1\n2\n4\n" | ./num population-variance) &&
 
 ###
 #
-# sample-variance
+# standard-deviation
 #
 ###
 
-x=$(echo "1 2 4" | ./num sample-variance) &&
-    assert_eq 2.33333 "$x" "sample-variance, with row"
+## Default
 
-x=$(echo "1\n2\n4\n" | ./num sample-variance) &&
-    assert_eq 2.33333 "$x" "sample-variance, with col"
+x=$(echo "1 2 4" | ./num standard-deviation) &&
+    assert_eq 1.52753 "$x" "standard-deviation, with row"
 
-###
-#
-# population-standard-deviation
-#
-###
+x=$(echo "1\n2\n4\n" | ./num standard-deviation) &&
+    assert_eq 1.52753 "$x" "standard-deviation, with col"
+
+## Sample
+
+x=$(echo "1 2 4" | ./num sample-standard-deviation) &&
+    assert_eq 1.52753 "$x" "sample-standard-deviation, with row"
+
+x=$(echo "1\n2\n4\n" | ./num sample-standard-deviation) &&
+    assert_eq 1.52753 "$x" "sample-standard-deviation, with col"
+
+## Population
 
 x=$(echo "1 2 4" | ./num population-standard-deviation) &&
     assert_eq 1.24722 "$x" "population-standard-deviation, with row"
@@ -380,21 +404,27 @@ x=$(echo "1\n2\n4\n" | ./num population-standard-deviation) &&
 
 ###
 #
-# sample-standard-deviation
+# coefficient-of-variance
 #
 ###
 
-x=$(echo "1 2 4" | ./num sample-standard-deviation) &&
-    assert_eq 1.52753 "$x" "sample-standard-deviation, with row"
+## Default
 
-x=$(echo "1\n2\n4\n" | ./num sample-standard-deviation) &&
-    assert_eq 1.52753 "$x" "sample-standard-deviation, with col"
+x=$(echo "1 2 4" | ./num coefficient-of-variance) &&
+    assert_eq 0.654654 "$x" "coefficient-of-variance, with row"
 
-###
-#
-# population-coefficient-of-variance
-#
-###
+x=$(echo "1\n2\n4\n" | ./num coefficient-of-variance) &&
+    assert_eq 0.654654 "$x" "coefficient-of-variance, with col"
+
+## Sample
+
+x=$(echo "1 2 4" | ./num sample-coefficient-of-variance) &&
+    assert_eq 0.654654 "$x" "sample-coefficient-of-variance, with row"
+
+x=$(echo "1\n2\n4\n" | ./num sample-coefficient-of-variance) &&
+    assert_eq 0.654654 "$x" "sample-coefficient-of-variance, with col"
+
+### Population
 
 x=$(echo "1 2 4" | ./num population-coefficient-of-variance) &&
     assert_eq 0.534522 "$x" "population-coefficient-of-variance, with row"
@@ -404,27 +434,19 @@ x=$(echo "1\n2\n4\n" | ./num population-coefficient-of-variance) &&
 
 ###
 #
-# sample-coefficient-of-variance
-#
-###
-
-x=$(echo "1 2 4" | ./num sample-coefficient-of-variance) &&
-    assert_eq 0.654654 "$x" "sample-coefficient-of-variance, with row"
-
-x=$(echo "1\n2\n4\n" | ./num sample-coefficient-of-variance) &&
-    assert_eq 0.654654 "$x" "sample-coefficient-of-variance, with col"
-
-###
-#
 # skewness
 #
 ###
 
-x=$(echo "1 2 4" | ./num population-skewness) &&
-    assert_eq 0.740741 "$x" "population-skewness, with row"
+## Default
 
-x=$(echo "1\n2\n4\n" | ./num population-skewness) &&
-    assert_eq 0.740741 "$x" "population-skewness, with col"
+x=$(echo "1 2 4" | ./num skewness) &&
+    assert_eq 1.11111 "$x" "skewness, with row"
+
+x=$(echo "1\n2\n4\n" | ./num skewness) &&
+    assert_eq 1.11111 "$x" "skewness, with col"
+
+## Sample
 
 x=$(echo "1 2 4" | ./num sample-skewness) &&
     assert_eq 1.11111 "$x" "sample-skewness, with row"
@@ -432,11 +454,37 @@ x=$(echo "1 2 4" | ./num sample-skewness) &&
 x=$(echo "1\n2\n4\n" | ./num sample-skewness) &&
     assert_eq 1.11111 "$x" "sample-skewness, with col"
 
+## Population
+
+x=$(echo "1 2 4" | ./num population-skewness) &&
+    assert_eq 0.740741 "$x" "population-skewness, with row"
+
+x=$(echo "1\n2\n4\n" | ./num population-skewness) &&
+    assert_eq 0.740741 "$x" "population-skewness, with col"
+
 ###
 #
 # kurtosis
 #
 ###
+
+## Default
+
+x=$(echo "1 2 4" | ./num kurtosis) &&
+    assert_eq 5.44444 "$x" "kurtosis, with row"
+
+x=$(echo "1\n2\n4\n" | ./num kurtosis) &&
+    assert_eq 5.44444 "$x" "kurtosis, with col"
+
+## Sample
+
+x=$(echo "1 2 4" | ./num sample-kurtosis) &&
+    assert_eq 5.44444 "$x" "sample-kurtosis, with row"
+
+x=$(echo "1\n2\n4\n" | ./num sample-kurtosis) &&
+    assert_eq 5.44444 "$x" "sample-kurtosis, with col"
+
+## Population
 
 x=$(echo "1 2 4" | ./num population-kurtosis) &&
     assert_eq 3.62963 "$x" "population-kurtosis, with row"
@@ -444,11 +492,6 @@ x=$(echo "1 2 4" | ./num population-kurtosis) &&
 x=$(echo "1\n2\n4\n" | ./num population-kurtosis) &&
     assert_eq 3.62963 "$x" "population-kurtosis, with col"
 
-x=$(echo "1 2 4" | ./num sample-kurtosis) &&
-    assert_eq 5.44444 "$x" "sample-kurtosis, with row"
-
-x=$(echo "1\n2\n4\n" | ./num sample-kurtosis) &&
-    assert_eq 5.44444 "$x" "sample-kurtosis, with col"
 
 ###
 #
@@ -734,12 +777,6 @@ x=$(echo "1 2 3" | ./num is-strictly-descending) &&
 
 x=$(echo "1\n2\n3\n" | ./num is-strictly-descending) &&
     assert_eq $FALSE "$x" "is-strictly-descending, with col, with ascending"
-
-############################################################################
-#
-# SYSADMIN FUNCTIONS
-#
-##
 
 ###
 #

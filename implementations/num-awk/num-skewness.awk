@@ -40,7 +40,7 @@ function num_sample_skewness_(num, num_, opts,  f) {
 }
 
 function num_sample_skewness_init() {
-    function_init("sample_skewness s_skew sample_third_moment_about_the_mean sample_third_moment s_third_moment", "Get the sample skewness, a.k.a. sample third moment about the mean.")
+    function_init("sample_skewness s_skew skewness skew sample_third_moment_about_the_mean sample_third_moment s_third_moment", "Get the sample skewness, a.k.a. sample third moment about the mean.")
 }
 
 # Alias

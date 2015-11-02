@@ -33,7 +33,7 @@ function num_sample_variance_(num, num_, opts,  f) {
 }
 
 function num_sample_variance_init() {
-    function_init("sample_variance s_var sample_second_moment_about_the_mean, s_second_moment", "Get the sample variance, a.k.a. sample second moment about the mean.")
+    function_init("sample_variance s_var variance var sample_second_moment_about_the_mean, s_second_moment", "Get the sample variance, a.k.a. sample second moment about the mean.")
 }
 
 # Alias
