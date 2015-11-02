@@ -13,64 +13,9 @@ Quartiles divide an ordered data set into four equal parts.
 Num uses a weighted average to calculate quartiles, because this is robust. For details please see https://en.wikipedia.org/wiki/Quartile and the "Method 3" description.
 
 
-#### interquartile-range, iqr, midspread, middle-fifty
-
-The interquartile range. This is calculated by using Q3 - Q1.
-
-    echo "6 7 15 36 39 40 41 42 43 47 49" | interquartile-range
-    22.5
-
-
-#### quartile-0, q0
-
-Quartile 0, a.k.a. minimum.
-
-    echo "6 7 15 36 39 40 41 42 43 47 49" | quartile-0
-    6
-
-
-#### quartile-1, q1
-
-Quartile 1, a.k.a. lower quartile, 25th percentile.
-
-    echo "6 7 15 36 39 40 41 42 43 47 49" | quartile-1
-    20.25
-
-
-#### quartile-2, q2
-
-Quartile 2, a.k.a. median, 50th percentile.
-
-    echo "6 7 15 36 39 40 41 42 43 47 49" | quartile-2
-    40
-
-
-#### quartile-3, q3
-
-Quartile 3, a.k.a. upper quartile, 75th percentile.
-
-    echo "6 7 15 36 39 40 41 42 43 47 49" | quartile-3
-    42.75
-
-
-#### quartile-4, q4
-
-Quartile 4, a.k.a. maximum.
-
-    echo "6 7 15 36 39 40 41 42 43 47 49" | quartile-4
-    49
-
 ## Transforms
 
 Transforms change the list.
-
-
-#### sort
-
-Sort the items in ascending order.
-
-    echo "3 1 2" | num sort all
-    1 2 3
 
 
 #### unique
@@ -92,59 +37,6 @@ The difference between each number and the next number. TODO.
 ## Mappings
 
 Mappings work on each value.
-
-
-#### absolute-value, abs, magnitude
-
-Convert to absolute value a.k.a. magnitude, positive numbers.
-
-    echo "-1 1" | num absolute-value all
-    1 1
-
-
-#### normalize
-
-Normalize each value to be within 0..1.
-
-    echo "1 2 4" | num normalize all
-    0 0.333333 1
-
-
-## Rounding
-
-
-#### round, integer
-
-Convert to nearest integer.<br>
-
-    echo "-1.9 1.9" | num round all
-    2 2
-
-
-#### round-off, truncate
-
-Convert to integer by omitting the fractional part.<br>
-
-    echo "-1.9 1.9" | num round all
-    -1 1
-
-
-#### round-up, ceiling
-
-Convert to integer by rounding up.<br>
-
-    echo "-1.9 1.9" | num round all
-    -1 2
-
-
-#### round-down, floor
-
-Convert to integer by rounding down.<br>
-
-    echo "-1.9 1.9" | num round all
-    -2 1
-
-
 
 
 

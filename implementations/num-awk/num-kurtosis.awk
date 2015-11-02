@@ -53,7 +53,7 @@ function num_sample_kurtosis_(num, num_, opts,  f) {
 }
 
 function num_sample_kurtosis_init() {
-    function_init("sample_kurtosis s_kurt kurtosis kurt sample_fourth_moment_about_the_mean sample_fourth_moment s_fourth_moment", "Get the kurtosis, a.k.a. sample fourth moment about the mean.")
+    function_init("sample_kurtosis s_kurt kurtosis kurt sample_fourth_moment_about_the_mean s_fourth_moment_about_the_mean s_4_m_a_t_m fourth_moment_about_the_mean 4_m_a_t_m", "Get the kurtosis, a.k.a. sample fourth moment about the mean.")
 }
 
 # Alias
@@ -81,7 +81,7 @@ function num_population_kurtosis_(num, num_, opts,  f) {
 }
 
 function num_population_kurtosis_init() {
-    function_init("population_kurtosis p_kurt population_fourth_moment_about_the_mean population_fourth_moment p_fourth_moment", "Get the kurtosis, a.k.a. population fourth moment about the mean.")
+    function_init("population_kurtosis p_kurt population_fourth_moment_about_the_mean p_fourth_moment_about_the_mean p_4_m_a_t_m", "Get the kurtosis, a.k.a. population fourth moment about the mean.")
 }
 
 # Alias

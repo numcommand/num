@@ -346,6 +346,20 @@ Sort the items in ascending order.
     1 2 3
 
 
+### sort-ascending, sort-asc, sort-up
+
+Sort items in ascending order.
+
+    echo "3 1 2" | num sort-ascending all
+    1 2 3
+
+### sort-descending, sort-desc, sort-down
+
+Sort items in descending order.
+
+    echo "3 1 2" | num sort-descending all
+    3 2 1
+
 #### unique
 
 Keep unique values; omit the rest. TODO.
@@ -386,7 +400,7 @@ Normalize each value to be within 0..1.
 ## Rounding
 
 
-#### round, integer
+#### round, nint
 
 Convert to nearest integer.<br>
 
@@ -398,7 +412,7 @@ Convert to nearest integer.<br>
 
 Convert to integer by omitting the fractional part.<br>
 
-    echo "-1.9 1.9" | num round all
+    echo "-1.9 1.9" | num round-off all
     -1 1
 
 
@@ -406,7 +420,7 @@ Convert to integer by omitting the fractional part.<br>
 
 Convert to integer by rounding up.<br>
 
-    echo "-1.9 1.9" | num round all
+    echo "-1.9 1.9" | num round-up all
     -1 2
 
 
@@ -414,7 +428,7 @@ Convert to integer by rounding up.<br>
 
 Convert to integer by rounding down.<br>
 
-    echo "-1.9 1.9" | num round all
+    echo "-1.9 1.9" | num round-down all
     -2 1
 
 

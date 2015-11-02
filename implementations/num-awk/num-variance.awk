@@ -33,7 +33,7 @@ function num_sample_variance_(num, num_, opts,  f) {
 }
 
 function num_sample_variance_init() {
-    function_init("sample_variance s_var variance var sample_second_moment_about_the_mean, s_second_moment", "Get the sample variance, a.k.a. sample second moment about the mean.")
+    function_init("sample_variance s_var variance var sample_second_moment_about_the_mean, s_second_moment_about_the_mean, s_2_m_a_t_m second_moment_about_the_mean 2_m_a_t_m", "Get the sample variance, a.k.a. sample second moment about the mean.")
 }
 
 # Alias
@@ -61,7 +61,7 @@ function num_population_variance_(num, num_, opts) {
 }
 
 function num_population_variance_init() {
-    function_init("population_variance p_var population_second_moment_about_the_mean p_second_moment", "Get the population variance, a.k.a. sample second moment about the mean.")
+    function_init("population_variance p_var population_second_moment_about_the_mean p_second_moment_about_the_mean p_2_m_a_t_m", "Get the population variance, a.k.a. sample second moment about the mean.")
 }
 
 # Alias
