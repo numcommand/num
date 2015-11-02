@@ -1,0 +1,239 @@
+
+
+## Quartiles
+
+Quartiles divide an ordered data set into four equal parts.
+
+  * Q0 is the minimum.
+  * Q1 is the "middle" value in the first half of the rank-ordered data set.
+  * Q2 is the median value in the set.
+  * Q3 is the "middle" value in the second half of the rank-ordered data set.
+  * Q4 is the maximum.
+
+Num uses a weighted average to calculate quartiles, because this is robust. For details please see https://en.wikipedia.org/wiki/Quartile and the "Method 3" description.
+
+
+#### interquartile-range, iqr, midspread, middle-fifty
+
+The interquartile range. This is calculated by using Q3 - Q1.
+
+    echo "6 7 15 36 39 40 41 42 43 47 49" | interquartile-range
+    22.5
+
+
+#### quartile-0, q0
+
+Quartile 0, a.k.a. minimum.
+
+    echo "6 7 15 36 39 40 41 42 43 47 49" | quartile-0
+    6
+
+
+#### quartile-1, q1
+
+Quartile 1, a.k.a. lower quartile, 25th percentile.
+
+    echo "6 7 15 36 39 40 41 42 43 47 49" | quartile-1
+    20.25
+
+
+#### quartile-2, q2
+
+Quartile 2, a.k.a. median, 50th percentile.
+
+    echo "6 7 15 36 39 40 41 42 43 47 49" | quartile-2
+    40
+
+
+#### quartile-3, q3
+
+Quartile 3, a.k.a. upper quartile, 75th percentile.
+
+    echo "6 7 15 36 39 40 41 42 43 47 49" | quartile-3
+    42.75
+
+
+#### quartile-4, q4
+
+Quartile 4, a.k.a. maximum.
+
+    echo "6 7 15 36 39 40 41 42 43 47 49" | quartile-4
+    49
+
+## Transforms
+
+Transforms change the list.
+
+
+#### sort
+
+Sort the items in ascending order.
+
+    echo "3 1 2" | num sort all
+    1 2 3
+
+
+#### unique
+
+Keep unique values; omit the rest. TODO.
+
+    echo "1 2 2 3 3 3" | num unique all
+    1 2 3
+
+
+#### difference, diff, interval
+
+The difference between each number and the next number. TODO.
+
+    echo "2 3 1 5" | num difference all
+    1 -2 4
+
+
+## Mappings
+
+Mappings work on each value.
+
+
+#### absolute-value, abs, magnitude
+
+Convert to absolute value a.k.a. magnitude, positive numbers.
+
+    echo "-1 1" | num absolute-value all
+    1 1
+
+
+#### normalize
+
+Normalize each value to be within 0..1.
+
+    echo "1 2 4" | num normalize all
+    0 0.333333 1
+
+
+## Rounding
+
+
+#### round, integer
+
+Convert to nearest integer.<br>
+
+    echo "-1.9 1.9" | num round all
+    2 2
+
+
+#### round-off, truncate
+
+Convert to integer by omitting the fractional part.<br>
+
+    echo "-1.9 1.9" | num round all
+    -1 1
+
+
+#### round-up, ceiling
+
+Convert to integer by rounding up.<br>
+
+    echo "-1.9 1.9" | num round all
+    -1 2
+
+
+#### round-down, floor
+
+Convert to integer by rounding down.<br>
+
+    echo "-1.9 1.9" | num round all
+    -2 1
+
+
+
+
+
+## Queries
+
+Queries return TRUE as 1, or FALSE as 0.
+
+
+#### is-unique
+
+Is each item unique?
+
+    echo "1 2 3" | num is-unique
+    1
+
+    echo "2 2 2" | num is-unique
+    0
+
+
+#### is-ascending, is-asc
+
+Is the data ascending, i.e. each next number is greater or equal?
+
+    echo "1 2 3" | num is-ascending
+    1
+
+    echo "3 2 1" | num is-ascending
+    0
+
+
+#### is-strictly-ascending, is-strict-asc
+
+Is the data strictly ascending, i.e. each next number is greater?
+
+    echo "1 2 3" | num is-strictly-ascending
+    1
+
+    echo "3 2 1" | num is-strictly-ascending
+    0
+
+
+#### is-non-ascending, is-non-asc
+
+Is the data non-ascending, i.e. some next number is lesser?
+
+    echo "1 2 3" | num is-non-ascending
+    0
+
+    echo "3 2 1" | num is-non-ascending
+    1
+
+
+#### is-descending, is-desc
+
+Is the data descending, i.e. each next number is lesser or equal?
+
+    echo "3 2 1" | num is-descending
+    1
+
+    echo "1 2 3" | num is-descending
+    0
+
+
+#### is-strictly-descending, is-strict-desc
+
+Is the data strictly descending, i.e. each next number is lesser?
+
+    echo "3 2 1" | num is-strictly-descending
+    1
+
+    echo "1 2 3" | num is-strictly-descending
+    0
+
+
+#### is-non-descending, is-non-desc
+
+Is the data non-descending, i.e. some next number is greater?
+
+    echo "3 2 1" | num is-non-descending
+    0
+
+    echo "1 2 3" | num is-non-descending
+    1
+
+
+<p><hr>
+<nav>
+<ul>
+<li><b>[Prev Page: Examples: how to use Num for shell scripting](examples.md)</b></li>
+<li><b>[Next Page: Commands: how to use related command line tools and scripts](commands.md)</b></li>
+</ul>
+</nav>
