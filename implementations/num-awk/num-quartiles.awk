@@ -96,7 +96,7 @@ function num_quartile_1(arr,  _n, i, x, q1) {
     _n = num_n(arr)
     if ((_n % 2) == 0) {
         i = (_n / 2) - 1
-        q1 = num_arr_sorted_median_slice(arr, 1, i)
+        q1 = num_median_of_slice(arr, 1, i)
     } else if ((_n % 4) == 1) {
         x = ((_n - 1) / 4)
         q1 = (0.25 * arr[x]) + (0.75 * arr[x+1])
@@ -116,7 +116,7 @@ function num_quartile_1_(num, num_, opts,  f, _n, i, x) {
         num_median_(num, num_, opts)
         if ((_n % 2) == 0) {
             i = (_n / 2) - 1
-            num_[f] = num_arr_sorted_median_slice_(num, 1, i)
+            num_[f] = num_median_of_slice(num, 1, i)
         }
         else if ((_n % 4) == 1) {
             x = ((_n - 1) / 4)
@@ -185,7 +185,7 @@ function num_quartile_3(arr,  _n, i, x, q3) {
     _n = n(arr)
     if ((_n % 2) == 0) {
         i = (_n % 2) + 1
-        q3 = num_arr_sorted_median_slice(arr, i, _n)
+        q3 = num_median_of_slice(arr, i, _n)
     }
     else if ((_n % 4) == 1) {
         x = (_n - 1) / 4
@@ -208,7 +208,7 @@ function num_quartile_3_(num, num_, opts,  f, _n, i, x) {
         num_median_(num, num_, opts)
         if ((_n % 2) == 0) {
             i = (_n % 2) + 1
-            num_[f] = num_arr_sorted_median_slice_(num, i, _n)
+            num_[f] = num_median_of_slice(num, i, _n)
         }
         else if ((_n % 4) == 1) {
             x = (_n - 1) / 4

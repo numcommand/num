@@ -54,6 +54,7 @@ function num_median_(num, num_, opts,  f, i, _n) {
     f = "num_median"
     if (!(f in num_)) {
         _n = num_n_(num, num_, opts)
+        num_sort_ascending_(num, num, opts)
         if (_n % 2) {
             i = (_n + 1) / 2
             num_[f] = num_["num_median_low"] = num_["num_median_high"] = num[i]
