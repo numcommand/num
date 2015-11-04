@@ -38,7 +38,6 @@
 @include "num-kurtosis.awk"
 @include "num-standard-deviation.awk"
 @include "num-coefficient-of-variance.awk"
-@include "num-sum-of-mean-deviation.awk"
 @include "num-quartiles.awk"
 
 ## Controllers

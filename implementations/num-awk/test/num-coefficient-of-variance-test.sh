@@ -5,7 +5,7 @@
 #
 ###
 
-. minitest
+. minitest.sh
 num=${NUM:-num}
 
 ###
