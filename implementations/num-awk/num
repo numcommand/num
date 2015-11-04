@@ -38,27 +38,6 @@ awk '
 
 @include "num.awk"
 
-###
-#
-# All items.
-#
-#     num_all(1 2 4) => "1 2 4"
-#
-###
-
-function num_all(arr) {
-    return num_arr_join(arr, OFS)
-}
-
-function num_all_(num, num_, opts) {
-    f = "num_all"
-    if (!(f in num_)) num_[f] = num_all(num)
-    return num_[f]
-}
-
-function num_all_init() {
-   function_init("all each", "Get all the items.", "https://en.wikipedia.org/wiki/Enumeration")
-}
 
 ############################################################################
 #
