@@ -40,7 +40,31 @@ set -euf
 #
 ###
 
-awk '
+###
+#
+# Choose the awk to use, in this order of importance:
+#
+#    * ENV var, for example: AWK="/example/awk" num ...
+#      This way gives the user complete control of which awk to use.
+#
+#    * GNU awk a.k.a. `gawk`. This exists on all modern GNU Linux systems.
+#      GNU awk provides more than POSIX, such as `sort()` and `length()`.
+#
+#    * Default awk. This is the most common awk, especially on old systems,
+#      as well on curent Mac OSX systems and similar kinds of BSD systems.
+#      The default awk is typically inferior to newer awk implementations.
+#      The default awk is defined by POSIX and therefore has to exist on
+#      all POSIX-conformant systems.
+#
+# TODO: research `nawk` ("New awk") and `mawk` which may be much faster.
+#
+#    * nawk - while the AWK language was being developed the authors
+#      released a new version (hence the n - new awk) to avoid confusion.
+#
+###
+
+AWK=${AWK:-$(command -v gawk || command -v awk || echo "awk")}
+"$AWK" '
 
 ### BEGIN INCLUDES
 
@@ -54,11 +78,6 @@ function num_help() {
     print "Num version 0.8.0."
     print "Copyright (C) 2015 Joel Parker Henderson."
     print "Please see http://github.com/numcommand"
-    print ""
-    print "The system Awk command is:"
-    system("command -v awk")
-    print ""
-    system("awk -Wversion 2>/dev/null || awk --version")
     exit
 }
 
