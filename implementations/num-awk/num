@@ -2921,8 +2921,7 @@ BEGIN{
 }
 
 {
-    split($0, _arr)
-    for(i in _arr) global_num[++global_num_n] = _arr[i]
+    for(i=1;i<=NF;i++) global_num[++global_num_n] = $i
 }
 
 END{
