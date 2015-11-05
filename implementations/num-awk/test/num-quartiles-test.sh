@@ -60,22 +60,22 @@ x=$(echo "1 2 3 4 5" | "$num" quartile-1) &&
     assert_eq 1.75 "$x" "quartile-1, with col, with 5 items."
 
 x=$(echo "1 2 3 4 5 6" | "$num" quartile-1) &&
-    assert_eq 1.75 "$x" "quartile-1, with row, with 6 items."
+    assert_eq 1.5 "$x" "quartile-1, with row, with 6 items."
 
 x=$(echo "1 2 3 4 5 6" | "$num" quartile-1) &&
-    assert_eq 1.75 "$x" "quartile-1, with col, with 6 items."
+    assert_eq 1.5 "$x" "quartile-1, with col, with 6 items."
 
 x=$(echo "1 2 3 4 5 6 7" | "$num" quartile-1) &&
-    assert_eq 1.75 "$x" "quartile-1, with row, with 7 items."
+    assert_eq 2.25 "$x" "quartile-1, with row, with 7 items."
 
 x=$(echo "1 2 3 4 5 6 7" | "$num" quartile-1) &&
-    assert_eq 1.75 "$x" "quartile-1, with col, with 7 items."
+    assert_eq 2.25 "$x" "quartile-1, with col, with 7 items."
 
 x=$(echo "1 2 3 4 5 6 7 8" | "$num" quartile-1) &&
-    assert_eq 1.75 "$x" "quartile-1, with row, with 8 items."
+    assert_eq 2 "$x" "quartile-1, with row, with 8 items."
 
 x=$(echo "1 2 3 4 5 6 7 8" | "$num" quartile-1) &&
-    assert_eq 1.75 "$x" "quartile-1, with col, with 8 items."
+    assert_eq 2 "$x" "quartile-1, with col, with 8 items."
 
 ###
 #
@@ -102,28 +102,28 @@ x=$(echo "$in_col" | "$num" quartile-3) &&
     assert_eq 42.75 "$x" "quartile-3, with col"
 
 x=$(echo "1 2 3 4 5" | "$num" quartile-3) &&
-    assert_eq 1.75 "$x" "quartile-3, with row, with 5 items."
+    assert_eq 4.25 "$x" "quartile-3, with row, with 5 items."
 
 x=$(echo "1 2 3 4 5" | "$num" quartile-3) &&
-    assert_eq 1.75 "$x" "quartile-3, with col, with 5 items."
+    assert_eq 4.25 "$x" "quartile-3, with col, with 5 items."
 
 x=$(echo "1 2 3 4 5 6" | "$num" quartile-3) &&
-    assert_eq 1.75 "$x" "quartile-3, with row, with 6 items."
+    assert_eq 3.5 "$x" "quartile-3, with row, with 6 items."
 
 x=$(echo "1 2 3 4 5 6" | "$num" quartile-3) &&
-    assert_eq 1.75 "$x" "quartile-3, with col, with 6 items."
+    assert_eq 3.5 "$x" "quartile-3, with col, with 6 items."
 
 x=$(echo "1 2 3 4 5 6 7" | "$num" quartile-3) &&
-    assert_eq 1.75 "$x" "quartile-3, with row, with 7 items."
+    assert_eq 5.75 "$x" "quartile-3, with row, with 7 items."
 
 x=$(echo "1 2 3 4 5 6 7" | "$num" quartile-3) &&
-    assert_eq 1.75 "$x" "quartile-3, with col, with 7 items."
+    assert_eq 5.75 "$x" "quartile-3, with col, with 7 items."
 
 x=$(echo "1 2 3 4 5 6 7 8" | "$num" quartile-3) &&
-    assert_eq 1.75 "$x" "quartile-3, with row, with 8 items."
+    assert_eq 4.5 "$x" "quartile-3, with row, with 8 items."
 
 x=$(echo "1 2 3 4 5 6 7 8" | "$num" quartile-3) &&
-    assert_eq 1.75 "$x" "quartile-3, with col, with 8 items."
+    assert_eq 4.5 "$x" "quartile-3, with col, with 8 items."
 
 ###
 #
