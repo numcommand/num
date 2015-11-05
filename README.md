@@ -1,4 +1,4 @@
-<img width="960" height="550" src="assets/images/splash/splash-960x550.jpg" />
+<img width="750" height="430" src="assets/images/splash/splash-960x550.jpg" />
 
 # Num: number utilities for mathematics
 
