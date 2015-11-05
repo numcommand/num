@@ -58,3 +58,17 @@ If a value is unknown, or not a number, then it will print as "?". TODO.
 
     $ echo "1 2 4" | num mode
     ?
+
+## Command line awk options
+
+Num use the `awk` language, which comes in several flavors.
+
+  * On modern Linux systems, the `awk` language is provided by the GNU awk command a.k.a. `gawk`.
+
+  * On modern OS X systems, the `awk` language is provided by the BSD awk command. However, the implementation is older and doesn't work for Num. The solution is to install `gawk`. The typicall way to install is by running `brew install gawk`.
+
+  * On other modern POSIX-compliant systems, you may need to download `gawk` from the [GNU website](http://gnu.org) and compile it for your systems.
+
+If you want to explicity tell Num which `awk` command to use, then you can provide a custom path by setting the `AWK` environment variable like this:
+
+    AWK=/example/awk num ...
