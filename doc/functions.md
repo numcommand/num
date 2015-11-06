@@ -425,6 +425,14 @@ Convert to absolute value a.k.a. magnitude, positive numbers.
     1 1
 
 
+#### sign
+
+Convert to sign, which is one of -1, 0, 1.
+
+    echo "-8 0 8" | num sign all
+    -1 0 1
+
+
 #### normalize
 
 Normalize each value to be within 0..1.

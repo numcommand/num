@@ -174,6 +174,57 @@ function num_map_abs_(num, num_, opts) { return num_map_absolute_value_(num, num
 
 ############################################################################
 #
+# num-sign.awk
+#
+###
+
+###
+#
+# Return the sign of the value, either 1, -1, or 0.
+#
+# Examples:
+#
+#    sign(8) => 1
+#    sign(-8) => -1
+#    sign(0) => 1
+#
+###
+
+function num_sign(x) {
+    return (x > 0) - (x < 0)
+}
+
+###
+#
+# Map sign.
+#
+# Example:
+#
+#     num_map_sign_(-8 0 8) => -1 0 1
+#
+###
+
+function num_map_sign(arr) {
+    for (i in arr) arr[i] = (x > 0) - (x < 0) # Inline
+}
+
+function num_map_sign_(num, num_, opts,  f, i, memo) {
+    f = "num_map_sign"
+    if (num_[f] != TRUE) {
+        map_before_(num, num_, opts, memo)
+        num_map_sign(num)
+        map_after_(num, num_, opts, memo)
+        num_[f] = TRUE
+    }
+    return ""
+}
+
+function num_map_sign_init() {
+    function_init("map_sign sign", "Map using sign.")
+}
+
+############################################################################
+#
 # num-round.awk
 #
 # We provide four kinds of rounding:
@@ -2571,6 +2622,7 @@ function function_manager_init() {
     num_sort_ascending_init()
     num_sort_descending_init()
     num_map_absolute_value_init()
+    num_map_sign_init()
     num_map_normalize_init()
     num_map_round_awk_init()
     num_map_round_init()
@@ -2644,6 +2696,7 @@ function function_manager_call(f, num, num_, opts) {
     else if (f == "num_sort_ascending") return num_sort_ascending_(num, num_, opts)
     else if (f == "num_sort_descending") return num_sort_descending_(num, num_, opts)
     else if (f == "num_map_absolute_value") return num_map_absolute_value_(num, num_, opts)
+    else if (f == "num_map_sign") return num_map_sign_(num, num_, opts)
     else if (f == "num_map_normalize") return num_map_normalize_(num, num_, opts)
     else if (f == "num_map_round") return num_map_round_(num, num_, opts)
     else if (f == "num_map_round_off") return num_map_round_off_(num, num_, opts)
