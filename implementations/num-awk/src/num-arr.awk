@@ -10,7 +10,7 @@
 #
 # Example:
 #
-#     arr_dump(arr)
+#     num_arr_dump(arr)
 #     1 a
 #     2 b
 #     3 d
@@ -26,7 +26,7 @@ function num_arr_dump(arr) {
 # Example:
 #
 #   split("", arr)
-#   arr_empty(arr) => TRUE
+#   num_arr_empty(arr) => TRUE
 #
 # This is POSIX compatible.
 #
@@ -41,15 +41,28 @@ function num_arr_empty(arr,  i) {
 #
 # Example:
 #
-#     arr_length(1 2 4) => 3
+#     num_arr_length(1 2 4) => 3
+#
+# TODO: benchmark this POSIX implementation with
+# any Gawk implementation, and if Gawk is much faster,
+# then research a way to use the Gawk implementation.
 #
 function num_arr_length(arr,  i, len) {
-    if (AWK_HAS_LENGTH == TRUE) {
-        return length(arr)
-    } else {
-        for (i in arr) len++
-        return len
-    }
+    for (i in arr) len++
+    return len
+}
+
+###
+#
+# Swap array items.
+#
+# Example:
+#
+#     arr = 4 5 6
+#     num_arr_swap(arr, 1, 3) => 6 5 4
+#
+function num_arr_swap(A, i, j,   t) {
+    t = A[i]; A[i] = A[j]; A[j] = t
 }
 
 ###
@@ -60,7 +73,7 @@ function num_arr_length(arr,  i, len) {
 #
 #    arr = 1 2 4
 #    target = 2.5
-#    arr_closest_value(arr, target) => 2
+#    num_arr_closest_value(arr, target) => 2
 #
 # If multiple values are equidistant to the target,
 # then return the earliest index.
@@ -85,7 +98,7 @@ function num_arr_closest_value(arr, target,  _closest_value, _closest_delta, _de
 #
 # Example:
 #
-#     arr_join(1 2 4, ",") => "1,2,4"
+#     num_arr_join(1 2 4, ",") => "1,2,4"
 #
 function num_arr_join(arr, sep,  s, i) {
     s = ""
