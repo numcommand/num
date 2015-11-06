@@ -1,5 +1,3 @@
-#!/bin/env awk
-
 function assert_init() {
     TRUE=1
     FALSE=0
@@ -49,6 +47,10 @@ function assert_arr_eq(expect, actual, msg,  k) {
         for (i = 1; i <= err_i; i++) {
             print "    " err[i]
         }
+        print "expect..."
+        num_arr_dump(expect)
+        print "actual..."
+        num_arr_dump(actual)
     }
 }
 
