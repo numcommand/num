@@ -12,7 +12,7 @@
 #
 #    sign(8) => 1
 #    sign(-8) => -1
-#    sign(0) => 1
+#    sign(0) => 0
 #
 ###
 
@@ -31,7 +31,7 @@ function num_sign(x) {
 ###
 
 function num_map_sign(arr) {
-    for (i in arr) arr[i] = (x > 0) - (x < 0) # Inline
+    for (i in arr) arr[i] = num_sign(arr[i])
 }
 
 function num_map_sign_(num, num_, opts,  f, i, memo) {
