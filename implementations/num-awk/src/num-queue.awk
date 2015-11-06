@@ -18,7 +18,7 @@
 # Return the item for chainability.
 #
 function num_enqueue(arr, item,  i) {
-    i = length(arr) + 1
+    i = num_arr_length(arr) + 1
     arr[i] = item
     return item
 }

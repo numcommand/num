@@ -63,7 +63,7 @@ function num_first_init() {
 ###
 
 function num_last(arr) {
-    return arr[length(arr)]  # TODO: POSIX
+    return arr[num_arr_length(arr)]
 }
 
 function num_last_(num, num_, opts,  f) {

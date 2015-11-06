@@ -14,8 +14,8 @@
 #
 ###
 
-function meanest(arr) {
-    return num_arr_closest_value(arr, mean(arr))
+function num_meanest(arr) {
+    return num_arr_closest_value(arr, num_mean(arr))
 }
 
 function num_meanest_(num, num_, opts,  f, _n, _mean, i, x) {

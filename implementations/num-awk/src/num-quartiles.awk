@@ -50,7 +50,7 @@ function num_interquartile_range_init() {
 
 # Alias
 function num_iqr(arr) { return num_interquartile_range(arr) }
-function num_iqr_(num, num_, opts) { return num_interquartile_range(num, num_, opts) }
+function num_iqr_(num, num_, opts) { return num_interquartile_range_(num, num_, opts) }
 
 ###
 #
@@ -182,7 +182,7 @@ function num_q2_(num, num_, opts) { return num_quartile_2_(num, num_, opts) }
 ###
 
 function num_quartile_3(arr,  _n, i, x, q3) {
-    _n = n(arr)
+    _n = num_n(arr)
     if ((_n % 2) == 0) {
         i = (_n % 2) + 1
         q3 = num_median_of_slice(arr, i, _n)

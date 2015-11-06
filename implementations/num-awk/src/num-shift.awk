@@ -18,7 +18,7 @@
 # Return the item.
 #
 function num_shift(arr,  item, i) {
-    len = length(arr)
+    len = num_arr_length(arr)
     item = arr[1]
     for (i = 1; i < len; i++) arr[i] = arr[i+1]
     delete arr[len]
@@ -39,7 +39,7 @@ function num_shift(arr,  item, i) {
 # Return the item for chainability.
 #
 function num_unshift(arr, item,  i) {
-    len = length(arr)
+    len = num_arr_length(arr)
     for (i = 1; i < len; i++) arr[i+1] = arr[i]
     arr[1] = item
     return item

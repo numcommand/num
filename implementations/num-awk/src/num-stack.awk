@@ -18,7 +18,7 @@
 # Return the item for chainability.
 #
 function num_push(arr, item,  i) {
-    i = length(arr) + 1
+    i = num_arr_length(arr) + 1
     arr[i] = item
     return item
 }
@@ -37,7 +37,7 @@ function num_push(arr, item,  i) {
 # Return the item.
 #
 function num_pop(arr,  item, i) {
-    i = length(arr)
+    i = num_arr_length(arr)
     item = arr[i]
     delete arr[i]
     return item
