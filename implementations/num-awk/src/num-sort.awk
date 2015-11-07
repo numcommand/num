@@ -15,8 +15,36 @@
 #
 ###
 
+###
+#
+# Initialize.
+#
+# This tracks which metadata fields to preserve during a sort.
+# For example, a sort will not affect the sum of the numbers,
+# so the metadata can continue to cache the sum throughout a sort.
+#
+###
+
 function num_sort_awk_init() {
-    split("n sum mean variance standard_deviation sum_of_squares sum_of_cubes sum_of_quads", NUM_SORT_MEMO)
+    NUM_SORT_MEMO["num_n"] = \
+    NUM_SORT_MEMO["num_sum"] = \
+    NUM_SORT_MEMO["num_mean"] = \
+    NUM_SORT_MEMO["num_variance"] = \
+    NUM_SORT_MEMO["num_sample_variance"] = \
+    NUM_SORT_MEMO["num_population_variance"] = \
+    NUM_SORT_MEMO["num_skewness"] = \
+    NUM_SORT_MEMO["num_sample_skewness"] = \
+    NUM_SORT_MEMO["num_population_skewness"] = \
+    NUM_SORT_MEMO["num_kurtosis"] = \
+    NUM_SORT_MEMO["num_sample_kurtosis"] = \
+    NUM_SORT_MEMO["num_population_kurtosis"] = \
+    NUM_SORT_MEMO["num_standard_deviation"] = \
+    NUM_SORT_MEMO["num_sample_standard_deviation"] = \
+    NUM_SORT_MEMO["num_population_standard_deviation"] = \
+    NUM_SORT_MEMO["num_sum_of_squares"] = \
+    NUM_SORT_MEMO["num_sum_of_cubes"] = \
+    NUM_SORT_MEMO["num_sum_of_quads"] = \
+    TRUE
 }
 
 ###
