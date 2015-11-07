@@ -17,6 +17,8 @@
 @include "num-stack.awk"
 @include "num-queue.awk"
 @include "num-sort.awk"
+@include "num-insertion-sort.awk"
+@include "num-quicksort.awk"
 @include "num-map.awk"
 
 ## Filters

@@ -88,7 +88,6 @@ function function_manager_init() {
     num_sort_descending_init()
     num_map_absolute_value_init()
     num_map_sign_init()
-    num_map_sign_init()
     num_map_normalize_init()
     num_map_round_awk_init()
     num_map_round_init()

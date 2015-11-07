@@ -17,6 +17,10 @@ num=${NUM:-num}
 in_row="6 7 15 36 39 40 41 42 43 47 49"
 in_col="6\n7\n15\n36\n39\n40\n41\n42\n43\n47\n49\n"
 
+x=$(echo "$in_row" | sort | "$num" quartile-3) &&
+    assert_eq 42.75 "$x" "quartile-3, with row"
+exit
+
 ###
 #
 # interquartile range
@@ -95,10 +99,10 @@ x=$(echo "$in_col" | "$num" quartile-2) &&
 #
 ###
 
-x=$(echo "$in_row" | "$num" quartile-3) &&
+x=$(echo "$in_row" | sort | "$num" quartile-3) &&
     assert_eq 42.75 "$x" "quartile-3, with row"
 
-x=$(echo "$in_col" | "$num" quartile-3) &&
+x=$(echo "$in_col" | sort | "$num" quartile-3) &&
     assert_eq 42.75 "$x" "quartile-3, with col"
 
 x=$(echo "1 2 3 4 5" | "$num" quartile-3) &&

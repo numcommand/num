@@ -186,7 +186,7 @@ function num_map_abs_(num, num_, opts) { return num_map_absolute_value_(num, num
 #
 #    sign(8) => 1
 #    sign(-8) => -1
-#    sign(0) => 1
+#    sign(0) => 0
 #
 ###
 
@@ -205,7 +205,7 @@ function num_sign(x) {
 ###
 
 function num_map_sign(arr) {
-    for (i in arr) arr[i] = (x > 0) - (x < 0) # Inline
+    for (i in arr) arr[i] = num_sign(arr[i])
 }
 
 function num_map_sign_(num, num_, opts,  f, i, memo) {
@@ -435,13 +435,13 @@ function num_arr_empty(arr,  i) {
 #
 #     arr_length(1 2 4) => 3
 #
+# TODO: benchmark this POSIX implementation with
+# any Gawk implementation, and if Gawk is much faster,
+# then research a way to use the Gawk implementation.
+#
 function num_arr_length(arr,  i, len) {
-    if (AWK_HAS_LENGTH == TRUE) {
-        return length(arr)
-    } else {
-        for (i in arr) len++
-        return len
-    }
+    for (i in arr) len++
+    return len
 }
 
 ###
@@ -551,7 +551,7 @@ function num_first_init() {
 ###
 
 function num_last(arr) {
-    return arr[length(arr)]  # TODO: POSIX
+    return arr[num_arr_length(arr)]
 }
 
 function num_last_(num, num_, opts,  f) {
@@ -692,7 +692,7 @@ function num_range_init() {
 # Return the item.
 #
 function num_shift(arr,  item, i) {
-    len = length(arr)
+    len = num_arr_length(arr)
     item = arr[1]
     for (i = 1; i < len; i++) arr[i] = arr[i+1]
     delete arr[len]
@@ -713,7 +713,7 @@ function num_shift(arr,  item, i) {
 # Return the item for chainability.
 #
 function num_unshift(arr, item,  i) {
-    len = length(arr)
+    len = num_arr_length(arr)
     for (i = 1; i < len; i++) arr[i+1] = arr[i]
     arr[1] = item
     return item
@@ -739,7 +739,7 @@ function num_unshift(arr, item,  i) {
 # Return the item for chainability.
 #
 function num_push(arr, item,  i) {
-    i = length(arr) + 1
+    i = num_arr_length(arr) + 1
     arr[i] = item
     return item
 }
@@ -758,7 +758,7 @@ function num_push(arr, item,  i) {
 # Return the item.
 #
 function num_pop(arr,  item, i) {
-    i = length(arr)
+    i = num_arr_length(arr)
     item = arr[i]
     delete arr[i]
     return item
@@ -784,7 +784,7 @@ function num_pop(arr,  item, i) {
 # Return the item for chainability.
 #
 function num_enqueue(arr, item,  i) {
-    i = length(arr) + 1
+    i = num_arr_length(arr) + 1
     arr[i] = item
     return item
 }
@@ -823,8 +823,36 @@ function num_dequeue(arr,  item, i) {
 #
 ###
 
+###
+#
+# Initialize.
+#
+# This tracks which metadata fields to preserve during a sort.
+# For example, a sort will not affect the sum of the numbers,
+# so the metadata can continue to cache the sum throughout a sort.
+#
+###
+
 function num_sort_awk_init() {
-    split("n sum mean variance standard_deviation sum_of_squares sum_of_cubes sum_of_quads", NUM_SORT_MEMO)
+    NUM_SORT_MEMO["num_n"] = \
+    NUM_SORT_MEMO["num_sum"] = \
+    NUM_SORT_MEMO["num_mean"] = \
+    NUM_SORT_MEMO["num_variance"] = \
+    NUM_SORT_MEMO["num_sample_variance"] = \
+    NUM_SORT_MEMO["num_population_variance"] = \
+    NUM_SORT_MEMO["num_skewness"] = \
+    NUM_SORT_MEMO["num_sample_skewness"] = \
+    NUM_SORT_MEMO["num_population_skewness"] = \
+    NUM_SORT_MEMO["num_kurtosis"] = \
+    NUM_SORT_MEMO["num_sample_kurtosis"] = \
+    NUM_SORT_MEMO["num_population_kurtosis"] = \
+    NUM_SORT_MEMO["num_standard_deviation"] = \
+    NUM_SORT_MEMO["num_sample_standard_deviation"] = \
+    NUM_SORT_MEMO["num_population_standard_deviation"] = \
+    NUM_SORT_MEMO["num_sum_of_squares"] = \
+    NUM_SORT_MEMO["num_sum_of_cubes"] = \
+    NUM_SORT_MEMO["num_sum_of_quads"] = \
+    TRUE
 }
 
 ###
@@ -834,6 +862,7 @@ function num_sort_awk_init() {
 ###
 
 function num_sort_before_(num, num_, opts, memo) {
+    split("", memo)
     for (k in NUM_SORT_MEMO) memo[k] = num_[k]
 }
 
@@ -1091,6 +1120,172 @@ function num_is_strictly_descending_init() {
 
 ############################################################################
 #
+# num-insertion-sort.awk
+#
+###
+
+###
+#
+# Insertion sort.
+#
+# This implementation is a slightly faster version that moves A[i]
+# to its position in one go and only performs one assignment in the
+# inner loop body.
+#
+# Thanks to https://en.wikipedia.org/wiki/Insertion_sort
+#
+###
+
+function num_insertion_sort(A) {
+    num_insertion_sort_slice(A, 1, num_arr_length(A))
+}
+
+function num_insertion_sort_slice(A, lo, hi,  i, j, x) {
+    if (lo >= hi) return
+    for (i = lo + 1; i <= hi; i++) {
+        x = A[i]
+        j = i
+        while (j > lo && A[j-1] > x) {
+            A[j] = A[j-1]
+            j--
+        }
+        A[j] = x
+    }
+}
+
+############################################################################
+#
+# num-quicksort.awk
+#
+###
+
+function num_quicksort_awk_init() {
+    NUM_QUICKSORT_INSERTION_SORT_THRESHOLD = 12
+}
+
+###
+#
+# Quicksort.
+#
+# Quicksort selects a pivot and divides the data into values above and
+# below the pivot. Sorting then recurses on these sub-lists.
+#
+# From http://awk.info/?doc/quicksort.html
+#
+# TODO: research implementing the pivot by using Tukeys ninther,
+# which is a median of medians, and may be a faster heuristic.
+# See http://www.johndcook.com/blog/2009/06/23/tukey-median-ninther/
+#
+# TODO: research implementing the small size sort using Shell sort,
+# which is similar to insertion sort yet better for typical data.
+# See https://en.wikipedia.org/wiki/Shellsort
+#
+# TODO: research upgrading from single pivot to dual pivot.
+# http://stackoverflow.com/questions/20917617/whats-the-difference-of-dual-pivot-quick-sort-and-quick-sort
+# http://stackoverflow.com/questions/32001841/how-to-implement-dual-pivot-quicksort-in-python
+# http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/tip/src/share/classes/java/util/DualPivotQuicksort.java
+#
+###
+
+function num_quicksort(A) {
+    num_quicksort_slice(A, 1, num_arr_length(A))
+}
+
+function num_quicksort_slice(A, lo, hi,   pivot_index) {
+    if (lo >= hi) return
+    if (hi - lo < NUM_QUICKSORT_INSERTION_SORT_THRESHOLD) {
+        num_insertion_sort_slice(A, lo, hi)
+        return
+    }
+    pivot_index = num_quicksort_pivot_index_via_median_of_three_sort_slice(A, lo, hi)
+    pivot_index = num_partition_slice(A, lo, hi, pivot_index)
+    num_quicksort_slice(A, lo, pivot_index - 1)
+    num_quicksort_slice(A, pivot_index + 1, hi)
+}
+
+###
+#
+# Partition an array slice using a given pivot index.
+#
+# Return the new pivot index.
+#
+###
+
+function num_partition_slice(A, lo, hi, pivot_index,  left, right, pivot_value, t) {
+    if (lo >= hi) return lo
+    left = lo
+    right = hi
+    pivot_value = A[pivot_index]
+    num_arr_swap(A, left, pivot_index)
+    while (left < right) {
+        while (left <= hi && A[left] <= pivot_value) left++
+        while (right >= lo && A[right] > pivot_value) right--
+        if (left < right) num_arr_swap(A, left, right)
+    }
+    pivot_index = right
+    num_arr_swap(A, lo, pivot_index)
+    return pivot_index
+}
+
+###
+#
+# Choose a quicksort pivot index by using a random number.
+# This is a naive implemenation and is here for benchmarking.
+# Typically you will never need this function for real-world data.
+#
+###
+
+function num_quicksort_pivot_index_via_rand(A, lo, hi) {
+    return lo + int((hi - lo + 1) * rand())
+}
+
+###
+#
+# Choose a quicksort pivot index by using the "median of three" heuristic
+# with a swap sort of the three items for efficiency on the next pivot.
+#
+# Compared to picking the pivot randomly, the median of three heuristic:
+#
+#   * Ensures that a common case of fully sorted data remains optimal.
+#   * Is more difficult for an attacker to manipulate into the worst case.
+#   * Is often faster than a PRNG, which is often relatively slow.
+#
+# The median of three looks at the first, middle and last elements of
+# the array, and choose the median of those as the pivot.
+#
+# To get the "full effect" of the median of three, it is also important
+# to sort those three items, not just use the median as the pivot --
+# this does not affect what is chosen as the pivot in the current
+# iteration, but can/will affect what is used as the pivot in the next
+# recursive call, which helps to limit the bad behavior for a few
+# initial orderings (one that turns out to be particularly bad in many
+# cases is an array that is sorted, except for having the smallest item
+# at the high end, or having the largest item at the low end).
+#
+# Thanks to http://stackoverflow.com/questions/7559608/median-of-three-values-strategy
+#
+# To calculate the midpoint, we prefer (lo+(hi−lo)/2) instead of the naive
+# simpler ((hi+lo)/2) because the former does not risk integer overflow.
+#
+# Return the pivot index.
+#
+###
+
+function num_quicksort_pivot_index_via_median_of_three_sort(A) {
+    num_quicksort_pivot_index_via_median_of_three_sort_slice(A, 1, num_arr_length(A))
+}
+
+function num_quicksort_pivot_index_via_median_of_three_sort_slice(A, lo, hi,  mid) {
+    if (lo == hi) return lo
+    mid = lo + int((hi - lo) / 2)
+    if (A[hi]  < A[lo])  num_arr_swap(A, lo, hi)
+    if (A[mid] < A[lo])  num_arr_swap(A, mid, lo)
+    if (A[hi]  < A[mid]) num_arr_swap(A, hi, mid)
+    return mid
+}
+
+############################################################################
+#
 # num-map.awk
 #
 # Map helpers.
@@ -1103,12 +1298,12 @@ function num_is_strictly_descending_init() {
 ###
 
 function map_before_(num, num_, opts, memo) {
-    memo["n"] = num_["n"]
+    memo["num_n"] = num_["num_n"]
 }
 
 function map_after_(num, num_, opts, memo) {
     split("",num_)
-    num_["n"] = memo["n"]
+    num_["num_n"] = memo["num_n"]
 }
 
 ############################################################################
@@ -1594,8 +1789,8 @@ function num_sum_of_quads_init() {
 #
 ###
 
-function meanest(arr) {
-    return num_arr_closest_value(arr, mean(arr))
+function num_meanest(arr) {
+    return num_arr_closest_value(arr, num_mean(arr))
 }
 
 function num_meanest_(num, num_, opts,  f, _n, _mean, i, x) {
@@ -1704,7 +1899,7 @@ function num_median_(num, num_, opts,  f, i, _n) {
     f = "num_median"
     if (!(f in num_)) {
         _n = num_n_(num, num_, opts)
-        num_sort_ascending_(num, num, opts)
+        num_sort_ascending_(num, num_, opts)
         if (_n % 2) {
             i = (_n + 1) / 2
             num_[f] = num_["num_median_low"] = num_["num_median_high"] = num[i]
@@ -2322,7 +2517,7 @@ function num_interquartile_range_init() {
 
 # Alias
 function num_iqr(arr) { return num_interquartile_range(arr) }
-function num_iqr_(num, num_, opts) { return num_interquartile_range(num, num_, opts) }
+function num_iqr_(num, num_, opts) { return num_interquartile_range_(num, num_, opts) }
 
 ###
 #
@@ -2381,11 +2576,11 @@ function num_quartile_1(arr,  _n, i, x, q1) {
     return q1
 }
 
-function num_quartile_1_(num, num_, opts,  f, _n, i, x) {
+function num_quartile_1_(num, num_, opts,  f, _n, _median, i, x) {
     f = "num_quartile_1"
     if (!(f in num_)) {
         _n = num_n_(num, num_, opts)
-        num_median_(num, num_, opts)
+        num_median_(num, num_, opts)  # N.b. to trigger a sort if needed
         if ((_n % 2) == 0) {
             i = (_n / 2) - 1
             num_[f] = num_median_of_slice(num, 1, i)
@@ -2454,7 +2649,7 @@ function num_q2_(num, num_, opts) { return num_quartile_2_(num, num_, opts) }
 ###
 
 function num_quartile_3(arr,  _n, i, x, q3) {
-    _n = n(arr)
+    _n = num_n(arr)
     if ((_n % 2) == 0) {
         i = (_n % 2) + 1
         q3 = num_median_of_slice(arr, i, _n)
@@ -2477,7 +2672,7 @@ function num_quartile_3_(num, num_, opts,  f, _n, i, x) {
     f = "num_quartile_3"
     if (!(f in num_)) {
         _n = num_n_(num, num_, opts)
-        num_median_(num, num_, opts)
+        num_median_(num, num_, opts) # N.b. to trigger a sort if needed
         if ((_n % 2) == 0) {
             i = (_n % 2) + 1
             num_[f] = num_median_of_slice(num, i, _n)
@@ -2618,6 +2813,7 @@ function function_manager_init() {
     num_quartile_2_init()
     num_quartile_3_init()
     num_quartile_4_init()
+    num_quicksort_awk_init()
     num_sort_awk_init()
     num_sort_ascending_init()
     num_sort_descending_init()
@@ -2926,7 +3122,7 @@ function start_input() {
 # Set any work in progress here.
 #
 function stop_input() {
-    global_num_["n"] = global_num_n
+    global_num_["num_n"] = global_num_n
 }
 
 function clear_num_values() {
