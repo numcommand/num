@@ -29,10 +29,13 @@
 [Barb Henderson](https://www.kickstarter.com/profile/1478635103),
 [Bill Lazar](https://www.kickstarter.com/profile/1640716206),
 [Dain White](https://www.kickstarter.com/profile/dainwhite),
+[David Krogsrud](https://www.kickstarter.com/profile/716706080),
 [Duncan Beech](https://www.kickstarter.com/profile/1569217582),
+[Eric Cahoon](https://www.kickstarter.com/profile/ecahoon),
 [Eric Lamothe](https://www.kickstarter.com/profile/ericl),
 [Erica Austin](https://www.kickstarter.com/profile/320141210),
 [Even Howard](https://www.kickstarter.com/profile/1154983135),
+[Ido Rosen](https://www.kickstarter.com/profile/ido),
 [Ivica Kičić](https://www.kickstarter.com/profile/1305140661),
 [Joe Ratti](https://www.kickstarter.com/profile/1494740047),
 [John Allwine](https://www.kickstarter.com/profile/941797232),
@@ -49,6 +52,7 @@
 [Ondrej Nekola](https://www.kickstarter.com/profile/1074590221),
 [Sammy Lao](https://www.kickstarter.com/profile/1616583675),
 [Steve Howard](https://www.kickstarter.com/profile/132523397),
+[Vance Morosi](https://www.kickstarter.com/profile/1771833525),
 and Anonymous.
 
 ### Helpers
