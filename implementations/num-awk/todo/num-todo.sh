@@ -392,10 +392,6 @@ function ready() {
 # TODO optimize, such as by creating a word lookup, or init functions, etc.
 #
 function word_to_conf(word, conf) {
-    if (word == "input-fields")
-        conf["input_scope"] = CONF_INPUT_SCOPE_FIELDS
-    else if (word == "input-records")
-        cont["input_scope"] = CONF_INPUT_SCOPE_RECORDS
     else if (word == "input-is-linear")
         conf["sorted"] = TRUE
     else if (word == "input-is-sorted")
@@ -539,12 +535,6 @@ function init() {
     init_conf()
 }
 
-# Initialize constants that we use, essentially like defines.
-#
-function init_constants() {
-    CONF_INPUT_SCOPE_FIELDS = 1
-    CONF_INPUT_SCOPE_RECORDS = 2
-}
 
 # Initialize the global configuration lookup.
 #
@@ -579,27 +569,7 @@ BEGIN{
     ready()
 }
 
-{
-    if (global_conf["input_scope"] == CONF_INPUT_SCOPE_RECORDS) {
-        split($0, arr)
         for(i in arr) if (arr[i] == arr[i] + 0) global_num[++global_num_n] = arr[i]
-    }
-    else if (global_conf["input_scope"] == CONF_INPUT_SCOPE_FIELDS) {
-        ready()
-        split($0, arr)
-        for(i in arr) if (arr[i] == arr[i] + 0) global_num[++global_num_n] = arr[i]
-        output()
-    }
-}
-
-END{
-    if (global_conf["input_scope"] == CONF_INPUT_SCOPE_RECORDS) {
-        output()
-    }
-}' "$@"
-
-
-######
 
 !!!
 # Ready
