@@ -7,9 +7,9 @@ TODO="TODO"
 assert_eq() {
     expect="$1"; actual="$2"; msg="$3"
     if [ "$expect" == "$actual" ]; then
-        echo "assert_eq $msg expect:$expect actual:$actual SUCCESS"
+        echo "assert_eq $msg expect:${expect//$'\n'/␞} actual:${actual//$'\n'/␞} SUCCESS"
     else
-        echo "assert_eq $msg expect:$expect actual:$actual FAILURE"
+        echo "assert_eq $msg expect:${expect//$'\n'/␞} actual:${actual//$'\n'/␞} FAILURE"
     fi
 }
 

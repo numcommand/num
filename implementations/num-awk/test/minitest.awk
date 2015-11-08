@@ -5,11 +5,16 @@ function assert_init() {
     split(TODO, ARR_TODO)
 }
 
+function gsub_newline_to_rs(  s) {
+    gsub(/\n/, "␞", s)
+    return s
+}
+
 function assert_eq(expect, actual, msg) {
     if (expect == actual) {
-        print "assert_eq", msg, "expect:" expect, "actual:" actual, "SUCCESS"
+        print "assert_eq", msg, "expect:" gsub_newline_to_rs(expect), "actual:" gsub_newline_to_rs(actual), "SUCCESS"
     }  else {
-        print "assert_eq", msg, "expect:" expect, "actual:" actual, "FAILURE"
+        print "assert_eq", msg, "expect:" gsub_newline_to_rs(expect), "actual:" gsub_newline_to_rs(actual), "FAILURE"
     }
 }
 
