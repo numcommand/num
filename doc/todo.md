@@ -79,11 +79,23 @@ Optimizaitons:
 
 * One-pass improved calculations as described by John D. Cook, for `mean`, `variance`, `standard-deviation`, `skewness`, `kurtosis`. See http://www.johndcook.com/blog/skewness_kurtosis/
 
+Quicksort:
+
+* Research implementing the pivot by using Tukeys ninther,
+  which is a median of medians, and may be a faster heuristic.
+  See http://www.johndcook.com/blog/2009/06/23/tukey-median-ninther/
+
+* Research implementing the small size sort using Shell sort,
+  which is similar to insertion sort yet better for typical data.
+  See https://en.wikipedia.org/wiki/Shellsort
+
+* Research upgrading from single pivot to dual pivot.
+
 
 <p><hr>
 <nav>
 <ul>
-<li><b>[Prev Page: Thanks: our coders, advisors, sponsors, donors, and helpers](thanks.md)</b></li>
+<li><b>[Prev Page: Benchmarks](benchmarks.md)</b></li>
 <li><b>[Next Page: Known issues](known-issues.md)</b></li>
 </ul>
 </nav>

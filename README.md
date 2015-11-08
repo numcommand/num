@@ -34,6 +34,7 @@ Project pages:
 * [Commands: how to use related command line tools and scripts](doc/commands.md)
 * [Comparisons: when to use Num vs. other tools, such as C, R, Python, etc.](doc/comparisons.md)
 * [Input/Output and options for running Num](doc/input-output-options.md)
+* [Benchmarks](doc/benchmarks.md)
 * [To do](doc/todo.md)
 * [Known issues](doc/known-issues.md)
 * [Programmer guide](doc/programmer-guide.md)

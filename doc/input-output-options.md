@@ -72,3 +72,11 @@ Num use the `awk` language, which comes in several flavors.
 If you want to explicity tell Num which `awk` command to use, then you can provide a custom path by setting the `AWK` environment variable like this:
 
     AWK=/example/awk num ...
+
+<p><hr>
+<nav>
+<ul>
+<li><b>[Prev Page: Comparisons](comparisons.md)</b></li>
+<li><b>[Next Page: Benchmarks](benchmarks.md)</b></li>
+</ul>
+</nav>
