@@ -2956,6 +2956,14 @@ function init_constants() {
     # Feature detection. Currently this script requires Gawk.
     AWK_HAS_ASORT = TRUE
     AWK_HAS_LENGTH = TRUE
+
+    # The scope controls whether the user wants input and output
+    # to be all items (the default), or per record, or per field.
+    # The scope per field is a special case, because it lets the
+    # the awk loop read one record, calculate, then flush data.
+    CONF_SCOPE_ALL    = "CONF_SCOPE_ALL"     # Default
+    CONF_SCOPE_RECORD = "CONF_SCOPE_RECORD"  # Triggers optimized loop
+    CONF_SCOPE_FIELD  = "CONF_SCOPE_FIELD"   # TODO implement
 }
 
 ##
@@ -2964,6 +2972,7 @@ function init_constants() {
 #
 function init_conf() {
     split("", global_conf)
+    global_conf["scope"] = CONF_SCOPE_ALL
 }
 
 ###
@@ -2986,6 +2995,17 @@ function init_word_argv() {
 # TODO: research if there is a better way to initialize a dictionary.
 #
 function init_word_list() {
+
+    global_word_list["overall"] = \
+    "num_conf_scope_all"
+
+    global_word_list["records"] = \
+    global_word_list["rows"] = \
+    "num_conf_scope_record"
+
+    global_word_list["fields"] = \
+    global_word_list["colums"] = \
+    "num_conf_scope_field"
 
     # Convention: default is sample, not population.
     global_word_list["secondmomentaboutthemean"] = \
@@ -3041,9 +3061,19 @@ function init_word_list() {
 
 ############################################################################
 #
-# WORDS
+# CONF
 #
 ###
+
+###
+#
+# Configure
+#
+#
+function conf() {
+    words_to_conf(global_word_argv)
+    optimize_scope_flags()
+}
 
 ###
 #
@@ -3055,14 +3085,53 @@ function init_word_list() {
 # This function must only set `conf` keys and values.
 # This function must NOT do any calculations, work, etc.
 #
-function word_to_conf(word, conf) {
-    if (word == "output_comma_separated_values")
-        conf["output_field_separator"] = ","
+# TODO: consider changing these to functions.
+#
+function word_to_conf(word) {
+    if (word == "")
+        return
+    if (word == "num_conf_scope_all")
+        global_conf["scope"] = CONF_SCOPE_ALL
+    else if (word == "num_conf_scope_record")
+        global_conf["scope"] = CONF_SCOPE_RECORD
+    else if (word == "num_conf_scope_field")
+        global_conf["scope"] = CONF_SCOPE_FIELD
+    else if (word == "output_comma_separated_values")
+        global_conf["output_field_separator"] = ","
     else if (word == "output_tab_separated_values")
-        conf["output_field_separator"] = "\t"
+        global_conf["output_field_separator"] = "\t"
     else
         return ""
 }
+
+###
+#
+# Given a list of words, set all configuration settings.
+#
+function words_to_conf(words,  imax) {
+    for (i=1; i <= num_arr_length(words); i++) word_to_conf(words[i])
+}
+
+##
+#
+# Optimize scope flags suitable for tight inner loops.
+#
+# This enables us to speed up code by doing this:
+#
+#     - if (global_conf["scope"] == CONF_SCOPE_ALL)
+#     + if (CONF_SCOPE_ALL_FLAG)
+#
+function optimize_scope_flags() {
+    CONF_SCOPE_ALL_FLAG    = (global_conf["scope"] == CONF_SCOPE_ALL)
+    CONF_SCOPE_RECORD_FLAG = (global_conf["scope"] == CONF_SCOPE_RECORD)
+    CONF_SCOPE_FIELD_FLAG  = (global_conf["scope"] == CONF_SCOPE_FIELD)
+}
+
+############################################################################
+#
+# WORDS
+#
+###
 
 ###
 #
@@ -3091,14 +3160,14 @@ function word_to_s(num, num_, opts, word,  s) {
 #     word_to_s(num, opts, ("sum", "max"))
 #     => "1 4"
 #
-function words_to_s(num, num_, opts, words, sep,  word, i, s, s2) {
+function words_to_s(num, num_, opts, words, field_separator,  word, i, s, s2) {
     s = ""
-    for (i in words) {
+    for (i=1; i <= num_arr_length(words); i++) {
         word = words[i]
         s2 = word_to_s(num, num_, opts, word)
-        if (s2 != "") s = s s2 sep
+        if (s2 != "") s = s s2 field_separator
     }
-    s = substr(s, 1, length(s) - length(sep))
+    s = substr(s, 1, length(s) - length(field_separator))
     return s
 }
 
@@ -3114,9 +3183,10 @@ function words_to_s(num, num_, opts, words, sep,  word, i, s, s2) {
 #
 # Ready the global number array for new input and new metadata.
 #
-function start_input() {
-    clear_num_values()
-    clear_num_metadata()
+function scope_start() {
+    global_num_n = 0
+    split("", global_num)
+    split("", global_num_)
 }
 
 ###
@@ -3125,16 +3195,9 @@ function start_input() {
 #
 # Set any work in progress here.
 #
-function stop_input() {
+function scope_stop() {
     global_num_["num_n"] = global_num_n
-}
-
-function clear_num_values() {
-    split("", global_num)
-}
-
-function clear_num_metadata() {
-    split("", global_num_)
+    print_output()
 }
 
 ###
@@ -3177,7 +3240,7 @@ function parse_argv() {
 # should print anything to the screen during normal operation.
 #
 function print_output() {
-    print words_to_s(global_num, global_num_, global_opts, global_word_argv, OFS)
+    print words_to_s(global_num, global_num_, global_opts, global_word_argv, OFS, ORS)
 }
 
 ############################################################################
@@ -3189,14 +3252,22 @@ function print_output() {
 BEGIN{
     init()
     parse_argv()
-    start_input()
+    conf()
+    if (CONF_SCOPE_ALL_FLAG) scope_start()
 }
 
 {
-    for(i=1;i<=NF;i++) global_num[++global_num_n] = $i
+    if (CONF_SCOPE_ALL_FLAG) {
+        for(i=1;i<=NF;i++) global_num[++global_num_n] = $i # Inline
+    } else if (CONF_SCOPE_RECORD_FLAG) {
+        scope_start()
+        for(i=1;i<=NF;i++) global_num[++global_num_n] = $i # Inline
+        scope_stop()
+    } else {
+        num_error("Num configuration scope is not recognized")
+    }
 }
 
 END{
-    stop_input()
-    print_output()
+    if (CONF_SCOPE_ALL_FLAG) scope_stop()
 }' "$@"
