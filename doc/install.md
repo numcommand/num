@@ -24,9 +24,6 @@ Notes:
   * The roadmap includes a smoother safer installation process, using package managers such as `apt`, `yum`, `brew`, etc. If you would like to help with these, please contact us directly or create a GitHub issue.
 
 
-<p><hr>
-<nav>
-<ul>
-<li><b>[Next Page: Tutorial](tutorial.md)</b></li>
-</ul>
+<p><hr><nav>
+* <b>[Next Page: Tutorial](tutorial.md)</b>
 </nav>

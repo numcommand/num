@@ -61,10 +61,7 @@ Caveats:
   * For statistics that do not use ranking, such as sum or mean, then Num is approximately 2x-time as the awk implementation. This is primarliy because Num stores all the numbers in an array, whereas awk code doesn't store the numbers. We plan to optimize this for Num 2.0.
 
 
-<p><hr>
-<nav>
-<ul>
-<li><b>[Prev Page: Comparisons: when to use Num vs. other tools, such as C, R, Python, etc.](doc/comparisons.md)</b></li>
-<li><b>[Next Page: To do list](todo.md)</b></li>
-</ul>
+<p><hr><nav>
+* <b>[Prev Page: Comparisons: when to use Num vs. other tools, such as C, R, Python, etc.](doc/comparisons.md)</b>
+* <b>[Next Page: To do list](todo.md)</b>
 </nav>

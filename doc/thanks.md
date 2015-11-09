@@ -68,10 +68,7 @@ and Anonymous.
 * All the myriad open source authors, advocates, and users.
 
 
-<p><hr>
-<nav>
-<ul>
-<li><b>[Prev Page: FAQ: Frequently Asked Questions](faq.md)</b></li>
-<li><b>[Next Page: Comparisons: when to use Num vs. other tools, such as C, R, Python, etc.](doc/comparisons.md)</b></li>
-</ul>
+<p><hr><nav>
+* <b>[Prev Page: FAQ: Frequently Asked Questions](faq.md)</b>
+* <b>[Next Page: Comparisons: when to use Num vs. other tools, such as C, R, Python, etc.](doc/comparisons.md)</b>
 </nav>

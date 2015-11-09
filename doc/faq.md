@@ -52,10 +52,7 @@ In our day-to-day work, we've written these kinds of functions in these other to
 We want an easy way to make these functions widely available, even for systems that are locked down or can't have additional programming tools installed. We found that awk provides a good solution for now because it's widely available and very good at handling fields and records.
 
 
-<p><hr>
-<nav>
-<ul>
-<li><b>[Prev Page: Helpers: related commands line tools](helpers.md)</b></li>
-<li><b>[Next Page: Thanks: our coders, advisors, sponsors, donors, and helpers](thanks.md)</b></li>
-</ul>
+<p><hr><nav>
+* <b>[Prev Page: Helpers: commands that work well with Num](helpers.md)</b>
+* <b>[Next Page: Thanks: our coders, advisors, sponsors, donors, and helpers](thanks.md)</b>
 </nav>

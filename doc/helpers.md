@@ -109,10 +109,7 @@ Example:
     45
 
 
-<p><hr>
-<nav>
-<ul>
-<li><b>[Prev Page: Functions: the complete list of all capabilities](functions.md)</b></li>
-<li><b>[Next Page: FAQ: Frequently Asked Questions](faq.md)</b></li>
-</ul>
+<p><hr><nav>
+* <b>[Prev Page: Functions: the complete list of all capabilities](functions.md)</b>
+* <b>[Next Page: FAQ: Frequently Asked Questions](faq.md)</b>
 </nav>

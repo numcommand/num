@@ -49,10 +49,7 @@ We suggest Python and its tools, such as pandas and scikit, when:
 * Your ideal tools use a general purpose programming language.
 
 
-<p><hr>
-<nav>
-<ul>
-<li><b>[Prev Page: Thanks: our coders, advisors, sponsors, donors, and helpers](thanks.md)</b></li>
-<li><b>[Next Page: Benchmarks](benchmarks.md)</b></li>
-</ul>
+<p><hr><nav>
+* <b>[Prev Page: Thanks: our coders, advisors, sponsors, donors, and helpers](thanks.md)</b>
+* <b>[Next Page: Benchmarks](benchmarks.md)</b><
 </nav>

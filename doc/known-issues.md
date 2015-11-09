@@ -14,10 +14,7 @@ Known issues:
   * Optimization of data loading by replacing split with NF.
 
 
-<p><hr>
-<nav>
-<ul>
-<li><b>[Prev Page: To do: plans and ideas for our future versions](todo.md)</b></li>
-<li><b>[Next Page: Programmer guide](programmer-guide.md)</b></li>
-</ul>
+<p><hr><nav>
+* <b>[Prev Page: To do: plans and ideas for our future versions](todo.md)</b>
+* <b>[Next Page: Programmer guide](programmer-guide.md)</b>
 </nav>

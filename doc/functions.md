@@ -561,10 +561,7 @@ Is the data non-descending, i.e. some next number is greater?
     1
 
 
-<p><hr>
-<nav>
-<ul>
-<li><b>[Prev Page: Tutorial](tutorial.md)</b></li>
-<li><b>[Next Page: Helpers: related commands line tools](helpers.md)</b></li>
-</ul>
+<p><hr><nav>
+* <b>[Prev Page: Tutorial](tutorial.md)</b>
+* <b>[Next Page: Helpers: command that work well with Num](helpers.md)</b>
 </nav>

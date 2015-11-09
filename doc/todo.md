@@ -92,10 +92,7 @@ Quicksort:
 * Research upgrading from single pivot to dual pivot.
 
 
-<p><hr>
-<nav>
-<ul>
-<li><b>[Prev Page: Benchmarks](benchmarks.md)</b></li>
-<li><b>[Next Page: Known issues](known-issues.md)</b></li>
-</ul>
+<p><hr><nav>
+* <b>[Prev Page: Benchmarks](benchmarks.md)</b>
+* <b>[Next Page: Known issues](known-issues.md)</b>
 </nav>

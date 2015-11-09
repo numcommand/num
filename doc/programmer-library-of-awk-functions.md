@@ -21,9 +21,6 @@ The `num-test` script is a shell script that runs tests.
    * The test file is a work in progress; pull requests are welcome.
 
 
-<p><hr>
-<nav>
-<ul>
-<li><b>[Prev Page: Programmer guide](programmer-guide.md)</b></li>
-</ul>
+<p><hr><nav>
+* <b>[Prev Page: Programmer guide](programmer-guide.md)</b>
 </nav>

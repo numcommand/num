@@ -115,10 +115,7 @@ Rule out for now:
   * Launch using `#/usr/bin/env -S ..` because we want POSIX.
 
 
-<p><hr>
-<nav>
-<ul>
-<li><b>[Prev Page: Known issues](known-issues.md)</b></li>
-<li><b>[Next Page: Programmer library of awk functions](programmer-library-of-awk-functions.md)</b></li>
-</ul>
+<p><hr><nav>
+* <b>[Prev Page: Known issues](known-issues.md)</b>
+* <b>[Next Page: Programmer library of awk functions](programmer-library-of-awk-functions.md)</b>
 </nav>
