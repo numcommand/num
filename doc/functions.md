@@ -564,7 +564,7 @@ Is the data non-descending, i.e. some next number is greater?
 <p><hr>
 <nav>
 <ul>
-<li><b>[Prev Page: Examples: how to use Num for shell scripting](examples.md)</b></li>
-<li><b>[Next Page: Commands: how to use related command line tools and scripts](commands.md)</b></li>
+<li><b>[Prev Page: Tutorial](tutorial.md)</b></li>
+<li><b>[Next Page: Helpers: related commands line tools](helpers.md)</b></li>
 </ul>
 </nav>

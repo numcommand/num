@@ -27,6 +27,6 @@ Notes:
 <p><hr>
 <nav>
 <ul>
-<li><b>[Next Page: Examples: how to use Num for shell scripting](examples.md)</b></li>
+<li><b>[Next Page: Tutorial](tutorial.md)</b></li>
 </ul>
 </nav>

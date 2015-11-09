@@ -72,6 +72,6 @@ and Anonymous.
 <nav>
 <ul>
 <li><b>[Prev Page: FAQ: Frequently Asked Questions](faq.md)</b></li>
-<li><b>[Next Page: To do: plans and ideas for our future versions](todo.md)</b></li>
+<li><b>[Next Page: Comparisons: when to use Num vs. other tools, such as C, R, Python, etc.](doc/comparisons.md)</b></li>
 </ul>
 </nav>

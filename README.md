@@ -2,12 +2,16 @@
 
 # Num: number utilities for mathematics
 
-Num is a command line tool for mathematics and statistics data processing.<br>Num calculates sum, min, max, mean, median, mode, quartiles, and more.
+Num is a command line tool for mathematics and statistics data processing.
+<br>Num can calculate sum, median, iqr, variance, skewness, kurtosis, and much more.
+
+[NumCommand.com is our website.](http://www.numcommand.com)
+<br>[NumCommand is on Kickstarter - please donate $1 and spread the word!](https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics)
 
 To use Num:
 
-    $ echo "1 2 3 4" | num sum
-    10
+    $ echo "1 2 3 4" | num sum median iqr variance skewness kurtosis
+    10 2.5 1.5 13.5833 -28.2917 71.8958
 
 To install:
 
@@ -22,20 +26,17 @@ To install on other systems please see the [Install](doc/install.md) page.
 Start using Num:
 
 * [Install](doc/install.md)
-* [Examples](doc/examples.md)
+* [Tutorial](doc/tutorial.md)
 * [Functions](doc/functions.md)
+* [Helpers](doc/helpers.md)
 * [FAQ](doc/faq.md)
 
 Project pages:
 
-* [Kickstarter project - please donate $1 and spread the word!](https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics)
-* [NumCommand.com website](http://www.numcommand.com)
 * [Thanks: our coders, advisors, sponsors, donors, and helpers](doc/thanks.md)
-* [Commands: how to use related command line tools and scripts](doc/commands.md)
 * [Comparisons: when to use Num vs. other tools, such as C, R, Python, etc.](doc/comparisons.md)
-* [Input/Output and options for running Num](doc/input-output-options.md)
 * [Benchmarks](doc/benchmarks.md)
-* [To do](doc/todo.md)
+* [To do list](doc/todo.md)
 * [Known issues](doc/known-issues.md)
 * [Programmer guide](doc/programmer-guide.md)
 * [Programmer library of awk functions](doc/programmer-library-of-awk-functions.md)

@@ -52,7 +52,7 @@ We suggest Python and its tools, such as pandas and scikit, when:
 <p><hr>
 <nav>
 <ul>
-<li><b>[Prev Page: Commands: how to use related command line tools and scripts](commands.md)</b></li>
-<li><b>[Next Page: FAQ: Frequently Asked Questions](faq.md)</b></li>
+<li><b>[Prev Page: Thanks: our coders, advisors, sponsors, donors, and helpers](thanks.md)</b></li>
+<li><b>[Next Page: Benchmarks](benchmarks.md)</b></li>
 </ul>
 </nav>

@@ -55,7 +55,7 @@ We want an easy way to make these functions widely available, even for systems t
 <p><hr>
 <nav>
 <ul>
-<li><b>[Prev Page: Comparisons: when to use Num vs. other tools](comparisons.md)</b></li>
+<li><b>[Prev Page: Helpers: related commands line tools](helpers.md)</b></li>
 <li><b>[Next Page: Thanks: our coders, advisors, sponsors, donors, and helpers](thanks.md)</b></li>
 </ul>
 </nav>
