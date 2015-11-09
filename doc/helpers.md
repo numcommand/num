@@ -31,6 +31,20 @@ Example to print a file of data then sum:
 Run `man cat` to see options for line numbering, blank line squeezing, etc.
 
 
+## cut
+
+Cut a field
+
+Example:
+
+    cat data.txt | cut -f 2 -d " "
+    2
+    5
+    8
+
+Run `man cut` to see options for cutting by character, changing delimiters, suppressing lines, etc.
+
+
 ## seq (sequence)
 
 Sequence: generate a sequence of numbers.
