@@ -124,13 +124,21 @@ Select the last 10 lines:
 
     tail -10
 
-Select lines starting with line 2 onward:
+Select lines starting with line 10 onward:
 
     tail +2
+
+Delete line 1:
+
+    sed '1d'
 
 Select lines that have digits:
 
     grep '[0-9]'
+
+Delete lines that have a negative sign:
+
+    grep -v '-'
 
 Select field 3 delimited by a space:
 
