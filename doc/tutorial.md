@@ -7,6 +7,7 @@ This tutorial will use this example file:
     4 5 6
     7 8 9
 
+
 ## Input
 
 You can use standard input:
@@ -20,6 +21,14 @@ You can use files:
     45
 
 
+You can use records a.k.a. rows:
+
+    $ num sum records data.txt
+    6
+    15
+    24
+
+
 ## Output
 
 To output all numbers:
@@ -31,16 +40,6 @@ To change all numbers:
 
     $ cat data.txt | num increment all
     2 3 4 5 6 7 8 9 10
-
-
-## Records
-
-You can use records a.k.a. rows:
-
-    $ num sum records data.txt
-    6
-    15
-    24
 
 
 ## Separators
@@ -113,6 +112,37 @@ If you want to explicity tell Num which `awk` command to use, then you can provi
 
 
 ## Real World Examples
+
+
+###  How to select lines
+
+Select the first 10 lines:
+
+    head -10
+
+Select the last 10 lines:
+
+    tail -10
+
+Select lines starting with line 2 onward:
+
+    tail +2
+
+Select lines that have digits:
+
+    grep '[0-9]'
+
+Select field 3 delimited by a space:
+
+    cut -f 3 -d ' '
+
+Select field 3 delimited by spaces and tabs:
+
+    awk '{print $3}'
+
+Select lines between X inclusive and Y inclusive:
+
+    sed -n '/x/,/y/p'
 
 
 ### How much data is in a directory?
