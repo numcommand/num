@@ -153,14 +153,6 @@ We connect to the Craigslist website then parse prices.
     2974.47
 
 
-## Working with related commands
-
-
-
 <p><hr>
-<nav>
-<ul>
-<li><b>[Prev Page: Install](install.md)</b></li>
-<li><b>[Next Page: Functions](benchmarks.md)</b></li>
-</ul>
-</nav>
+* <b>[Prev Page: Install](install.md)</b>
+* <b>[Next Page: Functions](benchmarks.md)</b>
