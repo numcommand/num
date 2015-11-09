@@ -1,8 +1,6 @@
-# Helpers: related commands line tools
+# Helpers: commands that work well with Num
 
-Num works well with many related command line tools.
-
-Here are tools we use frequently.
+There are many commands that work with with Num; here are our favorites.
 
 
 ## awk
@@ -33,7 +31,7 @@ Example to print a file of data then sum:
 Run `man cat` to see options for line numbering, blank line squeezing, etc.
 
 
-## seq
+## seq (sequence)
 
 Sequence: generate a sequence of numbers.
 
@@ -47,7 +45,7 @@ Example:
 Run `man seq` to see options for number separators, zero padding, etc.
 
 
-## shuffle
+## shuf (shuffle)
 
 Shuffle a list, a.k.a. randomize the order of list items.
 
@@ -59,6 +57,7 @@ Example:
     2
 
 Run `man shuf` to see options for input range, sample number, head count, etc.
+
 
 ## sort
 
@@ -74,7 +73,7 @@ Example:
 Run `man sort` to see options for reverse, unique, field separator, etc.
 
 
-## uniq
+## uniq (unique)
 
 Unique: make the items unique by removing duplicates.
 
@@ -88,7 +87,7 @@ Example:
 Run `man unique` to see options for showing duplicates, skipping duplicates, ignoring fields, etc.
 
 
-## wc
+## wc (word count)
 
 Word count: this typically counts lines, words, and characters.
 
