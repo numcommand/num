@@ -62,32 +62,35 @@ You can use a custom output field separator (OFS) and output record separator (O
 
 Num has many command line options.
 
-You can use dashes or not:
+You can use dashes, underscores, or not:
 
     sum-of-squares
+    sum_of_squares
     sumofsquares
 
 You can use any capitialization such as:
 
     sumofsquares
     SumOfSquares
+    SUMOFSQUARES
 
-You can use many common abbreviations such as:
+You can use full words or abbreviations such as:
 
-    variance
-    var
+    standarddeviation
+    stddev
+    sd
 
-The word "sample" can be abbreviated as "s" such as:
+The word "sample" can be abbreviated "s":
 
     samplevariance
     svar
 
-The word "population" can be abbreviated as "p" such as:
+The word "population" can be abbreviated "p":
 
     populationvariance
     pvar
 
-The words "coefficient of" can be abbreviated as "co" such as:
+The words "coefficient of" can be abbreviated "co":
 
     coefficientofvariance
     covar
