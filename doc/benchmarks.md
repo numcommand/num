@@ -63,5 +63,5 @@ Caveats:
 
 <p><hr><nav>
 * <b>[Prev Page: Comparisons: when to use Num vs. other tools, such as C, R, Python, etc.](doc/comparisons.md)</b>
-* <b>[Next Page: To do list](todo.md)</b>
+* <b>[Next Page: To do](todo.md)</b>
 </nav>

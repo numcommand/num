@@ -70,5 +70,5 @@ and Anonymous.
 
 <p><hr><nav>
 * <b>[Prev Page: FAQ: Frequently Asked Questions](faq.md)</b>
-* <b>[Next Page: Comparisons: when to use Num vs. other tools, such as C, R, Python, etc.](doc/comparisons.md)</b>
+* <b>[Next Page: Comparisons: when to use Num vs. other tools, such as C, R, Python, etc.](comparisons.md)</b>
 </nav>

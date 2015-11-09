@@ -155,5 +155,5 @@ We connect to the Craigslist website then parse prices.
 
 <p><hr><nav>
 * <b>[Prev Page: Install](install.md)</b>
-* <b>[Next Page: Functions](benchmarks.md)</b>
+* <b>[Next Page: Functions](functions.md)</b>
 </nav>

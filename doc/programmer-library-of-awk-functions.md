@@ -23,4 +23,5 @@ The `num-test` script is a shell script that runs tests.
 
 <p><hr><nav>
 * <b>[Prev Page: Programmer guide](programmer-guide.md)</b>
+* <b>[Next Page: Up to the homepage](../)</b>
 </nav>
