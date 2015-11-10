@@ -25,9 +25,12 @@
 * Kickstarter donors:
 [Alex Brem](https://www.kickstarter.com/profile/freqvibez),
 [Alexandru Nedel](https://www.kickstarter.com/profile/916349882),
+[Andrew McDonald](https://www.kickstarter.com/profile/682137419),
 [Andy Bas](https://www.kickstarter.com/profile/477841983),
 [Barb Henderson](https://www.kickstarter.com/profile/1478635103),
+[Becca](https://www.kickstarter.com/profile/460981148),
 [Bill Lazar](https://www.kickstarter.com/profile/1640716206),
+[Caner](https://www.kickstarter.com/profile/caner),
 [Dain White](https://www.kickstarter.com/profile/dainwhite),
 [David Krogsrud](https://www.kickstarter.com/profile/716706080),
 [Duncan Beech](https://www.kickstarter.com/profile/1569217582),
@@ -44,6 +47,7 @@
 [Jonathan McCoy](https://www.kickstarter.com/profile/2082177678),
 [Jonny Hamilton](https://www.kickstarter.com/profile/1671213970),
 [Katy Atchison](https://www.kickstarter.com/profile/1805469635),
+[Lance](https://www.kickstarter.com/profile/682935683),
 [Lawrence Yu](https://www.kickstarter.com/profile/251870332),
 [Luis Velez](https://www.kickstarter.com/profile/1604244352),
 [Matt Cohen](https://www.kickstarter.com/profile/254996529),
@@ -54,7 +58,9 @@
 [Sajjad Bashar](https://www.kickstarter.com/profile/115363782),
 [Sammy Lao](https://www.kickstarter.com/profile/1616583675),
 [Stephanie Rose](https://www.kickstarter.com/profile/1256990289),
+[Steve Alandt](https://www.kickstarter.com/profile/239251021),
 [Steve Howard](https://www.kickstarter.com/profile/132523397),
+[Steven Roberts](https://www.kickstarter.com/profile/1000405747),
 [Vance Morosi](https://www.kickstarter.com/profile/1771833525),
 and Anonymous.
 
