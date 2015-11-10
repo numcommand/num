@@ -25,7 +25,7 @@ By <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a item
 
 <article itemprop="citation" itemscope itemtype="http://schema.org/BlogPosting" class="citation">
 <header>
-<h1><cite itemprop="headline name"><a itemprop="url" href="http://www.onthelambda.com/2013/11/05/qstats-quick-and-dirty-statistics-tool-for-the-unix-pipeline/" rel="external">qstats - quick and dirty statistics tool</a></cite></h1>
+<h1><cite itemprop="headline name"><a itemprop="url" href="http://www.onthelambda.com/2013/11/05/qstats-quick-and-dirty-statistics-tool-for-the-unix-pipeline/" rel="external">qstats - quick and dirty statistics tool for Unix</a></cite></h1>
 </header>
 
 I wrote a tool, qstats, that computes simple summary statistics from the command-line. It also includes data-binning and simple bar chart functionality. I designed it, in C, specifically to be as fast as possible, and bare-bones enough to work on any POSIX-compliant system without having to deal with outside dependencies. &hellip;
