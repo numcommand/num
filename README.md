@@ -5,13 +5,14 @@
 Num is a command line tool for mathematics and statistics data processing.
 <br>Num can calculate sum, median, iqr, variance, skewness, kurtosis, and much more.
 
-[NumCommand.com is our website.](http://www.numcommand.com)
-<br>[NumCommand is on Kickstarter - please donate $1 and spread the word!](https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics)
+[NumCommand is on Kickstarter - please donate $1 and spread the word!](https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics)
+<br>[NumCommand.com website.](http://www.numcommand.com)
+<br>[@NumCommand](https://twitter.com/NumCommand)
 
 To use Num:
 
-    $ echo "1 2 3 4" | num sum median iqr variance skewness kurtosis
-    10 2.5 1.5 13.5833 -28.2917 71.8958
+    $ echo "1 2 3 4" | num sum median variance skewness kurtosis
+    10 2.5 13.5833 -28.2917 71.8958
 
 To install:
 
