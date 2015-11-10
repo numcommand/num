@@ -14,8 +14,8 @@ Here are a few articles and blogs that relate to the Num command, including Unix
 
 Few tools are more indispensable to my work than Unix. Manipulating data into different formats, performing transformations, and conducting exploratory data analysis (EDA) is the lingua franca of data science. The coffers of Unix hold many simple tools, which by themselves are powerful, but when chained together facilitate complex data manipulations. &hellip;
 
-By <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" href="https://github.com/drbunsen" rel="external"><span itemprop="name">Seth Brown a.k.a. Dr. Bunson</span></a></span>
-<br>On <span itemprop="isPartOf" itemscope itemtype="http://schema.org/Blog"><a itemprop="url" href="http://www.drbunsen.org/" rel="external"><span itemprop="name">Dr. Bunson &bull; Blog</span></a></span>
+By <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" href="https://github.com/drbunsen" rel="external"><span itemprop="name">Seth Brown</span></a></span>
+, <span itemprop="isPartOf" itemscope itemtype="http://schema.org/Blog"><a itemprop="url" href="http://www.drbunsen.org/" rel="external"><span itemprop="name">Dr. Bunson blog</span></a></span>
 </footer>
 </article>
 
@@ -28,7 +28,7 @@ I wrote a tool, qstats, that computes simple summary statistics from the command
 
 <footer>
 By <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" href="https://github.com/tonyfischetti" rel="external"><span itemprop="name">Tony Fischetti</span></a></span>
-<br>On <span itemprop="isPartOf" itemscope itemtype="http://schema.org/Blog"><a itemprop="url" href="http://onthelambda.com" rel="external"><span itemprop="name">On the lambda &bull; Blog</span></a></span>
+, <span itemprop="isPartOf" itemscope itemtype="http://schema.org/Blog"><a itemprop="url" href="http://onthelambda.com" rel="external"><span itemprop="name">On the lambda blog</span></a></span>
 </footer>
 </article>
 
@@ -41,7 +41,7 @@ GNU datamash is a command-line utility that offers simple calculations (e.g. cou
 
 <footer>
 By <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" href="http://stephenturner.us/" rel="external"><span itemprop="name">Stephen Turner</span></a></span>
-<br>On <span itemprop="isPartOf" itemscope itemtype="http://schema.org/Blog"><a itemprop="url" href="http://www.gettinggeneticsdone.com/" rel="external"><span itemprop="name">Getting Genetics Done &bull; Blog</span></a></span>
+, <span itemprop="isPartOf" itemscope itemtype="http://schema.org/Blog"><a itemprop="url" href="http://www.gettinggeneticsdone.com/" rel="external"><span itemprop="name">Getting Genetics Done blog</span></a></span>
 </footer>
 </article>
 
