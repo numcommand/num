@@ -17,8 +17,9 @@ Here are a few articles and blogs that relate to the Num command, including Unix
 
 Few tools are more indispensable to my work than Unix. Manipulating data into different formats, performing transformations, and conducting exploratory data analysis (EDA) is the lingua franca of data science. The coffers of Unix hold many simple tools, which by themselves are powerful, but when chained together facilitate complex data manipulations. &hellip;
 
-By <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" href="https://github.com/drbunsen" rel="external"><span itemprop="name">Seth Brown</span></a></span>
-, <span itemprop="isPartOf" itemscope itemtype="http://schema.org/Blog"><a itemprop="url" href="http://www.drbunsen.org/" rel="external"><span itemprop="name">Dr. Bunson</span></a></span>
+<footer>By
+<span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" href="https://github.com/drbunsen" rel="external"><span itemprop="name">Seth Brown</span></a></span>,
+<span itemprop="isPartOf" itemscope itemtype="http://schema.org/Blog"><a itemprop="url" href="http://www.drbunsen.org/" rel="external"><span itemprop="name">Dr. Bunson</span></a></span>
 </footer>
 </article>
 
@@ -30,9 +31,9 @@ By <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a item
 
 I wrote a tool, qstats, that computes simple summary statistics from the command-line. It also includes data-binning and simple bar chart functionality. I designed it, in C, specifically to be as fast as possible, and bare-bones enough to work on any POSIX-compliant system without having to deal with outside dependencies. &hellip;
 
-<footer>
-By <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" href="https://github.com/tonyfischetti" rel="external"><span itemprop="name">Tony Fischetti</span></a></span>
-, <span itemprop="isPartOf" itemscope itemtype="http://schema.org/Blog"><a itemprop="url" href="http://onthelambda.com" rel="external"><span itemprop="name">On the lambda</span></a></span>
+<footer>By
+<span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" href="https://github.com/tonyfischetti" rel="external"><span itemprop="name">Tony Fischetti</span></a></span>,
+<span itemprop="isPartOf" itemscope itemtype="http://schema.org/Blog"><a itemprop="url" href="http://onthelambda.com" rel="external"><span itemprop="name">On the lambda</span></a></span>
 </footer>
 </article>
 
@@ -44,9 +45,9 @@ By <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a item
 
 GNU datamash is a command-line utility that offers simple calculations (e.g. count, sum, min, max, mean, stdev, string coalescing) as well as a rich set of statistical functions, to quickly assess information in textual input files or from a UNIX pipe. .... Let’s calculate the mean, 1st quartile, median, 3rd quarile, IQR, sample-standard-deviation, and p-value of Jarque-Bera test for normal distribution, using some data in file.txt. &hellip;
 
-<footer>
-By <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" href="http://stephenturner.us/" rel="external"><span itemprop="name">Stephen Turner</span></a></span>
-, <span itemprop="isPartOf" itemscope itemtype="http://schema.org/Blog"><a itemprop="url" href="http://www.gettinggeneticsdone.com/" rel="external"><span itemprop="name">Getting Genetics Done</span></a></span>
+<footer>By
+<span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" href="http://stephenturner.us/" rel="external"><span itemprop="name">Stephen Turner</span></a></span>,
+<span itemprop="isPartOf" itemscope itemtype="http://schema.org/Blog"><a itemprop="url" href="http://www.gettinggeneticsdone.com/" rel="external"><span itemprop="name">Getting Genetics Done</span></a></span>
 </footer>
 </article>
 
@@ -57,9 +58,9 @@ By <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a item
 
 Jeff Leek, Brian Caffo, and I launched the Johns Hopkins Data Science Specialization on the Coursera platform. This is a sequence of nine courses that intends to provide a “soup-to-nuts” training in data science for people who are highly motivated and have some basic mathematical and computing background. &hellip;
 
-<footer>
-By <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" href="https://twitter.com/rdpeng" rel="external"><span itemprop="name">Roger Peng</span></a></span>
-, <span itemprop="isPartOf" itemscope itemtype="http://schema.org/Blog"><a itemprop="url" href="http://simplystatistics.org/" rel="external"><span itemprop="name">Simply Statistics</span></a></span>
+<footer>By
+<span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" href="https://twitter.com/rdpeng" rel="external"><span itemprop="name">Roger Peng</span></a></span>,
+<span itemprop="isPartOf" itemscope itemtype="http://schema.org/Blog"><a itemprop="url" href="http://simplystatistics.org/" rel="external"><span itemprop="name">Simply Statistics</span></a></span>
 </footer>
 </article>
 
