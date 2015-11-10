@@ -11,7 +11,7 @@
 #
 # The kurtosis formula measures the degree of peak.
 #
-# Kurtosis measures the relative peakness or flatness of a distribution,
+# Kurtosis measures the heaviness of tails,
 # relative to a normal distribution.
 #
 #   * Positive kurtosis (peakness) is termed leptokurtic.

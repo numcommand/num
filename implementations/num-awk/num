@@ -2252,7 +2252,7 @@ function num_pskew_(num, num_, opts) { num_population_skewness_(num, num_, opts)
 #
 # The kurtosis formula measures the degree of peak.
 #
-# Kurtosis measures the relative peakness or flatness of a distribution,
+# Kurtosis measures the heaviness of tails,
 # relative to a normal distribution.
 #
 #   * Positive kurtosis (peakness) is termed leptokurtic.
