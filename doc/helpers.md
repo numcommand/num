@@ -149,5 +149,5 @@ Example:
 
 <p><hr><nav>
 * <b>[Prev Page: Functions: the complete list of all capabilities](functions.md)</b>
-* <b>[Next Page: FAQ: Frequently Asked Questions](faq.md)</b>
+* <b>[Next Page: Aritcles & Blogs](articles.md)</b>
 </nav>

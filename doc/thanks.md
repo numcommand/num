@@ -37,6 +37,7 @@
 [Even Howard](https://www.kickstarter.com/profile/1154983135),
 [Ido Rosen](https://www.kickstarter.com/profile/ido),
 [Ivica Kičić](https://www.kickstarter.com/profile/1305140661),
+[Jacqualynn Jones](https://www.kickstarter.com/profile/1041603700),
 [Joe Ratti](https://www.kickstarter.com/profile/1494740047),
 [John Allwine](https://www.kickstarter.com/profile/941797232),
 [Jonathan](https://www.kickstarter.com/profile/899550954),
@@ -50,7 +51,9 @@
 [Nate Amarose](https://www.kickstarter.com/profile/1753074515),
 [Odin Dutton](https://www.kickstarter.com/profile/504607824),
 [Ondrej Nekola](https://www.kickstarter.com/profile/1074590221),
+[Sajjad Bashar](https://www.kickstarter.com/profile/115363782),
 [Sammy Lao](https://www.kickstarter.com/profile/1616583675),
+[Stephanie Rose](https://www.kickstarter.com/profile/1256990289),
 [Steve Howard](https://www.kickstarter.com/profile/132523397),
 [Vance Morosi](https://www.kickstarter.com/profile/1771833525),
 and Anonymous.

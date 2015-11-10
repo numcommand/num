@@ -29,6 +29,7 @@ Start using Num:
 * [Tutorial](doc/tutorial.md)
 * [Functions](doc/functions.md)
 * [Helpers](doc/helpers.md)
+* [Articles](doc/articles.md)
 * [FAQ](doc/faq.md)
 
 Project pages:
