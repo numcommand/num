@@ -14,7 +14,7 @@ Example to select column 2 then sum:
     5
     8
 
-Run `man awk` to see options for scanning, processing, input, output, etc.
+Run <a href="http://linux.die.net/man/1/awk">`man awk`</a> to see options for scanning, processing, input, output, etc.
 
 
 ## cat
@@ -28,7 +28,7 @@ Example to print a file of data then sum:
     4 5 6
     7 8 9
 
-Run `man cat` to see options for line numbering, blank line squeezing, etc.
+Run <a href="http://linux.die.net/man/1/cat">`man cat`</a> to see options for line numbering, blank line squeezing, etc.
 
 
 ## cut
@@ -42,7 +42,7 @@ Example:
     5
     8
 
-Run `man cut` to see options for cutting by character, changing delimiters, suppressing lines, etc.
+Run <a href="http://linux.die.net/man/1/cut">`man cut`</a> to see options for cutting by character, changing delimiters, suppressing lines, etc.
 
 
 ## head
@@ -54,7 +54,7 @@ Example:
     $ cat data.txt | head -1
     1 2 3
 
-Run `man head` to see options for line counts, using bytes, etc.
+Run <a href="http://linux.die.net/man/1/cat">`man head`</a> to see options for line counts, using bytes, etc.
 
 
 ## seq (sequence)
@@ -68,7 +68,7 @@ Example:
     2
     3
 
-Run `man seq` to see options for number separators, zero padding, etc.
+Run <a href="http://linux.die.net/man/1/seq">`man seq`</a> to see options for number separators, zero padding, etc.
 
 
 ## shuf (shuffle)
@@ -82,7 +82,7 @@ Example:
     1
     2
 
-Run `man shuf` to see options for input range, sample number, head count, etc.
+Run <a href="http://linux.die.net/man/1/shuf">`man shuf`</a> to see options for input range, sample number, head count, etc.
 
 
 ## sort
@@ -96,7 +96,7 @@ Example:
     2
     3
 
-Run `man sort` to see options for reverse, unique, field separator, etc.
+Run <a href="http://linux.die.net/man/1/sort">`man sort`</a> to see options for reverse, unique, field separator, etc.
 
 
 ## tail
@@ -108,7 +108,7 @@ Example:
     $ cat data.txt | tail -1
     7 8 9
 
-Run `man tail` to see options for removing headers, reversing, etc.
+Run <a href="http://linux.die.net/man/1/tail">`man tail`</a> to see options for removing headers, reversing, etc.
 
 
 ## uniq (unique)
@@ -122,7 +122,7 @@ Example:
     2
     3
 
-Run `man unique` to see options for showing duplicates, skipping duplicates, ignoring fields, etc.
+Run <a href="http://linux.die.net/man/1/uniq">`man unique`</a> to see options for showing duplicates, skipping duplicates, ignoring fields, etc.
 
 
 ## wc (word count)
@@ -134,7 +134,7 @@ Example:
     $ wc data.txt
     3 9 15
 
-Run `man wc` to see options, and how to use languages other than English or character encodings other than ASCII.
+Run <a href="http://linux.die.net/man/1/wc">`man wc`</a> to see options, and how to use languages other than English or character encodings other than ASCII.
 
 
 ## parallel
@@ -146,6 +146,7 @@ Example:
     $ cat data.txt | parallel --pipe num sum | num sum
     45
 
+Run <a href="http://linux.die.net/man/1/parallel">`man parallel`</a> to see options for jobs, loads, delays, etc.
 
 <p><hr><nav>
 * <b>[Prev Page: Functions: the complete list of all capabilities](functions.md)</b>
