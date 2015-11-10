@@ -3,7 +3,7 @@
 # Num: number utilities for mathematics
 
 Num is a command line tool for mathematics and statistics data processing.
-<br>Num can calculate sum, median, iqr, variance, skewness, kurtosis, and much more.
+<br>Num can calculate sum, median, quartiles, standard deviation, and much more.
 
 [NumCommand is on Kickstarter - please donate $1 and spread the word!](https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics)
 <br>[NumCommand.com website.](http://www.numcommand.com)
