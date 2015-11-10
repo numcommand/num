@@ -1,4 +1,4 @@
-<img width="750" height="430" src="assets/images/splash/splash-960x550.jpg" />
+<img width="750" height="430" src="assets/images/splash/splash-750x430.jpg" />
 
 # Num: number utilities for mathematics
 
@@ -11,8 +11,8 @@ Num is a command line tool for mathematics and statistics data processing.
 
 To use Num:
 
-    $ echo "1 2 3 4" | num sum median variance skewness kurtosis
-    10 2.5 13.5833 -28.2917 71.8958
+    $ echo "1 2 3 4" | num sum median variance stddev
+    10 2.5 1.66667 1.29099
 
 To install:
 
