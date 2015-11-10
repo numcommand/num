@@ -45,6 +45,18 @@ Example:
 Run `man cut` to see options for cutting by character, changing delimiters, suppressing lines, etc.
 
 
+## head
+
+Get the head of the text, meaning the first lines of data or a file.
+
+Example:
+
+    $ cat data.txt | head -1
+    1 2 3
+
+Run `man head` to see options for line counts, using bytes, etc.
+
+
 ## seq (sequence)
 
 Sequence: generate a sequence of numbers.
@@ -85,6 +97,18 @@ Example:
     3
 
 Run `man sort` to see options for reverse, unique, field separator, etc.
+
+
+## tail
+
+Get the tail of the text, meaning the last lines of data or a file.
+
+Example:
+
+    $ cat data.txt | tail -1
+    7 8 9
+
+Run `man tail` to see options for removing headers, reversing, etc.
 
 
 ## uniq (unique)
