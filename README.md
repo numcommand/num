@@ -4,6 +4,7 @@
 
 Num is a command line tool for mathematics and statistics data processing.
 <br>Num can calculate sum, median, quartiles, standard deviation, and much more.
+<br>Num can sort, map, filter, round, and use various input/output formats.
 
 <a href="https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics">NumCommand on Kickstarter - please donate $1 to help</a>
 <br><a href="https://twitter.com/NumCommand">NumCommand on Twitter</a>
@@ -13,6 +14,10 @@ To use Num:
 
     $ echo "1 2 3 4" | num sum median variance stddev
     10 2.5 1.66667 1.29099
+
+To use Num environment variables:
+
+    $ FS="," OFS="," OFMT="%.0f" num records data.csv
 
 To install:
 
@@ -25,9 +30,9 @@ To install on other systems please see the [Install](doc/install.md) page.
 Start using Num:
 
 * <a href="doc/install.md">Install</a>
-* <a href="doc/tutorial.md>Tutorial: input, output, options, &hellip;</a>
-* <a href="doc/functions.md">Functions: sum, min, max, var, iqr, sort, round, &hellip;</a>
-* <a href="doc/helpers.md">Helpers: awk, cut, sed, seq, wc, parallel, &hellip;</a>
+* <a href="doc/tutorial.md>Tutorial: input, output, envirnonment variables, options, &hellip;</a>
+* <a href="doc/functions.md">Functions: sum, min, max, var, iqr, sort, round, normalize, &hellip;</a>
+* <a href="doc/helpers.md">Helpers: awk, cut, sed, seq, wc, head, tail, parallel, &hellip;</a>
 * <a href="doc/articles.md">Articles &amp; Blogs: Unix, EDA, Datamash, qstats, MOOCs, &hellip;</a>
 * <a href="doc/faq.md">FAQ: how to help, feature roadmap, &hellip;</a>
 
