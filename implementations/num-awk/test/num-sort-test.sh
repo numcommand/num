@@ -14,10 +14,10 @@ num=${NUM:-num}
 #
 ###
 
-x=$(echo "3 1 2" | "$num" sort all) &&
+x=$(echo "3 1 2" | "$num" sort) &&
     assert_eq "1 2 3" "$x" "sort, with row"
 
-x=$(echo "3\n1\n2" | "$num" sort all) &&
+x=$(echo "3\n1\n2" | "$num" sort) &&
     assert_eq "1 2 3" "$x" "sort, with col"
 
 x=$(echo "3 1 2\n9 5 6" | "$num" sort all records) &&
@@ -29,10 +29,10 @@ x=$(echo "3 1 2\n9 5 6" | "$num" sort all records) &&
 #
 ###
 
-x=$(echo "3 1 2" | "$num" sort-ascending all) &&
+x=$(echo "3 1 2" | "$num" sort-ascending) &&
     assert_eq "1 2 3" "$x" "sort-ascending, with row"
 
-x=$(echo "3\n1\n2" | "$num" sort-ascending all) &&
+x=$(echo "3\n1\n2" | "$num" sort-ascending) &&
     assert_eq "1 2 3" "$x" "sort-ascending, with col"
 
 x=$(echo "3 1 2\n9 5 6" | "$num" sort-ascending all records) &&
@@ -44,10 +44,10 @@ x=$(echo "3 1 2\n9 5 6" | "$num" sort-ascending all records) &&
 #
 ###
 
-x=$(echo "3 1 2" | "$num" sort-descending all) &&
+x=$(echo "3 1 2" | "$num" sort-descending) &&
     assert_eq "3 2 1" "$x" "sort-descending, with row"
 
-x=$(echo "3\n1\n2" | "$num" sort-descending all) &&
+x=$(echo "3\n1\n2" | "$num" sort-descending) &&
     assert_eq "3 2 1" "$x" "sort-descending, with col"
 
 x=$(echo "3 1 2\n9 5 6" | "$num" sort-descending all records) &&

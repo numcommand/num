@@ -14,10 +14,10 @@ num=${NUM:-num}
 #
 ###
 
-x=$(echo "-1.9 1.9" | "$num" round all) &&
+x=$(echo "-1.9 1.9" | "$num" round) &&
     assert_eq "-2 2" "$x" "round, with row"
 
-x=$(echo "-1.9\n1.9" | "$num" round all) &&
+x=$(echo "-1.9\n1.9" | "$num" round) &&
     assert_eq "-2 2" "$x" "round, with col"
 
 x=$(echo "-1.9 1.9\n-3.9 3.9" | "$num" round all records) &&
@@ -29,10 +29,10 @@ x=$(echo "-1.9 1.9\n-3.9 3.9" | "$num" round all records) &&
 #
 ###
 
-x=$(echo "-1.9 1.9" | "$num" round-off all) &&
+x=$(echo "-1.9 1.9" | "$num" round-off) &&
     assert_eq "-1 1" "$x" "round-off, with row"
 
-x=$(echo "-1.9\n1.9" | "$num" round-off all) &&
+x=$(echo "-1.9\n1.9" | "$num" round-off) &&
     assert_eq "-1 1" "$x" "round-off, with col"
 
 x=$(echo "-1.9 1.9\n-3.9 3.9" | "$num" round-off all records) &&
@@ -44,10 +44,10 @@ x=$(echo "-1.9 1.9\n-3.9 3.9" | "$num" round-off all records) &&
 #
 ###
 
-x=$(echo "-1.9 1.9" | "$num" round-up all) &&
+x=$(echo "-1.9 1.9" | "$num" round-up) &&
     assert_eq "-1 2" "$x" "round-up, with row"
 
-x=$(echo "-1.9\n1.9" | "$num" round-up all) &&
+x=$(echo "-1.9\n1.9" | "$num" round-up) &&
     assert_eq "-1 2" "$x" "round-up, with col"
 
 x=$(echo "-1.9 1.9\n -3.9 3.9" | "$num" round-up all records) &&
@@ -59,10 +59,10 @@ x=$(echo "-1.9 1.9\n -3.9 3.9" | "$num" round-up all records) &&
 #
 ###
 
-x=$(echo "-1.9 1.9" | "$num" round-down all) &&
+x=$(echo "-1.9 1.9" | "$num" round-down) &&
     assert_eq "-2 1" "$x" "round-down, with row"
 
-x=$(echo "-1.9\n1.9" | "$num" round-down all) &&
+x=$(echo "-1.9\n1.9" | "$num" round-down) &&
     assert_eq "-2 1" "$x" "round-down, with col"
 
 x=$(echo "-1.9 1.9\n-3.9 3.9" | "$num" round-down all records) &&
