@@ -15,10 +15,6 @@ To use Num:
     $ echo "1 2 3 4" | num sum median variance stddev
     10 2.5 1.66667 1.29099
 
-To use Num environment variables:
-
-    $ FS="," OFS="," OFMT="%.0f" num records data.csv
-
 To install:
 
     sudo curl -sSL https://raw.githubusercontent.com/numcommand/num/master/implementations/num-awk/num -o /usr/local/bin/num && sudo chmod +x /usr/local/bin/num
