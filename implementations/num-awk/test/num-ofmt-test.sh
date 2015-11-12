@@ -34,4 +34,4 @@ x=$(echo "11.11\n22.22" | OFMT="%.0f" "$num" sum) &&
     assert_eq "33" "$x" "oftm, with col"
 
 x=$(echo "11.11 22.22\n33.33 44.44\n55.55 66.66" | OFMT="%.0f" "$num" sum records) &&
-    assert_eq "33"$'\n'"78 56 67"$'\n'"122" "$x" "ofmt, with records"
+    assert_eq "33"$'\n'"78"$'\n'"122" "$x" "ofmt, with records"
