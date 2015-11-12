@@ -1,6 +1,15 @@
 # Frequently Asked Questions
 
+
 ## General Questions
+
+### Q. How can I help?
+
+Yes please, and thank you!
+
+If you know programming or UI/UX, we're building Num using GitHub. We welcome help with coding, UI/UX, documentation, examples, community building, and the like.
+
+If you know mathematics and statistics, we will love your opinions about what functionality we should build, and how to get the software to you and your peers.
 
 ### Q. How do I pronounce Num?
 
@@ -18,7 +27,7 @@ Ongoing. We expect to work on Num for a long time, to improve it and make it ava
 
 Kickstarter is to get the project launched, and also help more people learn about it. We will use the money to take our existing open source hobby project and turn it into a better, stronger, faster, longer lived project.
 
-### Q. Are there other ways to donate?
+### Q. Are there ways to donate?
 
 Yes, lots. You can donate to the lead author directly by using PayPal, Amazon, or Venmo, all to joel@joelparkerhenderson.com, or by using Bitcoin identifier 1366n1MzXZzcqqgxgDjab4TsQ3KjmRF4vK.
 
@@ -26,14 +35,8 @@ Yes, lots. You can donate to the lead author directly by using PayPal, Amazon, o
 
 Not yet, that's a goal. If you're a lawyer or open source advocate who can give pro bono advice about making Num a non-profit, or contributing Num to an existing non-profit, then we'd love to hear from you.
 
+
 ## Technical Questions
-
-### Q. Can I help?
-
-Yes please, and thank you!
-
-If you know programming or UI/UX, we're building Num using GitHub. We welcome help with coding, UI/UX, documentation, examples, community building, and the like.
-If you know mathematics and statistics, we will love your opinions about what functionality we should build, and how to get the software to you and your peers.
 
 ### Q. Can Num add feature X?
 
