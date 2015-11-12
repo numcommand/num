@@ -84,8 +84,13 @@ function num_last_init() {
 #
 ###
 
-function num_all(arr) {
-    return num_arr_join(arr, OFS)
+function num_all(arr,  s) {
+    s = ""
+    for (i = 1; i <= num_arr_length(arr); i++) {
+        if (i > 1) s = s OFS
+        s = s sprintf(OFMT, arr[i])
+    }
+    return s
 }
 
 function num_all_(num, num_, opts) {

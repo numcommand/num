@@ -17,8 +17,8 @@ set -euf
 # Author: Joel Parker Henderson (joel@joelparkerhenderson.com)
 # License: GPL, BSD, MIT
 # Created: 2015-03-28
-# Updated: 2015-10-01
-# Version: 0.9.0
+# Updated: 2015-11-12
+# Version: 0.10.0
 #
 ###
 
@@ -79,7 +79,7 @@ AWK=${AWK:-$(command -v gawk || command -v mawk || command -v awk || echo "awk")
 ###
 
 function num_help() {
-    print "Num version 0.9.0."
+    print "Num version 0.10.0."
     print "Copyright (C) 2015 Joel Parker Henderson."
     print "Please see http://github.com/numcommand"
     exit
@@ -625,8 +625,13 @@ function num_last_init() {
 #
 ###
 
-function num_all(arr) {
-    return num_arr_join(arr, OFS)
+function num_all(arr,  s) {
+    s = ""
+    for (i = 1; i <= num_arr_length(arr); i++) {
+        if (i > 1) s = s OFS
+        s = s sprintf(OFMT, arr[i])
+    }
+    return s
 }
 
 function num_all_(num, num_, opts) {
@@ -2150,7 +2155,7 @@ function num_var_(num, num_, opts) { num_sample_variance_(num, num_, opts) }
 #
 # Example:
 #
-#     num_population_variance(1 2 4) => 2.33333
+#     num_sample_variance(1 2 4) => 2.33333
 #
 ###
 
@@ -2178,7 +2183,7 @@ function num_svar_(num, num_, opt) { return num_sample_variance_(num, num_, opt)
 #
 # Example:
 #
-#     num_population_variance(1 2 4) => 1.55556
+#     num_population_variance(1 2 4) => 0.518519
 #
 ###
 
@@ -3123,7 +3128,35 @@ function init_word_list() {
 #
 function conf() {
     words_to_conf(global_word_argv)
-    optimize_scope_flags()
+    conf_ofmt()
+    conf_scope()
+}
+
+
+###
+#
+# Configure the output format string, a.k.a. AWK OFMT.
+# This controls number formatting as float, decimal, int, etc.
+#
+###
+
+function conf_ofmt() {
+    OFMT = (ENVIRON["OFMT"]) ? ENVIRON["OFMT"] : "%.6g"
+}
+
+##
+# Configure scope flags to optimize for tight inner loops.
+#
+# This enables us to speed up code by doing this:
+#
+#     - if (global_conf["scope"] == CONF_SCOPE_ALL)
+#     + if (CONF_SCOPE_ALL_FLAG)
+##
+
+function conf_scope() {
+    CONF_SCOPE_ALL_FLAG    = (global_conf["scope"] == CONF_SCOPE_ALL)
+    CONF_SCOPE_RECORD_FLAG = (global_conf["scope"] == CONF_SCOPE_RECORD)
+    CONF_SCOPE_FIELD_FLAG  = (global_conf["scope"] == CONF_SCOPE_FIELD)
 }
 
 ###
@@ -3163,21 +3196,6 @@ function words_to_conf(words,  imax) {
     for (i=1; i <= num_arr_length(words); i++) word_to_conf(words[i])
 }
 
-##
-#
-# Optimize scope flags suitable for tight inner loops.
-#
-# This enables us to speed up code by doing this:
-#
-#     - if (global_conf["scope"] == CONF_SCOPE_ALL)
-#     + if (CONF_SCOPE_ALL_FLAG)
-#
-function optimize_scope_flags() {
-    CONF_SCOPE_ALL_FLAG    = (global_conf["scope"] == CONF_SCOPE_ALL)
-    CONF_SCOPE_RECORD_FLAG = (global_conf["scope"] == CONF_SCOPE_RECORD)
-    CONF_SCOPE_FIELD_FLAG  = (global_conf["scope"] == CONF_SCOPE_FIELD)
-}
-
 ############################################################################
 #
 # WORDS
@@ -3196,6 +3214,7 @@ function optimize_scope_flags() {
 #     => "7"
 #
 function word_to_s(num, num_, opts, word,  s) {
+    s = sprintf(OFMT, function_manager_call(word, num, num_, opts))
     s = function_manager_call(word, num, num_, opts)
     return s
 }

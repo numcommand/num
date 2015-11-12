@@ -5,7 +5,7 @@
 ###
 
 function num_help() {
-    print "Num version 0.8.0."
+    print "Num version 0.10.0."
     print "Copyright (C) 2015 Joel Parker Henderson."
     print "Please see http://github.com/numcommand"
     print ""
