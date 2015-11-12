@@ -22,7 +22,7 @@ x=$(echo "11.11 22.22 99.99" | OFMT="%.0f" "$num") &&
 x=$(echo "11.11\n22.22\n99.99" | OFMT="%.0f" "$num") &&
     assert_eq "11 22 100" "$x" "oftm, with col"
 
-x=$(echo "11.11 22.22 33.33\n44.44 55.55 66.66\n77.77 88.88 99.99" | OFMT="%.0f" "$num" all records) &&
+x=$(echo "11.11 22.22 33.33\n44.44 55.55 66.66\n77.77 88.88 99.99" | OFMT="%.0f" "$num" records) &&
     assert_eq "11 22 33"$'\n'"44 56 67"$'\n'"78 89 100" "$x" "ofmt, with records"
 
 ## with any typical function

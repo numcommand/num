@@ -65,7 +65,7 @@ x=$(echo "1 2 4" | "$num") &&
 x=$(echo "1\n2\n4" | "$num") &&
     assert_eq "1 2 4" "$x" "all, with col"
 
-x=$(echo "1 2 4\n5 6 9" | "$num" all records) &&
+x=$(echo "1 2 4\n5 6 9" | "$num" records) &&
     assert_eq "1 2 4"$'\n'"5 6 9" "$x" "all, with records"
 
 ###

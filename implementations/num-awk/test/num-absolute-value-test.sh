@@ -33,5 +33,5 @@ x=$(echo "-1 -2 -3" | "$num" absolute-value) &&
 x=$(echo "-1\n-2\n-3" | "$num" absolute-value) &&
     assert_eq "1 2 3" "$x" "absolute-value, with col, with all negative"
 
-x=$(echo "-1 -2 -3\n-5 -6 -9" | "$num" absolute-value all records) &&
+x=$(echo "-1 -2 -3\n-5 -6 -9" | "$num" absolute-value records) &&
     assert_eq "1 2 3"$'\n'"5 6 9" "$x" "absolute-value, with records, with all negative"
