@@ -7,8 +7,8 @@ Num is a command line tool for mathematics and statistics data processing.
 <br>Num can sort, map, filter, round, and use various input/output formats.
 
 <a href="https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics">NumCommand on Kickstarter - please donate $1 to help</a>
-<br><a href="https://twitter.com/NumCommand">NumCommand on Twitter</a>
-<br><a href="http://www.numcommand.com">NumCommand.com website</a>
+<br><a href="https://twitter.com/NumCommand">NumCommand on Twitter: @NumCommand</a>
+<br><a href="http://www.numcommand.com">NumCommand website: http://www.numcommand.com</a>
 
 To use Num:
 
