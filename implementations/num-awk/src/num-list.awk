@@ -19,7 +19,7 @@ function num_n(arr) {
 }
 
 function num_n_(num, num_, opts,  f) {
-    f = "num_n"
+    f = "n"
     if (!(f in num_)) num_[f] = num_n(num)
     return num_[f]
 }
