@@ -26,12 +26,12 @@ To install on other systems please see the [Install](doc/install.md) page.
 
 Start using Num:
 
-* [Install](doc/install.md)
-* [Tutorial](doc/tutorial.md)
-* [Functions](doc/functions.md)
-* [Helpers](doc/helpers.md)
-* [Articles](doc/articles.md)
-* [FAQ](doc/faq.md)
+* <a href="doc/install.md">Install</a>
+* <a href="doc/tutorial.md>Tutorial (input, output, options, separators, &hellip;)</a>
+* <a href="doc/functions.md">Functions (sum, min, max, var, iqr, sort, round, &hellip;)</a>
+* <a href="doc/helpers.md">Helpers (awk, cut, sed, seq, wc, parallel, &hellip;)</a>
+* <a href="doc/articles.md">Articles (Unix, EDA, Datamash, qstats, MOOCs, &hellip;)</a>
+* <a href="doc/faq.md">FAQ (how to help, feature planning, &hellip;)</a>
 
 Project pages:
 
