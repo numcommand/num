@@ -29,27 +29,15 @@ You can use records a.k.a. rows:
     24
 
 
-## Output
-
-To output all numbers:
-
-    $ cat data.txt | num all
-    1 2 3 4 5 6 7 8 9
-
-To change all numbers:
-
-    $ cat data.txt | num increment all
-    2 3 4 5 6 7 8 9 10
-
-
-## Separators
-
 You can use a custom input field separator (FS) and input record separator (RS):
 
     $ echo "1,2,3;4,5,6;7,8,9" | num min max FS=',' RS=';'
     1 3
     4 5
     7 9
+
+
+## Output
 
 You can use a custom output field separator (OFS) and output record separator (ORS):
 
