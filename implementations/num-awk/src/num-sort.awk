@@ -26,7 +26,8 @@
 ###
 
 function num_sort_awk_init() {
-    NUM_SORT_MEMO["num_n"] = \
+    #TODO refactor
+    NUM_SORT_MEMO["n"] = \
     NUM_SORT_MEMO["num_sum"] = \
     NUM_SORT_MEMO["num_mean"] = \
     NUM_SORT_MEMO["num_variance"] = \
