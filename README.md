@@ -23,9 +23,8 @@ To install:
 
     sudo curl -sSL https://raw.githubusercontent.com/numcommand/num/master/implementations/num-awk/num -o /usr/local/bin/num && sudo chmod +x /usr/local/bin/num
 
-To install on Mac OS X, also run `brew install gawk`
-
-To install on other systems please see the [Install](doc/install.md) page.
+To install on Mac OS X: also run `brew install gawk` to install GNU awk.
+<br>To install on other systems please see the [Install](doc/install.md) page.
 
 Start using Num:
 
