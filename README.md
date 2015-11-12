@@ -8,7 +8,7 @@ Num is a command line tool for mathematics and statistics data processing.
 
 <a href="https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics">NumCommand on Kickstarter - please donate $1 to help</a>
 <br><a href="https://twitter.com/NumCommand">NumCommand on Twitter</a>
-<br><a href="http://www.numcommand.com">NumCommand.com Website</a>
+<br><a href="http://www.numcommand.com">NumCommand.com website</a>
 
 To use Num:
 
