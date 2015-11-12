@@ -27,7 +27,7 @@ To install on other systems please see the [Install](doc/install.md) page.
 Start using Num:
 
 * <a href="doc/install.md">Install</a>
-* <a href="doc/tutorial.md>Tutorial: quickstart, input, output, options, &hellip;</a>
+* <a href="doc/tutorial.md>Tutorial: input, output, options, &hellip;</a>
 * <a href="doc/functions.md">Functions: sum, min, max, var, iqr, sort, round, &hellip;</a>
 * <a href="doc/helpers.md">Helpers: awk, cut, sed, seq, wc, parallel, &hellip;</a>
 * <a href="doc/articles.md">Articles &amp; Blogs: Unix, EDA, Datamash, qstats, MOOCs, &hellip;</a>

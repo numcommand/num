@@ -39,10 +39,16 @@ You can use a custom input field separator (FS) and input record separator (RS):
 
 ## Output
 
-You can use a custom output field separator (OFS) and output record separator (ORS):
+You can use a custom output field separator (OFS) and output record separator (ORS).
 
     $ echo "1 2 3\n4 5 6\n7 8 9" | num min max records OFS=',' ORS=';'
     1,3;4,6;7,9
+
+
+You can use a custom output format (OFMT):
+
+    $ OFMT="%.4f" num sum data.txt
+    45.0000
 
 
 ## Command line options
