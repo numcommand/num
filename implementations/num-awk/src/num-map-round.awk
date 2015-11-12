@@ -179,7 +179,7 @@ function num_map_floor_(num, num_, opts) {
 ###
 
 function num_map_round_before_(num, num_, opts, f, memo) {
-    for (k in NUM_MAP_ROUND_MEMO) memo[k] = num_[k]
+    for (k in NUM_MAP_ROUND_MEMO) if (k in num_) memo[k] = num_[k]
 }
 
 ###
@@ -192,7 +192,7 @@ function num_map_round_before_(num, num_, opts, f, memo) {
 
 function num_map_round_after_(num, num_, opts, f, memo) {
     split("",num_)
-    for (k in NUM_MAP_ROUND_MEMO) num_[k] = memo[k]
+    for (k in NUM_MAP_ROUND_MEMO) if (k in memo) num_[k] = memo[k]
     num_[f] = TRUE
     num_["integer"] = TRUE
 }
