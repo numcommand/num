@@ -45,10 +45,10 @@ x=$(echo "1 2 4\n5 6 9" | "$num" variance records) &&
 ###
 
 x=$(echo "1 2 4" | "$num" population-variance) &&
-    assert_eq 0.518519 "$x" "population-variance, with row"
+    assert_eq 1.55556 "$x" "population-variance, with row"
 
 x=$(echo "1\n2\n4" | "$num" population-variance) &&
-    assert_eq 0.518519 "$x" "population-variance, with col"
+    assert_eq 1.55556 "$x" "population-variance, with col"
 
 x=$(echo "1 2 4\n5 6 9" | "$num" population-variance records) &&
-    assert_eq "0.518519"$'\n'"0.962963" "$x" "population-variance, with records"
+    assert_eq "1.55556"$'\n'"2.88889" "$x" "population-variance, with records"
