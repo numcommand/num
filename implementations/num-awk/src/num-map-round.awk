@@ -11,7 +11,12 @@
 ###
 
 function num_map_round_awk_init() {
-    split("n sorted ascending descending", NUM_MAP_ROUND_MEMO)
+    #TODO refactor
+    NUM_MAP_ROUND_MEMO["n"] = \
+    NUM_MAP_ROUND_MEMO["sorted"] = \
+    NUM_MAP_ROUND_MEMO["ascending"] = \
+    NUM_MAP_ROUND_MEMO["descending"] = \
+    TRUE
 }
 
 ###
