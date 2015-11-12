@@ -48,7 +48,7 @@ function num_map_absolute_value_(num, num_, opts,  f, i, memo) {
 }
 
 function num_map_absolute_value_init() {
-    function_init("map_absolute_value absolute_value abs magnitude", "Map using absolute value.")
+    num_function_init("map_absolute_value absolute_value abs magnitude", "Map using absolute value.")
 }
 
 # Alias

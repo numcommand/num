@@ -25,7 +25,7 @@ function num_n_(num, num_, opts,  f) {
 }
 
 function num_n_init() {
-    function_init("n count length size", "Get the number of items, a.k.a. count, length, size.", "https://en.wikipedia.org/wiki/Enumeration")
+    num_function_init("n count length size", "Get the number of items, a.k.a. count, length, size.", "https://en.wikipedia.org/wiki/Enumeration")
 }
 
 ###
@@ -49,7 +49,7 @@ function num_first_(num, num_, opts,  f) {
 }
 
 function num_first_init() {
-    function_init("first head", "Get the first item.", "https://en.wikipedia.org/wiki/Enumeration")
+    num_function_init("first head", "Get the first item.", "https://en.wikipedia.org/wiki/Enumeration")
 }
 
 ###
@@ -73,34 +73,7 @@ function num_last_(num, num_, opts,  f) {
 }
 
 function num_last_init() {
-    function_init("last tail", "Get the last item.", "https://en.wikipedia.org/wiki/Enumeration")
-}
-
-###
-#
-# All items.
-#
-#     num_all(1 2 4) => "1 2 4"
-#
-###
-
-function num_all(arr,  s) {
-    s = ""
-    for (i = 1; i <= num_arr_length(arr); i++) {
-        if (i > 1) s = s OFS
-        s = s sprintf(OFMT, arr[i])
-    }
-    return s
-}
-
-function num_all_(num, num_, opts) {
-    f = "num_all"
-    if (!(f in num_)) num_[f] = num_all(num)
-    return num_[f]
-}
-
-function num_all_init() {
-   function_init("all each", "Get all the items.", "https://en.wikipedia.org/wiki/Enumeration")
+    num_function_init("last tail", "Get the last item.", "https://en.wikipedia.org/wiki/Enumeration")
 }
 
 ###
@@ -132,7 +105,7 @@ function num_min_(num, num_, opts,  f) {
 }
 
 function num_min_init() {
-    function_init("min minimum least lowest", "Get the minimum value, a.k.a. least, lowest.", "https://en.wikipedia.org/wiki/Maxima_and_minima")
+    num_function_init("min minimum least lowest", "Get the minimum value, a.k.a. least, lowest.", "https://en.wikipedia.org/wiki/Maxima_and_minima")
 }
 
 ###
@@ -162,7 +135,7 @@ function num_max_(num, num_, opts,  f) {
 }
 
 function num_max_init() {
-    function_init("max maximum greatest highest", "Get the maximum value, a.k.a. greatest, highest.", "https://en.wikipedia.org/wiki/Maxima_and_minima")
+    num_function_init("max maximum greatest highest", "Get the maximum value, a.k.a. greatest, highest.", "https://en.wikipedia.org/wiki/Maxima_and_minima")
 }
 
 ###
@@ -186,5 +159,5 @@ function num_range_(num, num_, opts,  f) {
 }
 
 function num_range_init() {
-    function_init("range interval breadth spread", "Get the range, a.k.a. interval, breadth, spread.", "https://en.wikipedia.org/wiki/Range_(statistics)")
+    num_function_init("range interval breadth spread", "Get the range, a.k.a. interval, breadth, spread.", "https://en.wikipedia.org/wiki/Range_(statistics)")
 }

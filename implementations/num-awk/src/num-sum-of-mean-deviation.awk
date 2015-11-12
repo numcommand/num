@@ -30,7 +30,7 @@ function num_sum_of_mean_deviation_exp_(num, num_, opts, mean, exponent) {
 }
 
 function num_sum_of_mean_deviation_exp_init() {
-    function_init("num_sum_of_mean_deviation_exp", "Get the sum of mean deviation for a given exponent.", "https://en.wikipedia.org/wiki/Deviation_(statistics)")
+    num_function_init("num_sum_of_mean_deviation_exp", "Get the sum of mean deviation for a given exponent.", "https://en.wikipedia.org/wiki/Deviation_(statistics)")
 }
 
 ###
@@ -54,7 +54,7 @@ function num_sum_of_squares_(num, num_, opts) {
 }
 
 function num_sum_of_squares_init() {
-    function_init("sum_of_squares sum_squares ss mean_squared_error mse", "Get the sum of squares, a.k.a. sum of each mean deviation to the power of 2, a.k.a. SS", "https://en.wikipedia.org/wiki/Deviation_(statistics)")
+    num_function_init("sum_of_squares sum_squares ss mean_squared_error mse", "Get the sum of squares, a.k.a. sum of each mean deviation to the power of 2, a.k.a. SS", "https://en.wikipedia.org/wiki/Deviation_(statistics)")
 }
 
 ###
@@ -78,7 +78,7 @@ function num_sum_of_cubes_(num, num_, opts) {
 }
 
 function num_sum_of_cubes_init() {
-    function_init("sum_of_cubes sum_cubes", "Get the  sum of cubes, a.k.a. sum of each mean deviation to the power of 3.", "https://en.wikipedia.org/wiki/Mean_squared_error")
+    num_function_init("sum_of_cubes sum_cubes", "Get the  sum of cubes, a.k.a. sum of each mean deviation to the power of 3.", "https://en.wikipedia.org/wiki/Mean_squared_error")
 }
 
 ###
@@ -102,5 +102,5 @@ function num_sum_of_quads_(num, num_, opts) {
 }
 
 function num_sum_of_quads_init() {
-    function_init("sum_of_quads sum_quads", "Get the  sum of quads, a.k.a. sum of each mean deviation to the power of 4.", "https://en.wikipedia.org/wiki/Mean_squared_error")
+    num_function_init("sum_of_quads sum_quads", "Get the  sum of quads, a.k.a. sum of each mean deviation to the power of 4.", "https://en.wikipedia.org/wiki/Mean_squared_error")
 }

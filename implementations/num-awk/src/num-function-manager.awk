@@ -15,7 +15,7 @@
 #    }
 #
 #    function num_hello_init() {
-#        function_init("hello hi hola", "Print a greeting", "http://example.com/hello.html")
+#        num_function_init("hello hi hola", "Print a greeting", "http://example.com/hello.html")
 #    }
 #
 # The example creates these:
@@ -27,7 +27,7 @@
 #    global_word_list["hi"] = "num_hello"
 #    global_word_list["hola"] = "num_hello"
 #
-function function_init(names, help, link,  f, i, name, name_list) {
+function num_function_init(names, help, link,  f, i, name, name_list) {
     split(names, name_list)
     f = "num_" name_list[1]
     function_[f, "names"] = names
@@ -44,8 +44,7 @@ function function_init(names, help, link,  f, i, name, name_list) {
 #
 # Initialize every file and function.
 #
-function function_manager_init() {
-    num_all_init()
+function num_function_manager_init() {
     num_n_init()
     num_first_init()
     num_last_init()
@@ -109,7 +108,7 @@ function function_manager_init() {
 #
 #     num = 1 2 4
 #     num_ = []
-#     function_manager_call("sum", num, num_, opts)
+#     num_function_manager_call("sum", num, num_, opts)
 #     => 7 (by calling the `sum` function)
 #
 # Note: this implementation uses if..else instead of
@@ -118,9 +117,8 @@ function function_manager_init() {
 # TODO: Research if it is possible to simultaneously support
 # gawk indirect functions, to do a function call via `@f()`.
 #
-function function_manager_call(f, num, num_, opts) {
+function num_function_manager_call(f, num, num_, opts) {
     if (f == "") return ("")
-    else if (f == "num_all") return num_all_(num, num_, opts)
     else if (f == "num_n") return num_n_(num, num_, opts)
     else if (f == "num_first") return num_first_(num, num_, opts)
     else if (f == "num_last") return num_last_(num, num_, opts)

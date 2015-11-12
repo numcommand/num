@@ -46,5 +46,5 @@ function num_map_sign_(num, num_, opts,  f, i, memo) {
 }
 
 function num_map_sign_init() {
-    function_init("map_sign sign", "Map using sign.")
+    num_function_init("map_sign sign", "Map using sign.")
 }
