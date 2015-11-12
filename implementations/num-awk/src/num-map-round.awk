@@ -36,6 +36,7 @@ function num_map_round_(num, num_, opts,  f, memo, i) {
         num_map_round(num)
         num_map_round_after_(num, num_, opts, f, memo)
     }
+    return ""
 }
 
 function num_map_round_init() {
