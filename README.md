@@ -5,9 +5,9 @@
 Num is a command line tool for mathematics and statistics data processing.
 <br>Num can calculate sum, median, quartiles, standard deviation, and much more.
 
-[NumCommand is on Kickstarter - please donate $1 and spread the word!](https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics)
-<br>[NumCommand.com website.](http://www.numcommand.com)
-<br>[@NumCommand](https://twitter.com/NumCommand)
+<a href="https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics">NumCommand Kickstarter - please donate $1 to help</a>
+<br><a href="http://www.numcommand.com">NumCommand.com website</a>
+<br><a href="https://twitter.com/NumCommand">@NumCommand</a>
 
 To use Num:
 

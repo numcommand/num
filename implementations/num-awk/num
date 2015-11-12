@@ -229,6 +229,55 @@ function num_map_sign_init() {
 
 ############################################################################
 #
+# num-increment.awk
+#
+###
+
+###
+#
+# Increment a value, i.e. add 1.
+#
+# Examples:
+#
+#    increment(1) => 2
+#
+###
+
+function num_increment(x) {
+    return x + 1
+}
+
+###
+#
+# Map increment.
+#
+# Example:
+#
+#     num_map_increment_(1 2 3) => -2 3 4
+#
+###
+
+function num_map_increment(arr) {
+    for (i in arr) arr[i] = num_increment(arr[i])
+}
+
+function num_map_increment_(num, num_, opts,  f, i, memo) {
+    f = "num_map_increment"
+    if (num_[f] != TRUE) {
+        map_before_(num, num_, opts, memo)
+        num_map_increment(num)
+        map_after_(num, num_, opts, memo)
+        num_[f] = TRUE
+    }
+    return ""
+}
+
+function num_map_increment_init() {
+    function_init("map_increment increment", "Map using increment.")
+}
+
+############################################################################
+#
 # num-round.awk
 #
 # We provide four kinds of rounding:
@@ -2823,6 +2872,7 @@ function function_manager_init() {
     num_sort_descending_init()
     num_map_absolute_value_init()
     num_map_sign_init()
+    num_map_increment_init()
     num_map_normalize_init()
     num_map_round_awk_init()
     num_map_round_init()
@@ -2897,6 +2947,7 @@ function function_manager_call(f, num, num_, opts) {
     else if (f == "num_sort_descending") return num_sort_descending_(num, num_, opts)
     else if (f == "num_map_absolute_value") return num_map_absolute_value_(num, num_, opts)
     else if (f == "num_map_sign") return num_map_sign_(num, num_, opts)
+    else if (f == "num_map_increment") return num_map_increment_(num, num_, opts)
     else if (f == "num_map_normalize") return num_map_normalize_(num, num_, opts)
     else if (f == "num_map_round") return num_map_round_(num, num_, opts)
     else if (f == "num_map_round_off") return num_map_round_off_(num, num_, opts)

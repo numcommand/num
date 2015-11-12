@@ -438,6 +438,13 @@ Convert to sign, which is one of -1, 0, 1.
     -1 0 1
 
 
+### increment
+
+Increment each value, i.e. add 1.
+
+    echo "1 2 3" | num increment all
+    2 3 4
+
 #### normalize
 
 Normalize each value to be within 0..1.

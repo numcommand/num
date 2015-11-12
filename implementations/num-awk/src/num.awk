@@ -6,6 +6,7 @@
 ## Mathematics
 @include "num-absolute-value.awk"
 @include "num-sign.awk"
+@include "num-increment.awk"
 @include "num-round.awk"
 @include "num-sum.awk"
 @include "num-product.awk"
