@@ -1,6 +1,27 @@
 # Tutorial
 
-This tutorial will use this example file:
+## Quick start
+
+Tell Num what you want to calculate and an input file:
+
+    $ num sum data.txt
+    45
+
+You can pipe data:
+
+    $ echo "1 2 3 4 5 6 7 8 9" | num sum
+    45
+
+You can use AWK variables:
+
+    $ AWK="/bin/mawk" FS="," OFS="," OFMT="%.0f" num records data.csv > rounded.csv
+
+
+See the complete list of [functions](functions.md).
+
+## Example data
+
+The rest of this tutorial will use this example data file:
 
     $ cat data.txt
     1 2 3

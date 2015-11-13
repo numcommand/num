@@ -10,12 +10,12 @@ Num is a command line tool for mathematics and statistics data processing.
 <br><a href="https://twitter.com/NumCommand">Num on Twitter: @numcommand</a>
 <br><a href="http://www.numcommand.com">Num on the web: www.numcommand.com</a>
 
-To use Num:
+Example:
 
     $ num sum median variance stddev data.txt
     10 2.5 1.66667 1.29099
 
-To install:
+Install:
 
     sudo curl -sSL https://raw.githubusercontent.com/numcommand/num/master/implementations/num-awk/num -o /usr/local/bin/num && sudo chmod +x /usr/local/bin/num
 
@@ -24,8 +24,7 @@ To install on Mac OS X: also run `brew install gawk` to install GNU awk.
 
 Start using Num:
 
-* <a href="doc/install.md">Install</a>
-* <a href="doc/tutorial.md">Tutorial: input, output, environment variables, options, &hellip;</a>
+* <a href="doc/tutorial.md">Tutorial: quick start, input, output, variables, options, &hellip;</a>
 * <a href="doc/functions.md">Functions: sum, min, max, var, iqr, sort, round, normalize, &hellip;</a>
 * <a href="doc/helpers.md">Helpers: awk, cut, sed, seq, wc, head, tail, parallel, &hellip;</a>
 * <a href="doc/articles.md">Articles &amp; Blogs: Unix, EDA, Datamash, qstats, MOOCs, &hellip;</a>
