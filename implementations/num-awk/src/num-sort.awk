@@ -55,12 +55,13 @@ function num_sort_awk_init() {
 ##
 
 function num_sort_before_(num, num_, opts, memo) {
-    for (k in NUM_SORT_MEMO) memo[k] = num_[k]
+    split("", memo)
+    for (k in NUM_SORT_MEMO) if (k in num_) memo[k] = num_[k]
 }
 
 function num_sort_after_(num, num_, opts, memo) {
     split("", num_)
-    for (k in NUM_SORT_MEMO) num_[k] = memo[k]
+    for (k in NUM_SORT_MEMO) if (k in memo) num_[k] = memo[k]
 }
 
 ##
@@ -75,8 +76,7 @@ function num_sort_after_(num, num_, opts, memo) {
 
 function num_sort_ascending(arr) {
     if (AWK_HAS_ASORT) {
-        PROCINFO["sorted_in"] = "@val_num_asc"
-        asort(num)
+        asort(arr, arr, "@val_num_asc")
     } else {
         num_err("Num needs a function for sort ascending. We expect to add a solution in Num version 2.")
     }
@@ -110,8 +110,7 @@ function num_sort_ascending_init() {
 
 function num_sort_descending(arr) {
     if (AWK_HAS_ASORT) {
-        PROCINFO["sorted_in"] = "@val_num_desc"
-        asort(num)
+        asort(arr, arr, "@val_num_desc")
     } else {
         num_err("Num needs a function for sort descending. We expect to add a solution in Num version 2.")
     }
@@ -132,7 +131,6 @@ function num_sort_descending_(num, num_, opts,  f, memo) {
 function num_sort_descending_init() {
     num_function_init("num_sort_descending sort_descending sort_desc sort_down", "Sort the values in descending order.", "https://wikipedia.org/wiki/Sorting_algorithm")
 }
-
 
 ############################################################################
 #
