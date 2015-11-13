@@ -3,16 +3,16 @@
 #
 # num-mode-test.sh
 #
-###
+##
 
 . minitest.sh
 num=${NUM:-num}
 
-###
+##
 #
 # mode
 #
-###
+##
 
 ## unimodal
 
@@ -50,11 +50,11 @@ x=$(echo "1 2 3\n5 6 9" | "$num" mode records) &&
     true
     #assert_eq "$UNDEF"$'\n'"$UNDEF" "$x" "mode, with records, with nonmodal"
 
-###
+##
 #
 # mode-low
 #
-###
+##
 
 ## unimodal
 
@@ -92,11 +92,11 @@ x=$(echo "1 2 3\n5 6 9" | "$num" mode-low records) &&
     true
     #assert_eq_todo "$UNDEF"$'\n'"$UNDEF" "$x" "mode-low, with records, with nonmodal"
 
-###
+##
 #
 # mode-high
 #
-###
+##
 
 ## unimodal
 

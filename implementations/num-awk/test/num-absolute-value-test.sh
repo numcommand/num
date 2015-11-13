@@ -3,16 +3,16 @@
 #
 # num-absolute-value.awk
 #
-###
+##
 
 . minitest.sh
 num=${NUM:-num}
 
-###
+##
 #
 # absolute value
 #
-###
+##
 
 ## with all positive
 

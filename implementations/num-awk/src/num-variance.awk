@@ -2,7 +2,7 @@
 #
 # num-variance.awk
 #
-###
+##
 
 # Alias
 function num_variance(arr) { num_sample_variance(arr) }
@@ -12,7 +12,7 @@ function num_variance_(num, num_, opts) { num_sample_variance_(num, num_, opts) 
 function num_var(arr) { num_sample_variance(arr) }
 function num_var_(num, num_, opts) { num_sample_variance_(num, num_, opts) }
 
-###
+##
 #
 # Sample Variance.
 #
@@ -20,7 +20,7 @@ function num_var_(num, num_, opts) { num_sample_variance_(num, num_, opts) }
 #
 #     num_population_variance(1 2 4) => 2.33333
 #
-###
+##
 
 function num_sample_variance(arr) {
     return TODO
@@ -40,7 +40,7 @@ function num_sample_variance_init() {
 function num_svar(arr) { return num_sample_variance(arr) }
 function num_svar_(num, num_, opt) { return num_sample_variance_(num, num_, opt) }
 
-###
+##
 #
 # Population Variance.
 #
@@ -48,7 +48,7 @@ function num_svar_(num, num_, opt) { return num_sample_variance_(num, num_, opt)
 #
 #     num_population_variance(1 2 4) => 1.55556
 #
-###
+##
 
 function num_population_variance(arr) {
     return TODO

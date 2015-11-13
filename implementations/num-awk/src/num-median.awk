@@ -2,9 +2,9 @@
 #
 # num-median.awk
 #
-###
+##
 
-###
+##
 #
 # Median of an array slice.
 #
@@ -13,7 +13,7 @@
 #     num_median_slice((1 2 4), 1, 3) => 2
 #     num_median_slice((1 2 4 9 9), 1, 3) => 3
 #
-###
+##
 
 function num_median_of_slice(arr, start, stop,  _n, i) {
     _n = 1 + stop - start
@@ -26,7 +26,7 @@ function num_median_of_slice(arr, start, stop,  _n, i) {
     }
 }
 
-###
+##
 #
 # Median.
 #
@@ -37,7 +37,7 @@ function num_median_of_slice(arr, start, stop,  _n, i) {
 #
 # Requirement: the array is sorted.
 #
-###
+##
 
 function num_median(arr,  _n, i) {
     _n = num_n(arr)
@@ -72,7 +72,7 @@ function num_median_init() {
     num_function_init("median med", "Get the median.", "https://en.wikipedia.org/wiki/Normalization_(statistics)")
 }
 
-###
+##
 #
 # Median low: get the lesser median.
 #
@@ -103,7 +103,7 @@ function num_median_low_init() {
     num_function_init("median_low med_low", "Get the median that is lower a.k.a. lesser.", "https://en.wikipedia.org/wiki/Normalization_(statistics)")
 }
 
-###
+##
 #
 # Median high: get the greater median.
 #
@@ -112,7 +112,7 @@ function num_median_low_init() {
 #     num_median_high(1 2 4) => 2
 #     num_median_high(1 2 4 99) => 4
 #
-###
+##
 
 function num_median_high(arr,  _n, i) {
     _n = num_n(arr)

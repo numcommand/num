@@ -2,9 +2,9 @@
 #
 # num-stack.awk
 #
-###
+##
 
-###
+##
 #
 # Push one item on an array list.
 #
@@ -23,7 +23,7 @@ function num_push(arr, item,  i) {
     return item
 }
 
-###
+##
 #
 # Pop one item from an array list.
 #

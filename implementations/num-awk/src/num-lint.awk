@@ -2,13 +2,13 @@
 #
 # num-lint.awk
 #
-###
+##
 
-###
+##
 #
 # Initialize lint protection.
 #
-###
+##
 
 function init_lint() {
     split("", a)

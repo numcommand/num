@@ -2,7 +2,7 @@
 #
 # num-skewness.awk
 #
-###
+##
 
 # Alias
 function num_skewness(arr) { num_sample_skewness(arr) }
@@ -12,7 +12,7 @@ function num_skewness_(num, num_, opts) { num_sample_skewness_(num, num_, opts) 
 function num_skew(arr) { num_sample_skewness(arr) }
 function num_skew_(num, num_, opts) { num_sample_skewness_(num, num_, opts) }
 
-###
+##
 #
 # Sample skewness
 #
@@ -27,7 +27,7 @@ function num_skew_(num, num_, opts) { num_sample_skewness_(num, num_, opts) }
 #   * Sum each value deviation from the mean cubed.
 #   * Divide by the number of items - 1.
 #
-###
+##
 
 function num_sample_skewness(arr) {
     return num_sum_of_mean_deviation_exp(arr, num_mean(arr), 3) / (num_n(arr) - 1)
@@ -47,7 +47,7 @@ function num_sample_skewness_init() {
 function num_sskew(arr) { num_sample_skewness(arr) }
 function num_sskew_(num, num_, opts) { num_sample_skewness_(num, num_, opts) }
 
-###
+##
 #
 # Population skewness
 #
@@ -66,7 +66,7 @@ function num_sskew_(num, num_, opts) { num_sample_skewness_(num, num_, opts) }
 #   * Sum each value deviation from the mean cubed.
 #   * Divide by the number of items.
 #
-###
+##
 
 function num_population_skewness(arr) {
     return num_sum_of_mean_deviation_exp(arr, num_mean(arr), 3) / num_n(arr)

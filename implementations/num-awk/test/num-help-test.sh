@@ -3,16 +3,16 @@
 #
 # num-help-test.sh
 #
-###
+##
 
 . minitest.sh
 num=${NUM:-num}
 
-###
+##
 #
 # help, version, usage
 #
-###
+##
 
 x=$("$num" --help | head -1 | grep -o 'Num version') &&
     assert_eq "Num version" "$x" "--help"

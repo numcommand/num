@@ -2,16 +2,16 @@
 #
 # num-sum.awk
 #
-###
+##
 
-###
+##
 #
 # Sum, a.k.a. total.
 #
 # Example:
 #
 #     num_sum(1 2 4) => 7
-###
+##
 
 function num_sum(arr,  i, x) {
     for (i in arr) x += arr[i]

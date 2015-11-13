@@ -6,7 +6,7 @@
 # The goal of this file is to test a bunch of functions in combination,
 # as a smoke test for errors if/when functions intefere with each other.
 #
-###
+##
 
 . minitest.sh
 num=${NUM:-num}

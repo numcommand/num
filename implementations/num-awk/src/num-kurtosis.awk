@@ -22,7 +22,7 @@
 #
 # Kurtosis is a nondimensional quantity.
 #
-###
+##
 
 # Alias
 function num_kurtosis(arr) { num_sample_kurtosis(arr) }
@@ -32,7 +32,7 @@ function num_kurtosis_(num, num_, opts) { num_sample_kurtosis_(num, num_, opts) 
 function num_kurt(arr) { num_sample_kurtosis(arr) }
 function num_kurt_(num, num_, opts) { num_sample_kurtosis_(num, num_, opts) }
 
-###
+##
 #
 # Sample kurtosis
 #
@@ -40,7 +40,7 @@ function num_kurt_(num, num_, opts) { num_sample_kurtosis_(num, num_, opts) }
 #
 #     num_sample_kurtosis(1 2 4) => 5.44444
 #
-###
+##
 
 function num_sample_kurtosis(arr) {
     return num_sum_of_mean_deviation_exp(arr, num_mean(arr), 4) / (num_n(arr) - 1)
@@ -60,7 +60,7 @@ function num_sample_kurtosis_init() {
 function num_skurt(arr) { num_sample_kurtosis(arr) }
 function num_skurt_(num, num_, opts) { num_sample_kurtosis_(num, num_, opts) }
 
-###
+##
 #
 # Population kurtosis
 #
@@ -68,7 +68,7 @@ function num_skurt_(num, num_, opts) { num_sample_kurtosis_(num, num_, opts) }
 #
 #     num_population_kurtosis(1 2 4) => 3.62963
 #
-###
+##
 
 function num_population_kurtosis(arr) {
     return num_sum_of_mean_deviation_exp(arr, num_mean(arr), 4) / num_n(arr)

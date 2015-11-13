@@ -2,9 +2,9 @@
 #
 # num-absolute-value.awk
 #
-###
+##
 
-###
+##
 #
 # Absolute value.
 #
@@ -13,7 +13,7 @@
 #    abs(1) => 1
 #    abs(-1) => 1
 #
-###
+##
 
 function num_absolute_value(x) {
     return (x >= 0) ? x : -x
@@ -22,7 +22,7 @@ function num_absolute_value(x) {
 # Alias
 function num_abs(x) { return num_absolute_value(x) }
 
-###
+##
 #
 # Map absolute value.
 #
@@ -30,7 +30,7 @@ function num_abs(x) { return num_absolute_value(x) }
 #
 #     num_map_absolute_value_(1 -2 3) => 1 2 3
 #
-###
+##
 
 function num_map_absolute_value(arr) {
     for (i in arr) arr[i] = num_absolute_value(arr[i])

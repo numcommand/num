@@ -2,9 +2,9 @@
 #
 # num-trimean.awk
 #
-###
+##
 
-###
+##
 #
 # Trimean.
 #
@@ -14,7 +14,7 @@
 #
 # Requirement: the array is sorted.
 #
-###
+##
 
 function num_trimean(arr,  _q1, _q2, _q3) {
     _q1 = num_quartile_1(arr)

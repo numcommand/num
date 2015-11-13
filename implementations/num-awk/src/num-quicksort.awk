@@ -2,13 +2,13 @@
 #
 # num-quicksort.awk
 #
-###
+##
 
 function num_quicksort_awk_init() {
     NUM_QUICKSORT_INSERTION_SORT_THRESHOLD = 12
 }
 
-###
+##
 #
 # Quicksort.
 #
@@ -30,7 +30,7 @@ function num_quicksort_awk_init() {
 # http://stackoverflow.com/questions/32001841/how-to-implement-dual-pivot-quicksort-in-python
 # http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/tip/src/share/classes/java/util/DualPivotQuicksort.java
 #
-###
+##
 
 function num_quicksort(A) {
     num_quicksort_slice(A, 1, num_arr_length(A))
@@ -48,13 +48,13 @@ function num_quicksort_slice(A, lo, hi,   pivot_index) {
     num_quicksort_slice(A, pivot_index + 1, hi)
 }
 
-###
+##
 #
 # Partition an array slice using a given pivot index.
 #
 # Return the new pivot index.
 #
-###
+##
 
 function num_partition_slice(A, lo, hi, pivot_index,  left, right, pivot_value, t) {
     if (lo >= hi) return lo
@@ -72,19 +72,19 @@ function num_partition_slice(A, lo, hi, pivot_index,  left, right, pivot_value, 
     return pivot_index
 }
 
-###
+##
 #
 # Choose a quicksort pivot index by using a random number.
 # This is a naive implemenation and is here for benchmarking.
 # Typically you will never need this function for real-world data.
 #
-###
+##
 
 function num_quicksort_pivot_index_via_rand(A, lo, hi) {
     return lo + int((hi - lo + 1) * rand())
 }
 
-###
+##
 #
 # Choose a quicksort pivot index by using the "median of three" heuristic
 # with a swap sort of the three items for efficiency on the next pivot.
@@ -115,7 +115,7 @@ function num_quicksort_pivot_index_via_rand(A, lo, hi) {
 #
 # Return the pivot index.
 #
-###
+##
 
 function num_quicksort_pivot_index_via_median_of_three_sort(A) {
     num_quicksort_pivot_index_via_median_of_three_sort_slice(A, 1, num_arr_length(A))

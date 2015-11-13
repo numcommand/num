@@ -2,9 +2,9 @@
 #
 # num-increment.awk
 #
-###
+##
 
-###
+##
 #
 # Increment a value, i.e. add 1.
 #
@@ -12,13 +12,13 @@
 #
 #    increment(1) => 2
 #
-###
+##
 
 function num_increment(x) {
     return x + 1
 }
 
-###
+##
 #
 # Map increment.
 #
@@ -26,7 +26,7 @@ function num_increment(x) {
 #
 #     num_map_increment_(1 2 3) => -2 3 4
 #
-###
+##
 
 function num_map_increment(arr) {
     for (i in arr) arr[i] = num_increment(arr[i])

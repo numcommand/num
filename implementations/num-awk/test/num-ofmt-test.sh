@@ -3,16 +3,16 @@
 #
 # num-ofmt-test.awk
 #
-###
+##
 
 . minitest.sh
 num=${NUM:-num}
 
-###
+##
 #
 # output format
 #
-###
+##
 
 ## with all
 

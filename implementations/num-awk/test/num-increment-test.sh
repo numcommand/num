@@ -3,16 +3,16 @@
 #
 # num-increment-test.awk
 #
-###
+##
 
 . minitest.sh
 num=${NUM:-num}
 
-###
+##
 #
 # increment
 #
-###
+##
 
 x=$(echo "-8 0 8" | "$num" increment) &&
     assert_eq "-7 1 9" "$x" "increment, with row"

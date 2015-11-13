@@ -2,9 +2,9 @@
 #
 # num-unique.awk
 #
-###
+##
 
-###
+##
 #
 # Is the list all unique items?
 #

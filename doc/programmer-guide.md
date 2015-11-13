@@ -115,6 +115,22 @@ Rule out for now:
   * Launch using `#/usr/bin/env -S ..` because we want POSIX.
 
 
+### Testing
+
+To run Num for testing and debugging, you can try using gawk with flags:
+
+    AWK="gawk --posix --lint" num ...
+
+
+### Concatening include files
+
+To build Num by concatenating include files:
+
+    awk 'FNR==1 && NR!=1 {print ""}{print}' \
+    $(sed -n 's/^@include "\(.*\)"/src\/\1/p' src/num.awk) \
+    > ~/tmp/include
+
+
 <p><hr><nav>
 * <b>[Prev Page: Known issues](known-issues.md)</b>
 * <b>[Next Page: Programmer library of awk functions](programmer-library-of-awk-functions.md)</b>

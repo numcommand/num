@@ -2,7 +2,7 @@
 #
 # num-coefficient-of-variance.awk
 #
-###
+##
 
 # Alias
 function num_coefficient_of_variance(arr) { num_sample_coefficient_of_variance(arr) }
@@ -12,7 +12,7 @@ function num_coefficient_of_variance_(num, num_, opts) { num_sample_coefficient_
 function num_covar(arr) { num_sample_coefficient_of_variance(arr) }
 function num_covar_(num, num_, opts) { num_sample_coefficient_of_variance_(num, num_, opts) }
 
-###
+##
 #
 # Sample Coefficient of Variance.
 #
@@ -20,7 +20,7 @@ function num_covar_(num, num_, opts) { num_sample_coefficient_of_variance_(num, 
 #
 #     num_sample_coefficient_of_variance(1 2 4) => 0.654654
 #
-###
+##
 
 function num_sample_coefficient_of_variance(arr) {
     return num_sample_standard_deviation(arr) / num_mean(arr)
@@ -40,7 +40,7 @@ function num_sample_coefficient_of_variance_init() {
 function num_scovar(arr) { num_sample_coefficient_of_variance(arr) }
 function num_scovar_(num, num_, opts) { num_sample_coefficient_of_variance_(num, num_, opts) }
 
-###
+##
 #
 # Population Coefficient of Variance.
 #
@@ -48,7 +48,7 @@ function num_scovar_(num, num_, opts) { num_sample_coefficient_of_variance_(num,
 #
 #     1 2 4 => 0.534522
 #
-###
+##
 
 function num_population_coefficient_of_variance(arr) {
     return num_population_standard_deviation(arr) / num_mean(arr)

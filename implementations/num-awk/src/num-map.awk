@@ -9,7 +9,7 @@
 # Call `map_after` to invalidate all metadata then
 # restore the number of items.
 #
-###
+##
 
 function map_before_(num, num_, opts, memo) {
     memo["n"] = num_["n"]

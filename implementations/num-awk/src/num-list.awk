@@ -2,9 +2,9 @@
 #
 # num-list.awk
 #
-###
+##
 
-###
+##
 #
 # Number of items, a.k.a. count, length.
 #
@@ -12,7 +12,7 @@
 #
 #     num_n(1 2 4) => 3
 #
-###
+##
 
 function num_n(arr) {
     return num_arr_length(arr)
@@ -28,7 +28,7 @@ function num_n_init() {
     num_function_init("n count length size", "Get the number of items, a.k.a. count, length, size.", "https://en.wikipedia.org/wiki/Enumeration")
 }
 
-###
+##
 #
 # First item.
 #
@@ -36,7 +36,7 @@ function num_n_init() {
 #
 #     num_first(1 2 4) => 1
 #
-###
+##
 
 function num_first(arr) {
     return arr[1]
@@ -52,7 +52,7 @@ function num_first_init() {
     num_function_init("first head", "Get the first item.", "https://en.wikipedia.org/wiki/Enumeration")
 }
 
-###
+##
 #
 # Last item.
 #
@@ -60,7 +60,7 @@ function num_first_init() {
 #
 #   num_last(1 2 4) => 4
 #
-###
+##
 
 function num_last(arr) {
     return arr[num_arr_length(arr)]
@@ -76,7 +76,7 @@ function num_last_init() {
     num_function_init("last tail", "Get the last item.", "https://en.wikipedia.org/wiki/Enumeration")
 }
 
-###
+##
 #
 # Minimum value.
 #
@@ -86,7 +86,7 @@ function num_last_init() {
 #
 # This implementation does a scan of the entire array.
 #
-###
+##
 
 function num_min(arr,  _min, i) {
     _min = ""
@@ -108,7 +108,7 @@ function num_min_init() {
     num_function_init("min minimum least lowest", "Get the minimum value, a.k.a. least, lowest.", "https://en.wikipedia.org/wiki/Maxima_and_minima")
 }
 
-###
+##
 #
 # Maximum value.
 #
@@ -138,7 +138,7 @@ function num_max_init() {
     num_function_init("max maximum greatest highest", "Get the maximum value, a.k.a. greatest, highest.", "https://en.wikipedia.org/wiki/Maxima_and_minima")
 }
 
-###
+##
 #
 # Range, a.k.a. spread.
 #
@@ -146,7 +146,7 @@ function num_max_init() {
 #
 #     num_range(1 2 4) => 3
 #
-###
+##
 
 function num_range(arr) {
     return num_max(arr) - num_min(arr)

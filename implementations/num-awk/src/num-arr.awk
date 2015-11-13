@@ -2,9 +2,9 @@
 #
 # num-arr.awk
 #
-###
+##
 
-###
+##
 #
 # Dump an array, suitable for debugging.
 #
@@ -19,7 +19,7 @@ function num_arr_dump(arr) {
     for (k in arr) print k, arr[k]
 }
 
-###
+##
 #
 # Is an array empty?
 #
@@ -35,7 +35,7 @@ function num_arr_empty(arr,  i) {
     return TRUE
 }
 
-###
+##
 #
 # Length of an array.
 #
@@ -52,7 +52,7 @@ function num_arr_length(arr,  i, len) {
     return len
 }
 
-###
+##
 #
 # Swap array items.
 #
@@ -61,13 +61,13 @@ function num_arr_length(arr,  i, len) {
 #     arr = 4 5 6
 #     num_arr_swap(arr, 1, 3) => 6 5 4
 #
-###
+##
 
 function num_arr_swap(A, i, j,   t) {
     t = A[i]; A[i] = A[j]; A[j] = t
 }
 
-###
+##
 #
 # Get the closest value to a target value in an array.
 #
@@ -94,7 +94,7 @@ function num_arr_closest_value(arr, target,  _closest_value, _closest_delta, _de
     return _closest_value
 }
 
-###
+##
 #
 # Join an array to a string, with a separator string.
 #

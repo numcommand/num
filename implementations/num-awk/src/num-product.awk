@@ -2,9 +2,9 @@
 #
 # num-product.awk
 #
-###
+##
 
-###
+##
 #
 # Product.
 #
@@ -12,7 +12,7 @@
 #
 #     num_product(1 2 4) => 8
 #
-###
+##
 
 function num_product(arr,  x) {
     x = 1

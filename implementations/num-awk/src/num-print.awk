@@ -2,9 +2,9 @@
 #
 # num-print.awk
 #
-###
+##
 
-###
+##
 #
 # Print a message to stdout.
 #
@@ -17,7 +17,7 @@ function num_out(msg) {
     print msg
 }
 
-###
+##
 #
 # Print a message to stderr.
 #

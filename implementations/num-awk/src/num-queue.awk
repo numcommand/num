@@ -2,9 +2,9 @@
 #
 # num-queue.awk
 #
-###
+##
 
-###
+##
 #
 # Enqueue one item to an array queue.
 #
@@ -23,7 +23,7 @@ function num_enqueue(arr, item,  i) {
     return item
 }
 
-###
+##
 #
 # Dequeue one item from an array queue.
 #

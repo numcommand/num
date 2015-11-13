@@ -2,13 +2,13 @@
 #
 # num-map-round.awk
 #
-###
+##
 
-###
+##
 #
 # Initialize.
 #
-###
+##
 
 function num_map_round_awk_init() {
     #TODO refactor
@@ -19,7 +19,7 @@ function num_map_round_awk_init() {
     TRUE
 }
 
-###
+##
 #
 # Map round, a.k.a. round towards nearest integer, nint.
 #
@@ -27,7 +27,7 @@ function num_map_round_awk_init() {
 #
 #     num_map_round(-1.9 1.9) => -2 2
 #
-###
+##
 
 function num_map_round(arr) {
     for (i in arr) arr[i] = num_round(arr[i])
@@ -58,7 +58,7 @@ function num_map_nint_(num, num_, opts) {
     return num_map_round_(num, num_, opts)
 }
 
-###
+##
 #
 # Map: round off, a.k.a. round towards zero, truncate.
 #
@@ -66,7 +66,7 @@ function num_map_nint_(num, num_, opts) {
 #
 #     num_map_round_off(-1.9 1.9) => -1 1
 #
-###
+##
 
 function num_map_round_off(arr) {
     for (i in arr) arr[i] = num_round_off(arr[i])
@@ -97,7 +97,7 @@ function num_map_truncate_(num, num_, opts) {
     return num_map_round_off_(num, num_, opts)
 }
 
-###
+##
 #
 # Map: round up, a.k.a. round towards positive infinity, ceiling.
 #
@@ -105,7 +105,7 @@ function num_map_truncate_(num, num_, opts) {
 #
 #     num_map_round_up(-1.9 1.9) => -1 2
 #
-###
+##
 
 function num_map_round_up(arr) {
     for (i in arr) arr[i] = num_round_up(arr[i])
@@ -136,7 +136,7 @@ function num_map_ceiling_(num, num_, opts) {
     return num_map_round_up_(num, num_, opts)
 }
 
-###
+##
 #
 # Map: round down, a.k.a. round towards negative infinity, floor.
 #
@@ -144,7 +144,7 @@ function num_map_ceiling_(num, num_, opts) {
 #
 #     num_map_round_down(-1.9 1.9) => -2 1
 #
-###
+##
 
 function num_map_round_down(arr) {
     for (i in arr) arr[i] = num_round_down(arr[i])
@@ -175,25 +175,25 @@ function num_map_floor_(num, num_, opts) {
     return num_map_round_down_(num, num_, opts)
 }
 
-###
+##
 #
 # Map round after helper: call this function only from within
 # each of the rounding functions, before the work begins.
 # This function saves as much metadata as possible.
 #
-###
+##
 
 function num_map_round_before_(num, num_, opts, f, memo) {
     for (k in NUM_MAP_ROUND_MEMO) if (k in num_) memo[k] = num_[k]
 }
 
-###
+##
 #
 # Map round after helper: call this function only from within
 # each of the rounding functions, after the work ends.
 # This function restores as much metadata as possible.
 #
-###
+##
 
 function num_map_round_after_(num, num_, opts, f, memo) {
     split("",num_)

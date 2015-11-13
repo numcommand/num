@@ -3,16 +3,16 @@
 #
 # num-meanest-test.sh
 #
-###
+##
 
 . minitest.sh
 num=${NUM:-num}
 
-###
+##
 #
 # meanest
 #
-###
+##
 
 x=$(echo "1 2 4" | "$num" meanest) &&
     assert_eq 2 "$x" "meanest, with row"

@@ -3,7 +3,7 @@
 #
 # num-quartiles-test.awk
 #
-###
+##
 
 . minitest.sh
 num=${NUM:-num}
@@ -23,11 +23,11 @@ x=$(echo "$in_row" | sort | "$num" quartile-3) &&
     assert_eq 42.75 "$x" "quartile-3, with row"
 exit
 
-###
+##
 #
 # interquartile range
 #
-###
+##
 
 x=$(echo "$in_row" | "$num" interquartile-range) &&
     assert_eq 22.5 "$x" "interquartile-range, with row"
@@ -39,11 +39,11 @@ x=$(echo "$in_row" | "$num" interquartile-range) &&
 x=$(echo "$in_row\n$in_row" | "$num" interquartile-range records) &&
     assert_eq "22.5"$'\n'"22.5 "$x" "interquartile-range, with records"
 
-###
+##
 #
 # quartile 0
 #
-###
+##
 
 x=$(echo "$in_row" | "$num" quartile-0) &&
     assert_eq 6 "$x" "quartile-0, with row"
@@ -55,11 +55,11 @@ x=$(echo "$in_col" | "$num" quartile-0) &&
 x=$(echo "$in_row\n$in_row" | "$num" quartile-0 records) &&
     assert_eq "6"$'\n'"6" "$x" "quartile-0, with records"
 
-###
+##
 #
 # quartile 1
 #
-###
+##
 
 ## with preset
 
@@ -121,11 +121,11 @@ x=$(echo "1 2 3 4 5 6 7 8" | "$num" quartile-1) &&
 x=$(echo "1 2 3 4 5 6 7 8\n1 2 3 4 5 6 7 8" | "$num" quartile-1) &&
     assert_eq "2"$'\n'"2" "$x" "quartile-1, with row, with 8 items."
 
-###
+##
 #
 # quartile 2
 #
-###
+##
 
 x=$(echo "$in_row" | "$num" quartile-2) &&
     assert_eq 40 "$x" "quartile-2, with row"
@@ -137,11 +137,11 @@ x=$(echo "$in_col" | "$num" quartile-2) &&
 x=$(echo "$in_row\n$in_row" | "$num" quartile-2) &&
     assert_eq "40"$'\n'"40" "$x" "quartile-2, with row"
 
-###
+##
 #
 # quartile 3
 #
-###
+##
 
 ## with preset
 
@@ -203,11 +203,11 @@ x=$(echo "1 2 3 4 5 6 7 8" | "$num" quartile-3) &&
 x=$(echo "1 2 3 4 5 6 7 8\n1 2 3 4 5 6 7 8" | "$num" quartile-3 records) &&
     assert_eq "4.5"$'\n'"4.5" "$x" "quartile-3, with row, with 8 items."
 
-###
+##
 #
 # quartile 4
 #
-###
+##
 
 x=$(echo "$in_row" | "$num" quartile-4) &&
     assert_eq 49 "$x" "quartile-4, with row"

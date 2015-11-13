@@ -2,9 +2,9 @@
 #
 # num-mean-absolute-deviation.awk
 #
-###
+##
 
-###
+##
 #
 # Mean absolute deviation.
 #
@@ -13,7 +13,7 @@
 # Example:
 #
 #     num_mean_absolute_deviation(1 2 4) => 1.11111
-###
+##
 
 function num_mean_absolute_deviation(arr,  _mean, _n, x) {
     _mean = num_mean(arr)

@@ -2,9 +2,9 @@
 #
 # num-function-manager.awk
 #
-###
+##
 
-###
+##
 #
 # Initialize function metadata for a given function.
 #
@@ -40,7 +40,7 @@ function num_function_init(names, help, link,  f, i, name, name_list) {
     }
 }
 
-###
+##
 #
 # Initialize every file and function.
 #
@@ -100,7 +100,7 @@ function num_function_manager_init() {
     num_is_strictly_descending_init()
 }
 
-###
+##
 #
 # Function manager call: given a function name, call its function.
 #

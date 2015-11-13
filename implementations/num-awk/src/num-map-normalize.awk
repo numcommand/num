@@ -1,10 +1,10 @@
 ############################################################################
 #
-# num-normalize.awk
+# num-map-normalize.awk
 #
-###
+##
 
-###
+##
 #
 # Map: normalize each value to be 0 to 1.
 #
@@ -12,7 +12,7 @@
 #
 #     num_map_normalize(1 2 4) => 0 0.33333 1
 #
-###
+##
 
 function num_map_normalize_with_min_max(arr, min_old, max_old, min_new, max_new) {
     multiply = (max_new - min_new) / (max_old - min_old)

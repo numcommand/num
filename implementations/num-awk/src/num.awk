@@ -29,7 +29,7 @@
 @include "num-map-round.awk"
 
 ## Statistics
-@include "num-normalize.awk"
+@include "num-map-normalize.awk"
 @include "num-mean.awk"
 @include "num-mean-absolute-deviation.awk"
 @include "num-sum-of-mean-deviation.awk"

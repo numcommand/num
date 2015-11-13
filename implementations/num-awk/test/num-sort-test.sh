@@ -3,16 +3,16 @@
 #
 # num-sort-test.awk
 #
-###
+##
 
 . minitest.sh
 num=${NUM:-num}
 
-###
+##
 #
 # sort
 #
-###
+##
 
 x=$(echo "3 1 2" | "$num" sort) &&
     assert_eq "1 2 3" "$x" "sort, with row"
@@ -23,11 +23,11 @@ x=$(echo "3\n1\n2" | "$num" sort) &&
 x=$(echo "3 1 2\n9 5 6" | "$num" sort records) &&
     assert_eq "1 2 3"$'\n'"5 6 9" "$x" "sort, with records"
 
-###
+##
 #
 # sort-ascending
 #
-###
+##
 
 x=$(echo "3 1 2" | "$num" sort-ascending) &&
     assert_eq "1 2 3" "$x" "sort-ascending, with row"
@@ -38,11 +38,11 @@ x=$(echo "3\n1\n2" | "$num" sort-ascending) &&
 x=$(echo "3 1 2\n9 5 6" | "$num" sort-ascending records) &&
     assert_eq "1 2 3"$'\n'"5 6 9" "$x" "sort-ascending, with row"
 
-###
+##
 #
 # sort-descending
 #
-###
+##
 
 x=$(echo "3 1 2" | "$num" sort-descending) &&
     assert_eq "3 2 1" "$x" "sort-descending, with row"
@@ -53,11 +53,11 @@ x=$(echo "3\n1\n2" | "$num" sort-descending) &&
 x=$(echo "3 1 2\n9 5 6" | "$num" sort-descending records) &&
     assert_eq "3 2 1"$'\n'"9 6 5" "$x" "sort-descending, with records"
 
-###
+##
 #
 # is-ascending
 #
-###
+##
 
 ## with ascending unique
 
@@ -92,11 +92,11 @@ x=$(echo "3\n2\n1" | "$num" is-ascending) &&
 x=$(echo "3 2 1\n9 6 5" | "$num" is-ascending records) &&
     assert_eq "$FALSE"$'\n'"$FALSE" "$x" "is-ascending, with records, with descending"
 
-###
+##
 #
 # is-strictly-ascending
 #
-###
+##
 
 ## with unique
 
@@ -131,11 +131,11 @@ x=$(echo "3\n2\n1" | "$num" is-strictly-ascending) &&
 x=$(echo "3 2 1\n9 6 5" | "$num" is-strictly-ascending records) &&
     assert_eq "$FALSE"$'\n'"$FALSE" "$x" "is-strictly-ascending, with records, with descending"
 
-###
+##
 #
 # is-descending
 #
-###
+##
 
 ## with unique
 
@@ -170,11 +170,11 @@ x=$(echo "1\n2\n3" | "$num" is-descending) &&
 x=$(echo "1 2 3\n5 6 9" | "$num" is-descending records) &&
     assert_eq "$FALSE"$'\n'"$FALSE" "$x" "is-descending, with records, with ascending"
 
-###
+##
 #
 # is-strictly-descending
 #
-###
+##
 
 ## with unique
 

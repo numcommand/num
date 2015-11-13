@@ -2,9 +2,9 @@
 #
 # num-shift.awk
 #
-###
+##
 
-###
+##
 #
 # Shift one item from the head of a list.
 #
@@ -25,7 +25,7 @@ function num_shift(arr,  item, i) {
     return item
 }
 
-###
+##
 #
 # Unshift one item onto the head of a list.
 #

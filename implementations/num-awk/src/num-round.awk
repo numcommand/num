@@ -9,9 +9,9 @@
 #   * round up a.k.a. ceiling.
 #   * round down a.k.a. floor.
 #
-###
+##
 
-###
+##
 #
 # Round to the nearest integer, a.k.a. nint().
 #
@@ -23,7 +23,7 @@
 #    num_nint(1.9) => 2
 #    num_nint(-1.9) => -2
 #
-###
+##
 
 function num_round(x) {
     return (x >= 0) ? int(x + 0.5) : int(x - 0.5)
@@ -34,7 +34,7 @@ function num_nint(x) {
     return num_round(x)
 }
 
-###
+##
 #
 # Round off the fractional part, a.k.a. truncate().
 #
@@ -46,7 +46,7 @@ function num_nint(x) {
 #    num_truncate(1.9) => 1
 #    num_truncate(-1.9) => -1
 #
-###
+##
 
 function num_round_off(x) {
     return int(x)
@@ -57,7 +57,7 @@ function num_truncate(x) {
     return num_round_off(x)
 }
 
-###
+##
 #
 # Round up, a.k.a. ceiling().
 #
@@ -79,7 +79,7 @@ function num_ceiling(x) {
     return num_round_up(x)
 }
 
-###
+##
 #
 # Round down, a.k.a. floor().
 #
@@ -91,7 +91,7 @@ function num_ceiling(x) {
 #    num_floor(1.9) => 1
 #    num_floor(-1.9) => -2
 #
-###
+##
 
 function num_round_down(x,  y) {
     y = int(x)

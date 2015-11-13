@@ -3,16 +3,16 @@
 #
 # num-normalize-test.sh
 #
-###
+##
 
 . minitest.sh
 num=${NUM:-num}
 
-###
+##
 #
 # normalize
 #
-###
+##
 
 x=$(echo "1 2 4" | "$num" normalize) &&
     assert_eq "0 0.333333 1" "$x" "normalize, with row"

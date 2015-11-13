@@ -1,7 +1,7 @@
 #!/bin/sh
 set -euf
 
-###
+##
 #
 # Num: number utilties for mathematics and statistics.
 #
@@ -9,8 +9,10 @@ set -euf
 #
 #     num [ options ] [ file ... ]
 #
-# Full documentation is available in the GitHub repository:
-# https://github.com/numcommand/num
+# Full documentation and code is available:
+#
+#   * http://www.numcommand.com
+#   * https://github.com/numcommand/num
 #
 # ## Tracking
 #
@@ -20,27 +22,9 @@ set -euf
 # Updated: 2015-11-12
 # Version: 0.10.0
 #
-###
+##
 
-###
-#
-# Programmer hints
-#
-# TODO: explain these more
-#
-# To run this for testing and debugging, try using gawk with flags:
-#
-#     gawk --posix --lint
-#
-# To concatenate the include files:
-#
-#     awk 'FNR==1 && NR!=1 {print ""}{print}' \
-#     $(sed -n 's/^@include "\(.*\)"/src\/\1/p' src/num.awk) \
-#     > ~/tmp/include
-#
-###
-
-###
+##
 #
 # Choose the awk to use, in this order of importance:
 #
@@ -51,32 +35,34 @@ set -euf
 #      GNU awk provides more than POSIX, such as `asort()` and `length()`.
 #      Note that Ubuntu Linux preinstalls `mawk` not `gawk`.
 #
-#    * mawk. Standard on Ubuntu and people say it's up to 8x faster.
-#      We're currently working on mawk compatibility, and we believe
-#      everything works except for sorting functions, such as median.
-#      The short-term workaround is to pipe to `sort` before `num`.
-#
 #    * Default awk. This is the most common awk, especially on old systems,
 #      as well on curent Mac OSX systems and similar kinds of BSD systems.
 #      The default awk is typically inferior to newer awk implementations.
 #      The default awk is defined by POSIX and therefore has to exist on
 #      all POSIX-conformant systems.
 #
+# TODO:
+#
+#    * mawk. Standard on Ubuntu and people say it's up to 8x faster.
+#      We're currently working on mawk compatibility, and we believe
+#      everything works except for sorting functions, such as median.
+#      The short-term workaround is to pipe to `sort` before `num`.
+#
 #    * nawk - while the AWK language was being developed the authors
 #      released a new version (hence the n - new awk) to avoid confusion.
 #
-###
+##
 
-AWK=${AWK:-$(command -v gawk || command -v mawk || command -v awk || echo "awk")}
+AWK=${AWK:-$(command -v gawk || command -v awk || echo "awk")}
 "$AWK" '
 
-### BEGIN INCLUDES
+## BEGIN INCLUDES
 
 ############################################################################
 #
 # num-help.awk
 #
-###
+##
 
 function num_help() {
     print "Num version 0.10.0."
@@ -89,9 +75,9 @@ function num_help() {
 #
 # num-print.awk
 #
-###
+##
 
-###
+##
 #
 # Print a message to stdout.
 #
@@ -104,7 +90,7 @@ function num_out(msg) {
     print msg
 }
 
-###
+##
 #
 # Print a message to stderr.
 #
@@ -123,9 +109,9 @@ function num_err(msg) {
 #
 # num-absolute-value.awk
 #
-###
+##
 
-###
+##
 #
 # Absolute value.
 #
@@ -134,7 +120,7 @@ function num_err(msg) {
 #    abs(1) => 1
 #    abs(-1) => 1
 #
-###
+##
 
 function num_absolute_value(x) {
     return (x >= 0) ? x : -x
@@ -143,7 +129,7 @@ function num_absolute_value(x) {
 # Alias
 function num_abs(x) { return num_absolute_value(x) }
 
-###
+##
 #
 # Map absolute value.
 #
@@ -151,7 +137,7 @@ function num_abs(x) { return num_absolute_value(x) }
 #
 #     num_map_absolute_value_(1 -2 3) => 1 2 3
 #
-###
+##
 
 function num_map_absolute_value(arr) {
     for (i in arr) arr[i] = num_absolute_value(arr[i])
@@ -180,9 +166,9 @@ function num_map_abs_(num, num_, opts) { return num_map_absolute_value_(num, num
 #
 # num-sign.awk
 #
-###
+##
 
-###
+##
 #
 # Return the sign of the value, either 1, -1, or 0.
 #
@@ -192,13 +178,13 @@ function num_map_abs_(num, num_, opts) { return num_map_absolute_value_(num, num
 #    sign(-8) => -1
 #    sign(0) => 0
 #
-###
+##
 
 function num_sign(x) {
     return (x > 0) - (x < 0)
 }
 
-###
+##
 #
 # Map sign.
 #
@@ -206,7 +192,7 @@ function num_sign(x) {
 #
 #     num_map_sign_(-8 0 8) => -1 0 1
 #
-###
+##
 
 function num_map_sign(arr) {
     for (i in arr) arr[i] = num_sign(arr[i])
@@ -231,9 +217,9 @@ function num_map_sign_init() {
 #
 # num-increment.awk
 #
-###
+##
 
-###
+##
 #
 # Increment a value, i.e. add 1.
 #
@@ -241,13 +227,13 @@ function num_map_sign_init() {
 #
 #    increment(1) => 2
 #
-###
+##
 
 function num_increment(x) {
     return x + 1
 }
 
-###
+##
 #
 # Map increment.
 #
@@ -255,7 +241,7 @@ function num_increment(x) {
 #
 #     num_map_increment_(1 2 3) => -2 3 4
 #
-###
+##
 
 function num_map_increment(arr) {
     for (i in arr) arr[i] = num_increment(arr[i])
@@ -287,9 +273,9 @@ function num_map_increment_init() {
 #   * round up a.k.a. ceiling.
 #   * round down a.k.a. floor.
 #
-###
+##
 
-###
+##
 #
 # Round to the nearest integer, a.k.a. nint().
 #
@@ -301,7 +287,7 @@ function num_map_increment_init() {
 #    num_nint(1.9) => 2
 #    num_nint(-1.9) => -2
 #
-###
+##
 
 function num_round(x) {
     return (x >= 0) ? int(x + 0.5) : int(x - 0.5)
@@ -312,7 +298,7 @@ function num_nint(x) {
     return num_round(x)
 }
 
-###
+##
 #
 # Round off the fractional part, a.k.a. truncate().
 #
@@ -324,7 +310,7 @@ function num_nint(x) {
 #    num_truncate(1.9) => 1
 #    num_truncate(-1.9) => -1
 #
-###
+##
 
 function num_round_off(x) {
     return int(x)
@@ -335,7 +321,7 @@ function num_truncate(x) {
     return num_round_off(x)
 }
 
-###
+##
 #
 # Round up, a.k.a. ceiling().
 #
@@ -357,7 +343,7 @@ function num_ceiling(x) {
     return num_round_up(x)
 }
 
-###
+##
 #
 # Round down, a.k.a. floor().
 #
@@ -369,7 +355,7 @@ function num_ceiling(x) {
 #    num_floor(1.9) => 1
 #    num_floor(-1.9) => -2
 #
-###
+##
 
 function num_round_down(x,  y) {
     y = int(x)
@@ -385,16 +371,16 @@ function num_floor(x) {
 #
 # num-sum.awk
 #
-###
+##
 
-###
+##
 #
 # Sum, a.k.a. total.
 #
 # Example:
 #
 #     num_sum(1 2 4) => 7
-###
+##
 
 function num_sum(arr,  i, x) {
     for (i in arr) x += arr[i]
@@ -415,9 +401,9 @@ function num_sum_init() {
 #
 # num-product.awk
 #
-###
+##
 
-###
+##
 #
 # Product.
 #
@@ -425,7 +411,7 @@ function num_sum_init() {
 #
 #     num_product(1 2 4) => 8
 #
-###
+##
 
 function num_product(arr,  x) {
     x = 1
@@ -447,9 +433,9 @@ function num_product_init() {
 #
 # num-arr.awk
 #
-###
+##
 
-###
+##
 #
 # Dump an array, suitable for debugging.
 #
@@ -464,7 +450,7 @@ function num_arr_dump(arr) {
     for (k in arr) print k, arr[k]
 }
 
-###
+##
 #
 # Is an array empty?
 #
@@ -480,7 +466,7 @@ function num_arr_empty(arr,  i) {
     return TRUE
 }
 
-###
+##
 #
 # Length of an array.
 #
@@ -497,7 +483,7 @@ function num_arr_length(arr,  i, len) {
     return len
 }
 
-###
+##
 #
 # Get the closest value to a target value in an array.
 #
@@ -524,7 +510,7 @@ function num_arr_closest_value(arr, target,  _closest_value, _closest_delta, _de
     return _closest_value
 }
 
-###
+##
 #
 # Join an array to a string, with a separator string.
 #
@@ -543,9 +529,9 @@ function num_arr_join(arr, sep,  s, i) {
 #
 # num-list.awk
 #
-###
+##
 
-###
+##
 #
 # Number of items, a.k.a. count, length.
 #
@@ -553,7 +539,7 @@ function num_arr_join(arr, sep,  s, i) {
 #
 #     num_n(1 2 4) => 3
 #
-###
+##
 
 function num_n(arr) {
     return num_arr_length(arr)
@@ -569,7 +555,7 @@ function num_n_init() {
     num_function_init("n count length size", "Get the number of items, a.k.a. count, length, size.", "https://en.wikipedia.org/wiki/Enumeration")
 }
 
-###
+##
 #
 # First item.
 #
@@ -577,7 +563,7 @@ function num_n_init() {
 #
 #     num_first(1 2 4) => 1
 #
-###
+##
 
 function num_first(arr) {
     return arr[1]
@@ -593,7 +579,7 @@ function num_first_init() {
     num_function_init("first head", "Get the first item.", "https://en.wikipedia.org/wiki/Enumeration")
 }
 
-###
+##
 #
 # Last item.
 #
@@ -601,7 +587,7 @@ function num_first_init() {
 #
 #   num_last(1 2 4) => 4
 #
-###
+##
 
 function num_last(arr) {
     return arr[num_arr_length(arr)]
@@ -617,7 +603,7 @@ function num_last_init() {
     num_function_init("last tail", "Get the last item.", "https://en.wikipedia.org/wiki/Enumeration")
 }
 
-###
+##
 #
 # Minimum value.
 #
@@ -627,7 +613,7 @@ function num_last_init() {
 #
 # This implementation does a scan of the entire array.
 #
-###
+##
 
 function num_min(arr,  _min, i) {
     _min = ""
@@ -649,7 +635,7 @@ function num_min_init() {
     num_function_init("min minimum least lowest", "Get the minimum value, a.k.a. least, lowest.", "https://en.wikipedia.org/wiki/Maxima_and_minima")
 }
 
-###
+##
 #
 # Maximum value.
 #
@@ -679,7 +665,7 @@ function num_max_init() {
     num_function_init("max maximum greatest highest", "Get the maximum value, a.k.a. greatest, highest.", "https://en.wikipedia.org/wiki/Maxima_and_minima")
 }
 
-###
+##
 #
 # Range, a.k.a. spread.
 #
@@ -687,7 +673,7 @@ function num_max_init() {
 #
 #     num_range(1 2 4) => 3
 #
-###
+##
 
 function num_range(arr) {
     return num_max(arr) - num_min(arr)
@@ -707,9 +693,9 @@ function num_range_init() {
 #
 # num-shift.awk
 #
-###
+##
 
-###
+##
 #
 # Shift one item from the head of a list.
 #
@@ -730,7 +716,7 @@ function num_shift(arr,  item, i) {
     return item
 }
 
-###
+##
 #
 # Unshift one item onto the head of a list.
 #
@@ -754,9 +740,9 @@ function num_unshift(arr, item,  i) {
 #
 # num-stack.awk
 #
-###
+##
 
-###
+##
 #
 # Push one item on an array list.
 #
@@ -775,7 +761,7 @@ function num_push(arr, item,  i) {
     return item
 }
 
-###
+##
 #
 # Pop one item from an array list.
 #
@@ -799,9 +785,9 @@ function num_pop(arr,  item, i) {
 #
 # num-queue.awk
 #
-###
+##
 
-###
+##
 #
 # Enqueue one item to an array queue.
 #
@@ -820,7 +806,7 @@ function num_enqueue(arr, item,  i) {
     return item
 }
 
-###
+##
 #
 # Dequeue one item from an array queue.
 #
@@ -852,9 +838,9 @@ function num_dequeue(arr,  item, i) {
 # TODO: Consider using Timsort, which tends to be faster for real
 # world data that may already be sorted or partially sorted.
 #
-###
+##
 
-###
+##
 #
 # Initialize.
 #
@@ -862,7 +848,7 @@ function num_dequeue(arr,  item, i) {
 # For example, a sort will not affect the sum of the numbers,
 # so the metadata can continue to cache the sum throughout a sort.
 #
-###
+##
 
 function num_sort_awk_init() {
     NUM_SORT_MEMO["n"] = \
@@ -886,23 +872,23 @@ function num_sort_awk_init() {
     TRUE
 }
 
-###
+##
 #
 # Remember metadata, then restore it.
 #
-###
+##
 
 function num_sort_before_(num, num_, opts, memo) {
     split("", memo)
-    for (k in NUM_SORT_MEMO) memo[k] = num_[k]
+    for (k in NUM_SORT_MEMO) if (k in num_) memo[k] = num_[k]
 }
 
 function num_sort_after_(num, num_, opts, memo) {
     split("", num_)
-    for (k in NUM_SORT_MEMO) num_[k] = memo[k]
+    for (k in NUM_SORT_MEMO) if (k in memo) num_[k] = memo[k]
 }
 
-###
+##
 #
 # Sort ascending in place.
 #
@@ -910,7 +896,7 @@ function num_sort_after_(num, num_, opts, memo) {
 #
 #     num_sort_ascending(3 1 2) => 1 2 3
 #
-###
+##
 
 function num_sort_ascending(arr) {
     if (AWK_HAS_ASORT) {
@@ -937,7 +923,7 @@ function num_sort_ascending_init() {
     num_function_init("sort_ascending sort_asc sort_up sort", "Sort the values in ascending order.", "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
-###
+##
 #
 # Sort descending in place.
 #
@@ -945,7 +931,7 @@ function num_sort_ascending_init() {
 #
 #     num_sort_descending(3 1 2) => 3 2 1
 #
-###
+##
 
 function num_sort_descending(arr) {
     if (AWK_HAS_ASORT) {
@@ -977,9 +963,9 @@ function num_sort_descending_init() {
 #
 # num-sort.awk booleans
 #
-###
+##
 
-###
+##
 #
 # Is the list sorted in ascending order?
 #
@@ -1023,7 +1009,7 @@ function num_is_ascending_init() {
     num_function_init("is_ascending is_asc", "Is the list sorted in ascending order?", "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
-###
+##
 #
 # Is the list sorted in strictly ascending order?
 #
@@ -1064,7 +1050,7 @@ function num_is_strictly_ascending_init() {
     num_function_init("is_strictly_ascending is_strict_asc", "Is the list sorted in strictly ascending order?", "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
-###
+##
 #
 # Is the list sorted in descending order?
 #
@@ -1108,7 +1094,7 @@ function num_is_descending_init() {
     num_function_init("is_descending is_desc", "Is the list sorted in descending order?", "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
-###
+##
 #
 # Is the list sorted in strictly descending order?
 #
@@ -1153,9 +1139,9 @@ function num_is_strictly_descending_init() {
 #
 # num-insertion-sort.awk
 #
-###
+##
 
-###
+##
 #
 # Insertion sort.
 #
@@ -1165,7 +1151,7 @@ function num_is_strictly_descending_init() {
 #
 # Thanks to https://en.wikipedia.org/wiki/Insertion_sort
 #
-###
+##
 
 function num_insertion_sort(A) {
     num_insertion_sort_slice(A, 1, num_arr_length(A))
@@ -1188,13 +1174,13 @@ function num_insertion_sort_slice(A, lo, hi,  i, j, x) {
 #
 # num-quicksort.awk
 #
-###
+##
 
 function num_quicksort_awk_init() {
     NUM_QUICKSORT_INSERTION_SORT_THRESHOLD = 12
 }
 
-###
+##
 #
 # Quicksort.
 #
@@ -1216,7 +1202,7 @@ function num_quicksort_awk_init() {
 # http://stackoverflow.com/questions/32001841/how-to-implement-dual-pivot-quicksort-in-python
 # http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/tip/src/share/classes/java/util/DualPivotQuicksort.java
 #
-###
+##
 
 function num_quicksort(A) {
     num_quicksort_slice(A, 1, num_arr_length(A))
@@ -1234,13 +1220,13 @@ function num_quicksort_slice(A, lo, hi,   pivot_index) {
     num_quicksort_slice(A, pivot_index + 1, hi)
 }
 
-###
+##
 #
 # Partition an array slice using a given pivot index.
 #
 # Return the new pivot index.
 #
-###
+##
 
 function num_partition_slice(A, lo, hi, pivot_index,  left, right, pivot_value, t) {
     if (lo >= hi) return lo
@@ -1258,19 +1244,19 @@ function num_partition_slice(A, lo, hi, pivot_index,  left, right, pivot_value, 
     return pivot_index
 }
 
-###
+##
 #
 # Choose a quicksort pivot index by using a random number.
 # This is a naive implemenation and is here for benchmarking.
 # Typically you will never need this function for real-world data.
 #
-###
+##
 
 function num_quicksort_pivot_index_via_rand(A, lo, hi) {
     return lo + int((hi - lo + 1) * rand())
 }
 
-###
+##
 #
 # Choose a quicksort pivot index by using the "median of three" heuristic
 # with a swap sort of the three items for efficiency on the next pivot.
@@ -1300,7 +1286,7 @@ function num_quicksort_pivot_index_via_rand(A, lo, hi) {
 #
 # Return the pivot index.
 #
-###
+##
 
 function num_quicksort_pivot_index_via_median_of_three_sort(A) {
     num_quicksort_pivot_index_via_median_of_three_sort_slice(A, 1, num_arr_length(A))
@@ -1326,7 +1312,7 @@ function num_quicksort_pivot_index_via_median_of_three_sort_slice(A, lo, hi,  mi
 # Call `map_after` to invalidate all metadata then
 # restore the number of items.
 #
-###
+##
 
 function map_before_(num, num_, opts, memo) {
     memo["n"] = num_["n"]
@@ -1341,9 +1327,9 @@ function map_after_(num, num_, opts, memo) {
 #
 # num-unique.awk
 #
-###
+##
 
-###
+##
 #
 # Is the list all unique items?
 #
@@ -1378,13 +1364,13 @@ function num_is_unique_init() {
 #
 # num-map-round.awk
 #
-###
+##
 
-###
+##
 #
 # Initialize.
 #
-###
+##
 
 function num_map_round_awk_init() {
     #TODO refactor
@@ -1395,7 +1381,7 @@ function num_map_round_awk_init() {
     TRUE
 }
 
-###
+##
 #
 # Map round, a.k.a. round towards nearest integer, nint.
 #
@@ -1403,7 +1389,7 @@ function num_map_round_awk_init() {
 #
 #     num_map_round(-1.9 1.9) => -2 2
 #
-###
+##
 
 function num_map_round(arr) {
     for (i in arr) arr[i] = num_round(arr[i])
@@ -1434,7 +1420,7 @@ function num_map_nint_(num, num_, opts) {
     return num_map_round_(num, num_, opts)
 }
 
-###
+##
 #
 # Map: round off, a.k.a. round towards zero, truncate.
 #
@@ -1442,7 +1428,7 @@ function num_map_nint_(num, num_, opts) {
 #
 #     num_map_round_off(-1.9 1.9) => -1 1
 #
-###
+##
 
 function num_map_round_off(arr) {
     for (i in arr) arr[i] = num_round_off(arr[i])
@@ -1473,7 +1459,7 @@ function num_map_truncate_(num, num_, opts) {
     return num_map_round_off_(num, num_, opts)
 }
 
-###
+##
 #
 # Map: round up, a.k.a. round towards positive infinity, ceiling.
 #
@@ -1481,7 +1467,7 @@ function num_map_truncate_(num, num_, opts) {
 #
 #     num_map_round_up(-1.9 1.9) => -1 2
 #
-###
+##
 
 function num_map_round_up(arr) {
     for (i in arr) arr[i] = num_round_up(arr[i])
@@ -1512,7 +1498,7 @@ function num_map_ceiling_(num, num_, opts) {
     return num_map_round_up_(num, num_, opts)
 }
 
-###
+##
 #
 # Map: round down, a.k.a. round towards negative infinity, floor.
 #
@@ -1520,7 +1506,7 @@ function num_map_ceiling_(num, num_, opts) {
 #
 #     num_map_round_down(-1.9 1.9) => -2 1
 #
-###
+##
 
 function num_map_round_down(arr) {
     for (i in arr) arr[i] = num_round_down(arr[i])
@@ -1551,26 +1537,26 @@ function num_map_floor_(num, num_, opts) {
     return num_map_round_down_(num, num_, opts)
 }
 
-###
+##
 #
 # Map round after helper: call this function only from within
 # each of the rounding functions, before the work begins.
 # This function saves as much metadata as possible.
 #
-###
+##
 
 function num_map_round_before_(num, num_, opts, f, memo) {
     split("", memo)
     for (k in NUM_MAP_ROUND_MEMO) if (k in num_) memo[k] = num_[k]
 }
 
-###
+##
 #
 # Map round after helper: call this function only from within
 # each of the rounding functions, after the work ends.
 # This function restores as much metadata as possible.
 #
-###
+##
 
 function num_map_round_after_(num, num_, opts, f, memo) {
     split("",num_)
@@ -1583,9 +1569,9 @@ function num_map_round_after_(num, num_, opts, f, memo) {
 #
 # num-normalize.awk
 #
-###
+##
 
-###
+##
 #
 # Map: normalize each value to be 0 to 1.
 #
@@ -1593,7 +1579,7 @@ function num_map_round_after_(num, num_, opts, f, memo) {
 #
 #     num_map_normalize(1 2 4) => 0 0.33333 1
 #
-###
+##
 
 function num_map_normalize_with_min_max(arr, min_old, max_old, min_new, max_new) {
     multiply = (max_new - min_new) / (max_old - min_old)
@@ -1624,9 +1610,9 @@ function num_map_normalize_init() {
 #
 # num-mean.awk
 #
-###
+##
 
-###
+##
 #
 # Mean, a.k.a. arithmetic mean, average.
 #
@@ -1634,7 +1620,7 @@ function num_map_normalize_init() {
 #
 #     num_mean(1 2 4) => 2.33333
 #
-###
+##
 
 function num_mean(arr) {
     return num_sum(arr) / num_n(arr)
@@ -1665,9 +1651,9 @@ function num_mean_init() {
 #
 # num-mean-absolute-deviation.awk
 #
-###
+##
 
-###
+##
 #
 # Mean absolute deviation.
 #
@@ -1676,7 +1662,7 @@ function num_mean_init() {
 # Example:
 #
 #     num_mean_absolute_deviation(1 2 4) => 1.11111
-###
+##
 
 function num_mean_absolute_deviation(arr,  _mean, _n, x) {
     _mean = num_mean(arr)
@@ -1708,9 +1694,9 @@ function num_mad_(num, num_, opts) { return num_mean_absolute_deviation_(num, nu
 #
 # num-sum-of-mean-deviation.awk
 #
-###
+##
 
-###
+##
 #
 # Sum of mean deviation exp.
 #
@@ -1739,7 +1725,7 @@ function num_sum_of_mean_deviation_exp_init() {
     num_function_init("num_sum_of_mean_deviation_exp", "Get the sum of mean deviation for a given exponent.", "https://en.wikipedia.org/wiki/Deviation_(statistics)")
 }
 
-###
+##
 #
 # Sum of Squares, a.k.a. the sum of each deviation to the power of 2, a.k.a. SS.
 #
@@ -1747,7 +1733,7 @@ function num_sum_of_mean_deviation_exp_init() {
 #
 #     num_sum_of_squares(1 2 4) => 4.66667
 #
-###
+##
 
 function num_sum_of_squares(arr) {
     return num_sum_of_mean_deviation_exp(arr, num_mean(arr), 2)
@@ -1763,7 +1749,7 @@ function num_sum_of_squares_init() {
     num_function_init("sum_of_squares sum_squares ss mean_squared_error mse", "Get the sum of squares, a.k.a. sum of each mean deviation to the power of 2, a.k.a. SS", "https://en.wikipedia.org/wiki/Deviation_(statistics)")
 }
 
-###
+##
 #
 # Sum of Cubes, a.k.a. sum of each mean deviation to the power of 3.
 #
@@ -1771,7 +1757,7 @@ function num_sum_of_squares_init() {
 #
 #     1 2 4 => 2.22222
 #
-###
+##
 
 function num_sum_of_cubes(arr) {
     return num_sum_of_mean_deviation_exp(arr, num_mean(arr), 3)
@@ -1787,7 +1773,7 @@ function num_sum_of_cubes_init() {
     num_function_init("sum_of_cubes sum_cubes", "Get the  sum of cubes, a.k.a. sum of each mean deviation to the power of 3.", "https://en.wikipedia.org/wiki/Mean_squared_error")
 }
 
-###
+##
 #
 # Sum of Quads, a.k.a. sum of each mean deviation to the power of 4.
 #
@@ -1795,7 +1781,7 @@ function num_sum_of_cubes_init() {
 #
 #     1 2 4 => TODO
 #
-###
+##
 
 function num_sum_of_quads(arr) {
     return num_sum_of_mean_deviation_exp(arr, num_mean(arr), 4)
@@ -1815,9 +1801,9 @@ function num_sum_of_quads_init() {
 #
 # num-meanest.awk
 #
-###
+##
 
-###
+##
 #
 # Meanest, i.e. the value closest to the mean.
 #
@@ -1825,7 +1811,7 @@ function num_sum_of_quads_init() {
 #
 #     num_meanest(1 2 4) => 2
 #
-###
+##
 
 function num_meanest(arr) {
     return num_arr_closest_value(arr, num_mean(arr))
@@ -1845,9 +1831,9 @@ function num_meanest_init() {
 #
 # num-trimean.awk
 #
-###
+##
 
-###
+##
 #
 # Trimean.
 #
@@ -1857,7 +1843,7 @@ function num_meanest_init() {
 #
 # Requirement: the array is sorted.
 #
-###
+##
 
 function num_trimean(arr,  _q1, _q2, _q3) {
     _q1 = num_quartile_1(arr)
@@ -1885,9 +1871,9 @@ function num_trimean_init() {
 #
 # num-median.awk
 #
-###
+##
 
-###
+##
 #
 # Median of an array slice.
 #
@@ -1896,7 +1882,7 @@ function num_trimean_init() {
 #     num_median_slice((1 2 4), 1, 3) => 2
 #     num_median_slice((1 2 4 9 9), 1, 3) => 3
 #
-###
+##
 
 function num_median_of_slice(arr, start, stop,  _n, i) {
     _n = 1 + stop - start
@@ -1909,7 +1895,7 @@ function num_median_of_slice(arr, start, stop,  _n, i) {
     }
 }
 
-###
+##
 #
 # Median.
 #
@@ -1920,7 +1906,7 @@ function num_median_of_slice(arr, start, stop,  _n, i) {
 #
 # Requirement: the array is sorted.
 #
-###
+##
 
 function num_median(arr,  _n, i) {
     _n = num_n(arr)
@@ -1955,7 +1941,7 @@ function num_median_init() {
     num_function_init("median med", "Get the median.", "https://en.wikipedia.org/wiki/Normalization_(statistics)")
 }
 
-###
+##
 #
 # Median low: get the lesser median.
 #
@@ -1986,7 +1972,7 @@ function num_median_low_init() {
     num_function_init("median_low med_low", "Get the median that is lower a.k.a. lesser.", "https://en.wikipedia.org/wiki/Normalization_(statistics)")
 }
 
-###
+##
 #
 # Median high: get the greater median.
 #
@@ -1995,7 +1981,7 @@ function num_median_low_init() {
 #     num_median_high(1 2 4) => 2
 #     num_median_high(1 2 4 99) => 4
 #
-###
+##
 
 function num_median_high(arr,  _n, i) {
     _n = num_n(arr)
@@ -2023,9 +2009,9 @@ function num_median_high_init() {
 #
 # num-mode.awk
 #
-###
+##
 
-###
+##
 #
 # Mode: get the mode, which may be a number, or list, or UNDEF.
 #
@@ -2037,7 +2023,7 @@ function num_median_high_init() {
 #     1 1 2 4 4 => 1 4
 #     1 2 3 => UNDEF
 #
-###
+##
 
 function num_mode(arr) {
     return TODO
@@ -2055,7 +2041,7 @@ function num_mode_init() {
     num_function_init("mode", "Get the mode, which may be a value, or list, or UNDEF.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
 }
 
-###
+##
 #
 # Mode-low: get the first mode, if any, or UNDEF.
 #
@@ -2067,7 +2053,7 @@ function num_mode_init() {
 #     1 1 2 4 4 => 1
 #     1 2 3 => UNDEF
 #
-###
+##
 
 function num_mode_low(arr) {
     return TODO
@@ -2085,7 +2071,7 @@ function num_mode_low_init() {
     num_function_init("mode_low", "Get the first mode, if any, or UNDEF.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
 }
 
-###
+##
 #
 # Mode-high: get the last mode, if any, or UNDEF.
 #
@@ -2097,7 +2083,7 @@ function num_mode_low_init() {
 #     1 1 2 4 4 => 4
 #     1 2 3 => UNDEF
 #
-###
+##
 
 function num_mode_high(arr) {
     return TODO
@@ -2119,7 +2105,7 @@ function num_mode_high_init() {
 #
 # num-variance.awk
 #
-###
+##
 
 # Alias
 function num_variance(arr) { num_sample_variance(arr) }
@@ -2129,7 +2115,7 @@ function num_variance_(num, num_, opts) { num_sample_variance_(num, num_, opts) 
 function num_var(arr) { num_sample_variance(arr) }
 function num_var_(num, num_, opts) { num_sample_variance_(num, num_, opts) }
 
-###
+##
 #
 # Sample Variance.
 #
@@ -2137,7 +2123,7 @@ function num_var_(num, num_, opts) { num_sample_variance_(num, num_, opts) }
 #
 #     num_sample_variance(1 2 4) => 2.33333
 #
-###
+##
 
 function num_sample_variance(arr) {
     return TODO
@@ -2157,7 +2143,7 @@ function num_sample_variance_init() {
 function num_svar(arr) { return num_sample_variance(arr) }
 function num_svar_(num, num_, opt) { return num_sample_variance_(num, num_, opt) }
 
-###
+##
 #
 # Population Variance.
 #
@@ -2165,7 +2151,7 @@ function num_svar_(num, num_, opt) { return num_sample_variance_(num, num_, opt)
 #
 #     num_population_variance(1 2 4) => 0.518519
 #
-###
+##
 
 function num_population_variance(arr) {
     return TODO
@@ -2189,7 +2175,7 @@ function num_pvar_(num, num_, opt) { return num_population_variance_(num, num_, 
 #
 # num-skewness.awk
 #
-###
+##
 
 # Alias
 function num_skewness(arr) { num_sample_skewness(arr) }
@@ -2199,7 +2185,7 @@ function num_skewness_(num, num_, opts) { num_sample_skewness_(num, num_, opts) 
 function num_skew(arr) { num_sample_skewness(arr) }
 function num_skew_(num, num_, opts) { num_sample_skewness_(num, num_, opts) }
 
-###
+##
 #
 # Sample skewness
 #
@@ -2214,7 +2200,7 @@ function num_skew_(num, num_, opts) { num_sample_skewness_(num, num_, opts) }
 #   * Sum each value deviation from the mean cubed.
 #   * Divide by the number of items - 1.
 #
-###
+##
 
 function num_sample_skewness(arr) {
     return num_sum_of_mean_deviation_exp(arr, num_mean(arr), 3) / (num_n(arr) - 1)
@@ -2234,7 +2220,7 @@ function num_sample_skewness_init() {
 function num_sskew(arr) { num_sample_skewness(arr) }
 function num_sskew_(num, num_, opts) { num_sample_skewness_(num, num_, opts) }
 
-###
+##
 #
 # Population skewness
 #
@@ -2253,7 +2239,7 @@ function num_sskew_(num, num_, opts) { num_sample_skewness_(num, num_, opts) }
 #   * Sum each value deviation from the mean cubed.
 #   * Divide by the number of items.
 #
-###
+##
 
 function num_population_skewness(arr) {
     return num_sum_of_mean_deviation_exp(arr, num_mean(arr), 3) / num_n(arr)
@@ -2297,7 +2283,7 @@ function num_pskew_(num, num_, opts) { num_population_skewness_(num, num_, opts)
 #
 # Kurtosis is a nondimensional quantity.
 #
-###
+##
 
 # Alias
 function num_kurtosis(arr) { num_sample_kurtosis(arr) }
@@ -2307,7 +2293,7 @@ function num_kurtosis_(num, num_, opts) { num_sample_kurtosis_(num, num_, opts) 
 function num_kurt(arr) { num_sample_kurtosis(arr) }
 function num_kurt_(num, num_, opts) { num_sample_kurtosis_(num, num_, opts) }
 
-###
+##
 #
 # Sample kurtosis
 #
@@ -2315,7 +2301,7 @@ function num_kurt_(num, num_, opts) { num_sample_kurtosis_(num, num_, opts) }
 #
 #     num_sample_kurtosis(1 2 4) => 5.44444
 #
-###
+##
 
 function num_sample_kurtosis(arr) {
     return num_sum_of_mean_deviation_exp(arr, num_mean(arr), 4) / (num_n(arr) - 1)
@@ -2335,7 +2321,7 @@ function num_sample_kurtosis_init() {
 function num_skurt(arr) { num_sample_kurtosis(arr) }
 function num_skurt_(num, num_, opts) { num_sample_kurtosis_(num, num_, opts) }
 
-###
+##
 #
 # Population kurtosis
 #
@@ -2343,7 +2329,7 @@ function num_skurt_(num, num_, opts) { num_sample_kurtosis_(num, num_, opts) }
 #
 #     num_population_kurtosis(1 2 4) => 3.62963
 #
-###
+##
 
 function num_population_kurtosis(arr) {
     return num_sum_of_mean_deviation_exp(arr, num_mean(arr), 4) / num_n(arr)
@@ -2367,7 +2353,7 @@ function num_pkurt_(num, num_, opts) { num_population_kurtosis_(num, num_, opts)
 #
 # num-standard-deviation.awk
 #
-###
+##
 
 # Alias
 function num_standard_deviation(arr) { num_sample_standard_deviation(arr) }
@@ -2377,7 +2363,7 @@ function num_standard_deviation_(num, num_, opts) { num_sample_standard_deviatio
 function num_stddev(arr) { num_sample_standard_deviation(arr) }
 function num_stddev_(num, num_, opts) { num_sample_standard_deviation_(num, num_, opts) }
 
-###
+##
 #
 # Sample Standard Deviation.
 #
@@ -2385,7 +2371,7 @@ function num_stddev_(num, num_, opts) { num_sample_standard_deviation_(num, num_
 #
 #     num_sample_standard_deviation(1 2 4) => 1.52753
 #
-###
+##
 
 function num_sample_standard_deviation(arr) {
     return sqrt(num_sample_variance(arr))
@@ -2405,7 +2391,7 @@ function num_sample_standard_deviation_init() {
 function num_sstddev(arr) { num_sample_standard_deviation(arr) }
 function num_sstddev_(num, num_, opts) { num_sample_standard_deviation_(num, num_, opts) }
 
-###
+##
 #
 # Population Standard Deviation.
 #
@@ -2413,7 +2399,7 @@ function num_sstddev_(num, num_, opts) { num_sample_standard_deviation_(num, num
 #
 #     num_population_standard_deviation(1 2 4) => 1.24722
 #
-###
+##
 
 function num_population_standard_deviation(arr) {
     return sqrt(num_population_variance(arr))
@@ -2437,7 +2423,7 @@ function num_pstddev_(num, num_, opts) { num_population_standard_deviation_(num,
 #
 # num-coefficient-of-variance.awk
 #
-###
+##
 
 # Alias
 function num_coefficient_of_variance(arr) { num_sample_coefficient_of_variance(arr) }
@@ -2447,7 +2433,7 @@ function num_coefficient_of_variance_(num, num_, opts) { num_sample_coefficient_
 function num_covar(arr) { num_sample_coefficient_of_variance(arr) }
 function num_covar_(num, num_, opts) { num_sample_coefficient_of_variance_(num, num_, opts) }
 
-###
+##
 #
 # Sample Coefficient of Variance.
 #
@@ -2455,7 +2441,7 @@ function num_covar_(num, num_, opts) { num_sample_coefficient_of_variance_(num, 
 #
 #     num_sample_coefficient_of_variance(1 2 4) => 0.654654
 #
-###
+##
 
 function num_sample_coefficient_of_variance(arr) {
     return num_sample_standard_deviation(arr) / num_mean(arr)
@@ -2475,7 +2461,7 @@ function num_sample_coefficient_of_variance_init() {
 function num_scovar(arr) { num_sample_coefficient_of_variance(arr) }
 function num_scovar_(num, num_, opts) { num_sample_coefficient_of_variance_(num, num_, opts) }
 
-###
+##
 #
 # Population Coefficient of Variance.
 #
@@ -2483,7 +2469,7 @@ function num_scovar_(num, num_, opts) { num_sample_coefficient_of_variance_(num,
 #
 #     1 2 4 => 0.534522
 #
-###
+##
 
 function num_population_coefficient_of_variance(arr) {
     return num_population_standard_deviation(arr) / num_mean(arr)
@@ -2527,9 +2513,9 @@ function num_pcovar_(num, num_, opts) { num_population_coefficient_of_variance_(
 #
 #   * For more see https://en.wikipedia.org/wiki/Quartile
 #
-###
+##
 
-###
+##
 #
 # Interquartile Range, a.k.a. IQR.
 #
@@ -2537,7 +2523,7 @@ function num_pcovar_(num, num_, opts) { num_population_coefficient_of_variance_(
 #
 #     num_interquartile_range(1 2 3 4 5) => 2.5
 #
-###
+##
 
 function num_interquartile_range(arr) {
     return num_quartile_3(arr) - num_quartile_1(arr)
@@ -2557,7 +2543,7 @@ function num_interquartile_range_init() {
 function num_iqr(arr) { return num_interquartile_range(arr) }
 function num_iqr_(num, num_, opts) { return num_interquartile_range_(num, num_, opts) }
 
-###
+##
 #
 # Quartile 0, a.k.a. Q0, 0th percentile, minimum.
 #
@@ -2565,7 +2551,7 @@ function num_iqr_(num, num_, opts) { return num_interquartile_range_(num, num_, 
 #
 #     num_quartile_0(1 2 3 4 5) => 1
 #
-###
+##
 
 function num_quartile_0(arr) {
     return num_min(arr)
@@ -2585,7 +2571,7 @@ function num_quartile_0_init() {
 function num_q0(arr) { return num_quartile_0(arr) }
 function num_q0_(num, num_, opts) { return num_quartile_0_(num, num_, opts) }
 
-###
+##
 #
 # Quartile 1, a.k.a. Q1, 25th percentile, lower quartile.
 #
@@ -2595,7 +2581,7 @@ function num_q0_(num, num_, opts) { return num_quartile_0_(num, num_, opts) }
 #
 # Requires sorted array.
 #
-###
+##
 
 function num_quartile_1(arr,  _n, i, x, q1) {
     _n = num_n(arr)
@@ -2646,7 +2632,7 @@ function num_quartile_1_init() {
 function num_q1(arr) { return num_quartile_1(arr) }
 function num_q1_(num, num_, opts) { return num_quartile_1_(num, num_, opts) }
 
-###
+##
 #
 # Quartile 2, a.k.a. Q2, 50th percentile, median.
 #
@@ -2654,7 +2640,7 @@ function num_q1_(num, num_, opts) { return num_quartile_1_(num, num_, opts) }
 #
 #     num_quartile_1(1 2 3 4 5) => 3
 #
-###
+##
 
 function num_quartile_2(arr,  f) {
     return num_median(arr)
@@ -2674,7 +2660,7 @@ function num_quartile_2_init() {
 function num_q2(arr) { return num_quartile_2(arr) }
 function num_q2_(num, num_, opts) { return num_quartile_2_(num, num_, opts) }
 
-###
+##
 #
 # Quartile 3, a.k.a. Q3, 75th percentile, upper quartile.
 #
@@ -2684,7 +2670,7 @@ function num_q2_(num, num_, opts) { return num_quartile_2_(num, num_, opts) }
 #
 # Requires sorted array.
 #
-###
+##
 
 function num_quartile_3(arr,  _n, i, x, q3) {
     _n = num_n(arr)
@@ -2738,7 +2724,7 @@ function num_quartile_3_init() {
 function num_q3(arr) { return num_quartile_3(arr) }
 function num_q3_(num, num_, opts) { return num_quartile_3_(num, num_, opts) }
 
-###
+##
 #
 # Quartile 4, a.k.a. Q4, 100th percentile, maximum.
 #
@@ -2746,7 +2732,7 @@ function num_q3_(num, num_, opts) { return num_quartile_3_(num, num_, opts) }
 #
 #     num_quartile_1(1 2 3 4 5) => 5
 #
-###
+##
 
 function num_quartile_4(arr) {
     return num_max(arr)
@@ -2770,9 +2756,9 @@ function num_q4_(num, num_, opts) { return num_quartile_4_(num, num_, opts) }
 #
 # num-function-manager.awk
 #
-###
+##
 
-###
+##
 #
 # Initialize function metadata for a given function.
 #
@@ -2808,7 +2794,7 @@ function num_function_init(names, help, link,  f, i, name, name_list) {
     }
 }
 
-###
+##
 #
 # Initialize every file and function.
 #
@@ -2870,7 +2856,7 @@ function num_function_manager_init() {
     num_is_strictly_descending_init()
 }
 
-###
+##
 #
 # Function manager call: given a function name, call its function.
 #
@@ -2944,15 +2930,15 @@ function num_function_manager_call(f, num, num_, opts) {
     else return ""
 }
 
-### END INCLUDES
+## END INCLUDES
 
 ############################################################################
 #
 # INITIALIZE
 #
-###
+##
 
-###
+##
 #
 # Initialize everything.
 #
@@ -2967,7 +2953,7 @@ function init() {
     num_function_manager_init()
 }
 
-###
+##
 #
 # Initialize constants that we use; these are essentially like defines.
 #
@@ -3009,7 +2995,7 @@ function init_conf() {
     global_conf["scope"] = CONF_SCOPE_ALL
 }
 
-###
+##
 #
 # Initialize the word argv list.
 #
@@ -3020,7 +3006,7 @@ function init_word_argv() {
     split("", global_word_argv)
 }
 
-###
+##
 #
 # Initialize the global word list lookup array.
 #
@@ -3097,9 +3083,9 @@ function init_word_list() {
 #
 # CONF
 #
-###
+##
 
-###
+##
 #
 # Configure
 #
@@ -3111,12 +3097,12 @@ function conf() {
 }
 
 
-###
+##
 #
 # Configure the output format string, a.k.a. AWK OFMT.
 # This controls number formatting as float, decimal, int, etc.
 #
-###
+##
 
 function conf_ofmt() {
     OFMT = (ENVIRON["OFMT"]) ? ENVIRON["OFMT"] : "%.6g"
@@ -3137,7 +3123,7 @@ function conf_scope() {
     CONF_SCOPE_FIELD_FLAG  = (global_conf["scope"] == CONF_SCOPE_FIELD)
 }
 
-###
+##
 #
 # Given a word, set a configuration setting.
 #
@@ -3166,7 +3152,7 @@ function word_to_conf(word) {
         return ""
 }
 
-###
+##
 #
 # Given a list of words, set all configuration settings.
 #
@@ -3178,9 +3164,9 @@ function words_to_conf(words,  imax) {
 #
 # WORDS
 #
-###
+##
 
-###
+##
 #
 # Given a function name, calculate the function and return a string.
 #
@@ -3201,7 +3187,7 @@ function num_function_name_to_s(num, num_, opts, function_name,  s) {
     return s
 }
 
-###
+##
 #
 # Given function names, calculate the functions and return a string.
 #
@@ -3230,7 +3216,7 @@ function num_function_names_to_s(num, num_, opts, function_names, field_separato
 #
 ##
 
-###
+##
 #
 # Start receiving input.
 #
@@ -3244,7 +3230,7 @@ function scope_start() {
     split("", global_num_)
 }
 
-###
+##
 #
 # Stop receiving input.
 #
@@ -3255,7 +3241,7 @@ function scope_stop() {
     print_output()
 }
 
-###
+##
 #
 # Parse word inputs by iterating: whenever a word is recognized,
 # then move it from the word inputs array to the word matches array.
@@ -3279,7 +3265,7 @@ function parse_words(word_inputs, word_outputs, word_list,  i, word) {
     }
 }
 
-###
+##
 #
 # Parse the command line ARGV inputs to recognized word outputs.
 #
@@ -3287,7 +3273,7 @@ function parse_argv() {
     parse_words(ARGV, global_word_argv, global_word_list)
 }
 
-###
+##
 #
 # Print output to the screen.
 #

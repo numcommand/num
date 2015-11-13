@@ -2,9 +2,9 @@
 #
 # num-insertion-sort.awk
 #
-###
+##
 
-###
+##
 #
 # Insertion sort.
 #
@@ -14,7 +14,7 @@
 #
 # Thanks to https://en.wikipedia.org/wiki/Insertion_sort
 #
-###
+##
 
 function num_insertion_sort(A) {
     num_insertion_sort_slice(A, 1, num_arr_length(A))

@@ -2,9 +2,9 @@
 #
 # num-meanest.awk
 #
-###
+##
 
-###
+##
 #
 # Meanest, i.e. the value closest to the mean.
 #
@@ -12,7 +12,7 @@
 #
 #     num_meanest(1 2 4) => 2
 #
-###
+##
 
 function num_meanest(arr) {
     return num_arr_closest_value(arr, num_mean(arr))

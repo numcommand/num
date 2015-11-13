@@ -13,9 +13,9 @@
 # TODO: Consider using Timsort, which tends to be faster for real
 # world data that may already be sorted or partially sorted.
 #
-###
+##
 
-###
+##
 #
 # Initialize.
 #
@@ -23,7 +23,7 @@
 # For example, a sort will not affect the sum of the numbers,
 # so the metadata can continue to cache the sum throughout a sort.
 #
-###
+##
 
 function num_sort_awk_init() {
     #TODO refactor
@@ -48,11 +48,11 @@ function num_sort_awk_init() {
     TRUE
 }
 
-###
+##
 #
 # Remember metadata, then restore it.
 #
-###
+##
 
 function num_sort_before_(num, num_, opts, memo) {
     for (k in NUM_SORT_MEMO) memo[k] = num_[k]
@@ -63,7 +63,7 @@ function num_sort_after_(num, num_, opts, memo) {
     for (k in NUM_SORT_MEMO) num_[k] = memo[k]
 }
 
-###
+##
 #
 # Sort ascending in place.
 #
@@ -71,7 +71,7 @@ function num_sort_after_(num, num_, opts, memo) {
 #
 #     num_sort_ascending(3 1 2) => 1 2 3
 #
-###
+##
 
 function num_sort_ascending(arr) {
     if (AWK_HAS_ASORT) {
@@ -98,7 +98,7 @@ function num_sort_ascending_init() {
     num_function_init("sort_ascending sort_asc sort_up sort", "Sort the values in ascending order.", "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
-###
+##
 #
 # Sort descending in place.
 #
@@ -106,7 +106,7 @@ function num_sort_ascending_init() {
 #
 #     num_sort_descending(3 1 2) => 3 2 1
 #
-###
+##
 
 function num_sort_descending(arr) {
     if (AWK_HAS_ASORT) {
@@ -138,9 +138,9 @@ function num_sort_descending_init() {
 #
 # num-sort.awk booleans
 #
-###
+##
 
-###
+##
 #
 # Is the list sorted in ascending order?
 #
@@ -184,7 +184,7 @@ function num_is_ascending_init() {
     num_function_init("is_ascending is_asc", "Is the list sorted in ascending order?", "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
-###
+##
 #
 # Is the list sorted in strictly ascending order?
 #
@@ -225,7 +225,7 @@ function num_is_strictly_ascending_init() {
     num_function_init("is_strictly_ascending is_strict_asc", "Is the list sorted in strictly ascending order?", "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
-###
+##
 #
 # Is the list sorted in descending order?
 #
@@ -269,7 +269,7 @@ function num_is_descending_init() {
     num_function_init("is_descending is_desc", "Is the list sorted in descending order?", "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
-###
+##
 #
 # Is the list sorted in strictly descending order?
 #

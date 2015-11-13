@@ -2,7 +2,7 @@
 #
 # num-standard-deviation.awk
 #
-###
+##
 
 # Alias
 function num_standard_deviation(arr) { num_sample_standard_deviation(arr) }
@@ -12,7 +12,7 @@ function num_standard_deviation_(num, num_, opts) { num_sample_standard_deviatio
 function num_stddev(arr) { num_sample_standard_deviation(arr) }
 function num_stddev_(num, num_, opts) { num_sample_standard_deviation_(num, num_, opts) }
 
-###
+##
 #
 # Sample Standard Deviation.
 #
@@ -20,7 +20,7 @@ function num_stddev_(num, num_, opts) { num_sample_standard_deviation_(num, num_
 #
 #     num_sample_standard_deviation(1 2 4) => 1.52753
 #
-###
+##
 
 function num_sample_standard_deviation(arr) {
     return sqrt(num_sample_variance(arr))
@@ -40,7 +40,7 @@ function num_sample_standard_deviation_init() {
 function num_sstddev(arr) { num_sample_standard_deviation(arr) }
 function num_sstddev_(num, num_, opts) { num_sample_standard_deviation_(num, num_, opts) }
 
-###
+##
 #
 # Population Standard Deviation.
 #
@@ -48,7 +48,7 @@ function num_sstddev_(num, num_, opts) { num_sample_standard_deviation_(num, num
 #
 #     num_population_standard_deviation(1 2 4) => 1.24722
 #
-###
+##
 
 function num_population_standard_deviation(arr) {
     return sqrt(num_population_variance(arr))

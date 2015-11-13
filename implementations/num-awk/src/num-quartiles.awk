@@ -22,9 +22,9 @@
 #
 #   * For more see https://en.wikipedia.org/wiki/Quartile
 #
-###
+##
 
-###
+##
 #
 # Interquartile Range, a.k.a. IQR.
 #
@@ -32,7 +32,7 @@
 #
 #     num_interquartile_range(1 2 3 4 5) => 2.5
 #
-###
+##
 
 function num_interquartile_range(arr) {
     return num_quartile_3(arr) - num_quartile_1(arr)
@@ -52,7 +52,7 @@ function num_interquartile_range_init() {
 function num_iqr(arr) { return num_interquartile_range(arr) }
 function num_iqr_(num, num_, opts) { return num_interquartile_range_(num, num_, opts) }
 
-###
+##
 #
 # Quartile 0, a.k.a. Q0, 0th percentile, minimum.
 #
@@ -60,7 +60,7 @@ function num_iqr_(num, num_, opts) { return num_interquartile_range_(num, num_, 
 #
 #     num_quartile_0(1 2 3 4 5) => 1
 #
-###
+##
 
 function num_quartile_0(arr) {
     return num_min(arr)
@@ -80,7 +80,7 @@ function num_quartile_0_init() {
 function num_q0(arr) { return num_quartile_0(arr) }
 function num_q0_(num, num_, opts) { return num_quartile_0_(num, num_, opts) }
 
-###
+##
 #
 # Quartile 1, a.k.a. Q1, 25th percentile, lower quartile.
 #
@@ -90,7 +90,7 @@ function num_q0_(num, num_, opts) { return num_quartile_0_(num, num_, opts) }
 #
 # Requires sorted array.
 #
-###
+##
 
 function num_quartile_1(arr,  _n, i, x, q1) {
     _n = num_n(arr)
@@ -141,7 +141,7 @@ function num_quartile_1_init() {
 function num_q1(arr) { return num_quartile_1(arr) }
 function num_q1_(num, num_, opts) { return num_quartile_1_(num, num_, opts) }
 
-###
+##
 #
 # Quartile 2, a.k.a. Q2, 50th percentile, median.
 #
@@ -149,7 +149,7 @@ function num_q1_(num, num_, opts) { return num_quartile_1_(num, num_, opts) }
 #
 #     num_quartile_1(1 2 3 4 5) => 3
 #
-###
+##
 
 function num_quartile_2(arr,  f) {
     return num_median(arr)
@@ -169,7 +169,7 @@ function num_quartile_2_init() {
 function num_q2(arr) { return num_quartile_2(arr) }
 function num_q2_(num, num_, opts) { return num_quartile_2_(num, num_, opts) }
 
-###
+##
 #
 # Quartile 3, a.k.a. Q3, 75th percentile, upper quartile.
 #
@@ -179,7 +179,7 @@ function num_q2_(num, num_, opts) { return num_quartile_2_(num, num_, opts) }
 #
 # Requires sorted array.
 #
-###
+##
 
 function num_quartile_3(arr,  _n, i, x, q3) {
     _n = num_n(arr)
@@ -233,7 +233,7 @@ function num_quartile_3_init() {
 function num_q3(arr) { return num_quartile_3(arr) }
 function num_q3_(num, num_, opts) { return num_quartile_3_(num, num_, opts) }
 
-###
+##
 #
 # Quartile 4, a.k.a. Q4, 100th percentile, maximum.
 #
@@ -241,7 +241,7 @@ function num_q3_(num, num_, opts) { return num_quartile_3_(num, num_, opts) }
 #
 #     num_quartile_1(1 2 3 4 5) => 5
 #
-###
+##
 
 function num_quartile_4(arr) {
     return num_max(arr)

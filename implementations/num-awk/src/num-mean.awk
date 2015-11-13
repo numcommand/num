@@ -2,9 +2,9 @@
 #
 # num-mean.awk
 #
-###
+##
 
-###
+##
 #
 # Mean, a.k.a. arithmetic mean, average.
 #
@@ -12,7 +12,7 @@
 #
 #     num_mean(1 2 4) => 2.33333
 #
-###
+##
 
 function num_mean(arr) {
     return num_sum(arr) / num_n(arr)

@@ -3,16 +3,16 @@
 #
 # num-unique-test.sh
 #
-###
+##
 
 . minitest.sh
 num=${NUM:-num}
 
-###
+##
 #
 # is-unique
 #
-###
+##
 
 ## with unique
 

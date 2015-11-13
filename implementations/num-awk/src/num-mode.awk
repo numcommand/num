@@ -2,9 +2,9 @@
 #
 # num-mode.awk
 #
-###
+##
 
-###
+##
 #
 # Mode: get the mode, which may be a number, or list, or UNDEF.
 #
@@ -16,7 +16,7 @@
 #     1 1 2 4 4 => 1 4
 #     1 2 3 => UNDEF
 #
-###
+##
 
 function num_mode(arr) {
     return TODO
@@ -34,7 +34,7 @@ function num_mode_init() {
     num_function_init("mode", "Get the mode, which may be a value, or list, or UNDEF.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
 }
 
-###
+##
 #
 # Mode-low: get the first mode, if any, or UNDEF.
 #
@@ -46,7 +46,7 @@ function num_mode_init() {
 #     1 1 2 4 4 => 1
 #     1 2 3 => UNDEF
 #
-###
+##
 
 function num_mode_low(arr) {
     return TODO
@@ -64,7 +64,7 @@ function num_mode_low_init() {
     num_function_init("mode_low", "Get the first mode, if any, or UNDEF.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
 }
 
-###
+##
 #
 # Mode-high: get the last mode, if any, or UNDEF.
 #
@@ -76,7 +76,7 @@ function num_mode_low_init() {
 #     1 1 2 4 4 => 4
 #     1 2 3 => UNDEF
 #
-###
+##
 
 function num_mode_high(arr) {
     return TODO

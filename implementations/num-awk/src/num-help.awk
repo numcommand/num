@@ -2,7 +2,7 @@
 #
 # num-help.awk
 #
-###
+##
 
 function num_help() {
     print "Num version 0.10.0."
