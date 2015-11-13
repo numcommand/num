@@ -12,7 +12,7 @@ Num is a command line tool for mathematics and statistics data processing.
 
 To use Num:
 
-    $ echo "1 2 3 4" | num sum median variance stddev
+    $ num sum median variance stddev data.txt
     10 2.5 1.66667 1.29099
 
 To install:
