@@ -25,7 +25,7 @@ function num_n_(num, num_, opts,  f) {
 }
 
 function num_n_init() {
-    num_function_init("n count length size", "Get the number of items, a.k.a. count, length, size.", "https://en.wikipedia.org/wiki/Enumeration")
+    num_function_init("num_n n count length size", "Get the number of items, a.k.a. count, length, size.", "https://en.wikipedia.org/wiki/Enumeration")
 }
 
 ##
@@ -49,7 +49,7 @@ function num_first_(num, num_, opts,  f) {
 }
 
 function num_first_init() {
-    num_function_init("first head", "Get the first item.", "https://en.wikipedia.org/wiki/Enumeration")
+    num_function_init("num_first first head", "Get the first item.", "https://en.wikipedia.org/wiki/Enumeration")
 }
 
 ##
@@ -73,7 +73,7 @@ function num_last_(num, num_, opts,  f) {
 }
 
 function num_last_init() {
-    num_function_init("last tail", "Get the last item.", "https://en.wikipedia.org/wiki/Enumeration")
+    num_function_init("num_last last tail", "Get the last item.", "https://en.wikipedia.org/wiki/Enumeration")
 }
 
 ##
@@ -105,7 +105,7 @@ function num_min_(num, num_, opts,  f) {
 }
 
 function num_min_init() {
-    num_function_init("min minimum least lowest", "Get the minimum value, a.k.a. least, lowest.", "https://en.wikipedia.org/wiki/Maxima_and_minima")
+    num_function_init("num_min min minimum least lowest", "Get the minimum value, a.k.a. least, lowest.", "https://en.wikipedia.org/wiki/Maxima_and_minima")
 }
 
 ##
@@ -135,7 +135,7 @@ function num_max_(num, num_, opts,  f) {
 }
 
 function num_max_init() {
-    num_function_init("max maximum greatest highest", "Get the maximum value, a.k.a. greatest, highest.", "https://en.wikipedia.org/wiki/Maxima_and_minima")
+    num_function_init("num_max max maximum greatest highest", "Get the maximum value, a.k.a. greatest, highest.", "https://en.wikipedia.org/wiki/Maxima_and_minima")
 }
 
 ##
@@ -159,5 +159,5 @@ function num_range_(num, num_, opts,  f) {
 }
 
 function num_range_init() {
-    num_function_init("range interval breadth spread", "Get the range, a.k.a. interval, breadth, spread.", "https://en.wikipedia.org/wiki/Range_(statistics)")
+    num_function_init("num_range range interval breadth spread", "Get the range, a.k.a. interval, breadth, spread.", "https://en.wikipedia.org/wiki/Range_(statistics)")
 }

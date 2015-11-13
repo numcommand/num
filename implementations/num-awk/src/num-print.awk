@@ -6,28 +6,36 @@
 
 ##
 #
-# Print a message to stdout.
+# Print a record.
 #
-# Example:
+# This is the core output function, and the only one that should ever
+# print any normal result to the screen, during any normal operation.
 #
-#     num_out("hello")
-#     => Print "hello" to STDOUT
-#
-function num_out(msg) {
-    print msg
+##
+
+function num_print_record(num, num_, opts,   s, i) {
+    s = num_function_names_to_s(global_num, global_num_, global_opts, global_word_argv)
+    if (s != "") {
+        if (global_num_scope_n > 1) printf ORS
+        if (global_num_scope_output_n == 0)
+            num_print_record_fields(global_num, global_num_, global_opts)
+        else
+            printf s
+    }
 }
 
 ##
 #
-# Print a message to stderr.
+# Print all record fields.
 #
-# Example:
+# This is the fallback if the record has no output so far.
+# A typical example would be for a sort, or filter, or map.
 #
-#     num_err("hello")
-#     => Print "hello" to STDERR
-#
-# This is purposefully POSIX compatible.
-#
-function num_err(msg) {
-    print msg | "cat 1>&2"
+##
+
+function num_print_record_fields(num, num_, opts) {
+    for (i = 1; i <= num_["n"]; i++) {
+        if (i > 1) printf OFS
+        printf(OFMT, num[i])
+    }
 }

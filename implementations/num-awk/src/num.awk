@@ -1,7 +1,8 @@
 ## Basics
 #@include "num-lint.awk"
 @include "num-help.awk"
-@include "num-print.awk"
+@include "num-out-err.awk"
+@include "num-function.awk"
 
 ## Mathematics
 @include "num-absolute-value.awk"
@@ -26,6 +27,9 @@
 @include "num-unique.awk"
 
 ## Maps
+@include "num-map-increment.awk"
+@include "num-map-absolute-value.awk"
+@include "num-map-sign.awk"
 @include "num-map-round.awk"
 
 ## Statistics
@@ -45,4 +49,10 @@
 @include "num-quartiles.awk"
 
 ## Controllers
+@include "num-init.awk"
+@include "num-conf.awk"
+@include "num-scope.awk"
 @include "num-function-manager.awk"
+@include "num-print.awk"
+@include "num-argv.awk"
+@include "num-main.awk"

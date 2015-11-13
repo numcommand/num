@@ -45,7 +45,7 @@ function num_interquartile_range_(num, num_, opts,  f) {
 }
 
 function num_interquartile_range_init() {
-    num_function_init("interquartile_range i_q_r mid_spread middle_fifty", "Get the interquartile range, a.k.a. IQR.", "https://en.wikipedia.org/wiki/Interquartile_range")
+    num_function_init("num_interquartile_range interquartile_range i_q_r mid_spread middle_fifty", "Get the interquartile range, a.k.a. IQR.", "https://en.wikipedia.org/wiki/Interquartile_range")
 }
 
 # Alias
@@ -73,7 +73,7 @@ function num_quartile_0_(num, num_, opts,  f) {
 }
 
 function num_quartile_0_init() {
-    num_function_init("quartile_0 q_0 0_percent", "Get the quartile 0, a.k.a. Q0, 0th percentile, minimum.", "https://en.wikipedia.org/wiki/Quartile")
+    num_function_init("num_quartile_0 quartile_0 q_0 0_percent", "Get the quartile 0, a.k.a. Q0, 0th percentile, minimum.", "https://en.wikipedia.org/wiki/Quartile")
 }
 
 # Alias
@@ -134,7 +134,7 @@ function num_quartile_1_(num, num_, opts,  f, _n, i, x) {
 }
 
 function num_quartile_1_init() {
-    num_function_init("quartile_1 q_1 25_percent", "Get the quartile 1, a.k.a. Q1, 25th percentile, lower quartile.", "https://en.wikipedia.org/wiki/Quartile")
+    num_function_init("num_quartile_1 quartile_1 q_1 25_percent", "Get the quartile 1, a.k.a. Q1, 25th percentile, lower quartile.", "https://en.wikipedia.org/wiki/Quartile")
 }
 
 # Alias
@@ -162,7 +162,7 @@ function num_quartile_2_(num, num_, opts,  f) {
 }
 
 function num_quartile_2_init() {
-    num_function_init("quartile_2 q_2 50_percent", "Get the quartile 2, a.k.a. Q2, 50th percentile, median.", "https://en.wikipedia.org/wiki/Quartile")
+    num_function_init("num_quartile_2 quartile_2 q_2 50_percent", "Get the quartile 2, a.k.a. Q2, 50th percentile, median.", "https://en.wikipedia.org/wiki/Quartile")
 }
 
 # Alias
@@ -226,7 +226,7 @@ function num_quartile_3_(num, num_, opts,  f, _n, i, x) {
 }
 
 function num_quartile_3_init() {
-    num_function_init("quartile_3 q_3 75_percent", "Get the quartile 3, a.k.a. Q3, 75th percentile, upper quartile.", "https://en.wikipedia.org/wiki/Quartile")
+    num_function_init("num_quartile_3 quartile_3 q_3 75_percent", "Get the quartile 3, a.k.a. Q3, 75th percentile, upper quartile.", "https://en.wikipedia.org/wiki/Quartile")
 }
 
 # Alias
@@ -254,7 +254,7 @@ function num_quartile_4_(num, num_, opts,  f) {
 }
 
 function num_quartile_4_init() {
-    num_function_init("quartile_4 q_4 100_percent", "Get the quartile 4, a.k.a. Q4, 100th percentile, maximum.", "https://en.wikipedia.org/wiki/Quartile")
+    num_function_init("num_quartile_4 quartile_4 q_4 100_percent", "Get the quartile 4, a.k.a. Q4, 100th percentile, maximum.", "https://en.wikipedia.org/wiki/Quartile")
 }
 
 # Alias

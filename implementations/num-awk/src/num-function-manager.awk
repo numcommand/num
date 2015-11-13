@@ -6,44 +6,10 @@
 
 ##
 #
-# Initialize function metadata for a given function.
-#
-# Example:
-#
-#    function num_hello() {
-#        print "hello world"
-#    }
-#
-#    function num_hello_init() {
-#        num_function_init("hello hi hola", "Print a greeting", "http://example.com/hello.html")
-#    }
-#
-# The example creates these:
-#
-#    function_["num_hello","names"] = "hello hi hola"
-#    function_["num_hello", "help"] = "Print a greeting"
-#    function_["num_hello", "link"] = "http://example.com/hello.html"
-#    global_word_list["hello"] = "num_hello"
-#    global_word_list["hi"] = "num_hello"
-#    global_word_list["hola"] = "num_hello"
-#
-function num_function_init(names, help, link,  f, i, name, name_list) {
-    split(names, name_list)
-    f = "num_" name_list[1]
-    function_[f, "names"] = names
-    function_[f, "help"] = help
-    function_[f, "link"] = link
-    for (i in name_list) {
-        name = name_list[i]
-        gsub(/_/,"", name)
-        global_word_list[name] = f
-    }
-}
-
-##
-#
 # Initialize every file and function.
 #
+##
+
 function num_function_manager_init() {
     num_n_init()
     num_first_init()
@@ -85,6 +51,7 @@ function num_function_manager_init() {
     num_sort_awk_init()
     num_sort_ascending_init()
     num_sort_descending_init()
+    num_map_increment()
     num_map_absolute_value_init()
     num_map_sign_init()
     num_map_normalize_init()
@@ -98,6 +65,7 @@ function num_function_manager_init() {
     num_is_strictly_ascending_init()
     num_is_descending_init()
     num_is_strictly_descending_init()
+    num_help_init()
 }
 
 ##
@@ -108,7 +76,8 @@ function num_function_manager_init() {
 #
 #     num = 1 2 4
 #     num_ = []
-#     num_function_manager_call("sum", num, num_, opts)
+#     function_name = "num_sum"
+#     num_function_manager_call(num, num_, opts, function_name)
 #     => 7 (by calling the `sum` function)
 #
 # Note: this implementation uses if..else instead of
@@ -117,7 +86,9 @@ function num_function_manager_init() {
 # TODO: Research if it is possible to simultaneously support
 # gawk indirect functions, to do a function call via `@f()`.
 #
-function num_function_manager_call(f, num, num_, opts) {
+##
+
+function num_function_manager_call(num, num_, opts, f) {
     if (f == "") return ("")
     else if (f == "num_n") return num_n_(num, num_, opts)
     else if (f == "num_first") return num_first_(num, num_, opts)
@@ -158,6 +129,7 @@ function num_function_manager_call(f, num, num_, opts) {
     else if (f == "num_quartile_4") return num_quartile_4_(num, num_, opts)
     else if (f == "num_sort_ascending") return num_sort_ascending_(num, num_, opts)
     else if (f == "num_sort_descending") return num_sort_descending_(num, num_, opts)
+    else if (f == "num_map_increment") return num_map_increment_(num, num_, opts)
     else if (f == "num_map_absolute_value") return num_map_absolute_value_(num, num_, opts)
     else if (f == "num_map_sign") return num_map_sign_(num, num_, opts)
     else if (f == "num_map_normalize") return num_map_normalize_(num, num_, opts)
@@ -171,4 +143,57 @@ function num_function_manager_call(f, num, num_, opts) {
     else if (f == "num_is_descending") return num_is_descending_(num, num_, opts)
     else if (f == "num_is_strictly_descending") return num_is_strictly_descending_(num, num_, opts)
     else return ""
+}
+
+
+##
+#
+# Function name to s: given a function name, call its function,
+# and convert the return value to a string using formatting.
+#
+# Example:
+#
+#     num = 1 2 4
+#     num_ = []
+#     num_function_manager_call_to_s(num, num_, opts, "sum")
+#     => 7.00 (by calling the `sum` function and using OFMT)
+#
+##
+
+function num_function_name_to_s(num, num_, opts, function_name,  s) {
+    s = num_function_manager_call(num, num_, opts, function_name)
+    if (s != "") {
+        num_scope_output_n++
+        if (s + 0 == s) s = sprintf(OFMT, s)
+    }
+    return s
+}
+
+##
+#
+# Function names to s: given a list of function names, call each function,
+# and convert all the return values to a string using formatting.
+#
+# Example:
+#
+#     num = 1 2 4
+#     num_ = []
+#     function_names = "sum", "max"
+#     function_names_to_s(num, opts, ("sum", "max"))
+#     => "7.00,4.00" (by calling the functions and using OFMT and OFS)
+#
+##
+
+function num_function_names_to_s(num, num_, opts, function_names,  word, i, n, s, build) {
+    build = ""
+    for (i=1; i <= num_arr_length(function_names); i++) {
+        function_name = function_names[i]
+        s = num_function_name_to_s(num, num_, opts, function_name)
+        if (s != "") {
+            n++
+            if (n > 1) build = build OFS
+            build = build s
+        }
+    }
+    return build
 }

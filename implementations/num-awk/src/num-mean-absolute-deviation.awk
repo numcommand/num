@@ -34,7 +34,7 @@ function num_mean_absolute_deviation_(num, num_, opts,  f, _n, _mean, i, x) {
 }
 
 function num_mean_absolute_deviation_init() {
-    num_function_init("mean_absolute_deviation mad", "Get the average distance between each value and the mean.", "https://en.wikipedia.org/wiki/Average_absolute_deviation")
+    num_function_init("num_mean_absolute_deviation mean_absolute_deviation mad", "Get the average distance between each value and the mean.", "https://en.wikipedia.org/wiki/Average_absolute_deviation")
 }
 
 # Alias

@@ -25,5 +25,5 @@ function num_sum_(num, num_, opts,  f) {
 }
 
 function num_sum_init() {
-    num_function_init("sum total", "Get the sum, a.k.a. total.", "https://en.wikipedia.org/wiki/Summation")
+    num_function_init("num_sum sum total", "Get the sum, a.k.a. total.", "https://en.wikipedia.org/wiki/Summation")
 }

@@ -33,7 +33,7 @@ function num_sample_standard_deviation_(num, num_, opts,  f) {
 }
 
 function num_sample_standard_deviation_init() {
-    num_function_init("sample_standard_deviation s_st_dev s_s_d standard_deviation std_dev sd", "Get the sample standard deviation", "https://wikipedia.org/wiki/Standard_deviation")
+    num_function_init("num_sample_standard_deviation sample_standard_deviation s_st_dev s_s_d standard_deviation std_dev sd", "Get the sample standard deviation", "https://wikipedia.org/wiki/Standard_deviation")
 }
 
 # Alias
@@ -61,7 +61,7 @@ function num_population_standard_deviation_(num, num_, opts,  f) {
 }
 
 function num_population_standard_deviation_init() {
-    num_function_init("population_standard_deviation p_st_dev p_s_d", "Get the population standard deviation.", "https://wikipedia.org/wiki/Standard_deviation")
+    num_function_init("num_population_standard_deviation population_standard_deviation p_st_dev p_s_d", "Get the population standard deviation.", "https://wikipedia.org/wiki/Standard_deviation")
 }
 
 # Alias

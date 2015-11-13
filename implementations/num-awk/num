@@ -24,39 +24,8 @@ set -euf
 #
 ##
 
-##
-#
-# Choose the awk to use, in this order of importance:
-#
-#    * ENV var, for example: AWK="/example/awk" num ...
-#      This way gives the user complete control of which awk to use.
-#
-#    * GNU awk a.k.a. `gawk`. Available on all modern GNU Linux systems.
-#      GNU awk provides more than POSIX, such as `asort()` and `length()`.
-#      Note that Ubuntu Linux preinstalls `mawk` not `gawk`.
-#
-#    * Default awk. This is the most common awk, especially on old systems,
-#      as well on curent Mac OSX systems and similar kinds of BSD systems.
-#      The default awk is typically inferior to newer awk implementations.
-#      The default awk is defined by POSIX and therefore has to exist on
-#      all POSIX-conformant systems.
-#
-# TODO:
-#
-#    * mawk. Standard on Ubuntu and people say it's up to 8x faster.
-#      We're currently working on mawk compatibility, and we believe
-#      everything works except for sorting functions, such as median.
-#      The short-term workaround is to pipe to `sort` before `num`.
-#
-#    * nawk - while the AWK language was being developed the authors
-#      released a new version (hence the n - new awk) to avoid confusion.
-#
-##
-
 AWK=${AWK:-$(command -v gawk || command -v awk || echo "awk")}
 "$AWK" '
-
-## BEGIN INCLUDES
 
 ############################################################################
 #
@@ -68,12 +37,21 @@ function num_help() {
     print "Num version 0.10.0."
     print "Copyright (C) 2015 Joel Parker Henderson."
     print "Please see http://github.com/numcommand"
+    print ""
+    print "The system Awk command is:"
+    system("command -v awk")
+    print ""
+    system("awk -Wversion 2>/dev/null || awk --version")
     exit
+}
+
+function num_help_init() {
+    num_function_init("help version usage", "Print help, version, usage.")
 }
 
 ############################################################################
 #
-# num-print.awk
+# num-out-err.awk
 #
 ##
 
@@ -107,6 +85,53 @@ function num_err(msg) {
 
 ############################################################################
 #
+# num-function.awk
+#
+##
+
+##
+#
+# Initialize function metadata for a given function.
+#
+# Example:
+#
+#    function hello() {
+#        print "hello world"
+#    }
+#
+#    function hello_init() {
+#        num_function_init("hello hi hola", "Print a greeting", "http://example.com/hello.html")
+#    }
+#
+# The example creates these function entries:
+#
+#    num_functions["hello", "names"] = "hello hi hola"
+#    num_functions["hello", "help"] = "Print a greeting"
+#    num_functions["hello", "link"] = "http://example.com/hello.html"
+#
+# The example also creates these synonyms:
+#
+#    num_synonyms["hello"] = "hello"
+#    num_synonyms["hi"] = "hello"
+#    num_synonyms["hola"] = "hello"
+#
+##
+
+function num_function_init(names, help, link,  f, i, name, name_list) {
+    split(names, names_arr)
+    f = names_arr[1]
+    num_functions[f, "names"] = names
+    num_functions[f, "help"] = help
+    num_functions[f, "link"] = link
+    for (i in names_arr) {
+        name = names_arr[i]
+        gsub(/_/,"", name)
+        num_synonyms[name] = f
+    }
+}
+
+############################################################################
+#
 # num-absolute-value.awk
 #
 ##
@@ -128,39 +153,6 @@ function num_absolute_value(x) {
 
 # Alias
 function num_abs(x) { return num_absolute_value(x) }
-
-##
-#
-# Map absolute value.
-#
-# Example:
-#
-#     num_map_absolute_value_(1 -2 3) => 1 2 3
-#
-##
-
-function num_map_absolute_value(arr) {
-    for (i in arr) arr[i] = num_absolute_value(arr[i])
-}
-
-function num_map_absolute_value_(num, num_, opts,  f, i, memo) {
-    f = "num_map_absolute_value"
-    if (num_[f] != TRUE) {
-        map_before_(num, num_, opts, memo)
-        num_map_absolute_value(num)
-        map_after_(num, num_, opts, memo)
-        num_[f] = TRUE
-    }
-    return ""
-}
-
-function num_map_absolute_value_init() {
-    num_function_init("map_absolute_value absolute_value abs magnitude", "Map using absolute value.")
-}
-
-# Alias
-function num_map_abs(arr) { return num_map_absolute_value(arr) }
-function num_map_abs_(num, num_, opts) { return num_map_absolute_value_(num, num_, opts) }
 
 ############################################################################
 #
@@ -184,35 +176,6 @@ function num_sign(x) {
     return (x > 0) - (x < 0)
 }
 
-##
-#
-# Map sign.
-#
-# Example:
-#
-#     num_map_sign_(-8 0 8) => -1 0 1
-#
-##
-
-function num_map_sign(arr) {
-    for (i in arr) arr[i] = num_sign(arr[i])
-}
-
-function num_map_sign_(num, num_, opts,  f, i, memo) {
-    f = "num_map_sign"
-    if (num_[f] != TRUE) {
-        map_before_(num, num_, opts, memo)
-        num_map_sign(num)
-        map_after_(num, num_, opts, memo)
-        num_[f] = TRUE
-    }
-    return ""
-}
-
-function num_map_sign_init() {
-    num_function_init("map_sign sign", "Map using sign.")
-}
-
 ############################################################################
 #
 # num-increment.awk
@@ -231,35 +194,6 @@ function num_map_sign_init() {
 
 function num_increment(x) {
     return x + 1
-}
-
-##
-#
-# Map increment.
-#
-# Example:
-#
-#     num_map_increment_(1 2 3) => -2 3 4
-#
-##
-
-function num_map_increment(arr) {
-    for (i in arr) arr[i] = num_increment(arr[i])
-}
-
-function num_map_increment_(num, num_, opts,  f, i, memo) {
-    f = "num_map_increment"
-    if (num_[f] != TRUE) {
-        map_before_(num, num_, opts, memo)
-        num_map_increment(num)
-        map_after_(num, num_, opts, memo)
-        num_[f] = TRUE
-    }
-    return ""
-}
-
-function num_map_increment_init() {
-    num_function_init("map_increment increment", "Map using increment.")
 }
 
 ############################################################################
@@ -394,7 +328,7 @@ function num_sum_(num, num_, opts,  f) {
 }
 
 function num_sum_init() {
-    num_function_init("sum total", "Get the sum, a.k.a. total.", "https://en.wikipedia.org/wiki/Summation")
+    num_function_init("num_sum sum total", "Get the sum, a.k.a. total.", "https://en.wikipedia.org/wiki/Summation")
 }
 
 ############################################################################
@@ -426,7 +360,7 @@ function num_product_(num, num_, opts,  f) {
 }
 
 function num_product_init() {
-    num_function_init("product", "Get the product.", "https://wikipedia.org/wiki/Product_(mathematics)")
+    num_function_init("num_product product", "Get the product.", "https://wikipedia.org/wiki/Product_(mathematics)")
 }
 
 ############################################################################
@@ -441,7 +375,7 @@ function num_product_init() {
 #
 # Example:
 #
-#     arr_dump(arr)
+#     num_arr_dump(arr)
 #     1 a
 #     2 b
 #     3 d
@@ -457,7 +391,7 @@ function num_arr_dump(arr) {
 # Example:
 #
 #   split("", arr)
-#   arr_empty(arr) => TRUE
+#   num_arr_empty(arr) => TRUE
 #
 # This is POSIX compatible.
 #
@@ -472,7 +406,7 @@ function num_arr_empty(arr,  i) {
 #
 # Example:
 #
-#     arr_length(1 2 4) => 3
+#     num_arr_length(1 2 4) => 3
 #
 # TODO: benchmark this POSIX implementation with
 # any Gawk implementation, and if Gawk is much faster,
@@ -485,13 +419,28 @@ function num_arr_length(arr,  i, len) {
 
 ##
 #
+# Swap array items.
+#
+# Example:
+#
+#     arr = 4 5 6
+#     num_arr_swap(arr, 1, 3) => 6 5 4
+#
+##
+
+function num_arr_swap(A, i, j,   t) {
+    t = A[i]; A[i] = A[j]; A[j] = t
+}
+
+##
+#
 # Get the closest value to a target value in an array.
 #
 # Example:
 #
 #    arr = 1 2 4
 #    target = 2.5
-#    arr_closest_value(arr, target) => 2
+#    num_arr_closest_value(arr, target) => 2
 #
 # If multiple values are equidistant to the target,
 # then return the earliest index.
@@ -516,7 +465,7 @@ function num_arr_closest_value(arr, target,  _closest_value, _closest_delta, _de
 #
 # Example:
 #
-#     arr_join(1 2 4, ",") => "1,2,4"
+#     num_arr_join(1 2 4, ",") => "1,2,4"
 #
 function num_arr_join(arr, sep,  s, i) {
     s = ""
@@ -552,7 +501,7 @@ function num_n_(num, num_, opts,  f) {
 }
 
 function num_n_init() {
-    num_function_init("n count length size", "Get the number of items, a.k.a. count, length, size.", "https://en.wikipedia.org/wiki/Enumeration")
+    num_function_init("num_n n count length size", "Get the number of items, a.k.a. count, length, size.", "https://en.wikipedia.org/wiki/Enumeration")
 }
 
 ##
@@ -576,7 +525,7 @@ function num_first_(num, num_, opts,  f) {
 }
 
 function num_first_init() {
-    num_function_init("first head", "Get the first item.", "https://en.wikipedia.org/wiki/Enumeration")
+    num_function_init("num_first first head", "Get the first item.", "https://en.wikipedia.org/wiki/Enumeration")
 }
 
 ##
@@ -600,7 +549,7 @@ function num_last_(num, num_, opts,  f) {
 }
 
 function num_last_init() {
-    num_function_init("last tail", "Get the last item.", "https://en.wikipedia.org/wiki/Enumeration")
+    num_function_init("num_last last tail", "Get the last item.", "https://en.wikipedia.org/wiki/Enumeration")
 }
 
 ##
@@ -632,7 +581,7 @@ function num_min_(num, num_, opts,  f) {
 }
 
 function num_min_init() {
-    num_function_init("min minimum least lowest", "Get the minimum value, a.k.a. least, lowest.", "https://en.wikipedia.org/wiki/Maxima_and_minima")
+    num_function_init("num_min min minimum least lowest", "Get the minimum value, a.k.a. least, lowest.", "https://en.wikipedia.org/wiki/Maxima_and_minima")
 }
 
 ##
@@ -662,7 +611,7 @@ function num_max_(num, num_, opts,  f) {
 }
 
 function num_max_init() {
-    num_function_init("max maximum greatest highest", "Get the maximum value, a.k.a. greatest, highest.", "https://en.wikipedia.org/wiki/Maxima_and_minima")
+    num_function_init("num_max max maximum greatest highest", "Get the maximum value, a.k.a. greatest, highest.", "https://en.wikipedia.org/wiki/Maxima_and_minima")
 }
 
 ##
@@ -686,7 +635,7 @@ function num_range_(num, num_, opts,  f) {
 }
 
 function num_range_init() {
-    num_function_init("range interval breadth spread", "Get the range, a.k.a. interval, breadth, spread.", "https://en.wikipedia.org/wiki/Range_(statistics)")
+    num_function_init("num_range range interval breadth spread", "Get the range, a.k.a. interval, breadth, spread.", "https://en.wikipedia.org/wiki/Range_(statistics)")
 }
 
 ############################################################################
@@ -851,6 +800,7 @@ function num_dequeue(arr,  item, i) {
 ##
 
 function num_sort_awk_init() {
+    #TODO refactor
     NUM_SORT_MEMO["n"] = \
     NUM_SORT_MEMO["num_sum"] = \
     NUM_SORT_MEMO["num_mean"] = \
@@ -879,13 +829,12 @@ function num_sort_awk_init() {
 ##
 
 function num_sort_before_(num, num_, opts, memo) {
-    split("", memo)
-    for (k in NUM_SORT_MEMO) if (k in num_) memo[k] = num_[k]
+    for (k in NUM_SORT_MEMO) memo[k] = num_[k]
 }
 
 function num_sort_after_(num, num_, opts, memo) {
     split("", num_)
-    for (k in NUM_SORT_MEMO) if (k in memo) num_[k] = memo[k]
+    for (k in NUM_SORT_MEMO) num_[k] = memo[k]
 }
 
 ##
@@ -920,7 +869,7 @@ function num_sort_ascending_(num, num_, opts,  f, memo) {
 }
 
 function num_sort_ascending_init() {
-    num_function_init("sort_ascending sort_asc sort_up sort", "Sort the values in ascending order.", "https://wikipedia.org/wiki/Sorting_algorithm")
+    num_function_init("num_sort_ascending sort_ascending sort_asc sort_up sort", "Sort the values in ascending order.", "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
 ##
@@ -955,7 +904,7 @@ function num_sort_descending_(num, num_, opts,  f, memo) {
 }
 
 function num_sort_descending_init() {
-    num_function_init("sort_descending sort_desc sort_down", "Sort the values in descending order.", "https://wikipedia.org/wiki/Sorting_algorithm")
+    num_function_init("num_sort_descending sort_descending sort_desc sort_down", "Sort the values in descending order.", "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
 
@@ -1006,7 +955,7 @@ function num_is_ascending_(num, num_, opts,  f, x, i, flag) {
 }
 
 function num_is_ascending_init() {
-    num_function_init("is_ascending is_asc", "Is the list sorted in ascending order?", "https://wikipedia.org/wiki/Sorting_algorithm")
+    num_function_init("num_is_ascending is_ascending is_asc", "Is the list sorted in ascending order?", "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
 ##
@@ -1047,7 +996,7 @@ function num_is_strictly_ascending_(num, num_, opts,  f, x, i, flag) {
 }
 
 function num_is_strictly_ascending_init() {
-    num_function_init("is_strictly_ascending is_strict_asc", "Is the list sorted in strictly ascending order?", "https://wikipedia.org/wiki/Sorting_algorithm")
+    num_function_init("num_is_strictly_ascending is_strictly_ascending is_strict_asc", "Is the list sorted in strictly ascending order?", "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
 ##
@@ -1091,7 +1040,7 @@ function num_is_descending_(num, num_, opts,  f, x, i, flag) {
 }
 
 function num_is_descending_init() {
-    num_function_init("is_descending is_desc", "Is the list sorted in descending order?", "https://wikipedia.org/wiki/Sorting_algorithm")
+    num_function_init("num_is_descending is_descending is_desc", "Is the list sorted in descending order?", "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
 ##
@@ -1132,7 +1081,7 @@ function num_is_strictly_descending_(num, num_,   f, x, i, flag) {
 }
 
 function num_is_strictly_descending_init() {
-    num_function_init("is_strictly_descending is_strict_desc", "Is the list sorted in strictly descending order?", "https://wikipedia.org/wiki/Sorting_algorithm")
+    num_function_init("num_is_strictly_descending is_strictly_descending is_strict_desc", "Is the list sorted in strictly descending order?", "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
 ############################################################################
@@ -1276,8 +1225,9 @@ function num_quicksort_pivot_index_via_rand(A, lo, hi) {
 # iteration, but can/will affect what is used as the pivot in the next
 # recursive call, which helps to limit the bad behavior for a few
 # initial orderings (one that turns out to be particularly bad in many
-# cases is an array that is sorted, except for having the smallest item
-# at the high end, or having the largest item at the low end).
+# cases is an array that is sorted, except for having the smallest
+# element at the high end of the array (or largest element at the low
+# end)).
 #
 # Thanks to http://stackoverflow.com/questions/7559608/median-of-three-values-strategy
 #
@@ -1357,7 +1307,116 @@ function num_is_unique_(num, num_, opts,  f, i, seen, flag) {
 }
 
 function num_is_unique_init() {
-    num_function_init("is_unique is_uniq", "Is the list all unique items?", "https://en.wikipedia.org/wiki/Uniqueness_quantification")
+    num_function_init("num_is_unique is_unique is_uniq", "Is the list all unique items?", "https://en.wikipedia.org/wiki/Uniqueness_quantification")
+}
+
+############################################################################
+#
+# num-map-absolute-value.awk
+#
+##
+
+##
+#
+# Map absolute value.
+#
+# Example:
+#
+#     num_map_absolute_value_(1 -2 3) => 1 2 3
+#
+##
+
+function num_map_absolute_value(arr) {
+    for (i in arr) arr[i] = num_absolute_value(arr[i])
+}
+
+function num_map_absolute_value_(num, num_, opts,  f, i, memo) {
+    f = "num_map_absolute_value"
+    if (num_[f] != TRUE) {
+        map_before_(num, num_, opts, memo)
+        num_map_absolute_value(num)
+        map_after_(num, num_, opts, memo)
+        num_[f] = TRUE
+    }
+    return ""
+}
+
+function num_map_absolute_value_init() {
+    num_function_init("num_map_absolute_value absolute_value abs magnitude", "Map using absolute value.")
+}
+
+# Alias
+function num_map_abs(arr) { return num_map_absolute_value(arr) }
+function num_map_abs_(num, num_, opts) { return num_map_absolute_value_(num, num_, opts) }
+
+############################################################################
+#
+# num-map-sign.awk
+#
+##
+
+##
+#
+# Map sign.
+#
+# Example:
+#
+#     num_map_sign_(-8 0 8) => -1 0 1
+#
+##
+
+function num_map_sign(arr) {
+    for (i in arr) arr[i] = num_sign(arr[i])
+}
+
+function num_map_sign_(num, num_, opts,  f, i, memo) {
+    f = "num_map_sign"
+    if (num_[f] != TRUE) {
+        map_before_(num, num_, opts, memo)
+        num_map_sign(num)
+        map_after_(num, num_, opts, memo)
+        num_[f] = TRUE
+    }
+    return ""
+}
+
+function num_map_sign_init() {
+    num_function_init("num_map_sign sign", "Map using sign.")
+}
+
+############################################################################
+#
+# num-map-increment.awk
+#
+##
+
+##
+#
+# Map increment.
+#
+# Example:
+#
+#     num_map_increment_(1 2 3) => -2 3 4
+#
+##
+
+function num_map_increment(arr) {
+    for (i in arr) arr[i] = num_increment(arr[i])
+}
+
+function num_map_increment_(num, num_, opts,  f, i, memo) {
+    f = "num_map_increment"
+    if (num_[f] != TRUE) {
+        map_before_(num, num_, opts, memo)
+        num_map_increment(num)
+        map_after_(num, num_, opts, memo)
+        num_[f] = TRUE
+    }
+    return ""
+}
+
+function num_map_increment_init() {
+    num_function_init("num_map_increment increment", "Map using increment.")
 }
 
 ############################################################################
@@ -1407,7 +1466,7 @@ function num_map_round_(num, num_, opts,  f, memo, i) {
 }
 
 function num_map_round_init() {
-    num_function_init("map_round round round_towards_nearest nearest_integer n_int", "Map using round, a.k.a. round towards nearest, nint.", "https://en.wikipedia.org/wiki/Rounding")
+    num_function_init("num_map_round round round_towards_nearest nearest_integer n_int", "Map using round, a.k.a. round towards nearest, nint.", "https://en.wikipedia.org/wiki/Rounding")
 }
 
 # Alias
@@ -1446,7 +1505,7 @@ function num_map_round_off_(num, num_, opts,  f, memo) {
 }
 
 function num_map_round_off_init() {
-    num_function_init("map_round_off round_off round_towards_zero, truncate", "Map using round off, a.k.a. round towards zero, truncate.", "https://en.wikipedia.org/wiki/Rounding")
+    num_function_init("num_map_round_off round_off round_towards_zero, truncate", "Map using round off, a.k.a. round towards zero, truncate.", "https://en.wikipedia.org/wiki/Rounding")
 }
 
 # Alias
@@ -1485,7 +1544,7 @@ function num_map_round_up_(num, num_, opts,  f, memo) {
 }
 
 function num_map_round_up_init() {
-    num_function_init("map_round_up round_up ceiling", "Map using round up, a.k.a. round towards positive infinity, ceiling.", "https://en.wikipedia.org/wiki/Rounding")
+    num_function_init("num_map_round_up round_up ceiling", "Map using round up, a.k.a. round towards positive infinity, ceiling.", "https://en.wikipedia.org/wiki/Rounding")
 }
 
 # Alias
@@ -1524,7 +1583,7 @@ function num_map_round_down_(num, num_, opts,  f, memo) {
 }
 
 function num_map_round_down_init() {
-    num_function_init("map_round_down round_down floor", "Map using round down, a.k.a. round towards negative infinity, floor.")
+    num_function_init("num_map_round_down round_down floor", "Map using round down, a.k.a. round towards negative infinity, floor.")
 }
 
 # Alias
@@ -1546,7 +1605,6 @@ function num_map_floor_(num, num_, opts) {
 ##
 
 function num_map_round_before_(num, num_, opts, f, memo) {
-    split("", memo)
     for (k in NUM_MAP_ROUND_MEMO) if (k in num_) memo[k] = num_[k]
 }
 
@@ -1567,7 +1625,7 @@ function num_map_round_after_(num, num_, opts, f, memo) {
 
 ############################################################################
 #
-# num-normalize.awk
+# num-map-normalize.awk
 #
 ##
 
@@ -1603,7 +1661,7 @@ function num_map_normalize_(num, num_, opts,  f, min_old, max_old, min_new, max_
 }
 
 function num_map_normalize_init() {
-    num_function_init("map_normalize normalize norm", "Map using normalize.", "https://wikipedia.org/wiki/Normalization_(statistics)")
+    num_function_init("num_map_normalize normalize norm", "Map using normalize.", "https://wikipedia.org/wiki/Normalization_(statistics)")
 }
 
 ############################################################################
@@ -1644,7 +1702,7 @@ function num_mean_(num, num_, opts,  f, _n, _min, _max, _sum) {
 }
 
 function num_mean_init() {
-    num_function_init("mean average avg", "Get the mean, a.k.a artihmetic mean, average.", "https://en.wikipedia.org/wiki/Mean")
+    num_function_init("num_mean mean average avg", "Get the mean, a.k.a artihmetic mean, average.", "https://en.wikipedia.org/wiki/Mean")
 }
 
 ############################################################################
@@ -1683,7 +1741,7 @@ function num_mean_absolute_deviation_(num, num_, opts,  f, _n, _mean, i, x) {
 }
 
 function num_mean_absolute_deviation_init() {
-    num_function_init("mean_absolute_deviation mad", "Get the average distance between each value and the mean.", "https://en.wikipedia.org/wiki/Average_absolute_deviation")
+    num_function_init("num_mean_absolute_deviation mean_absolute_deviation mad", "Get the average distance between each value and the mean.", "https://en.wikipedia.org/wiki/Average_absolute_deviation")
 }
 
 # Alias
@@ -1746,7 +1804,7 @@ function num_sum_of_squares_(num, num_, opts) {
 }
 
 function num_sum_of_squares_init() {
-    num_function_init("sum_of_squares sum_squares ss mean_squared_error mse", "Get the sum of squares, a.k.a. sum of each mean deviation to the power of 2, a.k.a. SS", "https://en.wikipedia.org/wiki/Deviation_(statistics)")
+    num_function_init("num_sum_of_squares sum_of_squares sum_squares ss mean_squared_error mse", "Get the sum of squares, a.k.a. sum of each mean deviation to the power of 2, a.k.a. SS", "https://en.wikipedia.org/wiki/Deviation_(statistics)")
 }
 
 ##
@@ -1770,7 +1828,7 @@ function num_sum_of_cubes_(num, num_, opts) {
 }
 
 function num_sum_of_cubes_init() {
-    num_function_init("sum_of_cubes sum_cubes", "Get the  sum of cubes, a.k.a. sum of each mean deviation to the power of 3.", "https://en.wikipedia.org/wiki/Mean_squared_error")
+    num_function_init("num_sum_of_cubes sum_of_cubes sum_cubes", "Get the  sum of cubes, a.k.a. sum of each mean deviation to the power of 3.", "https://en.wikipedia.org/wiki/Mean_squared_error")
 }
 
 ##
@@ -1794,7 +1852,7 @@ function num_sum_of_quads_(num, num_, opts) {
 }
 
 function num_sum_of_quads_init() {
-    num_function_init("sum_of_quads sum_quads", "Get the  sum of quads, a.k.a. sum of each mean deviation to the power of 4.", "https://en.wikipedia.org/wiki/Mean_squared_error")
+    num_function_init("num_sum_of_quads sum_of_quads sum_quads", "Get the  sum of quads, a.k.a. sum of each mean deviation to the power of 4.", "https://en.wikipedia.org/wiki/Mean_squared_error")
 }
 
 ############################################################################
@@ -1824,7 +1882,7 @@ function num_meanest_(num, num_, opts,  f, _n, _mean, i, x) {
 }
 
 function num_meanest_init() {
-    num_function_init("meanest", "Get the value that is closest to the mean.", "https://en.wikipedia.org/wiki/Mean")
+    num_function_init("num_meanest meanest", "Get the value that is closest to the mean.", "https://en.wikipedia.org/wiki/Mean")
 }
 
 ############################################################################
@@ -1864,7 +1922,7 @@ function num_trimean_(num, num_, opts,  f, _q1, _q2, _q3) {
 }
 
 function num_trimean_init() {
-    num_function_init("trimean", "Calculate the trimean.", "https://wikipedia.org/wiki/Trimean")
+    num_function_init("num_trimean trimean", "Calculate the trimean.", "https://wikipedia.org/wiki/Trimean")
 }
 
 ############################################################################
@@ -1938,7 +1996,7 @@ function num_median_(num, num_, opts,  f, i, _n) {
 }
 
 function num_median_init() {
-    num_function_init("median med", "Get the median.", "https://en.wikipedia.org/wiki/Normalization_(statistics)")
+    num_function_init("num_median median med", "Get the median.", "https://en.wikipedia.org/wiki/Normalization_(statistics)")
 }
 
 ##
@@ -1969,7 +2027,7 @@ function num_median_low_(num, num_, opts,  f, _n) {
 }
 
 function num_median_low_init() {
-    num_function_init("median_low med_low", "Get the median that is lower a.k.a. lesser.", "https://en.wikipedia.org/wiki/Normalization_(statistics)")
+    num_function_init("num_median_low median_low med_low", "Get the median that is lower a.k.a. lesser.", "https://en.wikipedia.org/wiki/Normalization_(statistics)")
 }
 
 ##
@@ -2002,7 +2060,7 @@ function num_median_high_(num, num_, opts,  f, _n) {
 }
 
 function num_median_high_init() {
-    num_function_init("median_high med_high", "Get the median that is higher a.k.a. greater.", "https://en.wikipedia.org/wiki/Normalization_(statistics)")
+    num_function_init("num_median_high median_high med_high", "Get the median that is higher a.k.a. greater.", "https://en.wikipedia.org/wiki/Normalization_(statistics)")
 }
 
 ############################################################################
@@ -2038,7 +2096,7 @@ function num_mode_(num, num_, opts,  f) {
 }
 
 function num_mode_init() {
-    num_function_init("mode", "Get the mode, which may be a value, or list, or UNDEF.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
+    num_function_init("num_mode mode", "Get the mode, which may be a value, or list, or UNDEF.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
 }
 
 ##
@@ -2068,7 +2126,7 @@ function num_mode_low_(num, num_, opts,  f) {
 }
 
 function num_mode_low_init() {
-    num_function_init("mode_low", "Get the first mode, if any, or UNDEF.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
+    num_function_init("num_mode_low mode_low", "Get the first mode, if any, or UNDEF.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
 }
 
 ##
@@ -2098,7 +2156,7 @@ function num_mode_high_(num, num_, opts,  f) {
 }
 
 function num_mode_high_init() {
-    num_function_init("mode_high", "Get the last mode, if any, or UNDEF.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
+    num_function_init("num_mode_high mode_high", "Get the last mode, if any, or UNDEF.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
 }
 
 ############################################################################
@@ -2121,7 +2179,7 @@ function num_var_(num, num_, opts) { num_sample_variance_(num, num_, opts) }
 #
 # Example:
 #
-#     num_sample_variance(1 2 4) => 2.33333
+#     num_population_variance(1 2 4) => 2.33333
 #
 ##
 
@@ -2136,7 +2194,7 @@ function num_sample_variance_(num, num_, opts,  f) {
 }
 
 function num_sample_variance_init() {
-    num_function_init("sample_variance s_var variance var sample_second_moment_about_the_mean, s_second_moment_about_the_mean, s_2_m_a_t_m second_moment_about_the_mean 2_m_a_t_m", "Get the sample variance, a.k.a. sample second moment about the mean.", "https://wikipedia.org/wiki/Variance")
+    num_function_init("num_sample_variance sample_variance s_var variance var sample_second_moment_about_the_mean, s_second_moment_about_the_mean, s_2_m_a_t_m second_moment_about_the_mean 2_m_a_t_m", "Get the sample variance, a.k.a. sample second moment about the mean.", "https://wikipedia.org/wiki/Variance")
 }
 
 # Alias
@@ -2149,7 +2207,7 @@ function num_svar_(num, num_, opt) { return num_sample_variance_(num, num_, opt)
 #
 # Example:
 #
-#     num_population_variance(1 2 4) => 0.518519
+#     num_population_variance(1 2 4) => 1.55556
 #
 ##
 
@@ -2164,7 +2222,7 @@ function num_population_variance_(num, num_, opts) {
 }
 
 function num_population_variance_init() {
-    num_function_init("population_variance p_var population_second_moment_about_the_mean p_second_moment_about_the_mean p_2_m_a_t_m", "Get the population variance, a.k.a. sample second moment about the mean.", "https://wikipedia.org/wiki/Variance")
+    num_function_init("num_population_variance population_variance p_var population_second_moment_about_the_mean p_second_moment_about_the_mean p_2_m_a_t_m", "Get the population variance, a.k.a. sample second moment about the mean.", "https://wikipedia.org/wiki/Variance")
 }
 
 # Alias
@@ -2213,7 +2271,7 @@ function num_sample_skewness_(num, num_, opts,  f) {
 }
 
 function num_sample_skewness_init() {
-    num_function_init("sample_skewness s_skew skewness skew sample_third_moment_about_the_mean s_third_moment_about_the_mean s_3_m_a_t_m third_moment_about_the_mean 3_m_a_t_m", "Get the sample skewness, a.k.a. sample third moment about the mean.", "https://en.wikipedia.org/wiki/Skewness")
+    num_function_init("num_sample_skewness sample_skewness s_skew skewness skew sample_third_moment_about_the_mean s_third_moment_about_the_mean s_3_m_a_t_m third_moment_about_the_mean 3_m_a_t_m", "Get the sample skewness, a.k.a. sample third moment about the mean.", "https://en.wikipedia.org/wiki/Skewness")
 }
 
 # Alias
@@ -2252,7 +2310,7 @@ function num_population_skewness_(num, num_, opts,  f) {
 }
 
 function num_population_skewness_init() {
-    num_function_init("population_skewness p_skew population_third_moment_about_the_mean p_third_moment_about_the_mean p_3_m_a_t_m", "Get the population skewness, a.k.a. population third moment about the mean.", "https://en.wikipedia.org/wiki/Skewness")
+    num_function_init("num_population_skewness population_skewness p_skew population_third_moment_about_the_mean p_third_moment_about_the_mean p_3_m_a_t_m", "Get the population skewness, a.k.a. population third moment about the mean.", "https://en.wikipedia.org/wiki/Skewness")
 }
 
 # Alias
@@ -2314,7 +2372,7 @@ function num_sample_kurtosis_(num, num_, opts,  f) {
 }
 
 function num_sample_kurtosis_init() {
-    num_function_init("sample_kurtosis s_kurt kurtosis kurt sample_fourth_moment_about_the_mean s_fourth_moment_about_the_mean s_4_m_a_t_m fourth_moment_about_the_mean 4_m_a_t_m", "Get the kurtosis, a.k.a. sample fourth moment about the mean.", "https://en.wikipedia.org/wiki/Kurtosis")
+    num_function_init("num_sample_kurtosis sample_kurtosis s_kurt kurtosis kurt sample_fourth_moment_about_the_mean s_fourth_moment_about_the_mean s_4_m_a_t_m fourth_moment_about_the_mean 4_m_a_t_m", "Get the kurtosis, a.k.a. sample fourth moment about the mean.", "https://en.wikipedia.org/wiki/Kurtosis")
 }
 
 # Alias
@@ -2342,7 +2400,7 @@ function num_population_kurtosis_(num, num_, opts,  f) {
 }
 
 function num_population_kurtosis_init() {
-    num_function_init("population_kurtosis p_kurt population_fourth_moment_about_the_mean p_fourth_moment_about_the_mean p_4_m_a_t_m", "Get the kurtosis, a.k.a. population fourth moment about the mean.", "https://en.wikipedia.org/wiki/Kurtosis")
+    num_function_init("num_population_kurtosis population_kurtosis p_kurt population_fourth_moment_about_the_mean p_fourth_moment_about_the_mean p_4_m_a_t_m", "Get the kurtosis, a.k.a. population fourth moment about the mean.", "https://en.wikipedia.org/wiki/Kurtosis")
 }
 
 # Alias
@@ -2384,7 +2442,7 @@ function num_sample_standard_deviation_(num, num_, opts,  f) {
 }
 
 function num_sample_standard_deviation_init() {
-    num_function_init("sample_standard_deviation s_st_dev s_s_d standard_deviation std_dev sd", "Get the sample standard deviation", "https://wikipedia.org/wiki/Standard_deviation")
+    num_function_init("num_sample_standard_deviation sample_standard_deviation s_st_dev s_s_d standard_deviation std_dev sd", "Get the sample standard deviation", "https://wikipedia.org/wiki/Standard_deviation")
 }
 
 # Alias
@@ -2412,7 +2470,7 @@ function num_population_standard_deviation_(num, num_, opts,  f) {
 }
 
 function num_population_standard_deviation_init() {
-    num_function_init("population_standard_deviation p_st_dev p_s_d", "Get the population standard deviation.", "https://wikipedia.org/wiki/Standard_deviation")
+    num_function_init("num_population_standard_deviation population_standard_deviation p_st_dev p_s_d", "Get the population standard deviation.", "https://wikipedia.org/wiki/Standard_deviation")
 }
 
 # Alias
@@ -2454,7 +2512,7 @@ function num_sample_coefficient_of_variance_(num, num_, opts,  f) {
 }
 
 function num_sample_coefficient_of_variance_init() {
-    num_function_init("sample_coefficient_of_variance s_co_var s_c_v coefficient_of_variance co_var c_v  sample_relative_standard_deviation s_r_s_d relative_standard_deviation r_s_d", "Get the sample coefficient of variance", "https://en.wikipedia.org/wiki/Coefficient_of_variation")
+    num_function_init("num_sample_coefficient_of_variance sample_coefficient_of_variance s_co_var s_c_v coefficient_of_variance co_var c_v  sample_relative_standard_deviation s_r_s_d relative_standard_deviation r_s_d", "Get the sample coefficient of variance", "https://en.wikipedia.org/wiki/Coefficient_of_variation")
 }
 
 # Alias
@@ -2482,7 +2540,7 @@ function num_population_coefficient_of_variance_(num, num_, opts,  f) {
 }
 
 function num_population_coefficient_of_variance_init() {
-    num_function_init("population_coefficient_of_variance p_co_var p_c_v, population_relative_standard_deviation, p_r_s_d", "Get the population coefficient of variance.", "https://en.wikipedia.org/wiki/Coefficient_of_variation")
+    num_function_init("num_population_coefficient_of_variance population_coefficient_of_variance p_co_var p_c_v, population_relative_standard_deviation, p_r_s_d", "Get the population coefficient of variance.", "https://en.wikipedia.org/wiki/Coefficient_of_variation")
 }
 
 # Alias
@@ -2536,7 +2594,7 @@ function num_interquartile_range_(num, num_, opts,  f) {
 }
 
 function num_interquartile_range_init() {
-    num_function_init("interquartile_range i_q_r mid_spread middle_fifty", "Get the interquartile range, a.k.a. IQR.", "https://en.wikipedia.org/wiki/Interquartile_range")
+    num_function_init("num_interquartile_range interquartile_range i_q_r mid_spread middle_fifty", "Get the interquartile range, a.k.a. IQR.", "https://en.wikipedia.org/wiki/Interquartile_range")
 }
 
 # Alias
@@ -2564,7 +2622,7 @@ function num_quartile_0_(num, num_, opts,  f) {
 }
 
 function num_quartile_0_init() {
-    num_function_init("quartile_0 q_0 0_percent", "Get the quartile 0, a.k.a. Q0, 0th percentile, minimum.", "https://en.wikipedia.org/wiki/Quartile")
+    num_function_init("num_quartile_0 quartile_0 q_0 0_percent", "Get the quartile 0, a.k.a. Q0, 0th percentile, minimum.", "https://en.wikipedia.org/wiki/Quartile")
 }
 
 # Alias
@@ -2600,11 +2658,11 @@ function num_quartile_1(arr,  _n, i, x, q1) {
     return q1
 }
 
-function num_quartile_1_(num, num_, opts,  f, _n, _median, i, x) {
+function num_quartile_1_(num, num_, opts,  f, _n, i, x) {
     f = "num_quartile_1"
     if (!(f in num_)) {
         _n = num_n_(num, num_, opts)
-        num_median_(num, num_, opts)  # N.b. to trigger a sort if needed
+        num_median_(num, num_, opts)
         if ((_n % 2) == 0) {
             i = (_n / 2) - 1
             num_[f] = num_median_of_slice(num, 1, i)
@@ -2625,7 +2683,7 @@ function num_quartile_1_(num, num_, opts,  f, _n, _median, i, x) {
 }
 
 function num_quartile_1_init() {
-    num_function_init("quartile_1 q_1 25_percent", "Get the quartile 1, a.k.a. Q1, 25th percentile, lower quartile.", "https://en.wikipedia.org/wiki/Quartile")
+    num_function_init("num_quartile_1 quartile_1 q_1 25_percent", "Get the quartile 1, a.k.a. Q1, 25th percentile, lower quartile.", "https://en.wikipedia.org/wiki/Quartile")
 }
 
 # Alias
@@ -2653,7 +2711,7 @@ function num_quartile_2_(num, num_, opts,  f) {
 }
 
 function num_quartile_2_init() {
-    num_function_init("quartile_2 q_2 50_percent", "Get the quartile 2, a.k.a. Q2, 50th percentile, median.", "https://en.wikipedia.org/wiki/Quartile")
+    num_function_init("num_quartile_2 quartile_2 q_2 50_percent", "Get the quartile 2, a.k.a. Q2, 50th percentile, median.", "https://en.wikipedia.org/wiki/Quartile")
 }
 
 # Alias
@@ -2696,7 +2754,7 @@ function num_quartile_3_(num, num_, opts,  f, _n, i, x) {
     f = "num_quartile_3"
     if (!(f in num_)) {
         _n = num_n_(num, num_, opts)
-        num_median_(num, num_, opts) # N.b. to trigger a sort if needed
+        num_median_(num, num_, opts)
         if ((_n % 2) == 0) {
             i = (_n % 2) + 1
             num_[f] = num_median_of_slice(num, i, _n)
@@ -2717,7 +2775,7 @@ function num_quartile_3_(num, num_, opts,  f, _n, i, x) {
 }
 
 function num_quartile_3_init() {
-    num_function_init("quartile_3 q_3 75_percent", "Get the quartile 3, a.k.a. Q3, 75th percentile, upper quartile.", "https://en.wikipedia.org/wiki/Quartile")
+    num_function_init("num_quartile_3 quartile_3 q_3 75_percent", "Get the quartile 3, a.k.a. Q3, 75th percentile, upper quartile.", "https://en.wikipedia.org/wiki/Quartile")
 }
 
 # Alias
@@ -2745,12 +2803,297 @@ function num_quartile_4_(num, num_, opts,  f) {
 }
 
 function num_quartile_4_init() {
-    num_function_init("quartile_4 q_4 100_percent", "Get the quartile 4, a.k.a. Q4, 100th percentile, maximum.", "https://en.wikipedia.org/wiki/Quartile")
+    num_function_init("num_quartile_4 quartile_4 q_4 100_percent", "Get the quartile 4, a.k.a. Q4, 100th percentile, maximum.", "https://en.wikipedia.org/wiki/Quartile")
 }
 
 # Alias
 function num_q4(arr) { return num_quartile_4(arr) }
 function num_q4_(num, num_, opts) { return num_quartile_4_(num, num_, opts) }
+
+############################################################################
+#
+# num-init.awk
+#
+##
+
+##
+#
+# Initialize everything.
+#
+# This calls various `init_*` functions.
+#
+##
+
+function num_init() {
+    #init_lint()
+    num_init_constants()
+    num_init_conf()
+    num_init_word_argv()
+    num_init_word_list()
+    num_function_manager_init()
+}
+
+##
+#
+# Initialize constants that we use; these are essentially like defines.
+#
+##
+
+function num_init_constants() {
+
+    # Boolean
+    FALSE = 0
+    TRUE = 1
+
+    # Math
+    PI = 3.141592653589797  # also atan2(0,-1)
+
+    # Content
+    TODO = "TODO"
+    UNDEF = "UNDEF"
+    ERROR = "ERROR"
+    NAN = "NAN"
+
+    # Function kinds: a way to track what a function will do. #TODO
+    FUN_KIND_CALC = "CALC"
+    FUN_KIND_SORT = "SORT"
+    FUN_KIND_MAP  = "MAP"
+    FUN_KIND_FLAG = "FLAG"
+    FUN_KIND_CONF = "CONF"
+
+    # Feature detection. Currently this script requires Gawk.
+    AWK_HAS_ASORT = TRUE
+    AWK_HAS_LENGTH = TRUE
+
+    # The scope controls whether the user wants input and output
+    # to be all items (the default), or per record, or per field.
+    # The scope per field is a special case, because it lets the
+    # the awk loop read one record, calculate, then flush data.
+    NUM_CONF_SCOPE_ALL    = "NUM_CONF_SCOPE_ALL"     # Default
+    NUM_CONF_SCOPE_RECORD = "NUM_CONF_SCOPE_RECORD"  # Triggers optimized loop
+    NUM_CONF_SCOPE_FIELD  = "NUM_CONF_SCOPE_FIELD"   # TODO implement
+}
+
+##
+#
+# Initialize the configuration dictionary.
+#
+##
+
+function num_init_conf() {
+    split("", global_conf)
+    global_conf["scope"] = NUM_CONF_SCOPE_ALL
+}
+
+##
+#
+# Initialize the word argv list.
+#
+# The word argv list holds the argv items that this script cares about.
+# We keep them in order, so we can output results in order.
+#
+##
+
+function num_init_word_argv() {
+    split("", global_word_argv)
+}
+
+##
+#
+# Initialize the global word list lookup array.
+#
+# This is to recognize words that a user types on the command line.
+#
+# TODO: research if there is a better way to initialize a dictionary.
+#
+##
+
+function num_init_word_list() {
+
+    num_synonyms["overall"] = \
+    "num_conf_scope_all"
+
+    num_synonyms["records"] = \
+    num_synonyms["rows"] = \
+    "num_conf_scope_record"
+
+    num_synonyms["fields"] = \
+    num_synonyms["colums"] = \
+    "num_conf_scope_field"
+
+    # Convention: default is sample, not population.
+    num_synonyms["secondmomentaboutthemean"] = \
+    num_synonyms["secondmoment"] = \
+    "num_sample_variance"
+
+    # Convention: default is sample, not population.
+    num_synonyms["thirdmomentaboutthemean"] = \
+    num_synonyms["thirdmoment"] = \
+    "num_sample_skewness"
+
+    # Convention: default is sample, not population.
+    num_synonyms["fourthmomentaboutthemean"] = \
+    num_synonyms["fourthmoment"] = \
+    "num_sample_kurtosis"
+
+    ## Booleans
+
+    num_synonyms["isunique"] = \
+    "num_is_unique"
+
+    num_synonyms["isascending"] = \
+    num_synonyms["isasc"] = \
+    num_synonyms["isnondescending"] = \
+    num_synonyms["isnondesc"] = \
+    "num_is_ascending"
+
+    num_synonyms["isstrictlyascending"] = \
+    num_synonyms["isstrictasc"] = \
+    "num_is_strictly_ascending"
+
+    num_synonyms["isdescending"] = \
+    num_synonyms["isdesc"] = \
+    num_synonyms["isnonascending"] = \
+    num_synonyms["isnonasc"] = \
+    "num_is_descending"
+
+    num_synonyms["isstrictlydescending"] = \
+    num_synonyms["isstrictdesc"] = \
+    "num_is_strictly_descending"
+
+    ### Configurations
+
+    num_synonyms["outputcommaseparatedvalues"] = \
+    num_synonyms["outcsv"] = \
+    "num_output_comma_separated_values"
+
+    num_synonyms["outputtabseparatedvalues"] = \
+    num_synonyms["outtab"] = \
+    "num_output_tab_separated_values"
+
+}
+
+############################################################################
+#
+# num-conf.awk
+#
+##
+
+##
+#
+# Configure
+#
+##
+
+function num_conf() {
+    num_conf_words(global_word_argv)
+    num_conf_ofmt()
+    num_conf_scope()
+}
+
+##
+#
+# num_configure the output format string, a.k.a. AWK OFMT.
+# This controls number formatting as float, decimal, int, etc.
+#
+##
+
+function num_conf_ofmt() {
+    OFMT = (ENVIRON["OFMT"]) ? ENVIRON["OFMT"] : "%.6g"
+}
+
+##
+# num_configure scope flags to optimize for tight inner loops.
+#
+# This enables us to speed up code by doing this:
+#
+#     - if (global_conf["scope"] == NUM_CONF_SCOPE_ALL)
+#     + if (NUM_CONF_SCOPE_ALL_FLAG)
+##
+
+function num_conf_scope() {
+    NUM_CONF_SCOPE_ALL_FLAG    = (global_conf["scope"] == NUM_CONF_SCOPE_ALL)
+    NUM_CONF_SCOPE_RECORD_FLAG = (global_conf["scope"] == NUM_CONF_SCOPE_RECORD)
+    NUM_CONF_SCOPE_FIELD_FLAG  = (global_conf["scope"] == NUM_CONF_SCOPE_FIELD)
+}
+
+##
+#
+# Given a word, set a num_configuration setting.
+#
+# Call this function for each option word a.k.a. flag,
+# before any calculation happens and any work happens.
+#
+# This function must only set `conf` keys and values.
+# This function must NOT do any calculations, work, etc.
+#
+# TODO: consider changing these to functions.
+#
+##
+
+function num_conf_word(word) {
+    if (word == "")
+         return
+    else if (word == "help")
+         num_help()
+    else if (word == "num_conf_scope_all")
+        global_conf["scope"] = NUM_CONF_SCOPE_ALL
+    else if (word == "num_conf_scope_record")
+        global_conf["scope"] = NUM_CONF_SCOPE_RECORD
+    else if (word == "num_conf_scope_field")
+        global_conf["scope"] = NUM_CONF_SCOPE_FIELD
+    else if (word == "output_comma_separated_values")
+        OFS = ","
+    else if (word == "output_tab_separated_values")
+        OFS = "\t"
+    else
+        return ""
+}
+
+##
+#
+# Given a list of words, set all num_configuration settings.
+#
+##
+
+function num_conf_words(words,  imax) {
+    for (i=1; i <= num_arr_length(words); i++) num_conf_word(words[i])
+}
+
+############################################################################
+#
+# num-scope.awk
+#
+##
+
+##
+#
+# Start receiving input.
+#
+# Ready the global number array for new input and new metadata.
+#
+##
+
+function scope_start() {
+    global_num_scope_n++
+    global_num_scope_output_n = 0
+    global_num_n = 0
+    split("", global_num)
+    split("", global_num_)
+}
+
+##
+#
+# Stop receiving input.
+#
+# Set any work in progress here.
+#
+##
+
+function scope_stop() {
+    global_num_["n"] = global_num_n
+    num_print_record()
+}
 
 ############################################################################
 #
@@ -2760,44 +3103,10 @@ function num_q4_(num, num_, opts) { return num_quartile_4_(num, num_, opts) }
 
 ##
 #
-# Initialize function metadata for a given function.
-#
-# Example:
-#
-#    function num_hello() {
-#        print "hello world"
-#    }
-#
-#    function num_hello_init() {
-#        num_function_init("hello hi hola", "Print a greeting", "http://example.com/hello.html")
-#    }
-#
-# The example creates these:
-#
-#    function_["num_hello","names"] = "hello hi hola"
-#    function_["num_hello", "help"] = "Print a greeting"
-#    function_["num_hello", "link"] = "http://example.com/hello.html"
-#    global_word_list["hello"] = "num_hello"
-#    global_word_list["hi"] = "num_hello"
-#    global_word_list["hola"] = "num_hello"
-#
-function num_function_init(names, help, link,  f, i, name, name_list) {
-    split(names, name_list)
-    f = "num_" name_list[1]
-    function_[f, "names"] = names
-    function_[f, "help"] = help
-    function_[f, "link"] = link
-    for (i in name_list) {
-        name = name_list[i]
-        gsub(/_/,"", name)
-        global_word_list[name] = f
-    }
-}
-
-##
-#
 # Initialize every file and function.
 #
+##
+
 function num_function_manager_init() {
     num_n_init()
     num_first_init()
@@ -2836,13 +3145,12 @@ function num_function_manager_init() {
     num_quartile_2_init()
     num_quartile_3_init()
     num_quartile_4_init()
-    num_quicksort_awk_init()
     num_sort_awk_init()
     num_sort_ascending_init()
     num_sort_descending_init()
+    num_map_increment_init()
     num_map_absolute_value_init()
     num_map_sign_init()
-    num_map_increment_init()
     num_map_normalize_init()
     num_map_round_awk_init()
     num_map_round_init()
@@ -2854,6 +3162,7 @@ function num_function_manager_init() {
     num_is_strictly_ascending_init()
     num_is_descending_init()
     num_is_strictly_descending_init()
+    num_help_init()
 }
 
 ##
@@ -2873,7 +3182,9 @@ function num_function_manager_init() {
 # TODO: Research if it is possible to simultaneously support
 # gawk indirect functions, to do a function call via `@f()`.
 #
-function num_function_manager_call(f, num, num_, opts) {
+##
+
+function num_function_manager_call(num, num_, opts, f) {
     if (f == "") return ("")
     else if (f == "num_n") return num_n_(num, num_, opts)
     else if (f == "num_first") return num_first_(num, num_, opts)
@@ -2914,9 +3225,9 @@ function num_function_manager_call(f, num, num_, opts) {
     else if (f == "num_quartile_4") return num_quartile_4_(num, num_, opts)
     else if (f == "num_sort_ascending") return num_sort_ascending_(num, num_, opts)
     else if (f == "num_sort_descending") return num_sort_descending_(num, num_, opts)
+    else if (f == "num_map_increment") return num_map_increment_(num, num_, opts)
     else if (f == "num_map_absolute_value") return num_map_absolute_value_(num, num_, opts)
     else if (f == "num_map_sign") return num_map_sign_(num, num_, opts)
-    else if (f == "num_map_increment") return num_map_increment_(num, num_, opts)
     else if (f == "num_map_normalize") return num_map_normalize_(num, num_, opts)
     else if (f == "num_map_round") return num_map_round_(num, num_, opts)
     else if (f == "num_map_round_off") return num_map_round_off_(num, num_, opts)
@@ -2930,256 +3241,23 @@ function num_function_manager_call(f, num, num_, opts) {
     else return ""
 }
 
-## END INCLUDES
-
-############################################################################
-#
-# INITIALIZE
-#
-##
 
 ##
 #
-# Initialize everything.
-#
-# This calls various `init_*` functions.
-#
-function init() {
-    #init_lint()
-    init_constants()
-    init_conf()
-    init_word_argv()
-    init_word_list()
-    num_function_manager_init()
-}
-
-##
-#
-# Initialize constants that we use; these are essentially like defines.
-#
-function init_constants() {
-    FALSE = 0
-    TRUE = 1
-    PI = 3.141592653589797  # also atan2(0,-1)
-    TODO = "TODO"
-    UNDEF = "UNDEF"
-    ERROR = "ERROR"
-    NAN = "NAN"
-
-    # Function kinds: a way to track what a function will do. #TODO
-    FUN_KIND_CALC = "CALC"
-    FUN_KIND_SORT = "SORT"
-    FUN_KIND_MAP  = "MAP"
-    FUN_KIND_FLAG = "FLAG"
-    FUN_KIND_CONF = "CONF"
-
-    # Feature detection. Currently this script requires Gawk.
-    AWK_HAS_ASORT = TRUE
-    AWK_HAS_LENGTH = TRUE
-
-    # The scope controls whether the user wants input and output
-    # to be all items (the default), or per record, or per field.
-    # The scope per field is a special case, because it lets the
-    # the awk loop read one record, calculate, then flush data.
-    CONF_SCOPE_ALL    = "CONF_SCOPE_ALL"     # Default
-    CONF_SCOPE_RECORD = "CONF_SCOPE_RECORD"  # Triggers optimized loop
-    CONF_SCOPE_FIELD  = "CONF_SCOPE_FIELD"   # TODO implement
-}
-
-##
-#
-# Initialize the configuration dictionary.
-#
-function init_conf() {
-    split("", global_conf)
-    global_conf["scope"] = CONF_SCOPE_ALL
-}
-
-##
-#
-# Initialize the word argv list.
-#
-# The word argv list holds the argv items that this script cares about.
-# We keep them in order, so we can output results in order.
-#
-function init_word_argv() {
-    split("", global_word_argv)
-}
-
-##
-#
-# Initialize the global word list lookup array.
-#
-# This is to recognize words that a user types on the command line.
-#
-# TODO: research if there is a better way to initialize a dictionary.
-#
-function init_word_list() {
-
-    global_word_list["overall"] = \
-    "num_conf_scope_all"
-
-    global_word_list["records"] = \
-    global_word_list["rows"] = \
-    "num_conf_scope_record"
-
-    global_word_list["fields"] = \
-    global_word_list["colums"] = \
-    "num_conf_scope_field"
-
-    # Convention: default is sample, not population.
-    global_word_list["secondmomentaboutthemean"] = \
-    global_word_list["secondmoment"] = \
-    "num_sample_variance"
-
-    # Convention: default is sample, not population.
-    global_word_list["thirdmomentaboutthemean"] = \
-    global_word_list["thirdmoment"] = \
-    "num_sample_skewness"
-
-    # Convention: default is sample, not population.
-    global_word_list["fourthmomentaboutthemean"] = \
-    global_word_list["fourthmoment"] = \
-    "num_sample_kurtosis"
-
-    ### Booleans
-
-    global_word_list["isunique"] = \
-    "num_is_unique"
-
-    global_word_list["isascending"] = \
-    global_word_list["isasc"] = \
-    global_word_list["isnondescending"] = \
-    global_word_list["isnondesc"] = \
-    "num_is_ascending"
-
-    global_word_list["isstrictlyascending"] = \
-    global_word_list["isstrictasc"] = \
-    "num_is_strictly_ascending"
-
-    global_word_list["isdescending"] = \
-    global_word_list["isdesc"] = \
-    global_word_list["isnonascending"] = \
-    global_word_list["isnonasc"] = \
-    "num_is_descending"
-
-    global_word_list["isstrictlydescending"] = \
-    global_word_list["isstrictdesc"] = \
-    "num_is_strictly_descending"
-
-    ### Configurations
-
-    global_word_list["outputcommaseparatedvalues"] = \
-    global_word_list["outcsv"] = \
-    "num_output_comma_separated_values"
-
-    global_word_list["outputtabseparatedvalues"] = \
-    global_word_list["outtab"] = \
-    "num_output_tab_separated_values"
-
-}
-
-############################################################################
-#
-# CONF
-#
-##
-
-##
-#
-# Configure
-#
-#
-function conf() {
-    words_to_conf(global_word_argv)
-    conf_ofmt()
-    conf_scope()
-}
-
-
-##
-#
-# Configure the output format string, a.k.a. AWK OFMT.
-# This controls number formatting as float, decimal, int, etc.
-#
-##
-
-function conf_ofmt() {
-    OFMT = (ENVIRON["OFMT"]) ? ENVIRON["OFMT"] : "%.6g"
-}
-
-##
-# Configure scope flags to optimize for tight inner loops.
-#
-# This enables us to speed up code by doing this:
-#
-#     - if (global_conf["scope"] == CONF_SCOPE_ALL)
-#     + if (CONF_SCOPE_ALL_FLAG)
-##
-
-function conf_scope() {
-    CONF_SCOPE_ALL_FLAG    = (global_conf["scope"] == CONF_SCOPE_ALL)
-    CONF_SCOPE_RECORD_FLAG = (global_conf["scope"] == CONF_SCOPE_RECORD)
-    CONF_SCOPE_FIELD_FLAG  = (global_conf["scope"] == CONF_SCOPE_FIELD)
-}
-
-##
-#
-# Given a word, set a configuration setting.
-#
-# Call this function for each option word a.k.a. flag,
-# before any calculation happens and any work happens.
-#
-# This function must only set `conf` keys and values.
-# This function must NOT do any calculations, work, etc.
-#
-# TODO: consider changing these to functions.
-#
-function word_to_conf(word) {
-    if (word == "")
-        return
-    if (word == "num_conf_scope_all")
-        global_conf["scope"] = CONF_SCOPE_ALL
-    else if (word == "num_conf_scope_record")
-        global_conf["scope"] = CONF_SCOPE_RECORD
-    else if (word == "num_conf_scope_field")
-        global_conf["scope"] = CONF_SCOPE_FIELD
-    else if (word == "output_comma_separated_values")
-        global_conf["output_field_separator"] = ","
-    else if (word == "output_tab_separated_values")
-        global_conf["output_field_separator"] = "\t"
-    else
-        return ""
-}
-
-##
-#
-# Given a list of words, set all configuration settings.
-#
-function words_to_conf(words,  imax) {
-    for (i=1; i <= num_arr_length(words); i++) word_to_conf(words[i])
-}
-
-############################################################################
-#
-# WORDS
-#
-##
-
-##
-#
-# Given a function name, calculate the function and return a string.
+# Function name to s: given a function name, call its function,
+# and convert the return value to a string using formatting.
 #
 # Example:
 #
 #     num = 1 2 4
 #     num_ = []
-#     function_name = "sum"
-#     num_function_name_to_s(num, num_, opts, function_name)
-#     => "7"
+#     num_function_manager_call_to_s(num, num_, opts, "sum")
+#     => 7.00 (by calling the `sum` function and using OFMT)
 #
+##
+
 function num_function_name_to_s(num, num_, opts, function_name,  s) {
-    s = num_function_manager_call(function_name, num, num_, opts)
+    s = num_function_manager_call(num, num_, opts, function_name)
     if (s != "") {
         num_scope_output_n++
         if (s + 0 == s) s = sprintf(OFMT, s)
@@ -3189,7 +3267,8 @@ function num_function_name_to_s(num, num_, opts, function_name,  s) {
 
 ##
 #
-# Given function names, calculate the functions and return a string.
+# Function names to s: given a list of function names, call each function,
+# and convert all the return values to a string using formatting.
 #
 # Example:
 #
@@ -3197,70 +3276,92 @@ function num_function_name_to_s(num, num_, opts, function_name,  s) {
 #     num_ = []
 #     function_names = "sum", "max"
 #     function_names_to_s(num, opts, ("sum", "max"))
-#     => "1 4"
+#     => "7.00,4.00" (by calling the functions and using OFMT and OFS)
 #
-function num_function_names_to_s(num, num_, opts, function_names, field_separator,  word, i, s, s2) {
-    s = ""
+##
+
+function num_function_names_to_s(num, num_, opts, function_names,  word, i, n, s, build) {
+    build = ""
     for (i=1; i <= num_arr_length(function_names); i++) {
         function_name = function_names[i]
-        s2 = num_function_name_to_s(num, num_, opts, function_name)
-        if (s2 != "") s = s s2 field_separator
+        s = num_function_name_to_s(num, num_, opts, function_name)
+        if (s != "") {
+            n++
+            if (n > 1) build = build OFS
+            build = build s
+        }
     }
-    s = substr(s, 1, length(s) - length(field_separator))
-    return s
+    return build
 }
 
 ############################################################################
 #
-# INPUT/OUTPUT
+# num-print.awk
 #
 ##
 
 ##
 #
-# Start receiving input.
+# Print a record.
 #
-# Ready the global number array for new input and new metadata.
+# This is the core output function, and the only one that should ever
+# print any normal result to the screen, during any normal operation.
 #
-function scope_start() {
-    num_scope_n++
-    global_num_n = 0
-    num_scope_output_n = 0
-    split("", global_num)
-    split("", global_num_)
+##
+
+function num_print_record(num, num_, opts,   s, i) {
+    s = num_function_names_to_s(global_num, global_num_, global_opts, global_word_argv)
+    if (global_num_scope_n > 1) printf ORS
+    if (s == "" && global_num_scope_output_n == 0)
+        num_print_record_fields(global_num, global_num_, global_opts)
+    else
+        printf s
 }
 
 ##
 #
-# Stop receiving input.
+# Print all record fields.
 #
-# Set any work in progress here.
+# This is the fallback if the record has no output so far.
+# A typical example would be for a sort, or filter, or map.
 #
-function scope_stop() {
-    global_num_["n"] = global_num_n
-    print_output()
+##
+
+function num_print_record_fields(num, num_, opts) {
+    for (i = 1; i <= num_["n"]; i++) {
+        if (i > 1) printf OFS
+        printf(OFMT, num[i])
+    }
 }
+
+############################################################################
+#
+# num-argv.awk
+#
+##
 
 ##
 #
-# Parse word inputs by iterating: whenever a word is recognized,
-# then move it from the word inputs array to the word matches array.
+# Parse words by iterating: when a word is recognized,
+# move it from the inputs array to the outputs array.
 #
 # Example to parse ARGV:
 #
-#     parse_words(ARGV, global_word_argv, global_word_list)
+#     parse_words(ARGV, global_word_argv, synonyms)
 #
-function parse_words(word_inputs, word_outputs, word_list,  i, word) {
-    for (i in word_inputs) {
-        word = tolower(word_inputs[i])
-        gsub(/[-_]/, "", word)
-        if (word == "help" || word == "version" || word == "usage") {
-            num_help()
-            exit 0
-        } else if (word in word_list) {
-            word = word_list[word]
-            delete word_inputs[i]
-            num_push(word_outputs, word)
+##
+
+function num_argv_parse(inputs, outputs, synonyms,  i, imax, item, outputs_n) {
+    split("", outputs)
+    outputs_n = 0
+    imax = length(inputs)
+    for (i=1; i<=imax; i++) {
+        item = tolower(inputs[i])
+        gsub(/[-_]/, "", item)
+        if (item in synonyms) {
+            item = synonyms[item]
+            delete inputs[i]
+            outputs[++outputs_n] = item
         }
     }
 }
@@ -3269,59 +3370,39 @@ function parse_words(word_inputs, word_outputs, word_list,  i, word) {
 #
 # Parse the command line ARGV inputs to recognized word outputs.
 #
-function parse_argv() {
-    parse_words(ARGV, global_word_argv, global_word_list)
-}
-
 ##
-#
-# Print output to the screen.
-#
-# This is the core output function, and the only one that
-# should print anything to the screen during normal operation.
-#
-function print_output(  s, i) {
-    s = num_function_names_to_s(global_num, global_num_, global_opts, global_word_argv, OFS, ORS)
-    if (num_scope_output_n == 0)
-        num_print_all(global_num, global_num_, global_opts)
-    else
-        print s
-}
 
-function num_print_all(num, num_, opts) {
-    if (num_scope_n > 1) printf ORS
-    for (i = 1; i <= num_["n"]; i++) {
-        if (i > 1) printf OFS
-        printf(OFMT, num[i])
-    }
-
+function num_argv() {
+    num_argv_parse(ARGV, global_word_argv, num_synonyms)
 }
 
 ############################################################################
 #
-# MAIN
+# num-main.awk
 #
 ##
 
 BEGIN{
-    init()
-    parse_argv()
-    conf()
-    if (CONF_SCOPE_ALL_FLAG) scope_start()
+    num_init()
+    num_argv()
+    num_conf()
+    if (NUM_CONF_SCOPE_ALL_FLAG) scope_start()
 }
 
 {
-    if (CONF_SCOPE_ALL_FLAG) {
+    if (NUM_CONF_SCOPE_ALL_FLAG) {
         for(i=1;i<=NF;i++) global_num[++global_num_n] = $i # Inline
-    } else if (CONF_SCOPE_RECORD_FLAG) {
+    } else if (NUM_CONF_SCOPE_RECORD_FLAG) {
         scope_start()
         for(i=1;i<=NF;i++) global_num[++global_num_n] = $i # Inline
         scope_stop()
     } else {
-        num_error("Num configuration scope is not recognized")
+        num_err("Num configuration scope is not recognized")
     }
 }
 
 END{
-    if (CONF_SCOPE_ALL_FLAG) scope_stop()
-}' "$@"
+    if (NUM_CONF_SCOPE_ALL_FLAG) scope_stop()
+}
+
+' "$@"

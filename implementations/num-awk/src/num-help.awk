@@ -15,3 +15,7 @@ function num_help() {
     system("awk -Wversion 2>/dev/null || awk --version")
     exit
 }
+
+function num_help_init() {
+    num_function_init("help version usage", "Print help, version, usage.")
+}
