@@ -42,9 +42,9 @@ Not yet, that's a goal. If you're a lawyer or open source advocate who can give 
 
 Generally yes, if the feature is in line with what Num does. We can add the feature to the roadmap for you. If you're able to write the code, or contribute to help fund the feature, that's excellent. Contact us to let us know what you'd like.
 
-### Q. How fast is NUMS?
+### Q. How fast is Num?
 
-Fast enough for small data and small tasks. For example, NUMS can sum a million integers in half a second on a current Mac laptop. As we raise money, we want to enable command-line-compatible implementations that use faster languages, such as Python and C.
+Num can process a million numbers per second on a current MacBook Pro. You can read our [benchmarks](benchmarks.md). If you need more speed, try running qstats, datamash, R, python, etc.
 
 ### Q. Could any programmer write this?
 
