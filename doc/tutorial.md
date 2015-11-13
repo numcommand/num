@@ -126,6 +126,34 @@ If you want to explicity tell Num which `awk` command to use, then you can provi
 
 
 
+## AWK implementations
+
+Num chooses which awk implementation to use by using this order of importance:
+
+  * ENV var, for example: AWK="/example/awk" num ...
+    This way gives the user complete control of which awk to use.
+
+  * GNU awk a.k.a. `gawk`. Available on all modern GNU Linux systems.
+    GNU awk provides more than POSIX, such as `asort()` and `length()`.
+    Note that Ubuntu Linux preinstalls `mawk` not `gawk`.
+
+  * Default awk. This is the most common awk, especially on old systems,
+    as well on curent Mac OSX systems and similar kinds of BSD systems.
+    The default awk is typically inferior to newer awk implementations.
+    The default awk is defined by POSIX and therefore has to exist on
+    all POSIX-conformant systems.
+
+TODO:
+
+  * mawk. Standard on Ubuntu and people say it's up to 8x faster.
+    We're currently working on mawk compatibility, and we believe
+    everything works except for sorting functions, such as median.
+    The short-term workaround is to pipe to `sort` before `num`.
+
+  * nawk - while the AWK language was being developed the authors
+    released a new version (hence the n - new awk) to avoid confusion.
+
+
 ## Real World Examples
 
 
