@@ -19,8 +19,8 @@ set -euf
 # Author: Joel Parker Henderson (joel@joelparkerhenderson.com)
 # License: GPL, BSD, MIT
 # Created: 2015-03-28
-# Updated: 2015-11-13
-# Version: 1.0.0
+# Updated: 2015-11-14
+# Version: 1.0.1
 #
 ##
 
@@ -34,7 +34,7 @@ AWK=${AWK:-$(command -v gawk || command -v awk || echo "awk")}
 ##
 
 function num_help() {
-    print "Num version 1.0.0."
+    print "Num version 1.0.1."
     print "Copyright (C) 2015 Joel Parker Henderson."
     print "Please see http://github.com/numcommand"
     print ""
