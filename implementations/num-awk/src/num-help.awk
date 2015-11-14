@@ -9,10 +9,10 @@ function num_help() {
     print "Copyright (C) 2015 Joel Parker Henderson."
     print "Please see http://github.com/numcommand"
     print ""
-    print "The system Awk command is:"
-    system("command -v awk")
+    print "Num uses this Awk:"
+    print awk
     print ""
-    system("awk -Wversion 2>/dev/null || awk --version")
+    system(awk "-Wversion 2>/dev/null || awk --version")
     exit
 }
 
