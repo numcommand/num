@@ -98,13 +98,32 @@ function num_arr_closest_value(arr, target,  _closest_value, _closest_delta, _de
 #
 # Join an array to a string, with a separator string.
 #
-# Example:
+# Examples:
 #
-#     num_arr_join(1 2 4, ",") => "1,2,4"
+#     num_arr_join(1 2 3, OFS) => "1 2 3"
+#     num_arr_join(1 2 3, ",") => "1,2,3"
 #
+##
+
 function num_arr_join(arr, sep,  s, i) {
     s = ""
-    for (i in arr) s = s arr[i] sep
-    s = substr(s, 1, length(s) - length(sep))
-    return s
+    for (i = 1; i <= num_arr_length(arr); i++) s = s arr[i] sep
+    return substr(s, 1, length(s) - length(sep))
+}
+
+##
+#
+# Join an array to a string, with a separator string, prefix, and suffix.
+#
+# Examples:
+#
+#     num_arr_join(1 2 3, OFS, "<", ">") => "<1> <2> <4>"
+#     num_arr_join(1 2 3, ",", "(", ")") => "(1),(2),(4)"
+#
+##
+
+function num_arr_join_with_prefix_suffix(arr, sep, prefix, suffix,  s, i) {
+    s = ""
+    for (i = 1; i <= num_arr_length(arr); i++)  s = prefix arr[i] suffix sep
+    return substr(s, 1, length(s) - length(sep))
 }

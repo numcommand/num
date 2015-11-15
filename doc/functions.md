@@ -147,7 +147,7 @@ The high median, i.e. greater of two middle values.
 
 #### mode
 
-The mode, which may be multiple numbers or UNDEF. TODO.
+The mode, which may be one number, or multiple numbers or UNDEF.
 
     echo "1 2 2 3" | num mode
     2

@@ -19,8 +19,8 @@ set -euf
 # Author: Joel Parker Henderson (joel@joelparkerhenderson.com)
 # License: GPL, BSD, MIT
 # Created: 2015-03-28
-# Updated: 2015-11-14
-# Version: 1.0.1
+# Updated: 2015-11-15
+# Version: 1.1.0
 #
 ##
 
@@ -34,7 +34,7 @@ AWK=${AWK:-$(command -v gawk || command -v awk || echo "awk")}
 ##
 
 function num_help() {
-    print "Num version 1.0.1."
+    print "Num version 1.1.0."
     print "Copyright (C) 2015 Joel Parker Henderson."
     print "Please see http://github.com/numcommand"
     print ""
@@ -463,15 +463,34 @@ function num_arr_closest_value(arr, target,  _closest_value, _closest_delta, _de
 #
 # Join an array to a string, with a separator string.
 #
-# Example:
+# Examples:
 #
-#     num_arr_join(1 2 4, ",") => "1,2,4"
+#     num_arr_join(1 2 3, OFS) => "1 2 3"
+#     num_arr_join(1 2 3, ",") => "1,2,3"
 #
+##
+
 function num_arr_join(arr, sep,  s, i) {
     s = ""
-    for (i in arr) s = s arr[i] sep
-    s = substr(s, 1, length(s) - length(sep))
-    return s
+    for (i = 1; i <= num_arr_length(arr); i++) s = s arr[i] sep
+    return substr(s, 1, length(s) - length(sep))
+}
+
+##
+#
+# Join an array to a string, with a separator string, prefix, and suffix.
+#
+# Examples:
+#
+#     num_arr_join(1 2 3, OFS, "<", ">") => "<1> <2> <4>"
+#     num_arr_join(1 2 3, ",", "(", ")") => "(1),(2),(4)"
+#
+##
+
+function num_arr_join_with_prefix_suffix(arr, sep, prefix, suffix,  s, i) {
+    s = ""
+    for (i = 1; i <= num_arr_length(arr); i++)  s = prefix arr[i] suffix sep
+    return substr(s, 1, length(s) - length(sep))
 }
 
 ############################################################################
@@ -2072,24 +2091,52 @@ function num_median_high_init() {
 #
 # Mode: get the mode, which may be a number, or list, or UNDEF.
 #
-# TODO: IMPLEMENT
+# The mode is:
+#
+#   * The values that appear most often in a set of data.
+#   * If values appear the same number of times, there are multiple modes.
+#   * If each value occurs only once, then there are no modes.
 #
 # Examples:
 #
-#     1 2 2 4 => 2
-#     1 1 2 4 4 => 1 4
+#     1 2 2 3 => 2
+#     1 1 2 3 3 => 1 3
 #     1 2 3 => UNDEF
 #
 ##
 
-function num_mode(arr) {
-    return TODO
+function num_mode(arr,  seen, max) {
+    for (i in arr) seen[arr[i]]++
+    max = num_max(seen)
+    if (max <= 1) return ""
+    for (i in seen) {
+        if (seen[i] == max) {
+            mode_list[++mode_list_i] = i
+        }
+    }
+    return num_arr_join(mode_arr, OFS)
 }
 
-function num_mode_(num, num_, opts,  f) {
+function num_mode_(num, num_, opts,  f, i, seen, max, mode_arr, mode_arr_i) {
     f = "num_mode"
     if (!(f in num_)) {
-        num_[f] = TODO
+        if (num_["unique"]) {
+            num_[f] = UNDEF
+        } else {
+            for (i in num) seen[num[i]]++
+            max = num_max(seen)
+            if (max <= 1) {
+                num_["unique"] = TRUE
+                num_[f] = num_["mode_arr"] = num_["mode_arr_i"] = UNDEF
+            } else {
+                for (i in seen) {
+                    if (seen[i] == max) {
+                        mode_arr[++mode_arr_i] = i
+                    }
+                }
+                num_[f] = num_arr_join(mode_arr, OFS)
+            }
+        }
     }
     return num_[f]
 }

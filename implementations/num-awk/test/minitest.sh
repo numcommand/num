@@ -3,6 +3,7 @@
 TRUE=1
 FALSE=0
 TODO="TODO"
+UNDEF="UNDEF"
 
 assert_eq() {
     expect="$1"; actual="$2"; msg="$3"

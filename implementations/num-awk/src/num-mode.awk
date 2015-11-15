@@ -8,24 +8,54 @@
 #
 # Mode: get the mode, which may be a number, or list, or UNDEF.
 #
-# TODO: IMPLEMENT
+# The mode is:
+#
+#   * The values that appear most often in a set of data.
+#   * If values appear the same number of times, there are multiple modes.
+#   * If each value occurs only once, then there are no modes.
 #
 # Examples:
 #
-#     1 2 2 4 => 2
-#     1 1 2 4 4 => 1 4
+#     1 2 2 3 => 2
+#     1 1 2 3 3 => 1 3
 #     1 2 3 => UNDEF
 #
 ##
 
-function num_mode(arr) {
-    return TODO
+function num_mode(arr,  seen, max) {
+    for (i in arr) seen[arr[i]]++
+    max = arr_max_via_scan(_seen)
+    if (max <= 1) return ""
+    for (i in seen) {
+        if (seen[i] == max) {
+            mode_list[++mode_list_i] = i
+        }
+    }
+    return num_join(mode_arr, OFS)
 }
 
-function num_mode_(num, num_, opts,  f) {
+function num_mode_(num, num_, opts,  f, i, seen, max, mode_arr, mode_arr_i) {
     f = "num_mode"
     if (!(f in num_)) {
-        num_[f] = TODO
+        if (num_["unique"]) {
+            num_[f] = num_["mode_arr"] = num_["mode_arr_i"] = UNDEF
+        } else {
+            for (i in num) seen[num[i]]++
+            max = arr_max_via_scan(_seen)
+            if (max <= 1) {
+                num_["unique"] = TRUE
+                num_[f] = num_["mode_arr"] = num_["mode_arr_i"] = UNDEF
+            } else {
+                for (i in seen) {
+                    if (seen[i] == max) {
+                        mode_arr[++mode_arr_i] = i
+                    }
+                }
+                num_["mode_arr"] = mode_arr
+                num_["mode_arr_i"] = mode_arr_i
+                num_["mode"] = num_join(mode_arr, OFS)
+            }
+        }
     }
     return num_[f]
 }

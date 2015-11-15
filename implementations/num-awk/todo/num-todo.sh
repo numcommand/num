@@ -32,7 +32,6 @@ function max
 #
 function mode(num, num_,  _modes) {
     if (!("mode" in num_)) {
-        if (_num["unique"]) {
             num_["mode"] = NAN
         } else {
             modes(num, num_, _modes)
@@ -64,25 +63,6 @@ function modes(num, num_, dest,  _dest_i, _seen, _max, i, j, s) {
     if (!("modes" in num_)) {
         if (_num["unique"]) {
             num_["modes"] = NAN
-        } else {
-            split("", dest)
-            _dest_i = 0
-            for (i in num) _seen[num[i]]++
-            _max = arr_max_via_scan(_seen)
-            if (_max > 1) {
-                for (i in _seen) {
-                    if (_seen[i] == _max) {
-                       dest[++dest_i] = i
-                    }
-                }
-                num_["modes"] = arr_join(dest, OFS)
-            } else {
-               num_["modes"] = NAN
-            }
-        }
-    }
-    return num_["modes"]
-}
 
 
 ############################################################################
@@ -90,48 +70,6 @@ function modes(num, num_, dest,  _dest_i, _seen, _max, i, j, s) {
 # ARRAY FUNCTIONS
 #
 ##
-
-# Join an array to a string, with a separator string, prefix, and suffix.
-#
-# Example:
-#
-#     arr_join(1 2 4, ",", "<", ">") => "<1>,<2>,<4>"
-#
-function arr_join_with_prefix_suffix(arr, sep, prefix, suffix,  s, i) {
-    s = ""
-    for (i in arr) s = s prefix arr[i] suffix sep
-    return substr(s, 1, length(s) - length(sep))
-}
-
-# Return the first item in an array.
-#
-# Example:
-#
-#     arr_first(1 2 4) => 1
-#
-function arr_first(arr) {
-    return arr[1]
-}
-
-# Get the last item in an array, by using the `length` function.
-#
-# Example:
-#
-#     arr_last_via_length(1 2 4) => 4
-#
-function arr_last_via_length(arr) {
-    return arr[length(arr)]
-}
-
-# Get the last item in an array, by using the `arr_["n"]` value.
-#
-# Example:
-#
-#     arr_last_via_arr_(1 2 4, arr_) => 4
-#
-function arr_last_via_arr_(arr, arr_) {
-    return arr[arr_["n"]]
-}
 
 # Push one item on an array stack, by using the `length` function.
 #
