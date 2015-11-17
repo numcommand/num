@@ -1,5 +1,29 @@
 # To do: plans and ideas for our future versions
 
+## Roadmap
+
+Num top ten roadmap goals:
+
+1. Create more functionality -- Such as for rankings, histograms, outliers, modes, jarque, dpo.
+
+2. Create input-scrubbing capabilities -- Such as extracting numbers from mixed-type data, parsing numbers that look like currencies or percentages, handling missing data or malformed data, alerting if non-numbers are disrupting results, etc.
+
+3. Upgrade options for input and output -- Add columns and rows, headers and labels, output formats for HTML/JSON/JSONB, Unicode symbols, etc.
+
+4. Improve help -- Continue enhanching the Num website, tutorials, examples. Add an IRC channel for people who want help and want to contribute. Collect documentation as a PDF book focused on command-line statistics, because our experience shows this is an important way to drive adoption in larger organizations including academia and enterprises.
+
+5. Optimize speed -- Use caching, memoization, heuristics, and input hinting.
+
+6. Implement on more systems -- Build pure Mac OS X compatibility, and pure POSIX compatibility, and Cygwin compatibility for Windows. Package Num by using various package managers, including apt, brew, yum, etc.
+
+7. Create appendable statistics, such as taking an input of an existing count and mean, and appending new numbers to the statistic\ s. We believe this is a killer feature for combining batch-oriented processing with stream-oriented processing. Our testing so far shows that additive statistics can give speed increases of 2x-5x for the real-world data we're\ using in real-world projects.
+
+8. Implement in a fast compiled language -- We expect this make Num run 2x-5x faster, and also open up long term possibilities for advanced data structures. We hope to be able to jumpstart this by working with existing open source statistics programmers and code bases, such as datamash and qsort.
+
+9. Encourage use of Num -- Such as working with teaching groups (e.g. edX, Khan Academy, Coursera, Udacity), coding groups (e.g. RedHat, Canonical, Apple, Google), and publishing groups (e.g. Amazon, O'Reilly, Pragmatic). These organizations can help us achieve the best success for the project, and can also help the most people.
+
+10. Long term we want to advocate for Num to become a Unix command that is automatically installed on all Unix systems, much like common command line tools such as grep and sed. We want this to include working with system vendors and also with programmers who can make the code faster and better for cross-platform uses.
+
 
 ### Ideas for version 2.x and future
 
