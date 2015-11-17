@@ -12,9 +12,9 @@ Use other tools when you have:
    * or repeating needs and automation
    *  or production-quality stability
 
-### When to use datamash, or qstats, etc.
+### When to use datamash, qstats, num-utils, etc.
 
-We suggest these small compiled binaries when:
+We suggest using these small compiled binaries when:
 
 * You're a sysop or sysadmin.
 * Your needs include systems automation.
@@ -24,26 +24,26 @@ We suggest these small compiled binaries when:
 * You want a quick way to pipe text to commands, with no dependencies.
 * Your ideal tools are small, compiled once, with no dependencies, and no add ons.
 
-### When to use R, or Julia, etc.
+### When to use R, Julia, Octave, etc.
 
-We suggest R and its tools, such as CRAN and R Studio, when:
+We suggest using these full featured statistics environments when:
 
 * You're a statistician.
 * Your needs include doing data exploration.
 * You think of numbers in terms of vectors and functions.
-* You already use a statistics tool, such as R Studio, Matlab, or Mathematica.
+* You want to use an app, such as R Studio, GNU Octave, Matlab, or Mathematica.
 * Your data set fits comfortably in your computer's memory.
 * You want a quick easy way to try visualizations and algorithms for yourself.
 * Your ideal tools are on the leading edge of new statistics.
 
-### When to use Python, or Scala, etc.
+### When to use Python, Scala, J, etc.
 
-We suggest Python and its tools, such as pandas and scikit, when:
+We suggest using these programming languages when:
 
 * You're a coder.
 * Your needs include doing data pre-processing or post-processing.
 * You think of numbers in terms of objects and messages, such as OOP methods.
-* You already code in Python, Scala, Java, Perl, Ruby, Go, etc.
+* You already code in Python, Scala, Java, Perl, Ruby, Go, J, etc.
 * Your data set exceeds your computer's memory.
 * You want production environment deployments of visualizations and algorithms.
 * Your ideal tools use a general purpose programming language.
