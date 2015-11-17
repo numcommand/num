@@ -64,7 +64,3 @@ x=$(echo "1 2 3 4"     | ./num mid)                           && assert_eq 2 "$x
 
 #x=$(echo "1 2 4"       | ./num n min max output-label)        && assert_eq "n 3 minimum 1 maximum 4" "$x" "output-label"
 #x=$(echo "1 2 4"       | ./num n min max outputlabel)         && assert_eq "n 3 minimum 1 maximum 4" "$x" "outputlabel"
-#x=$(echo "1 2 4"       | ./num all output-csv)                && assert_eq "3,1,4" "$x" "output-csv"
-#x=$(echo "1 2 4"       | ./num all outputcsv)                 && assert_eq "3,1,4" "$x" "outputcsv"
-#x=$(echo "1 2 4"       | ./num all output-tsv)                && assert_eq "3"$'\t'"1"$'\t'"4" "$x" "output-tsv"
-#x=$(echo "1 2 4"       | ./num all outputtsv)                 && assert_eq "3"$'\t'"1"$'\t'"4" "$x" "outputtsv"

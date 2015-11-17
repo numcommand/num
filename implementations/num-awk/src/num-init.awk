@@ -151,12 +151,46 @@ function num_init_word_list() {
 
     ### Configurations
 
+        num_synonyms["commaseparatedvalues"] = \
+    num_synonyms["csv"] = \
+    "num_io_comma_separated_values"
+
+    num_synonyms["inputcommaseparatedvalues"] = \
+    num_synonyms["inputcsv"] = \
+    num_synonyms["incsv"] = \
+    "num_input_comma_separated_values"
+
     num_synonyms["outputcommaseparatedvalues"] = \
+    num_synonyms["outputcsv"] = \
     num_synonyms["outcsv"] = \
     "num_output_comma_separated_values"
 
+    num_synonyms["tabseparatedvalues"] = \
+    num_synonyms["tsv"] = \
+    "num_io_tab_separated_values"
+
+    num_synonyms["inputtabseparatedvalues"] = \
+    num_synonyms["inputtsv"] = \
+    num_synonyms["intsv"] = \
+    "num_input_tab_separated_values"
+
     num_synonyms["outputtabseparatedvalues"] = \
-    num_synonyms["outtab"] = \
+    num_synonyms["outputtsv"] = \
+    num_synonyms["outtsv"] = \
     "num_output_tab_separated_values"
+
+    num_synonyms["unitseparatedvalues"] = \
+    num_synonyms["usv"] = \
+    "num_io_unit_separated_values"
+
+    num_synonyms["inputunitseparatedvalues"] = \
+    num_synonyms["inputusv"] = \
+    num_synonyms["inusv"] = \
+    "num_input_unit_separated_values"
+
+    num_synonyms["outputunitseparatedvalues"] = \
+    num_synonyms["outputusv"] = \
+    num_synonyms["outusv"] = \
+    "num_output_unit_separated_values"
 
 }

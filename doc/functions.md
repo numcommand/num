@@ -145,30 +145,40 @@ The high median, i.e. greater of two middle values.
 
 ## Mode
 
-#### mode
+#### modes
 
-The mode, which may be one number, or multiple numbers or UNDEF.
+The modes or UNDEF. TODO.
 
-    echo "1 2 2 3" | num mode
+Unimodal:
+
+    echo "1 2 2 3" | num modes
     2
 
+Bimodal:
 
-#### mode-low
+    echo "1 2 2 3 3" | num modes
+    2 3
 
-The least value of the mode values or UNDEF. TODO.
+Nonmodal:
 
-    echo "1 1 2 2 3 3" | num mode-low
+    echo "1 2 3" | num modes
+    UNDEF
+
+
+#### mode-min
+
+The minimum value of the mode values or UNDEF. TODO.
+
+    echo "1 1 2 2 3 3" | num mode-min
     1
 
 
-#### mode-high
+#### mode-max
 
-The greatest value of the mode values or UNDEF. TODO.
+The maximum value of the mode values or UNDEF. TODO.
 
     echo "1 1 2 2 3 3" | num mode-high
     3
-
-
 
 
 ## Sum Of
@@ -196,8 +206,6 @@ The sum of quads, a.k.a. sum of each mean deviation to the power of 4.
 
     echo "1 2 4" | num sum-of-quads
     10.8889
-
-
 
 
 ## Distributions

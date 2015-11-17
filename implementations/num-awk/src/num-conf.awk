@@ -67,10 +67,15 @@ function num_conf_word(word) {
         global_conf["scope"] = NUM_CONF_SCOPE_RECORD
     else if (word == "num_conf_scope_field")
         global_conf["scope"] = NUM_CONF_SCOPE_FIELD
-    else if (word == "output_comma_separated_values")
-        OFS = ","
-    else if (word == "output_tab_separated_values")
-        OFS = "\t"
+    else if (word == "num_io_comma_separated_values")     { FS = ","; RS = "\n"; OFS = ",";  ORS = "\n" }
+    else if (word == "num_input_comma_separated_values")  { FS = ","; RS = "\n" }
+    else if (word == "num_output_comma_separated_values") { OFS = ",";  ORS = "\n" }
+    else if (word == "num_io_tab_separated_values" )      { FS = "\t"; RS = "\n"; OFS = "\t"; ORS = "\n"}
+    else if (word == "num_input_tab_separated_values" )   { FS = "\t"; RS = "\n" }
+    else if (word == "num_output_tab_separated_values")   { OFS = "\t"; ORS = "\n" }
+    else if (word == "num_io_unit_separated_values")      { FS = "␟"; RS = "␞"; OFS = "␟"; ORS = "␞" }
+    else if (word == "num_input_unit_separated_values")   { FS = "␟"; RS = "␞" }
+    else if (word == "num_output_unit_separated_values")  { OFS = "␟"; ORS = "␞" }
     else
         return ""
 }

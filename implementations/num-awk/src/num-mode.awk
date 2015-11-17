@@ -6,7 +6,7 @@
 
 ##
 #
-# Mode: get the mode, which may be a number, or list, or UNDEF.
+# Modes: get the mode, which may be a number, or list, or UNDEF.
 #
 # The mode is:
 #
@@ -20,106 +20,116 @@
 #     1 1 2 3 3 => 1 3
 #     1 2 3 => UNDEF
 #
+# The implementations calculate the modes.
+#
+# Output the `modes` array.
+# Return the `modes` array length.
+#
+# Examples:
+#
+#     num_modes(1 2 3, modes)     => 0, modes == []
+#     num_modes(1 2 2 3, modes)   => 1, modes == [2]
+#     num_modes(1 1 2 3 3, modes) => 2, modes == [1, 3]
+#
 ##
 
-function num_mode(arr,  seen, max) {
-    for (i in arr) seen[arr[i]]++
-    max = arr_max_via_scan(_seen)
-    if (max <= 1) return ""
-    for (i in seen) {
-        if (seen[i] == max) {
-            mode_list[++mode_list_i] = i
-        }
+function num_modes(arr, modes,  modes_i, i, n, seen, max) {
+    for (i in arr) {
+        # Optimization: use one scan
+        n = ++seen[arr[i]]
+        if (max == "" || max < n) max = n
     }
-    return num_join(mode_arr, OFS)
-}
-
-function num_mode_(num, num_, opts,  f, i, seen, max, mode_arr, mode_arr_i) {
-    f = "num_mode"
-    if (!(f in num_)) {
-        if (num_["unique"]) {
-            num_[f] = num_["mode_arr"] = num_["mode_arr_i"] = UNDEF
-        } else {
-            for (i in num) seen[num[i]]++
-            max = arr_max_via_scan(_seen)
-            if (max <= 1) {
-                num_["unique"] = TRUE
-                num_[f] = num_["mode_arr"] = num_["mode_arr_i"] = UNDEF
-            } else {
-                for (i in seen) {
-                    if (seen[i] == max) {
-                        mode_arr[++mode_arr_i] = i
-                    }
-                }
-                num_["mode_arr"] = mode_arr
-                num_["mode_arr_i"] = mode_arr_i
-                num_["mode"] = num_join(mode_arr, OFS)
+    slice("", out); out_i = 0
+    if (max > 1) {
+        for (i in seen) {
+            if (seen[i] == max) {
+                out[++out_i] = i
             }
         }
     }
+    return out_i
+}
+
+function num_modes_(num, num_, opts, modes,  f, modes_i) {
+    f = "num_modes"
+    if (!(f in num_)) {
+        if (num_["unique"]) {
+            num_[f] = num_["num_mode_min"] = num_["num_mode_max"] = UNDEF
+        } else {
+            # TODO: optimize if we know the array is sorted
+            num_[f] = modes_i = num_mode(num, modes)
+            if (modes_i == 0) {
+                num_["unique"] = TRUE
+                num_["num_mode_min"] = num_["num_mode_max"] = UNDEF
+            } else {
+                num_["unique"] = FALSE
+            }
+            num_[f] = modes_i
+        }
+    }
     return num_[f]
 }
 
-function num_mode_init() {
-    num_function_init("num_mode mode", "Get the mode, which may be a value, or list, or UNDEF.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
+function num_modes_init() {
+    num_function_init("num_modes modes", "Get the modes, which is a list.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
 }
 
 ##
 #
-# Mode-low: get the first mode, if any, or UNDEF.
+# Mode min: get the minimum mode, if any, or UNDEF.
 #
 # TODO: IMPLEMENT
 #
 # Examples:
 #
-#     1 2 2 3 => 2
-#     1 1 2 4 4 => 1
-#     1 2 3 => UNDEF
+#     num_mode_min(1 2 3) => UNDEF
+#     num_mode_min(1 2 2 3) => 2
+#     num_mode_min(1 1 2 4 4) => 1
 #
 ##
 
-function num_mode_low(arr) {
+function num_mode_min(arr) {
     return TODO
 }
 
-function num_mode_low_(num, num_, opts,  f) {
-    f = "num_mode_low"
+function num_mode_min_(num, num_, opts,  f) {
+    f = "num_mode_min"
     if (!(f in num_)) {
         num_[f] = TODO
     }
     return num_[f]
 }
 
-function num_mode_low_init() {
-    num_function_init("num_mode_low mode_low", "Get the first mode, if any, or UNDEF.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
+function num_mode_min_init() {
+    num_function_init("num_mode_min mode_min", "Get the minimum mode, if any, or UNDEF.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
 }
 
 ##
 #
-# Mode-high: get the last mode, if any, or UNDEF.
+# Mode max: get the maximum mode, if any, or UNDEF.
 #
 # TODO: IMPLEMENT
 #
 # Examples:
 #
-#     1 2 2 3 => 2
-#     1 1 2 4 4 => 4
-#     1 2 3 => UNDEF
+#     num_mode_max(1 2 3) => UNDEF
+#     num_mode_max(1 2 2 3) => 2
+#     num_mode_max(1 1 2 4 4) => 4
 #
 ##
 
-function num_mode_high(arr) {
+function num_mode_max(arr) {
     return TODO
 }
 
-function num_mode_high_(num, num_, opts,  f) {
-    f = "num_mode_high"
+function num_mode_max_(num, num_, opts,  f) {
+    f = "num_mode_max"
     if (!(f in num_)) {
         num_[f] = TODO
     }
     return num_[f]
 }
 
-function num_mode_high_init() {
-    num_function_init("num_mode_high mode_high", "Get the last mode, if any, or UNDEF.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
+function num_mode_max_init() {
+    num_function_init("num_mode_max mode_max", "Get the maximum mode, if any, or UNDEF.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
 }
