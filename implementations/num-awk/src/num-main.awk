@@ -25,4 +25,5 @@ BEGIN{
 
 END{
     if (NUM_CONF_SCOPE_ALL_FLAG) scope_stop()
+    printf "\n"  # TODO add conf flag equivalent to echo -n
 }
