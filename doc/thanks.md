@@ -41,6 +41,7 @@
 [Ido Rosen](https://www.kickstarter.com/profile/ido),
 [Ivica Kičić](https://www.kickstarter.com/profile/1305140661),
 [Jacqualynn Jones](https://www.kickstarter.com/profile/1041603700),
+[Jeremy Bagai](https://www.kickstarter.com/profile/2139473242),
 [Joe Ratti](https://www.kickstarter.com/profile/1494740047),
 [John Allwine](https://www.kickstarter.com/profile/941797232),
 [Jonathan](https://www.kickstarter.com/profile/899550954),
@@ -50,11 +51,17 @@
 [Lance](https://www.kickstarter.com/profile/682935683),
 [Lawrence Yu](https://www.kickstarter.com/profile/251870332),
 [Luis Velez](https://www.kickstarter.com/profile/1604244352),
+[Mario Bogantes](https://www.kickstarter.com/profile/1628770794),
 [Matt Cohen](https://www.kickstarter.com/profile/254996529),
 [Michael Pope](https://www.kickstarter.com/profile/124039772),
+[Michelle Novak](https://www.kickstarter.com/profile/765081405),
+[Michelle Vaquilar](https://www.kickstarter.com/profile/263233109),
 [Nate Amarose](https://www.kickstarter.com/profile/1753074515),
 [Odin Dutton](https://www.kickstarter.com/profile/504607824),
 [Ondrej Nekola](https://www.kickstarter.com/profile/1074590221),
+[Pascal B. Kalou](https://www.kickstarter.com/profile/1735222166),
+[Patty](https://www.kickstarter.com/profile/259531021),
+[Paul Henderson](https://www.kickstarter.com/profile/1353952072),
 [Sajjad Bashar](https://www.kickstarter.com/profile/115363782),
 [Sammy Lao](https://www.kickstarter.com/profile/1616583675),
 [Stephanie Rose](https://www.kickstarter.com/profile/1256990289),
@@ -62,6 +69,7 @@
 [Steve Howard](https://www.kickstarter.com/profile/132523397),
 [Steven Roberts](https://www.kickstarter.com/profile/1000405747),
 [Vance Morosi](https://www.kickstarter.com/profile/1771833525),
+[Vineet Mehta](https://www.kickstarter.com/profile/1423958530),
 and Anonymous.
 
 ### Helpers
