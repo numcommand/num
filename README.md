@@ -22,6 +22,7 @@ Install:
 To install on Mac OS X: also run `brew install gawk` to install GNU awk.
 <br>To install on other systems: please see the [Install page](doc/install.md).
 <br>If you have any issues, please see the [Troubleshooting page](doc/troubleshooting.md).
+
 Start using Num:
 
 * <a href="doc/tutorial.md">Tutorial: quick start, input, output, variables, options, &hellip;</a>
