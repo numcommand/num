@@ -29,7 +29,7 @@ The rest of this tutorial will use this example data file:
     7 8 9
 
 
-## Input
+## Input/Ouput
 
 You can use standard input:
 
@@ -49,27 +49,13 @@ You can use records a.k.a. rows:
     15
     24
 
-
-You can use a custom input field separator (FS) and input record separator (RS):
-
-    $ echo "1,2,3;4,5,6;7,8,9" | num min max FS=',' RS=';'
-    1 3
-    4 5
-    7 9
-
-
-## Output
-
-You can use a custom output field separator (OFS) and output record separator (ORS).
-
-    $ echo "1 2 3\n4 5 6\n7 8 9" | num min max records OFS=',' ORS=';'
-    1,3;4,6;7,9
-
-
 You can use a custom output format (OFMT):
 
     $ OFMT="%.4f" num sum data.txt
     45.0000
+
+
+You can use input/output separators for fields, records, and data exchange formats including CSV, TSV, USV. See [Input/Output Separators](input-output-separators.md).
 
 
 ## Command line options

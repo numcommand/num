@@ -1,3 +1,4 @@
 #!/bin/sh
 
-for f in num-*-test.sh; do NUM="../num" ./$f; done
+NUM=${NUM:-$(command -v num || echo "num")}
+for f in num-*-test.sh; do NUM="$NUM" ./$f; done

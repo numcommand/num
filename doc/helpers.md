@@ -148,6 +148,10 @@ Example:
 
 Run <a href="http://linux.die.net/man/1/parallel">`man parallel`</a> to see options for jobs, loads, delays, etc.
 
+## CSV: comma separated values
+
+Consider using a prebuilt tools such as a perl module, ruby gem, or command line tool such as [`csvkit`](http://csvkit.readthedocs.org/), [`csvtool`](http://basepath.com/csv/), [`crush`](https://github.com/google/crush-tools), etc.
+
 <p><hr><nav>
 * <b>[Prev Page: Functions: the complete list of all capabilities](functions.md)</b>
 * <b>[Next Page: Aritcles & Blogs](articles.md)</b>

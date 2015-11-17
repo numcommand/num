@@ -19,8 +19,8 @@ set -euf
 # Author: Joel Parker Henderson (joel@joelparkerhenderson.com)
 # License: GPL, BSD, MIT
 # Created: 2015-03-28
-# Updated: 2015-11-15
-# Version: 1.1.0
+# Updated: 2015-11-16
+# Version: 1.2.0
 #
 ##
 
@@ -34,7 +34,7 @@ AWK=${AWK:-$(command -v gawk || command -v awk || echo "awk")}
 ##
 
 function num_help() {
-    print "Num version 1.1.0."
+    print "Num version 1.2.0."
     print "Copyright (C) 2015 Joel Parker Henderson."
     print "Please see http://github.com/numcommand"
     print ""
@@ -2089,7 +2089,7 @@ function num_median_high_init() {
 
 ##
 #
-# Mode: get the mode, which may be a number, or list, or UNDEF.
+# Modes: get the mode, which may be a number, or list, or UNDEF.
 #
 # The mode is:
 #
@@ -2103,46 +2103,58 @@ function num_median_high_init() {
 #     1 1 2 3 3 => 1 3
 #     1 2 3 => UNDEF
 #
+# The implementations calculate the modes.
+#
+# Output the `modes` array.
+# Return the `modes` array length.
+#
+# Examples:
+#
+#     num_modes(1 2 3, modes)     => 0, modes == []
+#     num_modes(1 2 2 3, modes)   => 1, modes == [2]
+#     num_modes(1 1 2 3 3, modes) => 2, modes == [1, 3]
+#
 ##
 
-function num_mode(arr,  seen, max) {
-    for (i in arr) seen[arr[i]]++
-    max = num_max(seen)
-    if (max <= 1) return ""
-    for (i in seen) {
-        if (seen[i] == max) {
-            mode_list[++mode_list_i] = i
+function num_modes(arr, modes,  modes_i, i, n, seen, max) {
+    for (i in arr) {
+        # Optimization: use one scan
+        n = ++seen[arr[i]]
+        if (max == "" || max < n) max = n
+    }
+    slice("", out); out_i = 0
+    if (max > 1) {
+        for (i in seen) {
+            if (seen[i] == max) {
+                out[++out_i] = i
+            }
         }
     }
-    return num_arr_join(mode_arr, OFS)
+    return out_i
 }
 
-function num_mode_(num, num_, opts,  f, i, seen, max, mode_arr, mode_arr_i) {
-    f = "num_mode"
+function num_modes_(num, num_, opts, modes,  f, modes_i) {
+    f = "num_modes"
     if (!(f in num_)) {
         if (num_["unique"]) {
-            num_[f] = UNDEF
+            num_[f] = num_["num_mode_min"] = num_["num_mode_max"] = UNDEF
         } else {
-            for (i in num) seen[num[i]]++
-            max = num_max(seen)
-            if (max <= 1) {
+            # TODO: optimize if we know the array is sorted
+            num_[f] = modes_i = num_modes(num, modes)
+            if (modes_i == 0) {
                 num_["unique"] = TRUE
-                num_[f] = num_["mode_arr"] = num_["mode_arr_i"] = UNDEF
+                num_["num_mode_min"] = num_["num_mode_max"] = UNDEF
             } else {
-                for (i in seen) {
-                    if (seen[i] == max) {
-                        mode_arr[++mode_arr_i] = i
-                    }
-                }
-                num_[f] = num_arr_join(mode_arr, OFS)
+                num_["unique"] = FALSE
             }
+            num_[f] = modes_i
         }
     }
     return num_[f]
 }
 
-function num_mode_init() {
-    num_function_init("num_mode mode", "Get the mode, which may be a value, or list, or UNDEF.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
+function num_modes_init() {
+    num_function_init("num_modes modes", "Get the modes, which is a list.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
 }
 
 ##
@@ -3009,13 +3021,47 @@ function num_init_word_list() {
 
     ### Configurations
 
+    num_synonyms["commaseparatedvalues"] = \
+    num_synonyms["csv"] = \
+    "num_io_comma_separated_values"
+
+    num_synonyms["inputcommaseparatedvalues"] = \
+    num_synonyms["inputcsv"] = \
+    num_synonyms["incsv"] = \
+    "num_input_comma_separated_values"
+
     num_synonyms["outputcommaseparatedvalues"] = \
+    num_synonyms["outputcsv"] = \
     num_synonyms["outcsv"] = \
     "num_output_comma_separated_values"
 
+    num_synonyms["tabseparatedvalues"] = \
+    num_synonyms["tsv"] = \
+    "num_io_tab_separated_values"
+
+    num_synonyms["inputtabseparatedvalues"] = \
+    num_synonyms["inputtsv"] = \
+    num_synonyms["intsv"] = \
+    "num_input_tab_separated_values"
+
     num_synonyms["outputtabseparatedvalues"] = \
-    num_synonyms["outtab"] = \
+    num_synonyms["outputtsv"] = \
+    num_synonyms["outtsv"] = \
     "num_output_tab_separated_values"
+
+    num_synonyms["unitseparatedvalues"] = \
+    num_synonyms["usv"] = \
+    "num_io_unit_separated_values"
+
+    num_synonyms["inputunitseparatedvalues"] = \
+    num_synonyms["inputusv"] = \
+    num_synonyms["inusv"] = \
+    "num_input_unit_separated_values"
+
+    num_synonyms["outputunitseparatedvalues"] = \
+    num_synonyms["outputusv"] = \
+    num_synonyms["outusv"] = \
+    "num_output_unit_separated_values"
 
 }
 
@@ -3088,10 +3134,15 @@ function num_conf_word(word) {
         global_conf["scope"] = NUM_CONF_SCOPE_RECORD
     else if (word == "num_conf_scope_field")
         global_conf["scope"] = NUM_CONF_SCOPE_FIELD
-    else if (word == "output_comma_separated_values")
-        OFS = ","
-    else if (word == "output_tab_separated_values")
-        OFS = "\t"
+    else if (word == "num_io_comma_separated_values")     { FS = ","; RS = "\n"; OFS = ",";  ORS = "\n" }
+    else if (word == "num_input_comma_separated_values")  { FS = ","; RS = "\n" }
+    else if (word == "num_output_comma_separated_values") { OFS = ",";  ORS = "\n" }
+    else if (word == "num_io_tab_separated_values" )      { FS = "\t"; RS = "\n"; OFS = "\t"; ORS = "\n"}
+    else if (word == "num_input_tab_separated_values" )   { FS = "\t"; RS = "\n" }
+    else if (word == "num_output_tab_separated_values")   { OFS = "\t"; ORS = "\n" }
+    else if (word == "num_io_unit_separated_values")      { FS = "␟"; RS = "␞"; OFS = "␟"; ORS = "␞" }
+    else if (word == "num_input_unit_separated_values")   { FS = "␟"; RS = "␞" }
+    else if (word == "num_output_unit_separated_values")  { OFS = "␟"; ORS = "␞" }
     else
         return ""
 }
@@ -3169,7 +3220,7 @@ function num_function_manager_init() {
     num_median_init()
     num_median_low_init()
     num_median_high_init()
-    num_mode_init()
+    num_modes_init()
     num_mode_low_init()
     num_mode_high_init()
     num_sum_of_squares_init()
@@ -3247,7 +3298,7 @@ function num_function_manager_call(num, num_, opts, f) {
     else if (f == "num_median") return num_median_(num, num_, opts)
     else if (f == "num_median_low") return num_median_low_(num, num_, opts)
     else if (f == "num_median_high") return num_median_high_(num, num_, opts)
-    else if (f == "num_mode") return num_mode_(num, num_, opts)
+    else if (f == "num_modes") return num_modes_(num, num_, opts, out, out_)
     else if (f == "num_mode_low") return num_mode_low_(num, num_, opts)
     else if (f == "num_mode_high") return num_mode_high_(num, num_, opts)
     else if (f == "num_sum_of_squares") return num_sum_of_squares_(num, num_, opts)
@@ -3286,7 +3337,6 @@ function num_function_manager_call(num, num_, opts, f) {
     else if (f == "num_is_strictly_descending") return num_is_strictly_descending_(num, num_, opts)
     else return ""
 }
-
 
 ##
 #
