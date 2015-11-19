@@ -4,7 +4,7 @@
 
 Num top ten roadmap goals:
 
-1. Create more functionality -- Such as for rankings, histograms, outliers, modes, jarque, dpo.
+1. Create more functionality -- Such as for rankings, histograms, outliers, modes, jarque, dpo, and larger numbers.
 
 2. Create input-scrubbing capabilities -- Such as extracting numbers from mixed-type data, parsing numbers that look like currencies or percentages, handling missing data or malformed data, alerting if non-numbers are disrupting results, etc.
 
@@ -27,7 +27,13 @@ Num top ten roadmap goals:
 
 ### Ideas for version 2.x and future
 
-Numbers functions:
+Number sizes:
+
+* Big numbers
+* Research adding GNU MPFR and GNU MP (GMP).
+* Research adding GNU Awk `--bignum` flag.
+
+Number functions:
 
 * `transpose`
 * `reverse`
