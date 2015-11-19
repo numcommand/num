@@ -36,47 +36,31 @@ Number sizes:
 Number functions:
 
 * `transpose`
+
 * `reverse`
 
-Count functions:
+* `count-*`, `select-*`, `reject-*` for positive, negative, zero, even, odd, unique.
 
-* `count-positive`
-* `count-negative`
-* `count-zero`
-* `count-even`
-* `count-odd`
-* `count-unique`
+* possibly filters based on quantile, such as `=q1`, `>q1`, `<q1`
 
 Mathematics functions:
 
-* `absmin`
-* `absmax`
+* `absmin`, `absmax`
+
+* `decrement`
 
 List functions:
 
 * `randomize` a.k.a `shuffle`
+
 * `collapse`
-
-Quantile functions:
-
-* `q0`, `q1`, `q2`, `q3`, `q4`
-* `iqr`
-* possibly filters based on quantile, such as `=q1`, `>q1`, `<q1`
 
 Statistics functions:
 
 * `antimode`
-* `pstdev`
-* `sstdev`
-* `pvar`
-* `svar`
-* `mad`
-* `madraw`
-* `sskew`
-* `pskew`
-* `skurt`
-* `pkurt`
+
 * `jarque`
+
 * `dpo`
 
 IO functions:
@@ -95,14 +79,6 @@ Table functions:
 
 * `filler`
 
-Cleaning functions:
-
-* `floor` a.k.a. `truncate` - adjust each number by chopping off decimal points. Example: 1.9 => 1
-
-* `round` a.k.a. `nint` - adjust each number to the nearest integer. Example: 1.9 => 2
-
-* `strip` a.k.a. `trim` - excise any non-number characters. Example "$1%" => 1.
-
 Other functions such as those in other math stats tools.
 
 Optimizaitons:
@@ -119,7 +95,7 @@ Quicksort:
   which is similar to insertion sort yet better for typical data.
   See https://en.wikipedia.org/wiki/Shellsort
 
-* Research upgrading from single pivot to dual pivot.
+* Research upgrading from single pivot to dual pivot, with the main benefit being faster speed because of fewer long scans.
 
 
 <p><hr><nav>
