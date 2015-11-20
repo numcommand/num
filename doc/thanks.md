@@ -83,6 +83,7 @@ and Anonymous.
 * Project feedback: Janis Papanagnou, Andrew Schorr.
 * Tony Fischetti, author of the qstats tool, and its contributors.
 * Assaf Gordon, maintainer of the datamash tool, and its contributors.
+* Thomas Dickey, maintainer of the mawk tool, and its contributors.
 * Arnold Robbins, maintainer of the gawk tool on Unix and POSIX systems, and its maintainers and contributors on all systems.
 * Ross Ihaka and Robert Gentleman, creators of the R language, and its contributors.
 * Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and Alan Edelman, creators of the Julia language, and its contributors.
