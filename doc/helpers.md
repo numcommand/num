@@ -3,7 +3,10 @@
 There are many commands that work with with Num; here are our favorites.
 
 
-## awk
+## Popular commands
+
+
+### awk
 
 The `awk` command typically processes text, fields, records, and data.
 
@@ -17,7 +20,7 @@ Example to select column 2 then sum:
 Run <a href="http://linux.die.net/man/1/awk">`man awk`</a> to see options for scanning, processing, input, output, etc.
 
 
-## cat
+### cat
 
 The `cat` command typically prints the contents of a file.
 
@@ -31,7 +34,7 @@ Example to print a file of data then sum:
 Run <a href="http://linux.die.net/man/1/cat">`man cat`</a> to see options for line numbering, blank line squeezing, etc.
 
 
-## cut
+### cut
 
 Cut a field
 
@@ -45,7 +48,7 @@ Example:
 Run <a href="http://linux.die.net/man/1/cut">`man cut`</a> to see options for cutting by character, changing delimiters, suppressing lines, etc.
 
 
-## head
+### head
 
 Get the head of the text, meaning the first lines of data or a file.
 
@@ -57,7 +60,7 @@ Example:
 Run <a href="http://linux.die.net/man/1/cat">`man head`</a> to see options for line counts, using bytes, etc.
 
 
-## seq (sequence)
+### seq (sequence)
 
 Sequence: generate a sequence of numbers.
 
@@ -71,7 +74,7 @@ Example:
 Run <a href="http://linux.die.net/man/1/seq">`man seq`</a> to see options for number separators, zero padding, etc.
 
 
-## shuf (shuffle)
+### shuf (shuffle)
 
 Shuffle a list, a.k.a. randomize the order of list items.
 
@@ -85,7 +88,7 @@ Example:
 Run <a href="http://linux.die.net/man/1/shuf">`man shuf`</a> to see options for input range, sample number, head count, etc.
 
 
-## split
+### split
 
 Split a file into pieces.
 
@@ -96,8 +99,10 @@ Example:
 
 Run <a href="http://linux.die.net/man/1/split">`man split`</a> to see options for splitting by bytes, lines, patterns, etc.
 
+Also see the `xlines` command on this page.
 
-## sort
+
+### sort
 
 Sort the items.
 
@@ -111,7 +116,7 @@ Example:
 Run <a href="http://linux.die.net/man/1/sort">`man sort`</a> to see options for reverse, unique, field separator, etc.
 
 
-## tail
+### tail
 
 Get the tail of the text, meaning the last lines of data or a file.
 
@@ -123,7 +128,7 @@ Example:
 Run <a href="http://linux.die.net/man/1/tail">`man tail`</a> to see options for removing headers, reversing, etc.
 
 
-## uniq (unique)
+### uniq (unique)
 
 Unique: make the items unique by removing duplicates.
 
@@ -137,7 +142,7 @@ Example:
 Run <a href="http://linux.die.net/man/1/uniq">`man unique`</a> to see options for showing duplicates, skipping duplicates, ignoring fields, etc.
 
 
-## wc (word count)
+### wc (word count)
 
 Word count: this typically counts lines, words, and characters.
 
@@ -149,7 +154,10 @@ Example:
 Run <a href="http://linux.die.net/man/1/wc">`man wc`</a> to see options, and how to use languages other than English or character encodings other than ASCII.
 
 
-## parallel
+## Parallel processing
+
+
+### parallel
 
 GNU parallel provides multi-core processing that spreads work among your CPU cores.
 
@@ -160,9 +168,48 @@ Example:
 
 Run <a href="http://linux.die.net/man/1/parallel">`man parallel`</a> to see options for jobs, loads, delays, etc.
 
-## CSV: comma separated values
+### xlines
+
+The `xlines` command is a combination of `xargs` and `split`, and similar to `parallel`. It takes a bunch of lines, and sends them round-robin to a number of child processes, using all your system's processors. Each process sees only one of the lines.
+
+Example:
+
+    $ cat data.txt | xlines -- num sum
+
+To use this command, you need to download the code and compile it.
+
+See https://blog.goeswhere.com/2015/11/xlines/
+
+
+## Formatting input/output
+
+
+### CSV: comma separated values
+
+CSV is a popular spreadsheet data exchange format. CSV uses a comma as the field separator, and a newline character as the record separator.
 
 Consider using a prebuilt tools such as a perl module, ruby gem, or command line tool such as [`csvkit`](http://csvkit.readthedocs.org/), [`csvtool`](http://basepath.com/csv/), [`crush`](https://github.com/google/crush-tools), etc.
+
+
+### TSV: tab separated values
+
+TSV is a popular spreadsheet data exchange format, also known as TDF (tab delimited format). TSV uses a tab character as the field separator, and a newline character as the record separator.
+
+To type a tab character on a Unix command line, you typically type "\t" which is double-quote, backslash, lowercase letter t, double-quote.
+
+
+### USV: unit separated values
+
+USV is our preferred spreadsheet data exchange format. USV uses the Unicode unit-separator character (U+241F) as the field separator, and the Unicode record-separator character (U+241E) as the record separator.
+
+To type Unicode on a Mac OSX system:
+
+  * Choose your system's keyboard named "Unicode Hex Input".
+
+  * Hold down the option key and type the Unicode value (e.g. 2, 4, 1, F).
+
+  * The character appears.
+
 
 <p><hr><nav>
 * <b>[Prev Page: Functions: the complete list of all capabilities](functions.md)</b>
