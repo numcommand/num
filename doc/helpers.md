@@ -85,6 +85,18 @@ Example:
 Run <a href="http://linux.die.net/man/1/shuf">`man shuf`</a> to see options for input range, sample number, head count, etc.
 
 
+## split
+
+Split a file into pieces.
+
+Example:
+
+    $ split -a 1 -l 1 data.txt demo-
+    creates new files demo-a, demo-b, demo-c
+
+Run <a href="http://linux.die.net/man/1/split">`man split`</a> to see options for splitting by bytes, lines, patterns, etc.
+
+
 ## sort
 
 Sort the items.
