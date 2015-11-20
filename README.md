@@ -17,10 +17,9 @@ Example:
 
 Install:
 
-    sudo curl -sSL https://raw.githubusercontent.com/numcommand/num/master/implementations/num-awk/num -o /usr/local/bin/num && sudo chmod +x /usr/local/bin/num
+sudo curl -sSL https://raw.githubusercontent.com/numcommand/num/master/implementations/num-awk/num -o /usr/local/bin/num && sudo chmod +x /usr/local/bin/num && (command -v uname >/dev/null 2>&1) && (uname | grep -q Darwin) && (command -v brew >/dev/null 2>&1) && (brew ls --versions gawk | grep -q gawk) || brew install gawk
 
-To install on Mac OS X also run `brew install gawk`.
-<br>To install on other systems please see the [Install page](doc/install.md).
+For more on how to install please see the [Install page](doc/install.md).
 <br>To troubleshoot please see the [Troubleshooting page](doc/troubleshooting.md).
 
 Start using Num:
