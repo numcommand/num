@@ -210,14 +210,17 @@ We download weather data for two days then parse humidities.
     32 84 58.4167
 
 
-### How much is an apartment in San Francisco?
+### How expensive is a one-bedroom apartment in San Francisco?
 
 We connect to the Craigslist website then parse prices.
 
-    $ curl -s http://sfbay.craigslist.org/search/apa |
-    tr ">" "\n" | sed -n 's/^\$\([0-9]\+\).*/\1/p' |
-    num mean
-    2974.47
+    $ curl -s http://sfbay.craigslist.org/search/sfc/apa\?min_price\=1\&bedrooms\=1 |
+    sed 's/\(<p class="row"\)/\n\1/g' |
+    grep ' 1br ' |
+    tr ">" "\n" |
+    sed -n 's/^\$\([0-9]\+\).*/\1/p' |
+    num mean median interquartile-range standard-deviation OFMT="%.0d"
+    3226 3300 641 815
 
 
 <p><hr><nav>
