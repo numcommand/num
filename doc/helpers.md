@@ -60,6 +60,17 @@ Example:
 Run <a href="http://linux.die.net/man/1/cat">`man head`</a> to see options for line counts, using bytes, etc.
 
 
+### join
+
+Join files by matching on fields.
+
+Example:
+
+    $ join file1 file2
+
+Run <a href="http://linux.die.net/man/1/join">`man head`</a> to see options for fields, lines, etc.
+
+
 ### seq (sequence)
 
 Sequence: generate a sequence of numbers.
