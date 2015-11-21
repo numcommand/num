@@ -72,10 +72,10 @@ Jeff Leek, Brian Caffo, and I launched the Johns Hopkins Data Science Specializa
 <h1><cite itemprop="headline name"><a itemprop="url" href="http://felixfan.github.io/bioinformatics/2014/06/20/shell-script/" rel="external">Shell script one-liners</a></cite></h1>
 </header>
 
-Introduction to Unix command line tools, with examples of awk, sed, sort, uniq, cut, split, join, cat, conditionals, loops, and references.
+Introduction to Unix command line tools for data processing, with examples of awk, sed, sort, uniq, cut, split, join, cat, conditionals, loops, and references.
 
 <footer>By
-<span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" href="https://github.com/felixfan" rel="external"><span itemprop="name">Felix Yanhui Fan, PhD</span></a></span>,
+<span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" href="https://github.com/felixfan" rel="external"><span itemprop="name">Felix Yanhui Fan</span></a></span>,
 <span itemprop="isPartOf" itemscope itemtype="http://schema.org/Blog"><a itemprop="url" href="http://felixfan.github.io/" rel="external"><span itemprop="name">Statistics and Programming!</span></a></span>
 </footer>
 </article>
