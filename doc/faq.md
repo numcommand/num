@@ -57,5 +57,5 @@ We want an easy way to make these functions widely available, even for systems t
 
 <p><hr><nav>
 * <b>[Prev Page: Articles & Blogs](articles.md)</b>
-* <b>[Next Page: Thanks: our coders, advisors, sponsors, donors, and helpers](thanks.md)</b>
+* <b>[Next Page: Donate: using PayPal, Patreon, Bitcoin, GitHub, etc.](donate.md)</b>
 </nav>

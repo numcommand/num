@@ -1,26 +1,28 @@
 # Contributing
 
-Thank you for contributing! We welcome help.
-
-If you would like to contribute help, the next section is for you.
-
-If you would like to contribute money, an easy way is PayPal joel@joelparkerhenderson.com
+Thank you for using Num. We welcome contributions of all kinds.
 
 
-## Contributing help via email
+## Contributing donations
 
-If you want to reach us by email, please email joel@joelparkerhenderson.com. Using email is best for any kind of confidential contact or one-on-one contact.
+Thank you for helping, we appreciate your donations!
 
-If you would like to use email with PGP or similar security, please send us a non-confidential email first to let us know, and we'll set up PGP.
+   * PayPal and credit cards: num@numcommand.com.
 
-TODO: set up a dedicated project email address, and also set up PGP.
+   * Patreon crowdfunding: [https://www.patreon.com/num](https://www.patreon.com/num)
 
+   * Bitcoin BTC: 1366n1MzXZzcqqgxgDjab4TsQ3KjmRF4vK
 
-## Contributing security alerts
+Easy button for PayPal credit card donations:
 
-Please text Joel at 415-317-2700.
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="Z3L79CFVG5U8S">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="Use PayPal to donate to num@numcommand">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
 
-TODO: set up a security email address and pager.
+Donations go to the lead developer Joel Parker Henderson. If you are hoping to donate more than $1000, please let us know ahead of time and we will apply to be an official United States 501(c)(3) nonprofit so you'll be able to get a tax deduction.
 
 
 ## Contributing feedback by using GitHub isses
@@ -32,20 +34,20 @@ This is good because all the project programmers have access to the issue, and a
 
 ## Contributing help by using a pull request
 
-We love pull requests for improvments to the project.
+We love pull requests for improvements to the project.
 
-There are three easy steps:
+Fork the repo, add your work, and send us a pull request. If you are able, add tests too.
 
-1. Fork the repo.
 
-  * Before you do any work please run our existing tests to make sure the code runs cleanly.
+## Contributing help via email
 
-2. Work as you like.
+If you want to reach us by email, please email num@numcommand.com.
 
-   * Please create tests. This helps us know that all your code runs cleanly.
+Email is good for any kind of one-on-one contact.
 
-3. Push to your fork and submit a pull request.
 
-   * We'll take a look as soon as we can; this is typically within a business day.
+## Contributing security alerts
 
-Thank you again!
+Please email num@numcommand.com and include "SECURITY" in the subject line.
+
+If the security is an emergency, please also message the lead developer's mobile phone at 415-317-2700.
