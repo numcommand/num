@@ -7,6 +7,7 @@ Here are a few articles and blogs that relate to the Num command, including Unix
 * <a href="http://onthelambda.com/">On the lambda</a>
 * <a href="http://www.gettinggeneticsdone.com/">Getting Genetics Done</a>
 * <a href="http://simplystatistics.org/">Simply Statistics</a>
+* <a href="http://http://felixfan.github.io/">Statistics and Programming</a>
 
 
 <article itemprop="citation" itemscope itemtype="http://schema.org/BlogPosting" class="citation">
@@ -51,6 +52,7 @@ GNU datamash is a command-line utility that offers simple calculations (e.g. cou
 </footer>
 </article>
 
+
 <article itemprop="citation" itemscope itemtype="http://schema.org/BlogPosting" class="citation">
 <header>
 <h1><cite itemprop="headline name"><a itemprop="url" href="http://simplystatistics.org/2015/07/03/the-massive-future-of-statistics-education/" rel="external">The Massive Future of Statistics Education</a></cite></h1>
@@ -64,6 +66,19 @@ Jeff Leek, Brian Caffo, and I launched the Johns Hopkins Data Science Specializa
 </footer>
 </article>
 
+
+<article itemprop="citation" itemscope itemtype="http://schema.org/BlogPosting" class="citation">
+<header>
+<h1><cite itemprop="headline name"><a itemprop="url" href="http://felixfan.github.io/bioinformatics/2014/06/20/shell-script/" rel="external">Shell script one-liners</a></cite></h1>
+</header>
+
+Introduction to Unix command line tools, with examples of awk, sed, sort, uniq, cut, split, join, cat, conditionals, loops, and references.
+
+<footer>By
+<span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" href="https://github.com/felixfan" rel="external"><span itemprop="name">Felix Yanhui Fan, PhD</span></a></span>,
+<span itemprop="isPartOf" itemscope itemtype="http://schema.org/Blog"><a itemprop="url" href="http://felixfan.github.io/" rel="external"><span itemprop="name">Statistics and Programming!</span></a></span>
+</footer>
+</article>
 
 
 <p><hr><nav>
