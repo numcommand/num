@@ -68,7 +68,18 @@ Example:
 
     $ join file1 file2
 
-Run <a href="http://linux.die.net/man/1/join">`man head`</a> to see options for fields, lines, etc.
+Run <a href="http://linux.die.net/man/1/join">`man join`</a> to see options for fields, lines, etc.
+
+
+### paste
+
+Paste concatenates the corresponding lines of the given input files.
+
+Example:
+
+    $ paste file1 file2
+
+Run <a href="http://linux.die.net/man/1/paste">`man paste`</a> to see options for characters, delimiters, ordering, etc.
 
 
 ### seq (sequence)
