@@ -1,28 +1,18 @@
 # Donate
 
-You can donate to Num using any of these:
+Donate to Num using any of these:
 
-   * PayPal address: num@numcommand.com.
+   * [PayPal num@numcommand.com](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VP8C3ACSHKW5E)
 
-   * Patreon crowdfunding: [https://www.patreon.com/num](https://www.patreon.com/num)
+   * [Patreon](https://www.patreon.com/num)
 
    * Bitcoin BTC: 1366n1MzXZzcqqgxgDjab4TsQ3KjmRF4vK
 
-Easy button for PayPal credit card donations:
-
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="Z3L79CFVG5U8S">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="Use PayPal to donate to num@numcommand">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
-
-
 ## Donate help and feedback
 
-If you have ideas, advice, or feedback, the best way to help is by using our GitHub page and using the "New Issue" link: [https://www.github.com/numcommand/num](https://www.github.com/numcommand/num)
+To donate ideas and advice, the best way is our GitHub page and "New Issue" link: [https://www.github.com/numcommand/num](https://www.github.com/numcommand/num)
 
-If you want to help with programming, we love pull requests. Simply fork the repo, add your work, and send us a pull request. If you are able to understand our tests and run them, or you can to add your own tests, that's great.
+To donate help programming, the best way is our GithUb page and a pull request: fork the repo, add your work, and do a pull request.
 
 We like using GitHub because all the project programmers have access to the issues and files, and all the project users will be able to see our progress.
 
