@@ -27,6 +27,21 @@ Few tools are more indispensable to my work than Unix. Manipulating data into di
 
 <article itemprop="citation" itemscope itemtype="http://schema.org/BlogPosting" class="citation">
 <header>
+<h1><cite itemprop="headline name"><a itemprop="url" href="http://jeroenjanssens.com/2013/09/19/seven-command-line-tools-for-data-science.html" rel="external">7 command-line tools for data science</a></cite></h1>
+</header>
+<footer>
+
+Data science is OSEMN (pronounced as awesome). That is, it involves Obtaining, Scrubbing, Exploring, Modeling, and iNterpreting data.... The tools are: jq, json2csv, csvkit, scrape, xml2json, sample, and Rio.
+
+<footer>By
+<span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" href="https://www.linkedin.com/in/jeroenjanssens" rel="external"><span itemprop="name">Jeroen Janssens</span></a></span>,
+<span itemprop="isPartOf" itemscope itemtype="http://schema.org/Blog"><a itemprop="url" href="http://jeroenjanssens.com/" rel="external"><span itemprop="name">Data Science Consultant</span></a></span>
+</footer>
+</article>
+
+
+<article itemprop="citation" itemscope itemtype="http://schema.org/BlogPosting" class="citation">
+<header>
 <h1><cite itemprop="headline name"><a itemprop="url" href="http://www.onthelambda.com/2013/11/05/qstats-quick-and-dirty-statistics-tool-for-the-unix-pipeline/" rel="external">qstats - quick and dirty statistics tool for Unix</a></cite></h1>
 </header>
 
