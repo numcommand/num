@@ -99,6 +99,8 @@ Quicksort:
 
 * Research upgrading from single pivot to dual pivot, with the main benefit being faster speed because of fewer long scans.
 
+* Research sorting code on comp.lang.awk: https://groups.google.com/forum/#!searchin/comp.lang.awk/quicksort/comp.lang.awk/c6IFVx3nxgA/jJjZrKYh7aoJ
+
 Real world examples to try:
 
 * Parsing Apache logs to find % of successful requests, or bytes transferred, or frequency of items.
@@ -110,6 +112,10 @@ Consider similar projects:
 * SumoShell: https://github.com/SumoLogic/sumoshell
 
 * Heap sort: https://groups.google.com/forum/#!searchin/comp.lang.awk/quicksort/comp.lang.awk/mJ0EiUZTb-o/8-kR6wVe-F8J
+
+* Data Science at the Command Line: http://datascienceatthecommandline.com/
+
+* http://practical-data-science.blogspot.com/2012/09/basic-unix-shell-commands-for-data.html
 
 
 <p><hr><nav>
