@@ -29,7 +29,7 @@ See:
 
 * [GNU datamash: command which performs basic numeric, textual and statistical operations](https://www.gnu.org/software/datamash/)
 * [qstats: quick and dirty statistics tool for the Unix pipeline](https://github.com/tonyfischetti/qstats)
-* [num-utils: a set of programs for dealing with numbers from the Unix command line](http://freecode.com/projects/num-utils)
+* [num-utils: a set of programs for dealing with numbers from the Unix command line](http://suso.suso.org/programs/num-utils/index.phtml)
 
 
 ### When to use R, Julia, Octave, etc.
