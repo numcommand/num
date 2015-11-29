@@ -35,5 +35,8 @@ function num_trimean_(num, num_, opts,  f, _q1, _q2, _q3) {
 }
 
 function num_trimean_init() {
-    num_function_init("num_trimean trimean", "Calculate the trimean.", "https://wikipedia.org/wiki/Trimean")
+    num_function_init(\
+        "num_trimean trimean", 0,
+        "Calculate the trimean.",
+        "https://wikipedia.org/wiki/Trimean")
 }

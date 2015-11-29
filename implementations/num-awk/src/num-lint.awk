@@ -48,6 +48,7 @@ function init_lint() {
 
     ## Statitics
     num_mean_absolute_deviation(a)
+    mum_trimmed_mean(a)
     num_median_low(a)
     num_median_high(a)
     num_sum_of_mean_deviation_exp(a)

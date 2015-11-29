@@ -95,7 +95,10 @@ function num_sort_ascending_(num, num_, opts,  f, memo) {
 }
 
 function num_sort_ascending_init() {
-    num_function_init("num_sort_ascending sort_ascending sort_asc sort_up sort", "Sort the values in ascending order.", "https://wikipedia.org/wiki/Sorting_algorithm")
+    num_function_init(\
+        "num_sort_ascending sort_ascending sort_asc sort_up sort", 0,
+        "Sort the values in ascending order.",
+        "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
 ##
@@ -129,7 +132,10 @@ function num_sort_descending_(num, num_, opts,  f, memo) {
 }
 
 function num_sort_descending_init() {
-    num_function_init("num_sort_descending sort_descending sort_desc sort_down", "Sort the values in descending order.", "https://wikipedia.org/wiki/Sorting_algorithm")
+    num_function_init(\
+        "num_sort_descending sort_descending sort_desc sort_down", 0,
+        "Sort the values in descending order.",
+        "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
 ############################################################################
@@ -179,7 +185,10 @@ function num_is_ascending_(num, num_, opts,  f, x, i, flag) {
 }
 
 function num_is_ascending_init() {
-    num_function_init("num_is_ascending is_ascending is_asc", "Is the list sorted in ascending order?", "https://wikipedia.org/wiki/Sorting_algorithm")
+    num_function_init(\
+        "num_is_ascending is_ascending is_asc", 0,
+        "Is the list sorted in ascending order?",
+        "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
 ##
@@ -220,7 +229,10 @@ function num_is_strictly_ascending_(num, num_, opts,  f, x, i, flag) {
 }
 
 function num_is_strictly_ascending_init() {
-    num_function_init("num_is_strictly_ascending is_strictly_ascending is_strict_asc", "Is the list sorted in strictly ascending order?", "https://wikipedia.org/wiki/Sorting_algorithm")
+    num_function_init(\
+        "num_is_strictly_ascending is_strictly_ascending is_strict_asc", 0,
+        "Is the list sorted in strictly ascending order?",
+        "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
 ##
@@ -264,7 +276,10 @@ function num_is_descending_(num, num_, opts,  f, x, i, flag) {
 }
 
 function num_is_descending_init() {
-    num_function_init("num_is_descending is_descending is_desc", "Is the list sorted in descending order?", "https://wikipedia.org/wiki/Sorting_algorithm")
+    num_function_init(\
+        "num_is_descending is_descending is_desc", 0,
+        "Is the list sorted in descending order?",
+        "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
 ##
@@ -305,5 +320,8 @@ function num_is_strictly_descending_(num, num_,   f, x, i, flag) {
 }
 
 function num_is_strictly_descending_init() {
-    num_function_init("num_is_strictly_descending is_strictly_descending is_strict_desc", "Is the list sorted in strictly descending order?", "https://wikipedia.org/wiki/Sorting_algorithm")
+    num_function_init(\
+        "num_is_strictly_descending is_strictly_descending is_strict_desc", 0,
+        "Is the list sorted in strictly descending order?",
+        "https://wikipedia.org/wiki/Sorting_algorithm")
 }

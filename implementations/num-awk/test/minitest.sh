@@ -22,10 +22,10 @@ assert_eq() {
     actual_pretty=${actual//$'\n'/␞}; actual_pretty=${actual_pretty//$'\t'/␟}
     if [ "$expect" == "$actual" ]; then
         success_count=$((success_count+1))
-        echo "assert_eq $msg expect:$expect_pretty actual_pretty: SUCCESS"
+        echo "assert_eq $msg expect:$expect_pretty actual:$actual_pretty: SUCCESS"
     else
         failure_count=$((failure_count+1))
-        echo "assert_eq $msg expect:$expect_pretty actual_pretty: FAILURE"
+        echo "assert_eq $msg expect:$expect_pretty actual:$actual_pretty: FAILURE"
     fi
 }
 

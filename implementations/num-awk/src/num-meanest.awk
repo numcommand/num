@@ -25,5 +25,8 @@ function num_meanest_(num, num_, opts,  f, _n, _mean, i, x) {
 }
 
 function num_meanest_init() {
-    num_function_init("num_meanest meanest", "Get the value that is closest to the mean.", "https://en.wikipedia.org/wiki/Mean")
+    num_function_init(\
+        "num_meanest meanest", 0,
+        "Get the value that is closest to the mean.",
+        "https://en.wikipedia.org/wiki/Mean")
 }

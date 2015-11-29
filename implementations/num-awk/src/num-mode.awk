@@ -39,7 +39,7 @@ function num_modes(arr, modes,  modes_i, i, n, seen, max) {
         n = ++seen[arr[i]]
         if (max == "" || max < n) max = n
     }
-    slice("", out); out_i = 0
+    split("", out); out_i = 0
     if (max > 1) {
         for (i in seen) {
             if (seen[i] == max) {
@@ -57,7 +57,7 @@ function num_modes_(num, num_, opts, modes,  f, modes_i) {
             num_[f] = num_["num_mode_min"] = num_["num_mode_max"] = UNDEF
         } else {
             # TODO: optimize if we know the array is sorted
-            num_[f] = modes_i = num_mode(num, modes)
+            num_[f] = modes_i = num_modes(num, modes)
             if (modes_i == 0) {
                 num_["unique"] = TRUE
                 num_["num_mode_min"] = num_["num_mode_max"] = UNDEF
@@ -71,7 +71,10 @@ function num_modes_(num, num_, opts, modes,  f, modes_i) {
 }
 
 function num_modes_init() {
-    num_function_init("num_modes modes", "Get the modes, which is a list.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
+    num_function_init(\
+        "num_modes modes", 0,
+        "Get the modes, which is a list.",
+        "https://en.wikipedia.org/wiki/Mode_(statistics)")
 }
 
 ##
@@ -101,7 +104,10 @@ function num_mode_min_(num, num_, opts,  f) {
 }
 
 function num_mode_min_init() {
-    num_function_init("num_mode_min mode_min", "Get the minimum mode, if any, or UNDEF.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
+    num_function_init(\
+        "num_mode_min mode_min", 0,
+        "Get the minimum mode, if any, or UNDEF.",
+        "https://en.wikipedia.org/wiki/Mode_(statistics)")
 }
 
 ##
@@ -131,5 +137,8 @@ function num_mode_max_(num, num_, opts,  f) {
 }
 
 function num_mode_max_init() {
-    num_function_init("num_mode_max mode_max", "Get the maximum mode, if any, or UNDEF.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
+    num_function_init(\
+        "num_mode_max mode_max", 0,
+        "Get the maximum mode, if any, or UNDEF.",
+        "https://en.wikipedia.org/wiki/Mode_(statistics)")
 }

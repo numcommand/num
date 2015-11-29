@@ -30,5 +30,8 @@ function num_map_increment_(num, num_, opts,  f, i, memo) {
 }
 
 function num_map_increment_init() {
-    num_function_init("num_map_increment increment", "Map using increment.")
+    num_function_init(\
+        "num_map_increment increment", 0,
+        "Map using increment.",
+        "https://en.wikipedia.org/wiki/Increment_and_decrement_operators")
 }

@@ -29,10 +29,11 @@
 #
 ##
 
-function num_function_init(names, help, link,  f, i, name, name_list) {
+function num_function_init(names, arity, help, link,  f, i, name, name_list) {
     split(names, names_arr)
     f = names_arr[1]
     num_functions[f, "names"] = names
+    num_functions[f, "arity"] = arity
     num_functions[f, "help"] = help
     num_functions[f, "link"] = link
     for (i in names_arr) {

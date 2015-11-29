@@ -33,7 +33,10 @@ function num_sample_variance_(num, num_, opts,  f) {
 }
 
 function num_sample_variance_init() {
-    num_function_init("num_sample_variance sample_variance s_var variance var sample_second_moment_about_the_mean, s_second_moment_about_the_mean, s_2_m_a_t_m second_moment_about_the_mean 2_m_a_t_m", "Get the sample variance, a.k.a. sample second moment about the mean.", "https://wikipedia.org/wiki/Variance")
+    num_function_init(\
+        "num_sample_variance sample_variance s_var variance var sample_second_moment_about_the_mean s_second_moment_about_the_mean s_2_m_a_t_m second_moment_about_the_mean 2_m_a_t_m", 0,
+        "Get the sample variance, a.k.a. sample second moment about the mean.",
+        "https://wikipedia.org/wiki/Variance")
 }
 
 # Alias
@@ -61,7 +64,10 @@ function num_population_variance_(num, num_, opts) {
 }
 
 function num_population_variance_init() {
-    num_function_init("num_population_variance population_variance p_var population_second_moment_about_the_mean p_second_moment_about_the_mean p_2_m_a_t_m", "Get the population variance, a.k.a. sample second moment about the mean.", "https://wikipedia.org/wiki/Variance")
+    num_function_init(\
+        "num_population_variance population_variance p_var population_second_moment_about_the_mean p_second_moment_about_the_mean p_2_m_a_t_m", 0,
+        "Get the population variance, a.k.a. sample second moment about the mean.",
+        "https://wikipedia.org/wiki/Variance")
 }
 
 # Alias

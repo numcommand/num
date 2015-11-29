@@ -45,7 +45,10 @@ function num_map_round_(num, num_, opts,  f, memo, i) {
 }
 
 function num_map_round_init() {
-    num_function_init("num_map_round round round_towards_nearest nearest_integer n_int", "Map using round, a.k.a. round towards nearest, nint.", "https://en.wikipedia.org/wiki/Rounding")
+    num_function_init(\
+        "num_map_round round round_towards_nearest nearest_integer n_int", 0,
+        "Map using round, a.k.a. round towards nearest, nint.",
+        "https://en.wikipedia.org/wiki/Rounding")
 }
 
 # Alias
@@ -84,7 +87,10 @@ function num_map_round_off_(num, num_, opts,  f, memo) {
 }
 
 function num_map_round_off_init() {
-    num_function_init("num_map_round_off round_off round_towards_zero, truncate", "Map using round off, a.k.a. round towards zero, truncate.", "https://en.wikipedia.org/wiki/Rounding")
+    num_function_init(\
+        "num_map_round_off round_off round_towards_zero truncate", 0,
+        "Map using round off, a.k.a. round towards zero, truncate.",
+        "https://en.wikipedia.org/wiki/Rounding")
 }
 
 # Alias
@@ -123,7 +129,10 @@ function num_map_round_up_(num, num_, opts,  f, memo) {
 }
 
 function num_map_round_up_init() {
-    num_function_init("num_map_round_up round_up ceiling", "Map using round up, a.k.a. round towards positive infinity, ceiling.", "https://en.wikipedia.org/wiki/Rounding")
+    num_function_init(\
+        "num_map_round_up round_up ceiling", 0,
+        "Map using round up, a.k.a. round towards positive infinity, ceiling.",
+        "https://en.wikipedia.org/wiki/Rounding")
 }
 
 # Alias
@@ -162,7 +171,10 @@ function num_map_round_down_(num, num_, opts,  f, memo) {
 }
 
 function num_map_round_down_init() {
-    num_function_init("num_map_round_down round_down floor", "Map using round down, a.k.a. round towards negative infinity, floor.")
+    num_function_init(\
+        "num_map_round_down round_down floor", 0,
+        "Map using round down, a.k.a. round towards negative infinity, floor.",
+        "https://en.wikipedia.org/wiki/Rounding")
 }
 
 # Alias

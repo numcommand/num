@@ -30,5 +30,5 @@ function scope_start() {
 
 function scope_stop() {
     global_num_["n"] = global_num_n
-    print_output()
+    num_print_record(global_num, global_num_, global_opts)
 }

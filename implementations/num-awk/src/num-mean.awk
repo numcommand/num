@@ -36,5 +36,8 @@ function num_mean_(num, num_, opts,  f, _n, _min, _max, _sum) {
 }
 
 function num_mean_init() {
-    num_function_init("num_mean mean average avg", "Get the mean, a.k.a artihmetic mean, average.", "https://en.wikipedia.org/wiki/Mean")
+    num_function_init(\
+        "num_mean mean average avg", 0,
+        "Get the mean, a.k.a artihmetic mean, average.",
+        "https://en.wikipedia.org/wiki/Mean")
 }

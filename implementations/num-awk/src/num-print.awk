@@ -15,12 +15,11 @@
 
 function num_print_record(num, num_, opts,   s, i) {
     s = num_function_names_to_s(global_num, global_num_, global_opts, global_word_argv)
+    if (global_num_scope_n > 1) printf ORS
     if (s != "") {
-        if (global_num_scope_n > 1) printf ORS
-        if (global_num_scope_output_n == 0)
-            num_print_record_fields(global_num, global_num_, global_opts)
-        else
-            printf s
+        printf s
+    } else {
+        num_print_record_fields(global_num, global_num_, global_opts)
     }
 }
 

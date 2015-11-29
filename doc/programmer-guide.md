@@ -122,14 +122,25 @@ To run Num for testing and debugging, you can try using gawk with flags:
     AWK="gawk --posix --lint" num ...
 
 
-### Concatening include files
+### Building
 
-To build Num by concatenating include files:
+Num is provided two ways:
 
-    awk 'FNR==1 && NR!=1 {print ""}{print}' \
-    $(sed -n 's/^@include "\(.*\)"/src\/\1/p' src/num.awk) \
-    > ~/tmp/include
+   * as a single script file, which runs using `mawk` or `nawk`
+     * this script is `./implementations/num-awk/num`
 
+   * as multiple include files, which only runs using `gawk` developers
+      * this scripts starts with `./implementations/num-awk/src/num.sh`
+
+There is a one-step build process that makes the multiple files into one file:
+
+    cd implementations/num-awk
+    awk '/^## /{next}; /^#@include/{next}; /^@include ".*"/{ gsub(/"/,""); path = "src/" $2; print ""; while ((getline line < path) > 0) { print line } close(path); next}{print}' src/num.sh > num
+
+The build command does this:
+
+   * Deletes any unnneeded comment lines
+   * Any line that says `@include "foo.awk"` replaces the line with the file `src/foo.awk`.
 
 <p><hr><nav>
 * <b>[Prev Page: Known issues](known-issues.md)</b>

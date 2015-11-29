@@ -32,5 +32,8 @@ function num_is_unique_(num, num_, opts,  f, i, seen, flag) {
 }
 
 function num_is_unique_init() {
-    num_function_init("num_is_unique is_unique is_uniq", "Is the list all unique items?", "https://en.wikipedia.org/wiki/Uniqueness_quantification")
+    num_function_init(\
+        "num_is_unique is_unique is_uniq", 0,
+        "Is the list all unique items?",
+        "https://en.wikipedia.org/wiki/Uniqueness_quantification")
 }

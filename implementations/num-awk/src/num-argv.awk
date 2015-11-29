@@ -37,5 +37,5 @@ function num_argv_parse(inputs, outputs, synonyms,  i, imax, item, outputs_n) {
 ##
 
 function num_argv() {
-    num_argv_parse(ARGV, global_word_argv, global_synonyms)
+    num_argv_parse(ARGV, global_word_argv, num_synonyms)
 }

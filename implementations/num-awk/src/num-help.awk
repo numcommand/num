@@ -14,10 +14,15 @@ function num_help() {
     print "Num uses this Awk:"
     print awk
     print ""
-    system(awk "-Wversion 2>/dev/null || awk --version")
+    cmd = awk "-Wversion 2>/dev/null || awk --version"
+    print cmd
+    system(cmd)
     exit
 }
 
 function num_help_init() {
-    num_function_init("help version usage", "Print help, version, usage.")
+    num_function_init(\
+        "help version usage", 0,
+        "Print help, version, usage.",
+        "")
 }

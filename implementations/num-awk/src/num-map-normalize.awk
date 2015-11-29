@@ -36,5 +36,8 @@ function num_map_normalize_(num, num_, opts,  f, min_old, max_old, min_new, max_
 }
 
 function num_map_normalize_init() {
-    num_function_init("num_map_normalize normalize norm", "Map using normalize.", "https://wikipedia.org/wiki/Normalization_(statistics)")
+    num_function_init(\
+        "num_map_normalize normalize norm", 0,
+        "Map using normalize.",
+        "https://wikipedia.org/wiki/Normalization_(statistics)")
 }

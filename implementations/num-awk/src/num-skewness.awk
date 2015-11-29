@@ -40,7 +40,10 @@ function num_sample_skewness_(num, num_, opts,  f) {
 }
 
 function num_sample_skewness_init() {
-    num_function_init("num_sample_skewness sample_skewness s_skew skewness skew sample_third_moment_about_the_mean s_third_moment_about_the_mean s_3_m_a_t_m third_moment_about_the_mean 3_m_a_t_m", "Get the sample skewness, a.k.a. sample third moment about the mean.", "https://en.wikipedia.org/wiki/Skewness")
+    num_function_init(\
+        "num_sample_skewness sample_skewness s_skew skewness skew sample_third_moment_about_the_mean s_third_moment_about_the_mean s_3_m_a_t_m third_moment_about_the_mean 3_m_a_t_m", 0,
+        "Get the sample skewness, a.k.a. sample third moment about the mean.",
+        "https://en.wikipedia.org/wiki/Skewness")
 }
 
 # Alias
@@ -79,7 +82,10 @@ function num_population_skewness_(num, num_, opts,  f) {
 }
 
 function num_population_skewness_init() {
-    num_function_init("num_population_skewness population_skewness p_skew population_third_moment_about_the_mean p_third_moment_about_the_mean p_3_m_a_t_m", "Get the population skewness, a.k.a. population third moment about the mean.", "https://en.wikipedia.org/wiki/Skewness")
+    num_function_init(\
+        "num_population_skewness population_skewness p_skew population_third_moment_about_the_mean p_third_moment_about_the_mean p_3_m_a_t_m", 0,
+        "Get the population skewness, a.k.a. population third moment about the mean.",
+        "https://en.wikipedia.org/wiki/Skewness")
 }
 
 # Alias

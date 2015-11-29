@@ -30,7 +30,10 @@ function num_map_absolute_value_(num, num_, opts,  f, i, memo) {
 }
 
 function num_map_absolute_value_init() {
-    num_function_init("num_map_absolute_value absolute_value abs magnitude", "Map using absolute value.")
+    num_function_init(\
+        "num_map_absolute_value absolute_value abs magnitude", 0,
+        "Map using absolute value.",
+        "https://en.wikipedia.org/wiki/Absolute_value_(algebra)")
 }
 
 # Alias

@@ -19,13 +19,14 @@ set -euf
 # Author: Joel Parker Henderson (joel@joelparkerhenderson.com)
 # License: GPL, BSD, MIT
 # Created: 2015-03-28
-# Updated: 2015-11-17
-# Version: 1.2.1
+# Updated: 2015-11-12
+# Version: 0.10.0
 #
 ##
 
 AWK=${AWK:-$(command -v gawk || command -v awk || echo "awk")}
 "$AWK" -v awk="$AWK" '
+
 
 ############################################################################
 #
@@ -43,12 +44,17 @@ function num_help() {
     print "Num uses this Awk:"
     print awk
     print ""
-    system(awk "-Wversion 2>/dev/null || awk --version")
+    cmd = awk "-Wversion 2>/dev/null || awk --version"
+    print cmd
+    system(cmd)
     exit
 }
 
 function num_help_init() {
-    num_function_init("help version usage", "Print help, version, usage.")
+    num_function_init(\
+        "help version usage", 0,
+        "Print help, version, usage.",
+        "")
 }
 
 ############################################################################
@@ -105,24 +111,22 @@ function num_err(msg) {
 #        num_function_init("hello hi hola", "Print a greeting", "http://example.com/hello.html")
 #    }
 #
-# The example creates these function entries:
+# The example creates these:
 #
 #    num_functions["hello", "names"] = "hello hi hola"
 #    num_functions["hello", "help"] = "Print a greeting"
 #    num_functions["hello", "link"] = "http://example.com/hello.html"
-#
-# The example also creates these synonyms:
-#
 #    num_synonyms["hello"] = "hello"
 #    num_synonyms["hi"] = "hello"
 #    num_synonyms["hola"] = "hello"
 #
 ##
 
-function num_function_init(names, help, link,  f, i, name, name_list) {
+function num_function_init(names, arity, help, link,  f, i, name, name_list) {
     split(names, names_arr)
     f = names_arr[1]
     num_functions[f, "names"] = names
+    num_functions[f, "arity"] = arity
     num_functions[f, "help"] = help
     num_functions[f, "link"] = link
     for (i in names_arr) {
@@ -330,7 +334,10 @@ function num_sum_(num, num_, opts,  f) {
 }
 
 function num_sum_init() {
-    num_function_init("num_sum sum total", "Get the sum, a.k.a. total.", "https://en.wikipedia.org/wiki/Summation")
+    num_function_init(\
+        "num_sum sum total", 0,
+        "Get the sum, a.k.a. total.",
+        "https://en.wikipedia.org/wiki/Summation")
 }
 
 ############################################################################
@@ -362,7 +369,10 @@ function num_product_(num, num_, opts,  f) {
 }
 
 function num_product_init() {
-    num_function_init("num_product product", "Get the product.", "https://wikipedia.org/wiki/Product_(mathematics)")
+    num_function_init(\
+        "num_product product", 0,
+        "Get the product.",
+        "https://wikipedia.org/wiki/Product_(mathematics)")
 }
 
 ############################################################################
@@ -522,7 +532,10 @@ function num_n_(num, num_, opts,  f) {
 }
 
 function num_n_init() {
-    num_function_init("num_n n count length size", "Get the number of items, a.k.a. count, length, size.", "https://en.wikipedia.org/wiki/Enumeration")
+    num_function_init(\
+        "num_n n count length size", 0,
+        "Get the number of items, a.k.a. count, length, size.",
+        "https://en.wikipedia.org/wiki/Enumeration")
 }
 
 ##
@@ -546,7 +559,10 @@ function num_first_(num, num_, opts,  f) {
 }
 
 function num_first_init() {
-    num_function_init("num_first first head", "Get the first item.", "https://en.wikipedia.org/wiki/Enumeration")
+    num_function_init(\
+        "num_first first head", 0,
+        "Get the first item.",
+        "https://en.wikipedia.org/wiki/Enumeration")
 }
 
 ##
@@ -570,7 +586,10 @@ function num_last_(num, num_, opts,  f) {
 }
 
 function num_last_init() {
-    num_function_init("num_last last tail", "Get the last item.", "https://en.wikipedia.org/wiki/Enumeration")
+    num_function_init(\
+        "num_last last tail",
+        "Get the last item.",
+        "https://en.wikipedia.org/wiki/Enumeration")
 }
 
 ##
@@ -602,7 +621,10 @@ function num_min_(num, num_, opts,  f) {
 }
 
 function num_min_init() {
-    num_function_init("num_min min minimum least lowest", "Get the minimum value, a.k.a. least, lowest.", "https://en.wikipedia.org/wiki/Maxima_and_minima")
+    num_function_init(\
+        "num_min min minimum least lowest", 0,
+        "Get the minimum value, a.k.a. least, lowest.",
+        "https://en.wikipedia.org/wiki/Maxima_and_minima")
 }
 
 ##
@@ -632,7 +654,10 @@ function num_max_(num, num_, opts,  f) {
 }
 
 function num_max_init() {
-    num_function_init("num_max max maximum greatest highest", "Get the maximum value, a.k.a. greatest, highest.", "https://en.wikipedia.org/wiki/Maxima_and_minima")
+    num_function_init(\
+        "num_max max maximum greatest highest", 0,
+        "Get the maximum value, a.k.a. greatest, highest.",
+        "https://en.wikipedia.org/wiki/Maxima_and_minima")
 }
 
 ##
@@ -656,7 +681,366 @@ function num_range_(num, num_, opts,  f) {
 }
 
 function num_range_init() {
-    num_function_init("num_range range interval breadth spread", "Get the range, a.k.a. interval, breadth, spread.", "https://en.wikipedia.org/wiki/Range_(statistics)")
+    num_function_init(\
+        "num_range range interval breadth spread", 0,
+        "Get the range, a.k.a. interval, breadth, spread.",
+        "https://en.wikipedia.org/wiki/Range_(statistics)")
+}
+
+##
+# Filter a list by doing a comparison.
+#
+#   * eq: equal to
+#   * ne: not equal to
+#   * lt: less than
+#   * le: less than or equal to
+#   * gt: greater than
+#   * ge: greater than or equal to
+#   * in: intra-range, i.e. include [min, max].
+#   * ex: extra-range, i.e. exclude [min, max].
+#
+# Examples of select:
+#
+#     num_select_eq(1 2 3 4 5, 3) => 3
+#     num_select_ne(1 2 3 4 5, 3) => 1 2 4 5
+#     num_select_lt(1 2 3 4 5, 3) => 1 2
+#     num_select_le(1 2 3 4 5, 3) => 1 2 3
+#     num_select_gt(1 2 3 4 5, 3) => 4 5
+#     num_select_ge(1 2 3 4 5, 3) => 3 4 5
+#     num_select_in(1 2 3 4 5, 2, 4) => 2 3 4
+#     num_select_ex(1 2 3 4 5, 2, 4) => 1 5
+#
+# Examples of reject i.e. delete:
+#
+#     num_reject_eq(1 2 3 4 5, 3) => 1 2 4 5
+#     num_reject_ne(1 2 3 4 5, 3) => 3
+#     num_reject_lt(1 2 3 4 5, 3) => 3 4 5
+#     num_reject_le(1 2 3 4 5, 3) => 4 5
+#     num_reject_gt(1 2 3 4 5, 3) => 1 2 3
+#     num_reject_ge(1 2 3 4 5, 3) => 1 2
+#     num_reject_in(1 2 3 4 5, 2, 4) => 1 5
+#     num_reject_ex(1 2 3 4 5, 2, 4) => 2 3 4
+#
+##
+
+## Select EQ
+
+function num_select_eq(arr, x,  n) {
+    for (i in arr) if (arr[i] == x) { n++ } else { delete arr[i] }
+    return n
+}
+
+function num_select_eq_(num, num_, opts, x, f) {
+    f = "num_select_eq " x
+    if (!(f in num_)) num_[f] = num_["n"] = num_select_eq(num, x)
+    return num_[f]
+}
+
+function num_select_eq_init() {
+    num_function_init(\
+        "num_select_eq select_eq eq", 0,
+        "Select all values equal to x",
+        "")
+}
+
+## Select NE
+
+function num_select_ne(arr, x,  n) {
+    for (i in arr) if (arr[i] != x) { n++ } else { delete arr[i] }
+    return n
+}
+
+function num_select_ne_(num, num_, opts, x, f) {
+    f = "num_select_ne " x
+    if (!(f in num_)) num_[f] = num_["n"] = num_select_ne(num, x)
+    return num_[f]
+}
+
+function num_select_ne_init() {
+    num_function_init(\
+        "num_select_ne select_ne ne", 0,
+        "Select all values not equal to x",
+        "")
+}
+
+## Select LT
+
+function num_select_lt(arr, x,  n) {
+    for (i in arr) if (arr[i] < x) { n++ } else { delete arr[i] }
+    return n
+}
+
+function num_select_lt_(num, num_, opts, x, f) {
+    f = "num_select_lt select_lt lt " x
+    if (!(f in num_)) num_[f] = num_["n"] = num_select_lt(num, x)
+    return num_[f]
+}
+
+function num_select_lt_init() {
+    num_function_init(\
+        "num_select_lt", 0,
+        "Select all values less than x",
+        "")
+}
+
+## Select LE
+
+function num_select_le(arr, x,  n) {
+    for (i in arr) if (arr[i] <= x) { n++ } else { delete arr[i] }
+    return n
+}
+
+function num_select_le_(num, num_, opts, x, f) {
+    f = "num_select_le " x
+    if (!(f in num_)) num_[f] = num_["n"] = num_select_le(num, x)
+    return num_[f]
+}
+
+function num_select_le_init() {
+    num_function_init(\
+        "num_select_le select_le le", 0,
+        "Select all values less than or equal to x",
+        "")
+}
+
+## Select GT
+
+function num_select_gt(arr, x,  n) {
+    for (i in arr) if (arr[i] > x) { n++ } else { delete arr[i] }
+    return n
+}
+
+function num_select_gt_(num, num_, opts, x, f) {
+    f = "num_select_gt select_gt gt" x
+    if (!(f in num_)) num_[f] = num_["n"] = num_select_gt(num, x)
+    return num_[f]
+}
+
+function num_select_gt_init() {
+    num_function_init(\
+        "num_select_gt", 0,
+        "Select all values greater than x",
+        "")
+}
+
+## Select GE
+
+function num_select_ge(arr, x,  n) {
+    for (i in arr) if (arr[i] >= x) { n++ } else { delete arr[i] }
+    return n
+}
+
+function num_select_ge_(num, num_, opts, x, f) {
+    f = "num_select_ge " x
+    if (!(f in num_)) num_[f] = num_["n"] = num_select_ge(num, x)
+    return num_[f]
+}
+
+function num_select_ge_init() {
+    num_function_init(\
+        "num_select_ge select_ge ge", 0,
+        "Select all values greater than or equal to x",
+        "")
+}
+
+## Select IN
+
+function num_select_in(arr, min, max,  n) {
+    for (i in arr) if (arr[i] >= min && arr[i] <= max) { n++ } else { delete arr[i] }
+    return n
+}
+
+function num_select_in_(num, num_, opts, x, f) {
+    f = "num_select_in " x
+    if (!(f in num_)) num_[f] = num_["n"] = num_select_in(num, x)
+    return num_[f]
+}
+
+function num_select_in_init() {
+    num_function_init(\
+        "num_select_in select_in in", 0,
+        "Select all values intra-range [min, max]",
+        "")
+}
+
+## Select EX
+
+function num_select_ex(arr, min, max) {
+    for (i in arr) if (arr[i] < min || arr[i] > max) { n++ } else { delete arr[i] }
+    return n
+}
+
+function num_select_ex_(num, num_, opts, x, f) {
+    f = "num_select_ex " x
+    if (!(f in num_)) num_[f] = num_["n"] = num_select_ex(num, x)
+    return num_[f]
+}
+
+function num_select_ex_init() {
+    num_function_init(\
+        "num_select_ex select_ex ex", 0,
+        "Select all values extra-range [min, max]",
+        "")
+}
+
+## Reject EQ
+
+function num_reject_eq(arr, x,  n) {
+    for (i in arr) if (arr[i] == x) { delete arr[i] } else { n++ }
+    return n
+}
+
+function num_reject_eq_(num, num_, opts, x, f) {
+    f = "num_reject_eq " x
+    if (!(f in num_)) num_[f] = num_["n"] = num_reject_eq(num, x)
+    return num_[f]
+}
+
+function num_reject_eq_init() {
+    num_function_init(\
+        "num_reject_eq reject_eq", 0,
+        "Reject all values equal to x",
+        "")
+}
+
+## Reject NE
+
+function num_reject_ne(arr, x,  n) {
+    for (i in arr) if (arr[i] != x) { delete arr[i] } else { n++ }
+    return n
+}
+
+function num_reject_ne_(num, num_, opts, x, f) {
+    f = "num_reject_ne " x
+    if (!(f in num_)) num_[f] = num_["n"] = num_reject_ne(num, x)
+    return num_[f]
+}
+
+function num_reject_ne_init() {
+    num_function_init(\
+        "num_reject_ne reject_ne", 0,
+        "Reject all values not equal to x",
+        "")
+}
+
+## Reject LT
+
+function num_reject_lt(arr, x,  n) {
+    for (i in arr) if (arr[i] < x) { delete arr[i] } else { n++ }
+    return n
+}
+
+function num_reject_lt_(num, num_, opts, x, f) {
+    f = "num_reject_lt " x
+    if (!(f in num_)) num_[f] = num_["n"] = num_reject_lt(num, x)
+    return num_[f]
+}
+
+function num_reject_lt_init() {
+    num_function_init(\
+        "num_reject_lt reject_lt", 0,
+        "Reject all values less than x",
+        "")
+}
+
+## Reject LE
+
+function num_reject_le(arr, x,  n) {
+    for (i in arr) if (arr[i] <= x) { delete arr[i] } else { n++ }
+    return n
+}
+
+function num_reject_le_(num, num_, opts, x, f) {
+    f = "num_reject_le " x
+    if (!(f in num_)) num_[f] = num_["n"] = num_reject_le(num, x)
+    return num_[f]
+}
+
+function num_reject_le_init() {
+    num_function_init(\
+        "num_reject_le reject_le", 0,
+        "Reject all values less than or equal to x",
+        "")
+}
+
+## Reject GT
+
+function num_reject_gt(arr, x,  n) {
+    for (i in arr) if (arr[i] > x) { delete arr[i] } else { n++ }
+    return n
+}
+
+function num_reject_gt_(num, num_, opts, x, f) {
+    f = "num_reject_gt " x
+    if (!(f in num_)) num_[f] = num_["n"] = num_reject_gt(num, x)
+    return num_[f]
+}
+
+function num_reject_gt_init() {
+    num_function_init(\
+        "num_reject_gt reject_gt", 0,
+        "Reject all values greater than x",
+        "")
+}
+
+## Reject GE
+
+function num_reject_ge(arr, x,  n) {
+    for (i in arr) if (arr[i] >= x) { delete arr[i] } else { n++ }
+    return n
+}
+
+function num_reject_ge_(num, num_, opts, x, f) {
+    f = "num_reject_ge reject_ge" x
+    if (!(f in num_)) num_[f] = num_["n"] = num_reject_ge(num, x)
+    return num_[f]
+}
+
+function num_reject_ge_init() {
+    num_function_init(\
+        "num_reject_ge", 0,
+        "Reject all values greater than or equal to x",
+        "")
+}
+
+## Reject IN
+
+function num_reject_in(arr, min, max,  n) {
+    for (i in arr) if (arr[i] >= min && arr[i] <= max) { delete arr[i] } else { n++ }
+    return n
+}
+
+function num_reject_in_(num, num_, opts, x, f) {
+    f = "num_reject_in " x
+    if (!(f in num_)) num_[f] = num_["n"] = num_reject_in(num, x)
+    return num_[f]
+}
+
+function num_reject_in_init() {
+    num_function_init(\
+        "num_reject_in reject_in", 0,
+        "Reject all values intra-range [min, max]",
+        "")
+}
+
+## Reject EX
+
+function num_reject_ex(arr, min, max) {
+    for (i in arr) if (arr[i] < min || arr[i] > max) { delete arr[i] } else { n++ }
+    return n
+}
+
+function num_reject_ex_(num, num_, opts, x, f) {
+    f = "num_reject_ex " x
+    if (!(f in num_)) num_[f] = num_["n"] = num_reject_ex(num, x)
+    return num_[f]
+}
+
+function num_reject_ex_init() {
+    num_function_init(\
+        "num_reject_ex reject_ex", 0,
+        "Reject all values extra-range [min, max]",
+        "")
 }
 
 ############################################################################
@@ -890,7 +1274,10 @@ function num_sort_ascending_(num, num_, opts,  f, memo) {
 }
 
 function num_sort_ascending_init() {
-    num_function_init("num_sort_ascending sort_ascending sort_asc sort_up sort", "Sort the values in ascending order.", "https://wikipedia.org/wiki/Sorting_algorithm")
+    num_function_init(\
+        "num_sort_ascending sort_ascending sort_asc sort_up sort", 0,
+        "Sort the values in ascending order.",
+        "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
 ##
@@ -924,9 +1311,11 @@ function num_sort_descending_(num, num_, opts,  f, memo) {
 }
 
 function num_sort_descending_init() {
-    num_function_init("num_sort_descending sort_descending sort_desc sort_down", "Sort the values in descending order.", "https://wikipedia.org/wiki/Sorting_algorithm")
+    num_function_init(\
+        "num_sort_descending sort_descending sort_desc sort_down", 0,
+        "Sort the values in descending order.",
+        "https://wikipedia.org/wiki/Sorting_algorithm")
 }
-
 
 ############################################################################
 #
@@ -975,7 +1364,10 @@ function num_is_ascending_(num, num_, opts,  f, x, i, flag) {
 }
 
 function num_is_ascending_init() {
-    num_function_init("num_is_ascending is_ascending is_asc", "Is the list sorted in ascending order?", "https://wikipedia.org/wiki/Sorting_algorithm")
+    num_function_init(\
+        "num_is_ascending is_ascending is_asc", 0,
+        "Is the list sorted in ascending order?",
+        "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
 ##
@@ -1016,7 +1408,10 @@ function num_is_strictly_ascending_(num, num_, opts,  f, x, i, flag) {
 }
 
 function num_is_strictly_ascending_init() {
-    num_function_init("num_is_strictly_ascending is_strictly_ascending is_strict_asc", "Is the list sorted in strictly ascending order?", "https://wikipedia.org/wiki/Sorting_algorithm")
+    num_function_init(\
+        "num_is_strictly_ascending is_strictly_ascending is_strict_asc", 0,
+        "Is the list sorted in strictly ascending order?",
+        "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
 ##
@@ -1060,7 +1455,10 @@ function num_is_descending_(num, num_, opts,  f, x, i, flag) {
 }
 
 function num_is_descending_init() {
-    num_function_init("num_is_descending is_descending is_desc", "Is the list sorted in descending order?", "https://wikipedia.org/wiki/Sorting_algorithm")
+    num_function_init(\
+        "num_is_descending is_descending is_desc", 0,
+        "Is the list sorted in descending order?",
+        "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
 ##
@@ -1101,7 +1499,10 @@ function num_is_strictly_descending_(num, num_,   f, x, i, flag) {
 }
 
 function num_is_strictly_descending_init() {
-    num_function_init("num_is_strictly_descending is_strictly_descending is_strict_desc", "Is the list sorted in strictly descending order?", "https://wikipedia.org/wiki/Sorting_algorithm")
+    num_function_init(\
+        "num_is_strictly_descending is_strictly_descending is_strict_desc", 0,
+        "Is the list sorted in strictly descending order?",
+        "https://wikipedia.org/wiki/Sorting_algorithm")
 }
 
 ############################################################################
@@ -1327,7 +1728,48 @@ function num_is_unique_(num, num_, opts,  f, i, seen, flag) {
 }
 
 function num_is_unique_init() {
-    num_function_init("num_is_unique is_unique is_uniq", "Is the list all unique items?", "https://en.wikipedia.org/wiki/Uniqueness_quantification")
+    num_function_init(\
+        "num_is_unique is_unique is_uniq", 0,
+        "Is the list all unique items?",
+        "https://en.wikipedia.org/wiki/Uniqueness_quantification")
+}
+
+############################################################################
+#
+# num-map-increment.awk
+#
+##
+
+##
+#
+# Map increment.
+#
+# Example:
+#
+#     num_map_increment_(1 2 3) => -2 3 4
+#
+##
+
+function num_map_increment(arr) {
+    for (i in arr) arr[i] = num_increment(arr[i])
+}
+
+function num_map_increment_(num, num_, opts,  f, i, memo) {
+    f = "num_map_increment"
+    if (num_[f] != TRUE) {
+        map_before_(num, num_, opts, memo)
+        num_map_increment(num)
+        map_after_(num, num_, opts, memo)
+        num_[f] = TRUE
+    }
+    return ""
+}
+
+function num_map_increment_init() {
+    num_function_init(\
+        "num_map_increment increment", 0,
+        "Map using increment.",
+        "https://en.wikipedia.org/wiki/Increment_and_decrement_operators")
 }
 
 ############################################################################
@@ -1362,7 +1804,10 @@ function num_map_absolute_value_(num, num_, opts,  f, i, memo) {
 }
 
 function num_map_absolute_value_init() {
-    num_function_init("num_map_absolute_value absolute_value abs magnitude", "Map using absolute value.")
+    num_function_init(\
+        "num_map_absolute_value absolute_value abs magnitude", 0,
+        "Map using absolute value.",
+        "https://en.wikipedia.org/wiki/Absolute_value_(algebra)")
 }
 
 # Alias
@@ -1401,42 +1846,10 @@ function num_map_sign_(num, num_, opts,  f, i, memo) {
 }
 
 function num_map_sign_init() {
-    num_function_init("num_map_sign sign", "Map using sign.")
-}
-
-############################################################################
-#
-# num-map-increment.awk
-#
-##
-
-##
-#
-# Map increment.
-#
-# Example:
-#
-#     num_map_increment_(1 2 3) => -2 3 4
-#
-##
-
-function num_map_increment(arr) {
-    for (i in arr) arr[i] = num_increment(arr[i])
-}
-
-function num_map_increment_(num, num_, opts,  f, i, memo) {
-    f = "num_map_increment"
-    if (num_[f] != TRUE) {
-        map_before_(num, num_, opts, memo)
-        num_map_increment(num)
-        map_after_(num, num_, opts, memo)
-        num_[f] = TRUE
-    }
-    return ""
-}
-
-function num_map_increment_init() {
-    num_function_init("num_map_increment increment", "Map using increment.")
+    num_function_init(\
+        "num_map_sign sign sgn signum", 0,
+        "Map using sign.",
+        "https://en.wikipedia.org/wiki/Sign_function")
 }
 
 ############################################################################
@@ -1486,7 +1899,10 @@ function num_map_round_(num, num_, opts,  f, memo, i) {
 }
 
 function num_map_round_init() {
-    num_function_init("num_map_round round round_towards_nearest nearest_integer n_int", "Map using round, a.k.a. round towards nearest, nint.", "https://en.wikipedia.org/wiki/Rounding")
+    num_function_init(\
+        "num_map_round round round_towards_nearest nearest_integer n_int", 0,
+        "Map using round, a.k.a. round towards nearest, nint.",
+        "https://en.wikipedia.org/wiki/Rounding")
 }
 
 # Alias
@@ -1525,7 +1941,10 @@ function num_map_round_off_(num, num_, opts,  f, memo) {
 }
 
 function num_map_round_off_init() {
-    num_function_init("num_map_round_off round_off round_towards_zero, truncate", "Map using round off, a.k.a. round towards zero, truncate.", "https://en.wikipedia.org/wiki/Rounding")
+    num_function_init(\
+        "num_map_round_off round_off round_towards_zero truncate", 0,
+        "Map using round off, a.k.a. round towards zero, truncate.",
+        "https://en.wikipedia.org/wiki/Rounding")
 }
 
 # Alias
@@ -1564,7 +1983,10 @@ function num_map_round_up_(num, num_, opts,  f, memo) {
 }
 
 function num_map_round_up_init() {
-    num_function_init("num_map_round_up round_up ceiling", "Map using round up, a.k.a. round towards positive infinity, ceiling.", "https://en.wikipedia.org/wiki/Rounding")
+    num_function_init(\
+        "num_map_round_up round_up ceiling", 0,
+        "Map using round up, a.k.a. round towards positive infinity, ceiling.",
+        "https://en.wikipedia.org/wiki/Rounding")
 }
 
 # Alias
@@ -1603,7 +2025,10 @@ function num_map_round_down_(num, num_, opts,  f, memo) {
 }
 
 function num_map_round_down_init() {
-    num_function_init("num_map_round_down round_down floor", "Map using round down, a.k.a. round towards negative infinity, floor.")
+    num_function_init(\
+        "num_map_round_down round_down floor", 0,
+        "Map using round down, a.k.a. round towards negative infinity, floor.",
+        "https://en.wikipedia.org/wiki/Rounding")
 }
 
 # Alias
@@ -1681,7 +2106,10 @@ function num_map_normalize_(num, num_, opts,  f, min_old, max_old, min_new, max_
 }
 
 function num_map_normalize_init() {
-    num_function_init("num_map_normalize normalize norm", "Map using normalize.", "https://wikipedia.org/wiki/Normalization_(statistics)")
+    num_function_init(\
+        "num_map_normalize normalize norm", 0,
+        "Map using normalize.",
+        "https://wikipedia.org/wiki/Normalization_(statistics)")
 }
 
 ############################################################################
@@ -1722,7 +2150,10 @@ function num_mean_(num, num_, opts,  f, _n, _min, _max, _sum) {
 }
 
 function num_mean_init() {
-    num_function_init("num_mean mean average avg", "Get the mean, a.k.a artihmetic mean, average.", "https://en.wikipedia.org/wiki/Mean")
+    num_function_init(\
+        "num_mean mean average avg", 0,
+        "Get the mean, a.k.a artihmetic mean, average.",
+        "https://en.wikipedia.org/wiki/Mean")
 }
 
 ############################################################################
@@ -1761,7 +2192,10 @@ function num_mean_absolute_deviation_(num, num_, opts,  f, _n, _mean, i, x) {
 }
 
 function num_mean_absolute_deviation_init() {
-    num_function_init("num_mean_absolute_deviation mean_absolute_deviation mad", "Get the average distance between each value and the mean.", "https://en.wikipedia.org/wiki/Average_absolute_deviation")
+    num_function_init(\
+        "num_mean_absolute_deviation mean_absolute_deviation mad", 0,
+        "Get the average distance between each value and the mean.",
+        "https://en.wikipedia.org/wiki/Average_absolute_deviation")
 }
 
 # Alias
@@ -1800,7 +2234,10 @@ function num_sum_of_mean_deviation_exp_(num, num_, opts, mean, exponent) {
 }
 
 function num_sum_of_mean_deviation_exp_init() {
-    num_function_init("num_sum_of_mean_deviation_exp", "Get the sum of mean deviation for a given exponent.", "https://en.wikipedia.org/wiki/Deviation_(statistics)")
+    num_function_init(\
+        "num_sum_of_mean_deviation_exp", 0,
+        "Get the sum of mean deviation for a given exponent.",
+        "https://en.wikipedia.org/wiki/Deviation_(statistics)")
 }
 
 ##
@@ -1824,7 +2261,10 @@ function num_sum_of_squares_(num, num_, opts) {
 }
 
 function num_sum_of_squares_init() {
-    num_function_init("num_sum_of_squares sum_of_squares sum_squares ss mean_squared_error mse", "Get the sum of squares, a.k.a. sum of each mean deviation to the power of 2, a.k.a. SS", "https://en.wikipedia.org/wiki/Deviation_(statistics)")
+    num_function_init(\
+        "num_sum_of_squares sum_of_squares sum_squares ss mean_squared_error mse", 0,
+        "Get the sum of squares, a.k.a. sum of each mean deviation to the power of 2, a.k.a. SS",
+        "https://en.wikipedia.org/wiki/Deviation_(statistics)")
 }
 
 ##
@@ -1848,7 +2288,10 @@ function num_sum_of_cubes_(num, num_, opts) {
 }
 
 function num_sum_of_cubes_init() {
-    num_function_init("num_sum_of_cubes sum_of_cubes sum_cubes", "Get the  sum of cubes, a.k.a. sum of each mean deviation to the power of 3.", "https://en.wikipedia.org/wiki/Mean_squared_error")
+    num_function_init(\
+        "num_sum_of_cubes sum_of_cubes sum_cubes", 0,
+        "Get the  sum of cubes, a.k.a. sum of each mean deviation to the power of 3.",
+        "https://en.wikipedia.org/wiki/Mean_squared_error")
 }
 
 ##
@@ -1872,7 +2315,10 @@ function num_sum_of_quads_(num, num_, opts) {
 }
 
 function num_sum_of_quads_init() {
-    num_function_init("num_sum_of_quads sum_of_quads sum_quads", "Get the  sum of quads, a.k.a. sum of each mean deviation to the power of 4.", "https://en.wikipedia.org/wiki/Mean_squared_error")
+    num_function_init(\
+        "num_sum_of_quads sum_of_quads sum_quads", 0,
+        "Get the  sum of quads, a.k.a. sum of each mean deviation to the power of 4.",
+        "https://en.wikipedia.org/wiki/Mean_squared_error")
 }
 
 ############################################################################
@@ -1902,7 +2348,10 @@ function num_meanest_(num, num_, opts,  f, _n, _mean, i, x) {
 }
 
 function num_meanest_init() {
-    num_function_init("num_meanest meanest", "Get the value that is closest to the mean.", "https://en.wikipedia.org/wiki/Mean")
+    num_function_init(\
+        "num_meanest meanest", 0,
+        "Get the value that is closest to the mean.",
+        "https://en.wikipedia.org/wiki/Mean")
 }
 
 ############################################################################
@@ -1942,7 +2391,51 @@ function num_trimean_(num, num_, opts,  f, _q1, _q2, _q3) {
 }
 
 function num_trimean_init() {
-    num_function_init("num_trimean trimean", "Calculate the trimean.", "https://wikipedia.org/wiki/Trimean")
+    num_function_init(\
+        "num_trimean trimean", 0,
+        "Calculate the trimean.",
+        "https://wikipedia.org/wiki/Trimean")
+}
+
+############################################################################
+#
+# num-trimmed-mean.awk
+#
+##
+
+##
+#
+# Trimmed mean. This implemention deletes values that are not in the IQR.
+#
+# Example:
+#
+#     num_trimmed_mean(1 2 3 4 5) => 2 3 4
+#
+# TODO: implement, and also upgrade to enable custom ranges.
+#
+##
+
+function num_trimmed_mean_min_max(arr,  q1, q3) {
+    q1 = num_quartile_1(arr)
+    q3 = num_quartile_3(arr)
+    return TODO
+}
+
+function num_trimmed_mean_(num, num_, opts,  f) {
+    f = "num_trimmed_mean"
+    if (!(f in num_)) {
+        q1 = num_quartile_1_(num, num_, opts)
+        q3 = num_quartile_3_(num, num_, opts)
+        num_[f] = TODO
+    }
+    return num_[f]
+}
+
+function num_trimmed_mean_init() {
+    num_function_init(\
+        "num_trimmed_mean trimmed_mean truncated_mean", 0,
+        "Calculate the trimmed mean",
+        "https://en.wikipedia.org/wiki/Truncated_Mean")
 }
 
 ############################################################################
@@ -2016,7 +2509,10 @@ function num_median_(num, num_, opts,  f, i, _n) {
 }
 
 function num_median_init() {
-    num_function_init("num_median median med", "Get the median.", "https://en.wikipedia.org/wiki/Normalization_(statistics)")
+    num_function_init(\
+        "num_median median med", 0,
+        "Get the median.",
+        "https://en.wikipedia.org/wiki/Median")
 }
 
 ##
@@ -2047,7 +2543,10 @@ function num_median_low_(num, num_, opts,  f, _n) {
 }
 
 function num_median_low_init() {
-    num_function_init("num_median_low median_low med_low", "Get the median that is lower a.k.a. lesser.", "https://en.wikipedia.org/wiki/Normalization_(statistics)")
+    num_function_init(\
+        "num_median_low median_low med_low", 0,
+        "Get the median that is lower a.k.a. lesser.",
+        "https://en.wikipedia.org/wiki/Median")
 }
 
 ##
@@ -2080,7 +2579,10 @@ function num_median_high_(num, num_, opts,  f, _n) {
 }
 
 function num_median_high_init() {
-    num_function_init("num_median_high median_high med_high", "Get the median that is higher a.k.a. greater.", "https://en.wikipedia.org/wiki/Normalization_(statistics)")
+    num_function_init(\
+        "num_median_high median_high med_high", 0,
+        "Get the median that is higher a.k.a. greater.",
+        "https://en.wikipedia.org/wiki/Median")
 }
 
 ############################################################################
@@ -2124,7 +2626,7 @@ function num_modes(arr, modes,  modes_i, i, n, seen, max) {
         n = ++seen[arr[i]]
         if (max == "" || max < n) max = n
     }
-    slice("", out); out_i = 0
+    split("", out); out_i = 0
     if (max > 1) {
         for (i in seen) {
             if (seen[i] == max) {
@@ -2156,67 +2658,76 @@ function num_modes_(num, num_, opts, modes,  f, modes_i) {
 }
 
 function num_modes_init() {
-    num_function_init("num_modes modes", "Get the modes, which is a list.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
+    num_function_init(\
+        "num_modes modes", 0,
+        "Get the modes, which is a list.",
+        "https://en.wikipedia.org/wiki/Mode_(statistics)")
 }
 
 ##
 #
-# Mode-low: get the first mode, if any, or UNDEF.
+# Mode min: get the minimum mode, if any, or UNDEF.
 #
 # TODO: IMPLEMENT
 #
 # Examples:
 #
-#     1 2 2 3 => 2
-#     1 1 2 4 4 => 1
-#     1 2 3 => UNDEF
+#     num_mode_min(1 2 3) => UNDEF
+#     num_mode_min(1 2 2 3) => 2
+#     num_mode_min(1 1 2 4 4) => 1
 #
 ##
 
-function num_mode_low(arr) {
+function num_mode_min(arr) {
     return TODO
 }
 
-function num_mode_low_(num, num_, opts,  f) {
-    f = "num_mode_low"
+function num_mode_min_(num, num_, opts,  f) {
+    f = "num_mode_min"
     if (!(f in num_)) {
         num_[f] = TODO
     }
     return num_[f]
 }
 
-function num_mode_low_init() {
-    num_function_init("num_mode_low mode_low", "Get the first mode, if any, or UNDEF.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
+function num_mode_min_init() {
+    num_function_init(\
+        "num_mode_min mode_min", 0,
+        "Get the minimum mode, if any, or UNDEF.",
+        "https://en.wikipedia.org/wiki/Mode_(statistics)")
 }
 
 ##
 #
-# Mode-high: get the last mode, if any, or UNDEF.
+# Mode max: get the maximum mode, if any, or UNDEF.
 #
 # TODO: IMPLEMENT
 #
 # Examples:
 #
-#     1 2 2 3 => 2
-#     1 1 2 4 4 => 4
-#     1 2 3 => UNDEF
+#     num_mode_max(1 2 3) => UNDEF
+#     num_mode_max(1 2 2 3) => 2
+#     num_mode_max(1 1 2 4 4) => 4
 #
 ##
 
-function num_mode_high(arr) {
+function num_mode_max(arr) {
     return TODO
 }
 
-function num_mode_high_(num, num_, opts,  f) {
-    f = "num_mode_high"
+function num_mode_max_(num, num_, opts,  f) {
+    f = "num_mode_max"
     if (!(f in num_)) {
         num_[f] = TODO
     }
     return num_[f]
 }
 
-function num_mode_high_init() {
-    num_function_init("num_mode_high mode_high", "Get the last mode, if any, or UNDEF.", "https://en.wikipedia.org/wiki/Mode_(statistics)")
+function num_mode_max_init() {
+    num_function_init(\
+        "num_mode_max mode_max", 0,
+        "Get the maximum mode, if any, or UNDEF.",
+        "https://en.wikipedia.org/wiki/Mode_(statistics)")
 }
 
 ############################################################################
@@ -2254,7 +2765,10 @@ function num_sample_variance_(num, num_, opts,  f) {
 }
 
 function num_sample_variance_init() {
-    num_function_init("num_sample_variance sample_variance s_var variance var sample_second_moment_about_the_mean, s_second_moment_about_the_mean, s_2_m_a_t_m second_moment_about_the_mean 2_m_a_t_m", "Get the sample variance, a.k.a. sample second moment about the mean.", "https://wikipedia.org/wiki/Variance")
+    num_function_init(\
+        "num_sample_variance sample_variance s_var variance var sample_second_moment_about_the_mean s_second_moment_about_the_mean s_2_m_a_t_m second_moment_about_the_mean 2_m_a_t_m", 0,
+        "Get the sample variance, a.k.a. sample second moment about the mean.",
+        "https://wikipedia.org/wiki/Variance")
 }
 
 # Alias
@@ -2282,7 +2796,10 @@ function num_population_variance_(num, num_, opts) {
 }
 
 function num_population_variance_init() {
-    num_function_init("num_population_variance population_variance p_var population_second_moment_about_the_mean p_second_moment_about_the_mean p_2_m_a_t_m", "Get the population variance, a.k.a. sample second moment about the mean.", "https://wikipedia.org/wiki/Variance")
+    num_function_init(\
+        "num_population_variance population_variance p_var population_second_moment_about_the_mean p_second_moment_about_the_mean p_2_m_a_t_m", 0,
+        "Get the population variance, a.k.a. sample second moment about the mean.",
+        "https://wikipedia.org/wiki/Variance")
 }
 
 # Alias
@@ -2331,7 +2848,10 @@ function num_sample_skewness_(num, num_, opts,  f) {
 }
 
 function num_sample_skewness_init() {
-    num_function_init("num_sample_skewness sample_skewness s_skew skewness skew sample_third_moment_about_the_mean s_third_moment_about_the_mean s_3_m_a_t_m third_moment_about_the_mean 3_m_a_t_m", "Get the sample skewness, a.k.a. sample third moment about the mean.", "https://en.wikipedia.org/wiki/Skewness")
+    num_function_init(\
+        "num_sample_skewness sample_skewness s_skew skewness skew sample_third_moment_about_the_mean s_third_moment_about_the_mean s_3_m_a_t_m third_moment_about_the_mean 3_m_a_t_m", 0,
+        "Get the sample skewness, a.k.a. sample third moment about the mean.",
+        "https://en.wikipedia.org/wiki/Skewness")
 }
 
 # Alias
@@ -2370,7 +2890,10 @@ function num_population_skewness_(num, num_, opts,  f) {
 }
 
 function num_population_skewness_init() {
-    num_function_init("num_population_skewness population_skewness p_skew population_third_moment_about_the_mean p_third_moment_about_the_mean p_3_m_a_t_m", "Get the population skewness, a.k.a. population third moment about the mean.", "https://en.wikipedia.org/wiki/Skewness")
+    num_function_init(\
+        "num_population_skewness population_skewness p_skew population_third_moment_about_the_mean p_third_moment_about_the_mean p_3_m_a_t_m", 0,
+        "Get the population skewness, a.k.a. population third moment about the mean.",
+        "https://en.wikipedia.org/wiki/Skewness")
 }
 
 # Alias
@@ -2432,7 +2955,10 @@ function num_sample_kurtosis_(num, num_, opts,  f) {
 }
 
 function num_sample_kurtosis_init() {
-    num_function_init("num_sample_kurtosis sample_kurtosis s_kurt kurtosis kurt sample_fourth_moment_about_the_mean s_fourth_moment_about_the_mean s_4_m_a_t_m fourth_moment_about_the_mean 4_m_a_t_m", "Get the kurtosis, a.k.a. sample fourth moment about the mean.", "https://en.wikipedia.org/wiki/Kurtosis")
+    num_function_init(\
+        "num_sample_kurtosis sample_kurtosis s_kurt kurtosis kurt sample_fourth_moment_about_the_mean s_fourth_moment_about_the_mean s_4_m_a_t_m fourth_moment_about_the_mean 4_m_a_t_m", 0,
+        "Get the kurtosis, a.k.a. sample fourth moment about the mean.",
+        "https://en.wikipedia.org/wiki/Kurtosis")
 }
 
 # Alias
@@ -2460,7 +2986,10 @@ function num_population_kurtosis_(num, num_, opts,  f) {
 }
 
 function num_population_kurtosis_init() {
-    num_function_init("num_population_kurtosis population_kurtosis p_kurt population_fourth_moment_about_the_mean p_fourth_moment_about_the_mean p_4_m_a_t_m", "Get the kurtosis, a.k.a. population fourth moment about the mean.", "https://en.wikipedia.org/wiki/Kurtosis")
+    num_function_init(\
+        "num_population_kurtosis population_kurtosis p_kurt population_fourth_moment_about_the_mean p_fourth_moment_about_the_mean p_4_m_a_t_m", 0,
+        "Get the kurtosis, a.k.a. population fourth moment about the mean.",
+        "https://en.wikipedia.org/wiki/Kurtosis")
 }
 
 # Alias
@@ -2502,7 +3031,10 @@ function num_sample_standard_deviation_(num, num_, opts,  f) {
 }
 
 function num_sample_standard_deviation_init() {
-    num_function_init("num_sample_standard_deviation sample_standard_deviation s_st_dev s_s_d standard_deviation std_dev sd", "Get the sample standard deviation", "https://wikipedia.org/wiki/Standard_deviation")
+    num_function_init(\
+        "num_sample_standard_deviation sample_standard_deviation s_st_dev s_s_d standard_deviation std_dev sd", 0,
+        "Get the sample standard deviation",
+        "https://wikipedia.org/wiki/Standard_deviation")
 }
 
 # Alias
@@ -2530,7 +3062,10 @@ function num_population_standard_deviation_(num, num_, opts,  f) {
 }
 
 function num_population_standard_deviation_init() {
-    num_function_init("num_population_standard_deviation population_standard_deviation p_st_dev p_s_d", "Get the population standard deviation.", "https://wikipedia.org/wiki/Standard_deviation")
+    num_function_init(\
+        "num_population_standard_deviation population_standard_deviation p_st_dev p_s_d", 0,
+        "Get the population standard deviation.",
+        "https://wikipedia.org/wiki/Standard_deviation")
 }
 
 # Alias
@@ -2572,7 +3107,10 @@ function num_sample_coefficient_of_variance_(num, num_, opts,  f) {
 }
 
 function num_sample_coefficient_of_variance_init() {
-    num_function_init("num_sample_coefficient_of_variance sample_coefficient_of_variance s_co_var s_c_v coefficient_of_variance co_var c_v  sample_relative_standard_deviation s_r_s_d relative_standard_deviation r_s_d", "Get the sample coefficient of variance", "https://en.wikipedia.org/wiki/Coefficient_of_variation")
+    num_function_init(\
+        "num_sample_coefficient_of_variance sample_coefficient_of_variance s_co_var s_c_v coefficient_of_variance co_var c_v  sample_relative_standard_deviation s_r_s_d relative_standard_deviation r_s_d", 0,
+        "Get the sample coefficient of variance",
+        "https://en.wikipedia.org/wiki/Coefficient_of_variation")
 }
 
 # Alias
@@ -2600,7 +3138,10 @@ function num_population_coefficient_of_variance_(num, num_, opts,  f) {
 }
 
 function num_population_coefficient_of_variance_init() {
-    num_function_init("num_population_coefficient_of_variance population_coefficient_of_variance p_co_var p_c_v, population_relative_standard_deviation, p_r_s_d", "Get the population coefficient of variance.", "https://en.wikipedia.org/wiki/Coefficient_of_variation")
+    num_function_init(\
+        "num_population_coefficient_of_variance population_coefficient_of_variance p_co_var p_c_v population_relative_standard_deviation p_r_s_d", 0,
+        "Get the population coefficient of variance.",
+        "https://en.wikipedia.org/wiki/Coefficient_of_variation")
 }
 
 # Alias
@@ -2654,7 +3195,10 @@ function num_interquartile_range_(num, num_, opts,  f) {
 }
 
 function num_interquartile_range_init() {
-    num_function_init("num_interquartile_range interquartile_range i_q_r mid_spread middle_fifty", "Get the interquartile range, a.k.a. IQR.", "https://en.wikipedia.org/wiki/Interquartile_range")
+    num_function_init(\
+        "num_interquartile_range interquartile_range i_q_r mid_spread middle_fifty", 0,
+        "Get the interquartile range, a.k.a. IQR.",
+        "https://en.wikipedia.org/wiki/Interquartile_range")
 }
 
 # Alias
@@ -2682,7 +3226,10 @@ function num_quartile_0_(num, num_, opts,  f) {
 }
 
 function num_quartile_0_init() {
-    num_function_init("num_quartile_0 quartile_0 q_0 0_percent", "Get the quartile 0, a.k.a. Q0, 0th percentile, minimum.", "https://en.wikipedia.org/wiki/Quartile")
+    num_function_init(\
+        "num_quartile_0 quartile_0 q_0 0_percent", 0,
+        "Get the quartile 0, a.k.a. Q0, 0th percentile, minimum.",
+        "https://en.wikipedia.org/wiki/Quartile")
 }
 
 # Alias
@@ -2743,7 +3290,10 @@ function num_quartile_1_(num, num_, opts,  f, _n, i, x) {
 }
 
 function num_quartile_1_init() {
-    num_function_init("num_quartile_1 quartile_1 q_1 25_percent", "Get the quartile 1, a.k.a. Q1, 25th percentile, lower quartile.", "https://en.wikipedia.org/wiki/Quartile")
+    num_function_init(\
+        "num_quartile_1 quartile_1 q_1 25_percent", 0,
+        "Get the quartile 1, a.k.a. Q1, 25th percentile, lower quartile.",
+        "https://en.wikipedia.org/wiki/Quartile")
 }
 
 # Alias
@@ -2771,7 +3321,10 @@ function num_quartile_2_(num, num_, opts,  f) {
 }
 
 function num_quartile_2_init() {
-    num_function_init("num_quartile_2 quartile_2 q_2 50_percent", "Get the quartile 2, a.k.a. Q2, 50th percentile, median.", "https://en.wikipedia.org/wiki/Quartile")
+    num_function_init(\
+        "num_quartile_2 quartile_2 q_2 50_percent", 0,
+        "Get the quartile 2, a.k.a. Q2, 50th percentile, median.",
+        "https://en.wikipedia.org/wiki/Quartile")
 }
 
 # Alias
@@ -2835,7 +3388,10 @@ function num_quartile_3_(num, num_, opts,  f, _n, i, x) {
 }
 
 function num_quartile_3_init() {
-    num_function_init("num_quartile_3 quartile_3 q_3 75_percent", "Get the quartile 3, a.k.a. Q3, 75th percentile, upper quartile.", "https://en.wikipedia.org/wiki/Quartile")
+    num_function_init(\
+        "num_quartile_3 quartile_3 q_3 75_percent", 0,
+        "Get the quartile 3, a.k.a. Q3, 75th percentile, upper quartile.",
+        "https://en.wikipedia.org/wiki/Quartile")
 }
 
 # Alias
@@ -2863,7 +3419,10 @@ function num_quartile_4_(num, num_, opts,  f) {
 }
 
 function num_quartile_4_init() {
-    num_function_init("num_quartile_4 quartile_4 q_4 100_percent", "Get the quartile 4, a.k.a. Q4, 100th percentile, maximum.", "https://en.wikipedia.org/wiki/Quartile")
+    num_function_init(\
+        "num_quartile_4 quartile_4 q_4 100_percent", 0,
+        "Get the quartile 4, a.k.a. Q4, 100th percentile, maximum.",
+        "https://en.wikipedia.org/wiki/Quartile")
 }
 
 # Alias
@@ -3023,7 +3582,7 @@ function num_init_word_list() {
 
     ### Configurations
 
-    num_synonyms["commaseparatedvalues"] = \
+        num_synonyms["commaseparatedvalues"] = \
     num_synonyms["csv"] = \
     "num_io_comma_separated_values"
 
@@ -3127,7 +3686,7 @@ function num_conf_scope() {
 
 function num_conf_word(word) {
     if (word == "")
-         return
+        return
     else if (word == "help")
          num_help()
     else if (word == "num_conf_scope_all")
@@ -3191,7 +3750,7 @@ function scope_start() {
 
 function scope_stop() {
     global_num_["n"] = global_num_n
-    num_print_record()
+    num_print_record(global_num, global_num_, global_opts)
 }
 
 ############################################################################
@@ -3213,18 +3772,35 @@ function num_function_manager_init() {
     num_min_init()
     num_max_init()
     num_range_init()
+    num_select_eq_init()
+    num_select_ne_init()
+    num_select_lt_init()
+    num_select_le_init()
+    num_select_gt_init()
+    num_select_ge_init()
+    num_select_in_init()
+    num_select_ex_init()
+    num_reject_eq_init()
+    num_reject_ne_init()
+    num_reject_lt_init()
+    num_reject_le_init()
+    num_reject_gt_init()
+    num_reject_ge_init()
+    num_reject_in_init()
+    num_reject_ex_init()
     num_sum_init()
     num_product_init()
     num_mean_init()
     num_mean_absolute_deviation_init()
     num_meanest_init()
     num_trimean_init()
+    num_trimmed_mean_init()
     num_median_init()
     num_median_low_init()
     num_median_high_init()
     num_modes_init()
-    num_mode_low_init()
-    num_mode_high_init()
+    num_mode_min_init()
+    num_mode_max_init()
     num_sum_of_squares_init()
     num_sum_of_cubes_init()
     num_sum_of_quads_init()
@@ -3272,7 +3848,8 @@ function num_function_manager_init() {
 #
 #     num = 1 2 4
 #     num_ = []
-#     num_function_manager_call("sum", num, num_, opts)
+#     function_name = "num_sum"
+#     num_function_manager_call(num, num_, opts, function_name)
 #     => 7 (by calling the `sum` function)
 #
 # Note: this implementation uses if..else instead of
@@ -3291,18 +3868,35 @@ function num_function_manager_call(num, num_, opts, f) {
     else if (f == "num_min") return num_min_(num, num_, opts)
     else if (f == "num_max") return num_max_(num, num_, opts)
     else if (f == "num_range") return num_range_(num, num_, opts)
+    else if (f == "num_select_eq") return num_select_eq_(num, num_, opts) # x
+    else if (f == "num_select_ne") return num_select_ne_(num, num_, opts) # x
+    else if (f == "num_select_lt") return num_select_lt_(num, num_, opts) # x
+    else if (f == "num_select_le") return num_select_le_(num, num_, opts) # x
+    else if (f == "num_select_gt") return num_select_gt_(num, num_, opts) # x
+    else if (f == "num_select_ge") return num_select_ge_(num, num_, opts) # x
+    else if (f == "num_select_in") return num_select_in_(num, num_, opts) # min, max
+    else if (f == "num_select_ex") return num_select_ex_(num, num_, opts) # min, max
+    else if (f == "num_reject_eq") return num_reject_eq_(num, num_, opts) # x
+    else if (f == "num_reject_ne") return num_reject_ne_(num, num_, opts) # x
+    else if (f == "num_reject_lt") return num_reject_lt_(num, num_, opts) # x
+    else if (f == "num_reject_le") return num_reject_le_(num, num_, opts) # x
+    else if (f == "num_reject_gt") return num_reject_gt_(num, num_, opts) # x
+    else if (f == "num_reject_ge") return num_reject_ge_(num, num_, opts) # x
+    else if (f == "num_reject_in") return num_reject_in_(num, num_, opts) # min, max
+    else if (f == "num_reject_ex") return num_reject_ex_(num, num_, opts) # min, max
     else if (f == "num_sum") return num_sum_(num, num_, opts)
     else if (f == "num_product") return num_product_(num, num_, opts)
     else if (f == "num_mean") return num_mean_(num, num_, opts)
     else if (f == "num_mean_absolute_deviation") return num_mean_absolute_deviation_(num, num_, opts)
     else if (f == "num_meanest") return num_meanest_(num, num_, opts)
     else if (f == "num_trimean") return num_trimean_(num, num_, opts)
+    else if (f == "num_trimmed_mean") return num_trimmed_mean_(num, num_, opts)
     else if (f == "num_median") return num_median_(num, num_, opts)
     else if (f == "num_median_low") return num_median_low_(num, num_, opts)
     else if (f == "num_median_high") return num_median_high_(num, num_, opts)
-    else if (f == "num_modes") return num_modes_(num, num_, opts, out, out_)
-    else if (f == "num_mode_low") return num_mode_low_(num, num_, opts)
-    else if (f == "num_mode_high") return num_mode_high_(num, num_, opts)
+    else if (f == "num_modes") return num_modes_(num, num_, opts)
+    else if (f == "num_mode_min") return num_mode_min_(num, num_, opts)
+    else if (f == "num_mode_max") return num_mode_max_(num, num_, opts)
     else if (f == "num_sum_of_squares") return num_sum_of_squares_(num, num_, opts)
     else if (f == "num_sum_of_cubes") return num_sum_of_cubes_(num, num_, opts)
     else if (f == "num_sum_of_quads") return num_sum_of_quads_(num, num_, opts)
@@ -3410,10 +4004,11 @@ function num_function_names_to_s(num, num_, opts, function_names,  word, i, n, s
 function num_print_record(num, num_, opts,   s, i) {
     s = num_function_names_to_s(global_num, global_num_, global_opts, global_word_argv)
     if (global_num_scope_n > 1) printf ORS
-    if (s == "" && global_num_scope_output_n == 0)
-        num_print_record_fields(global_num, global_num_, global_opts)
-    else
+    if (s != "") {
         printf s
+    } else {
+        num_print_record_fields(global_num, global_num_, global_opts)
+    }
 }
 
 ##

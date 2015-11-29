@@ -17,18 +17,35 @@ function num_function_manager_init() {
     num_min_init()
     num_max_init()
     num_range_init()
+    num_select_eq_init()
+    num_select_ne_init()
+    num_select_lt_init()
+    num_select_le_init()
+    num_select_gt_init()
+    num_select_ge_init()
+    num_select_in_init()
+    num_select_ex_init()
+    num_reject_eq_init()
+    num_reject_ne_init()
+    num_reject_lt_init()
+    num_reject_le_init()
+    num_reject_gt_init()
+    num_reject_ge_init()
+    num_reject_in_init()
+    num_reject_ex_init()
     num_sum_init()
     num_product_init()
     num_mean_init()
     num_mean_absolute_deviation_init()
     num_meanest_init()
     num_trimean_init()
+    num_trimmed_mean_init()
     num_median_init()
     num_median_low_init()
     num_median_high_init()
     num_modes_init()
-    num_mode_low_init()
-    num_mode_high_init()
+    num_mode_min_init()
+    num_mode_max_init()
     num_sum_of_squares_init()
     num_sum_of_cubes_init()
     num_sum_of_quads_init()
@@ -51,7 +68,7 @@ function num_function_manager_init() {
     num_sort_awk_init()
     num_sort_ascending_init()
     num_sort_descending_init()
-    num_map_increment()
+    num_map_increment_init()
     num_map_absolute_value_init()
     num_map_sign_init()
     num_map_normalize_init()
@@ -96,18 +113,35 @@ function num_function_manager_call(num, num_, opts, f) {
     else if (f == "num_min") return num_min_(num, num_, opts)
     else if (f == "num_max") return num_max_(num, num_, opts)
     else if (f == "num_range") return num_range_(num, num_, opts)
+    else if (f == "num_select_eq") return num_select_eq_(num, num_, opts) # x
+    else if (f == "num_select_ne") return num_select_ne_(num, num_, opts) # x
+    else if (f == "num_select_lt") return num_select_lt_(num, num_, opts) # x
+    else if (f == "num_select_le") return num_select_le_(num, num_, opts) # x
+    else if (f == "num_select_gt") return num_select_gt_(num, num_, opts) # x
+    else if (f == "num_select_ge") return num_select_ge_(num, num_, opts) # x
+    else if (f == "num_select_in") return num_select_in_(num, num_, opts) # min, max
+    else if (f == "num_select_ex") return num_select_ex_(num, num_, opts) # min, max
+    else if (f == "num_reject_eq") return num_reject_eq_(num, num_, opts) # x
+    else if (f == "num_reject_ne") return num_reject_ne_(num, num_, opts) # x
+    else if (f == "num_reject_lt") return num_reject_lt_(num, num_, opts) # x
+    else if (f == "num_reject_le") return num_reject_le_(num, num_, opts) # x
+    else if (f == "num_reject_gt") return num_reject_gt_(num, num_, opts) # x
+    else if (f == "num_reject_ge") return num_reject_ge_(num, num_, opts) # x
+    else if (f == "num_reject_in") return num_reject_in_(num, num_, opts) # min, max
+    else if (f == "num_reject_ex") return num_reject_ex_(num, num_, opts) # min, max
     else if (f == "num_sum") return num_sum_(num, num_, opts)
     else if (f == "num_product") return num_product_(num, num_, opts)
     else if (f == "num_mean") return num_mean_(num, num_, opts)
     else if (f == "num_mean_absolute_deviation") return num_mean_absolute_deviation_(num, num_, opts)
     else if (f == "num_meanest") return num_meanest_(num, num_, opts)
     else if (f == "num_trimean") return num_trimean_(num, num_, opts)
+    else if (f == "num_trimmed_mean") return num_trimmed_mean_(num, num_, opts)
     else if (f == "num_median") return num_median_(num, num_, opts)
     else if (f == "num_median_low") return num_median_low_(num, num_, opts)
     else if (f == "num_median_high") return num_median_high_(num, num_, opts)
     else if (f == "num_modes") return num_modes_(num, num_, opts)
-    else if (f == "num_mode_low") return num_mode_low_(num, num_, opts)
-    else if (f == "num_mode_high") return num_mode_high_(num, num_, opts)
+    else if (f == "num_mode_min") return num_mode_min_(num, num_, opts)
+    else if (f == "num_mode_max") return num_mode_max_(num, num_, opts)
     else if (f == "num_sum_of_squares") return num_sum_of_squares_(num, num_, opts)
     else if (f == "num_sum_of_cubes") return num_sum_of_cubes_(num, num_, opts)
     else if (f == "num_sum_of_quads") return num_sum_of_quads_(num, num_, opts)
@@ -144,7 +178,6 @@ function num_function_manager_call(num, num_, opts, f) {
     else if (f == "num_is_strictly_descending") return num_is_strictly_descending_(num, num_, opts)
     else return ""
 }
-
 
 ##
 #

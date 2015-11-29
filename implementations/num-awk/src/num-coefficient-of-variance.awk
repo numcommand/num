@@ -33,7 +33,10 @@ function num_sample_coefficient_of_variance_(num, num_, opts,  f) {
 }
 
 function num_sample_coefficient_of_variance_init() {
-    num_function_init("num_sample_coefficient_of_variance sample_coefficient_of_variance s_co_var s_c_v coefficient_of_variance co_var c_v  sample_relative_standard_deviation s_r_s_d relative_standard_deviation r_s_d", "Get the sample coefficient of variance", "https://en.wikipedia.org/wiki/Coefficient_of_variation")
+    num_function_init(\
+        "num_sample_coefficient_of_variance sample_coefficient_of_variance s_co_var s_c_v coefficient_of_variance co_var c_v  sample_relative_standard_deviation s_r_s_d relative_standard_deviation r_s_d", 0,
+        "Get the sample coefficient of variance",
+        "https://en.wikipedia.org/wiki/Coefficient_of_variation")
 }
 
 # Alias
@@ -61,7 +64,10 @@ function num_population_coefficient_of_variance_(num, num_, opts,  f) {
 }
 
 function num_population_coefficient_of_variance_init() {
-    num_function_init("num_population_coefficient_of_variance population_coefficient_of_variance p_co_var p_c_v, population_relative_standard_deviation, p_r_s_d", "Get the population coefficient of variance.", "https://en.wikipedia.org/wiki/Coefficient_of_variation")
+    num_function_init(\
+        "num_population_coefficient_of_variance population_coefficient_of_variance p_co_var p_c_v population_relative_standard_deviation p_r_s_d", 0,
+        "Get the population coefficient of variance.",
+        "https://en.wikipedia.org/wiki/Coefficient_of_variation")
 }
 
 # Alias

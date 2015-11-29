@@ -30,5 +30,8 @@ function num_map_sign_(num, num_, opts,  f, i, memo) {
 }
 
 function num_map_sign_init() {
-    num_function_init("num_map_sign sign", "Map using sign.")
+    num_function_init(\
+        "num_map_sign sign sgn signum", 0,
+        "Map using sign.",
+        "https://en.wikipedia.org/wiki/Sign_function")
 }
