@@ -6,12 +6,12 @@
 
 ##
 #
-# Modes: get the mode, which may be a number, or list, or UNDEF.
+# Modes: get the modes, which may be a number, or list, or UNDEF.
 #
-# The mode is:
+# The modes are:
 #
-#   * The values that appear most often in a set of data.
-#   * If values appear the same number of times, there are multiple modes.
+#   * The value that appears most often in a set of data.
+#   * If mutlipe values appear as often, there are multiple modes.
 #   * If each value occurs only once, then there are no modes.
 #
 # Examples:
@@ -19,8 +19,6 @@
 #     1 2 2 3 => 2
 #     1 1 2 3 3 => 1 3
 #     1 2 3 => UNDEF
-#
-# The implementations calculate the modes.
 #
 # Output the `modes` array.
 # Return the `modes` array length.

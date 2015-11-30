@@ -13,6 +13,7 @@
 ## Lists
 @include "num-arr.awk"
 @include "num-list.awk"
+@include "num-frequency.awk"
 @include "num-shift.awk"
 @include "num-stack.awk"
 @include "num-queue.awk"

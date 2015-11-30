@@ -58,6 +58,21 @@ The range, which is maximum - minimum.
     echo "1 2 4" | num range
     3
 
+### frequency minimum
+
+The frequency minimum. Count occurances of each value, and return the minimum count.
+
+    echo "10 10 11 11 11"
+    2
+
+
+### frequency maximum
+
+The frequency maximum. Count occurances of each value, and return the maximum count.
+
+    echo "10 10 11 11 11"
+    3
+
 
 #### sum, total
 
@@ -73,8 +88,6 @@ The product all the items.
 
     echo "1 2 4" | num product
     8
-
-
 
 
 ## Mean

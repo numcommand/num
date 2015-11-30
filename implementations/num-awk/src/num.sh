@@ -19,8 +19,8 @@ set -euf
 # Author: Joel Parker Henderson (joel@joelparkerhenderson.com)
 # License: GPL, BSD, MIT
 # Created: 2015-03-28
-# Updated: 2015-11-12
-# Version: 0.10.0
+# Updated: 2015-11-29
+# Version: 1.2.2
 #
 ##
 
@@ -42,6 +42,7 @@ AWK=${AWK:-$(command -v gawk || command -v awk || echo "awk")}
 ## Lists
 @include "num-arr.awk"
 @include "num-list.awk"
+@include "num-frequency.awk"
 @include "num-shift.awk"
 @include "num-stack.awk"
 @include "num-queue.awk"

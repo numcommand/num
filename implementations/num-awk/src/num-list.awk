@@ -130,6 +130,8 @@ function num_min_init() {
 #
 # This implementation does a scan of the entire array.
 #
+##
+
 function num_max(arr,  _max, i) {
     _max = ""
     for (i in arr) {

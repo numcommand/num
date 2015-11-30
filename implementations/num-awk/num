@@ -19,8 +19,8 @@ set -euf
 # Author: Joel Parker Henderson (joel@joelparkerhenderson.com)
 # License: GPL, BSD, MIT
 # Created: 2015-03-28
-# Updated: 2015-11-12
-# Version: 0.10.0
+# Updated: 2015-11-29
+# Version: 1.2.2
 #
 ##
 
@@ -35,8 +35,8 @@ AWK=${AWK:-$(command -v gawk || command -v awk || echo "awk")}
 ##
 
 function num_help() {
-    print "Num version 1.2.1."
-    print "Update 2015-11-17."
+    print "Num version 1.3.0."
+    print "Update 2015-11-30."
     print ""
     print "Copyright (C) 2015 Joel Parker Henderson."
     print "Please see http://github.com/numcommand"
@@ -637,6 +637,8 @@ function num_min_init() {
 #
 # This implementation does a scan of the entire array.
 #
+##
+
 function num_max(arr,  _max, i) {
     _max = ""
     for (i in arr) {
@@ -1041,6 +1043,68 @@ function num_reject_ex_init() {
         "num_reject_ex reject_ex", 0,
         "Reject all values extra-range [min, max]",
         "")
+}
+
+############################################################################
+#
+# num-frequency.awk
+#
+##
+
+##
+#
+# Frequency minimum.
+#
+# Example:
+#
+#     num_frequency_min(10 10 11 11 11) => 2
+#
+##
+
+function num_frequency_min(arr,  min, i, seen) {
+    for (i in arr) ++seen[arr[i]]
+    return num_min(seen)
+}
+
+function num_frequency_min_(num, num_, opts,  f) {
+    f = "num_frequency_min"
+    if (!(f in num_)) num_[f] = num_frequency_min(num)  # TODO optimize when min and min are both wanted
+    return num_[f]
+}
+
+function num_frequency_min_init() {
+    num_function_init(\
+        "num_frequency_min frequency_minimum freq_min", 0,
+        "Get the frequency minimum: count the occurances of each value, and get the minimum count.",
+        "https://en.wikipedia.org/wiki/Frequency_Minimum_(statistics)")
+}
+
+##
+#
+# Frequency maximum.
+#
+# Example:
+#
+#     num_frequency_max(10 10 11 11 11) => 3
+#
+##
+
+function num_frequency_max(arr,  max, i, seen) {
+    for (i in arr) ++seen[arr[i]]
+    return num_max(seen)
+}
+
+function num_frequency_max_(num, num_, opts,  f) {
+    f = "num_frequency_max"
+    if (!(f in num_)) num_[f] = num_frequency_max(num)  # TODO optimize when min and max are both wanted
+    return num_[f]
+}
+
+function num_frequency_max_init() {
+    num_function_init(\
+        "num_frequency_max frequency_maximum freq_max", 0,
+        "Get the frequency maximum: count the occurances of each value, and get the maximum count.",
+        "https://en.wikipedia.org/wiki/Frequency_Maximum_(statistics)")
 }
 
 ############################################################################
@@ -2593,12 +2657,12 @@ function num_median_high_init() {
 
 ##
 #
-# Modes: get the mode, which may be a number, or list, or UNDEF.
+# Modes: get the modes, which may be a number, or list, or UNDEF.
 #
-# The mode is:
+# The modes are:
 #
-#   * The values that appear most often in a set of data.
-#   * If values appear the same number of times, there are multiple modes.
+#   * The value that appears most often in a set of data.
+#   * If mutlipe values appear as often, there are multiple modes.
 #   * If each value occurs only once, then there are no modes.
 #
 # Examples:
@@ -2606,8 +2670,6 @@ function num_median_high_init() {
 #     1 2 2 3 => 2
 #     1 1 2 3 3 => 1 3
 #     1 2 3 => UNDEF
-#
-# The implementations calculate the modes.
 #
 # Output the `modes` array.
 # Return the `modes` array length.
@@ -3772,6 +3834,8 @@ function num_function_manager_init() {
     num_min_init()
     num_max_init()
     num_range_init()
+    num_frequency_min_init()
+    num_frequency_max_init()
     num_select_eq_init()
     num_select_ne_init()
     num_select_lt_init()
@@ -3868,6 +3932,8 @@ function num_function_manager_call(num, num_, opts, f) {
     else if (f == "num_min") return num_min_(num, num_, opts)
     else if (f == "num_max") return num_max_(num, num_, opts)
     else if (f == "num_range") return num_range_(num, num_, opts)
+    else if (f == "num_frequency_min") return num_frequency_min_(num, num_, opts)
+    else if (f == "num_frequency_max") return num_frequency_max_(num, num_, opts)
     else if (f == "num_select_eq") return num_select_eq_(num, num_, opts) # x
     else if (f == "num_select_ne") return num_select_ne_(num, num_, opts) # x
     else if (f == "num_select_lt") return num_select_lt_(num, num_, opts) # x

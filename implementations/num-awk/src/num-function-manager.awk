@@ -17,6 +17,8 @@ function num_function_manager_init() {
     num_min_init()
     num_max_init()
     num_range_init()
+    num_frequency_min_init()
+    num_frequency_max_init()
     num_select_eq_init()
     num_select_ne_init()
     num_select_lt_init()
@@ -113,6 +115,8 @@ function num_function_manager_call(num, num_, opts, f) {
     else if (f == "num_min") return num_min_(num, num_, opts)
     else if (f == "num_max") return num_max_(num, num_, opts)
     else if (f == "num_range") return num_range_(num, num_, opts)
+    else if (f == "num_frequency_min") return num_frequency_min_(num, num_, opts)
+    else if (f == "num_frequency_max") return num_frequency_max_(num, num_, opts)
     else if (f == "num_select_eq") return num_select_eq_(num, num_, opts) # x
     else if (f == "num_select_ne") return num_select_ne_(num, num_, opts) # x
     else if (f == "num_select_lt") return num_select_lt_(num, num_, opts) # x
