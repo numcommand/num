@@ -203,6 +203,16 @@ To use this command, you need to download the code and compile it.
 See https://blog.goeswhere.com/2015/11/xlines/
 
 
+## Shell Tools
+
+### CRUSH
+
+CRUSH is a free, open-source collection of Custom Reporting Utilities for SHell.
+
+See [http://code.google.com/p/crush-tools](http://code.google.com/p/crush-tools)
+and [https://github.com/google/crush-tools](https://github.com/google/crush-tools).
+
+
 ## Formatting input/output
 
 
