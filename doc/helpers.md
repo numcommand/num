@@ -213,6 +213,13 @@ See [http://code.google.com/p/crush-tools](http://code.google.com/p/crush-tools)
 and [https://github.com/google/crush-tools](https://github.com/google/crush-tools).
 
 
+### Nixar
+
+New shell commands.
+
+See [http://nixar.work/](http://nixar.work/)
+
+
 ## Formatting input/output
 
 
