@@ -176,6 +176,15 @@ Example:
 Run <a href="http://linux.die.net/man/1/wc">`man wc`</a> to see options, and how to use languages other than English or character encodings other than ASCII.
 
 
+### More shell commands
+
+## Shell Tools
+
+* [CRUSH: Custom Reporting Utilities for SHell](https://github.com/google/crush-tools)
+* [Nixar: New shell commands](http://nixar.work/)
+* [CLA: An extendable tool suite for data analysis from the command line](https://github.com/eschulte/cla)
+
+
 ## Parallel processing
 
 
@@ -201,23 +210,6 @@ Example:
 To use this command, you need to download the code and compile it.
 
 See https://blog.goeswhere.com/2015/11/xlines/
-
-
-## Shell Tools
-
-### CRUSH
-
-CRUSH is a free, open-source collection of Custom Reporting Utilities for SHell.
-
-See [http://code.google.com/p/crush-tools](http://code.google.com/p/crush-tools)
-and [https://github.com/google/crush-tools](https://github.com/google/crush-tools).
-
-
-### Nixar
-
-New shell commands.
-
-See [http://nixar.work/](http://nixar.work/)
 
 
 ## Formatting input/output
