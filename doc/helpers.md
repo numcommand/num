@@ -181,6 +181,7 @@ Run <a href="http://linux.die.net/man/1/wc">`man wc`</a> to see options, and how
 ## Shell Tools
 
 * [CRUSH: Custom Reporting Utilities for SHell](https://github.com/google/crush-tools)
+* [Pick: fuzzy select anything](https://github.com/thoughtbot/pick)
 * [Nixar: New shell commands](http://nixar.work/)
 * [CLA: An extendable tool suite for data analysis from the command line](https://github.com/eschulte/cla)
 
