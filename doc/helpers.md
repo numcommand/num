@@ -34,6 +34,17 @@ Example to print a file of data then sum:
 Run <a href="http://linux.die.net/man/1/cat">`man cat`</a> to see options for line numbering, blank line squeezing, etc.
 
 
+### comm
+
+The `comm` command selects or rejects lines common to two files.
+
+Example to compare lines of two files:
+
+    $ comm file1 file2
+
+Run <a href="http://linux.die.net/man/1/comm">`man comm`</a> to see options for columns, inputs, case, etc.
+
+
 ### cut
 
 Cut a field
@@ -71,6 +82,17 @@ Example:
 Run <a href="http://linux.die.net/man/1/join">`man join`</a> to see options for fields, lines, etc.
 
 
+### look
+
+Display lines beginning with a given string.
+
+Example:
+
+    $ look foo data.txt
+
+Run <a href="http://linux.die.net/man/look">`man look`</a> to see options for alphanumeric, case, termination, etc.
+
+
 ### paste
 
 Paste concatenates the corresponding lines of the given input files.
@@ -80,6 +102,18 @@ Example:
     $ paste file1 file2
 
 Run <a href="http://linux.die.net/man/1/paste">`man paste`</a> to see options for characters, delimiters, ordering, etc.
+
+
+### rev (reverse)
+
+The `rev` command reverses the characters of each line.
+
+Example:
+
+    $ echo "hello" | rev
+    olleh
+
+Run <a href="http://linux.die.net/man/1/rev">`man rev`</a> to see options for files, standard input, etc.
 
 
 ### seq (sequence)
@@ -176,12 +210,24 @@ Example:
 Run <a href="http://linux.die.net/man/1/wc">`man wc`</a> to see options, and how to use languages other than English or character encodings other than ASCII.
 
 
+### xxd (hexdump)
+
+Make a hexdump.
+
+Example:
+
+    $ xxd hexfile.bin
+
+Run <a href="http://linux.die.net/man/1/xxd">`man xxd`</a> to see options for bits, bytes, ends, etc.
+
+
 ### More shell commands
 
 ## Shell Tools
 
 * [CRUSH: Custom Reporting Utilities for SHell](https://github.com/google/crush-tools)
 * [Pick: fuzzy select anything](https://github.com/thoughtbot/pick)
+* [fzf: fuzzy finder](https://github.com/junegunn/fzf)
 * [Nixar: New shell commands](http://nixar.work/)
 * [CLA: An extendable tool suite for data analysis from the command line](https://github.com/eschulte/cla)
 
