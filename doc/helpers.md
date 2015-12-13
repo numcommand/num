@@ -198,6 +198,17 @@ Example:
 Run <a href="http://linux.die.net/man/1/uniq">`man unique`</a> to see options for showing duplicates, skipping duplicates, ignoring fields, etc.
 
 
+### vipe (vi pipe editor)
+
+The `vipe` command enables you to run your editor in the middle of a unix pipeline.
+
+Example:
+
+    $ command1 | vipe | command2
+
+Run <a href="http://linux.die.net/man/1/vipe">`man vipe`</a> to see options for setting your editor.
+
+
 ### wc (word count)
 
 Word count: this typically counts lines, words, and characters.
@@ -225,11 +236,15 @@ Run <a href="http://linux.die.net/man/1/xxd">`man xxd`</a> to see options for bi
 
 ## Shell Tools
 
+* [bfr: buffer streamer](http://freecode.com/projects/buffer)
 * [CRUSH: Custom Reporting Utilities for SHell](https://github.com/google/crush-tools)
 * [Pick: fuzzy select anything](https://github.com/thoughtbot/pick)
 * [fzf: fuzzy finder](https://github.com/junegunn/fzf)
 * [Nixar: New shell commands](http://nixar.work/)
 * [CLA: An extendable tool suite for data analysis from the command line](https://github.com/eschulte/cla)
+* [pv: pipe viewer](http://www.ivarch.com/programs/pv.shtml)
+* [sponge: soak up standard input and write to a file](https://joeyh.name/code/moreutils/)
+* [tac: cat in reverse, to concatenate files to stdout, last line first](http://www.computerhope.com/unix/tac.htm)
 
 
 ## Parallel processing
