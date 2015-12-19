@@ -43,3 +43,5 @@ Programmer pages:
 
 * [Programmer guide](doc/programmer-guide.md)
 * [Programmer library of awk functions](doc/programmer-library-of-awk-functions.md)
+
+By [Joel Parker Henderson](http://www.joelparkerhenderson.com)
