@@ -90,7 +90,7 @@ Example:
 
     $ look foo data.txt
 
-Run <a href="http://linux.die.net/man/look">`man look`</a> to see options for alphanumeric, case, termination, etc.
+Run <a href="http://linux.die.net/man/1/look">`man look`</a> to see options for alphanumeric, case, termination, etc.
 
 
 ### paste
