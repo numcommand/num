@@ -6,8 +6,7 @@ Num is a command line tool for mathematics and statistics data processing.
 <br>Num can calculate sum, median, quartiles, standard deviation, and much more.
 <br>Num can sort, map, filter, round, and use various input/output formats.
 
-<a href="https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics">Num on Kickstarter: please donate $1 to help!</a>
-<br><a href="https://www.patreon.com/num">Num on Patreon: please donate $1 to help!</a>
+<a href="https://www.patreon.com/num">Num on Patreon: donate to help</a>
 <br><a href="https://twitter.com/NumCommand">Num on Twitter: @numcommand</a>
 <br><a href="http://www.numcommand.com">Num on the web: www.numcommand.com</a>
 
@@ -18,7 +17,7 @@ Example:
 
 Install:
 
-sudo curl -sSL https://raw.githubusercontent.com/numcommand/num/master/implementations/num-awk/num -o /usr/local/bin/num && sudo chmod +x /usr/local/bin/num && (command -v uname >/dev/null 2>&1) && (uname | grep -q Darwin) && (command -v brew >/dev/null 2>&1) && (brew ls --versions gawk | grep -q gawk) || brew install gawk
+    sudo curl -sSL https://raw.githubusercontent.com/numcommand/num/master/implementations/num-awk/num -o /usr/local/bin/num && sudo chmod +x /usr/local/bin/num && (command -v uname >/dev/null 2>&1) && (uname | grep -q Darwin) && (command -v brew >/dev/null 2>&1) && (brew ls --versions gawk | grep -q gawk) || brew install gawk
 
 For more on how to install please see the [Install page](doc/install.md).
 <br>To troubleshoot please see the [Troubleshooting page](doc/troubleshooting.md).
