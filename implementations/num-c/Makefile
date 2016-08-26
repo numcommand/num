@@ -1,5 +1,5 @@
 all:
-	gcc -O3 num.c -o num
+	gcc -Wall -O3 num.c -o num -lm
 
 test:
 	./num-test
