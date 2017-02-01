@@ -14,14 +14,16 @@ num=${NUM:-num}
 #
 ##
 
-x=$(echo "1 2 4" | "$num" skewness) &&
-    assert_eq 1.11111 "$x" "skewness, with row"
+f="skewness"
 
-x=$(echo "1\n2\n4" | "$num" skewness) &&
-    assert_eq 1.11111 "$x" "skewness, with col"
+x=$(echo "1 2 4" | "$num" $f) &&
+    assert_eq 1.11111 "$x" "$f with row"
 
-x=$(echo "1 2 4\n5 6 9" | "$num" skewness records) &&
-    assert_eq "1.11111"$'\n'"3.88889" "$x" "skewness, with records"
+x=$(echo "1\n2\n4" | "$num" $f) &&
+    assert_eq 1.11111 "$x" "$f with col"
+
+x=$(echo "1 2 4\n5 6 9" | "$num" $f records) &&
+    assert_eq "1.11111"$'\n'"3.88889" "$x" "$f with records"
 
 ##
 #
@@ -29,14 +31,16 @@ x=$(echo "1 2 4\n5 6 9" | "$num" skewness records) &&
 #
 ##
 
-x=$(echo "1 2 4" | "$num" sample-skewness) &&
-    assert_eq 1.11111 "$x" "sample-skewness, with row"
+f="sample-skewness"
 
-x=$(echo "1\n2\n4" | "$num" sample-skewness) &&
-    assert_eq 1.11111 "$x" "sample-skewness, with col"
+x=$(echo "1 2 4" | "$num" $f) &&
+    assert_eq 1.11111 "$x" "$f with row"
 
-x=$(echo "1 2 4\n5 6 9" | "$num" sample-skewness records) &&
-    assert_eq "1.11111"$'\n'"3.88889" "$x" "sample-skewness, with records"
+x=$(echo "1\n2\n4" | "$num" $f) &&
+    assert_eq 1.11111 "$x" "$f with col"
+
+x=$(echo "1 2 4\n5 6 9" | "$num" $f records) &&
+    assert_eq "1.11111"$'\n'"3.88889" "$x" "$f with records"
 
 ##
 #
@@ -44,11 +48,13 @@ x=$(echo "1 2 4\n5 6 9" | "$num" sample-skewness records) &&
 #
 ##
 
-x=$(echo "1 2 4" | "$num" population-skewness) &&
-    assert_eq 0.740741 "$x" "population-skewness, with row"
+f="population-skewness"
 
-x=$(echo "1\n2\n4" | "$num" population-skewness) &&
-    assert_eq 0.740741 "$x" "population-skewness, with col"
+x=$(echo "1 2 4" | "$num" $f) &&
+    assert_eq 0.740741 "$x" "$f with row"
 
-x=$(echo "1 2 4\n5 6 9" | "$num" population-skewness records) &&
-    assert_eq "0.740741"$'\n'"2.59259" "$x" "population-skewness, with records"
+x=$(echo "1\n2\n4" | "$num" $f) &&
+    assert_eq 0.740741 "$x" "$f with col"
+
+x=$(echo "1 2 4\n5 6 9" | "$num" $f records) &&
+    assert_eq "0.740741"$'\n'"2.59259" "$x" "$f with records"

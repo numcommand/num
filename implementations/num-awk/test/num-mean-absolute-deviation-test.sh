@@ -14,11 +14,13 @@ num=${NUM:-num}
 #
 ##
 
-x=$(echo "1 2 4" | "$num" mean-absolute-deviation) &&
-    assert_eq 1.11111 "$x" "mean-absolute-deviation, with row"
+f="mean-absolute-deviation"
 
-x=$(echo "1\n2\n4" | "$num" mean-absolute-deviation) &&
-    assert_eq 1.11111 "$x" "mean-absolute-deviation, with col"
+x=$(echo "1 2 4" | "$num" $f) &&
+    assert_eq 1.11111 "$x" "$f with row"
 
-x=$(echo "1 2 4\n5 6 9" | "$num" mean-absolute-deviation records) &&
-    assert_eq "1.11111"$'\n'"1.55556" "$x" "mean-absolute-deviation, with records"
+x=$(echo "1\n2\n4" | "$num" $f) &&
+    assert_eq 1.11111 "$x" "$f with col"
+
+x=$(echo "1 2 4\n5 6 9" | "$num" $f records) &&
+    assert_eq "1.11111"$'\n'"1.55556" "$x" "$f with records"

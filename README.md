@@ -44,4 +44,8 @@ Programmer pages:
 * [Programmer guide](doc/programmer-guide.md)
 * [Programmer library of awk functions](doc/programmer-library-of-awk-functions.md)
 
+Statistics help:
+
+* [Unlearning descriptive statistics](http://debrouwere.org/2017/02/01/unlearning-descriptive-statistics/)
+
 By [Joel Parker Henderson](http://www.joelparkerhenderson.com)

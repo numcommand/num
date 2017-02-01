@@ -14,11 +14,13 @@ num=${NUM:-num}
 #
 ##
 
-x=$(echo "1 2 4" | "$num" product) &&
-    assert_eq 8 "$x" "product, with row"
+f="product"
 
-x=$(echo "1\n2\n4" | "$num" product) &&
-    assert_eq 8 "$x" "product, with col"
+x=$(echo "1 2 4" | "$num" $f) &&
+    assert_eq 8 "$x" "$f with row"
 
-x=$(echo "1 2 4\n5 6 9" | "$num" product records) &&
-    assert_eq "8"$'\n'"270" "$x" "product, with records"
+x=$(echo "1\n2\n4" | "$num" $f) &&
+    assert_eq 8 "$x" "$f with col"
+
+x=$(echo "1 2 4\n5 6 9" | "$num" $f records) &&
+    assert_eq "8"$'\n'"270" "$x" "$f with records"

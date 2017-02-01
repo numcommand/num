@@ -14,14 +14,16 @@ num=${NUM:-num}
 #
 ##
 
-x=$(echo "1 2 4" | "$num" standard-deviation) &&
-    assert_eq 1.52753 "$x" "standard-deviation, with row"
+f="standard-deviation"
 
-x=$(echo "1\n2\n4" | "$num" standard-deviation) &&
-    assert_eq 1.52753 "$x" "standard-deviation, with col"
+x=$(echo "1 2 4" | "$num" $f) &&
+    assert_eq 1.52753 "$x" "$f with row"
 
-x=$(echo "1 2 4\n5 6 9" | "$num" standard-deviation records) &&
-    assert_eq "1.52753"$'\n'"2.08167" "$x" "standard-deviation, with records"
+x=$(echo "1\n2\n4" | "$num" $f) &&
+    assert_eq 1.52753 "$x" "$f with col"
+
+x=$(echo "1 2 4\n5 6 9" | "$num" $f records) &&
+    assert_eq "1.52753"$'\n'"2.08167" "$x" "$f with records"
 
 ##
 #
@@ -29,16 +31,16 @@ x=$(echo "1 2 4\n5 6 9" | "$num" standard-deviation records) &&
 #
 ##
 
-## Sample
+f="sample-standard-deviation"
 
-x=$(echo "1 2 4" | "$num" sample-standard-deviation) &&
-    assert_eq 1.52753 "$x" "sample-standard-deviation, with row"
+x=$(echo "1 2 4" | "$num" $f) &&
+    assert_eq 1.52753 "$x" "$f with row"
 
-x=$(echo "1\n2\n4" | "$num" sample-standard-deviation) &&
-    assert_eq 1.52753 "$x" "sample-standard-deviation, with col"
+x=$(echo "1\n2\n4" | "$num" $f) &&
+    assert_eq 1.52753 "$x" "$f with col"
 
 x=$(echo "1 2 4\n5 6 9" | "$num" standard-deviation records) &&
-    assert_eq "1.52753"$'\n'"2.08167" "$x" "sample-standard-deviation, with records"
+    assert_eq "1.52753"$'\n'"2.08167" "$x" "$f with records"
 
 ##
 #
@@ -46,11 +48,13 @@ x=$(echo "1 2 4\n5 6 9" | "$num" standard-deviation records) &&
 #
 ##
 
-x=$(echo "1 2 4" | "$num" population-standard-deviation) &&
-    assert_eq 1.24722 "$x" "population-standard-deviation, with row"
+f="population-standard-deviation"
 
-x=$(echo "1\n2\n4" | "$num" population-standard-deviation) &&
-    assert_eq 1.24722 "$x" "population-standard-deviation, with col"
+x=$(echo "1 2 4" | "$num" $f) &&
+    assert_eq 1.24722 "$x" "$f with row"
 
-x=$(echo "1 2 4\n5 6 9" | "$num" population-standard-deviation records) &&
-    assert_eq "1.24722"$'\n'"1.69967" "$x" "population-standard-deviation, with records"
+x=$(echo "1\n2\n4" | "$num" $f) &&
+    assert_eq 1.24722 "$x" "$f with col"
+
+x=$(echo "1 2 4\n5 6 9" | "$num" $f records) &&
+    assert_eq "1.24722"$'\n'"1.69967" "$x" "$f with records"

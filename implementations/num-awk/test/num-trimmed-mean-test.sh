@@ -16,11 +16,13 @@ num=${NUM:-num}
 #   * q3 == 4.25
 ##
 
-x=$(echo "1 2 3 4 5" | "$num" trimmed-mean) &&
-    assert_eq $TODO "$x" "trimmed-mean, with row"
+f="trimmed-mean"
 
-x=$(echo "1\n2\n3\n4\n5" | "$num" trimmed-mean) &&
-    assert_eq $TODO "$x" "trimmed-mean, with col"
+x=$(echo "1 2 3 4 5" | "$num" $f) &&
+    assert_eq $TODO "$x" "$f with row"
 
-x=$(echo "1 2 3 5\n1 2 3 4 5" | "$num" trimmed-mean records) &&
-    assert_eq $TODO$'\n'$TODO "$x" "trimmed-mean, with records"
+x=$(echo "1\n2\n3\n4\n5" | "$num" $f) &&
+    assert_eq $TODO "$x" "$f with col"
+
+x=$(echo "1 2 3 5\n1 2 3 4 5" | "$num" $f records) &&
+    assert_eq $TODO$'\n'$TODO "$x" "$f with records"
