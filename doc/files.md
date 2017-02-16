@@ -1,10 +1,8 @@
-This directory is for the Num implementation based on awk.
-
-## Directories &amp; Files
+# Files
 
 Top level directory:
 
-   * `num` is the main script that users download.
+   * `bin/num` is the main script that users download.
 
    * The script has the command line parsing, help, etc.
 
@@ -36,25 +34,3 @@ Top level directory:
 
    * Ideally this directory is empty.
 
-
-## Build
-
-To build the `num` script:
-
-    awk 'FNR==1 && NR!=1 {print "\n"}{print}' \
-    $(cat src/num.awk | sed -n 's/^\@include "\(.*\)"/\1/p') | more
-
-We have a goal to make the build process simpler.
-
-
-## Test
-
-To run all test files:
-
-    cd test
-    ./num-test.sh
-
-To run one test file, such as for variance:
-
-    cd test
-    ./num-variance-test.sh
