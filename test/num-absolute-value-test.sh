@@ -9,12 +9,15 @@
 num=${NUM:-num}
 
 ##
+#
 # absolute value
+#
 ##
 
 f="absolute-value"
 
 ##
+#
 # ...with all positive...
 #
 # row:
@@ -44,6 +47,7 @@ x=$(echo "1 2 3\n5 6 9" | "$num" absolute-value records) &&
     assert_eq "1 2 3"$'\n'"5 6 9" "$x" "$f with records with all positive"
 
 ##
+#
 # ...with all negative...
 #
 # row:

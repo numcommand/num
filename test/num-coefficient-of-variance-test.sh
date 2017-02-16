@@ -76,6 +76,21 @@ x=$(echo "1 2 4\n5 6 9" | "$num" $f records) &&
 #
 # population coefficient of variance
 #
+# row:
+#
+#     $ echo "1 2 4" | num population-coefficient-of-variance
+#     0.534522
+#
+# column:
+#
+#     $ echo "1\n2\n4" | num population-coefficient-of-variance
+#     0.534522
+#
+# records:
+#
+#     $ echo "1 2 4\n5 6 9" | num population-coefficient-of-variance records
+#     0.534522
+#     0.254951
 ##
 
 f="population-coefficient-of-variance"
