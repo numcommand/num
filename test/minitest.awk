@@ -1,3 +1,15 @@
+##
+# This file has a bunch of simple test functions.
+#
+# We include these test functions in our actual tests.
+# If there's a better way to create a library of functions,
+# please let us know and we'll update these test files.
+#
+# If you're translating num into any other language,
+# feel free to use your own language's testing framework,
+# testing patterns, and the like. 
+##
+
 function assert_init() {
     TRUE=1
     FALSE=0

@@ -1,4 +1,14 @@
 #!/bin/sh
+#
+# This file runs a bunch of simple tests.
+#
+# If there's a better way to create a library of tests,
+# please let us know and we'll update these test files.
+#
+# If you're translating num into any other language,
+# feel free to use your own language's testing framework,
+# testing patterns, and the like. 
+##
 
 ## Constants
 TRUE=1
