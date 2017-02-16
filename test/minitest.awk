@@ -1,5 +1,5 @@
 ##
-# This file has a bunch of simple test functions.
+# This file has a some simple test functions.
 #
 # We include these test functions in our actual tests.
 # If there's a better way to create a library of functions,

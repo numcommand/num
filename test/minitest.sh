@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# This file runs a bunch of simple tests.
+# This file runs some simple tests.
 #
 # If there's a better way to create a library of tests,
 # please let us know and we'll update these test files.
