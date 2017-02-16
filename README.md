@@ -38,7 +38,7 @@ Project pages:
 * <a href="doc/comparisons.md">Comparisons: when to use Num vs. other tools, such as C, R, Python, etc.</a>
 * <a href="doc/benchmarks.md">Benchmarks</a>
 * <a href="doc/todo.md">To do</a>
-* doc/known-issues.md">Known issues</a>
+* <a href="doc/known-issues.md">Known issues</a>
 
 Programmer pages:
 
