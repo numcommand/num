@@ -45,7 +45,7 @@ x=$(echo "1 2 4\n5 6 9" | "$num" coefficient-of-variance records) &&
 # row:
 #
 #     $ echo "1 2 4" | num sample-coefficient-of-variance
-#     0.654654 # $f with row"
+#     0.654654
 #
 # column:
 #
