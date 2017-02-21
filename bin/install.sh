@@ -6,6 +6,11 @@ set -e
 # halt when referencing any unbound variable
 set -u
 
+
+out() { printf %s\\n "$*" ; }
+err() { >&2 printf %s\\n "$*" ; }
+die() { >&2 printf %s\\n "$*" ; exit 1 ; }
+
 display_help () {
   cat <<EOM
 Usage: install.sh [OPTIONS]
@@ -16,6 +21,28 @@ Options:
   -f, --force       install over a current install of num
   -h, --help        display this help message
 EOM
+}
+
+install () {
+  if [[ ! "$(force_install?)" ]] && [[ -e "$(dst_file)" ]]; then
+    err "file already exists: ""$(dst_file)"
+  fi
+
+  local src_file="$(dirname "${0}")"/num
+
+  if ! cp "${src_file}" "$(dst_file)"; then
+    err "Unable to copy '${src_file}' to '$(dst_file)'"
+  fi
+}
+
+dst_file () {
+  local dst_dir="${NUM_INSTALL_DIR:-/usr/local/bin}"
+  mkdir -p "${dst_dir}"
+  out "${NUM_INSTALL_DIR:-/usr/local/bin}"/num
+}
+
+force_install? () {
+  echo "${NUM_FORCE_INSTALL:-""}"
 }
 
 parse_args () {
@@ -35,8 +62,7 @@ parse_args () {
         exit 0
         ;;
       *)
-        echo "invalid option: "${1} >&2
-        exit 1
+        die "invalid option: ""${1}"
         ;;
     esac
 
@@ -47,4 +73,5 @@ parse_args () {
 # parse command line options
 parse_args $@
 
-# TODO:  implement installer
+# install num
+install
