@@ -15,11 +15,16 @@ Example:
     $ num sum median variance stddev data.txt
     10 2.5 1.66667 1.29099
 
-Install:
+## Dependencies
 
-    sudo curl -sSL https://raw.githubusercontent.com/numcommand/num/blob/master/bin/num -o /usr/local/bin/num && sudo chmod +x /usr/local/bin/num && (command -v uname >/dev/null 2>&1) && (uname | grep -q Darwin) && (command -v brew >/dev/null 2>&1) && (brew ls --versions gawk | grep -q gawk) || brew install gawk
+<ul><li><a href="https://www.gnu.org/software/gawk/">gawk</a></li></ul>
 
-For more on how to install please see the [Install page](doc/install.md).
+## Install
+
+    $ git clone git@github.com:numcommand/num.git
+    $ cd num
+    $ bin/install.sh # for help => bin/install.sh --help
+
 <br>To troubleshoot please see the [Troubleshooting page](doc/troubleshooting.md).
 
 
