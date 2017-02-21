@@ -10,11 +10,17 @@ set -u
 parse_args () {
   if [[ $@ ]]; then
     case "${1}" in
+      -f|--force)
+        shift
+        NUM_FORCE_INSTALL=true
+        ;;
       *)
         echo "invalid option: "${1} >&2
         exit 1
         ;;
     esac
+
+    parse_args $@
   fi
 }
 
