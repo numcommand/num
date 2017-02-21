@@ -12,14 +12,20 @@ Usage: install.sh [OPTIONS]
 
 Options:
 
-  -f, --force   install over a current install of num
-  -h, --help    display this help message
+  -d, --directory   specify install directory (defaults to /usr/local/bin)
+  -f, --force       install over a current install of num
+  -h, --help        display this help message
 EOM
 }
 
 parse_args () {
   if [[ $@ ]]; then
     case "${1}" in
+      -d|--directory)
+        shift
+        NUM_INSTALL_DIR="${1}"
+        shift
+        ;;
       -f|--force)
         shift
         NUM_FORCE_INSTALL=true
